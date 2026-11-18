@@ -1,0 +1,53 @@
+---
+title: "Day 8: Sunday colors"
+kicker: "Day 8 · October 25, 2026"
+badge: "9"
+slug: "day-8"
+excerpt: "A quieter day: an organ riff rebuilt with a sound borrowed from Sonic 3D Blast, the Castle Entrance gets its color plan, and every pickup in the castle has to fit in Alucard's palette."
+status: draft
+---
+
+Sunday. Eight commits and twenty-three messages, most of them after midnight or after dinner. It's the first day where the port mostly waited for me instead of the other way around.
+
+![](../imagens/86-dia8-linha-do-tempo.png)
+*October 25. Two short sessions, a whole day off in between.*
+
+## An organ made of borrowed parts
+
+After midnight I was working on the Mega Drive version of one of the songs, in a tracker. The organ riff that opens it didn't sound right, and I had a reference in mind: the riff at the start of Rusty Ruin, Act 2, in Sonic 3D Blast. At 12:53 a.m. I asked Claude to pull that instrument's sound out of the music file I had sent, to use in place of the organ.
+
+The riff needs several notes at once, and the Mega Drive's sound chip only has six channels. One of the instruments I was looking at played two notes from a single key, and at 12:59 a.m. I asked how. The answer is in how FM works: an FM instrument is built from four oscillators, and when two of them sound at frequencies in a 4 to 3 ratio, you hear two notes a fourth apart.
+
+![](../imagens/87-fm-duas-vozes.png)
+*Why one key can play two notes. The ratio between the oscillators is the interval.*
+
+A minute later I had the plan: list the intervals the riff uses and build one instrument for each. At 1:38 a.m. I asked for exactly that, plus an echo on the organ.
+
+## The Castle Entrance gets its colors
+
+The color work I started on the 23rd reached its first area. Each room of the Castle Entrance got a color plan calculated together with the enemies that appear in it, Alucard, and the fixed item colors, instead of every color being rounded on its own.
+
+The first room exists twice in the game, once for each visit. At 8:09 p.m. I asked for the first-visit room to use the same color plan as the return visit's. At 8:14 p.m. the tests were done and approved, and at 8:21 the plan was in the main build.
+
+![](../imagens/89-entrada-antes-depois.png)
+*The opening forest, which belongs to the Castle Entrance, four days apart. Left: October 21, colors rounded one by one, with the debug readout still on top and Alucard not yet on screen. Right: October 25, with the area's color plan: more depth between the rows of trees.*
+
+![](../imagens/90-corredor-antes-depois.png)
+*The dark hallway, same frame of the same run, three days apart. Left: October 22, with the plain white text box. Right: October 25: the enemy's name now sits in a box drawn with the pause menu's frame, which I had asked for the day before, and the dust under Alucard's feet is dithered.*
+
+## Every pickup, one palette
+
+At 9:04 p.m. the scenery was done and the enemies of the Castle Entrance were next. Reviewing the first round, I noticed how many assets repeat between areas: items, candles, the same small things in every room. I asked for a shared set, and at 11:27 p.m. I made sure of one thing: every collectible in the map, not just weapons and armor, but hearts, money and power-ups, has to be drawn with Alucard's fixed colors as much as possible.
+
+![](../imagens/88-itens-cores-fixas.png)
+*The rule, drawn with generic shapes. One set of colors for everything you can pick up.*
+
+Then I asked whether Claude had a better idea, and to see examples of the options before deciding.
+
+## The number
+
+8 commits, 23 messages. One borrowed riff, one area in its own colors.
+
+Tomorrow: Monday, and the enemies of the Castle Entrance, one by one.
+
+*How this is made: I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post was drafted by Claude from my chat messages and the project's commit history, and reviewed by me. The screenshots come from rebuilding the port's code exactly as it was at the time shown.*
