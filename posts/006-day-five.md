@@ -80,6 +80,9 @@ For the items on the floor, the first attempt was a dithered glow, following my 
 
 The save room in Symphony of the Night has a coffin that spins in 3D. Pigsy had already made a version that looks like it rotates on a Mega Drive, crediting the work of a developer called Space Bruce, part of a modern scene doing 3D on the 68000 alone. I sent Claude the names I found and asked to study them. By the evening there was a 3D coffin preview, and at 7:43 p.m. I asked the obvious question: does it run at 30 frames per second without slowdown?
 
+![](../imagens/13-pigsy-alchemy-lab.jpg)
+*Pigsy's Symphony of the Night demo on the Mega Drive, the one I wrote about in the first post. Screenshot from Pigsy's demos.*
+
 At 8:30 p.m. I tested the save room build. The game seemed to save, but I didn't see anything 3D on my emulator. Before the feedback, I asked Claude to add a rule to the project: from now on, always put Alucard in or next to the room I'm going to test.
 
 ## A night shift for a cheaper AI
