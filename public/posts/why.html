@@ -122,7 +122,12 @@
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
   figure img { display: block; width: 100%; height: auto; background: #000;
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
-  .degrau { position: relative; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { left: var(--l); top: var(--t); width: var(--w); }
+  @media (max-width: 560px) {
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+  }
   .degrau .crt { position: absolute; }
   .crt.so::before { transform: translate(-8px, 8px); }
   .crt::before { transition: transform .28s ease-out; }
@@ -291,7 +296,7 @@
 <p>Symphony of the Night has a history with Sega. Before it existed, Konami had a Castlevania in the works for the Sega 32X. It was cancelled when Konami turned away from the 32X and toward the PlayStation, and Koji Igarashi and part of that team went on to make Symphony of the Night. The family tree goes further. The director, Toru Hagihara, had just directed Rondo of Blood on the PC Engine CD. The composer, Michiru Yamane, wrote her first Castlevania score for Bloodlines, on the Mega Drive, and then wrote the soundtrack that made Symphony of the Night famous.</p>
 <p>Sega hardware did get the game in the end: a Japan-only Saturn version in 1998, with Maria as a playable character and two areas the PlayStation never got, the Underground Garden and the Cursed Prison. On the PlayStation there is a small hatch at the castle gate that never opens. Behind it, in the game data, is a small cave with a save room. On the Saturn, that room leads to the Underground Garden.</p>
 <p>Some of what was cut is hiding in plain sight. The pause menu of a gothic game is a set of plain windows on flat blue, with no ornament at all. In 2015, playing the game for Double Fine's Devs Play series, Igarashi explained why: the menu was a temporary screen, and with no time left, it shipped as the real one. After that, the team's rule became "treat every temporary spec as final."</p>
-<figure class="grupo"><div class="degrau" style="aspect-ratio:100/51.094"><span class="crt" style="left:0.000%;top:0.000%;width:54.500%;z-index:2"><span class="tubo"><img src="../img/06-menu-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation pause menu, then the one this port has now." loading="lazy"></span></span><span class="crt" style="left:45.500%;top:0.000%;width:54.500%;z-index:1"><span class="tubo"><img src="../img/06-menu-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation pause menu, then the one this port has now." loading="lazy"></span></span></div><figcaption>First the PlayStation pause menu, then the one this port has now.</figcaption></figure>
+<figure class="grupo"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/06-menu-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation pause menu, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/06-menu-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation pause menu, then the one this port has now." loading="lazy"></span></span></div><figcaption>First the PlayStation pause menu, then the one this port has now.</figcaption></figure>
 <p>In Brazil it was a phenomenon. The PlayStation was easy to pirate, so the game was within everyone's reach, and its progression loop was addictive enough to work even if you didn't read a word of English. A few years later it lived a second life on emulators, because it ran fine on the modest PCs most of us had.</p>
 <p>And on top of all that, I simply have an unshakable love for this game and every part of it. Every part that was finished in time, at least.</p>
 <p>So, which console? That's tomorrow's post.</p>

@@ -122,7 +122,12 @@
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
   figure img { display: block; width: 100%; height: auto; background: #000;
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
-  .degrau { position: relative; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { left: var(--l); top: var(--t); width: var(--w); }
+  @media (max-width: 560px) {
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+  }
   .degrau .crt { position: absolute; }
   .crt.so::before { transform: translate(-8px, 8px); }
   .crt::before { transition: transform .28s ease-out; }

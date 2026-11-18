@@ -71,18 +71,25 @@ def render(body):
             if len(itens) == 1:
                 out.append(f"<figure>{tela(*itens[0])}{cap}</figure>")
                 continue
-            # várias telas lado a lado, levemente sobrepostas; a de cima muda ao passar o mouse
+            # várias telas lado a lado, levemente sobrepostas; a de cima muda ao passar o mouse.
+            # No celular, de 3 telas para cima, viram um zigue-zague em duas colunas.
             n = len(itens); sob = 9.0
             w = (100 + (n - 1) * sob) / n
             hs = [w * h / wd for _, wd, h in itens]
-            tops = [0.0] * n
             tot = max(hs)
+            zw, zcol = 54.0, 46.0
+            zh = [zw * h / wd for _, wd, h in itens]
+            zt = [0.0]
+            for k in range(1, n):
+                zt.append(zt[-1] + zh[k - 1] * 0.55)
+            ztot = max(t + h for t, h in zip(zt, zh))
             telas = []
             for k, (nome, wd, h) in enumerate(itens):
-                est = (f' style="left:{k * (w - sob):.3f}%;top:{tops[k] / tot * 100:.3f}%;'
-                       f'width:{w:.3f}%;z-index:{n - k}"')
+                est = (f' style="--l:{k * (w - sob):.3f}%;--t:0%;--w:{w:.3f}%;'
+                       f'--zl:{(k % 2) * zcol:.3f}%;--zt:{zt[k] / ztot * 100:.3f}%;--zw:{zw:.3f}%;z-index:{n - k}"')
                 telas.append(tela(nome, wd, h, est))
-            out.append(f'<figure class="grupo"><div class="degrau" style="aspect-ratio:100/{tot:.3f}">'
+            zz = " zz" if n >= 3 else ""
+            out.append(f'<figure class="grupo"><div class="degrau{zz}" style="--ar:100/{tot:.3f};--zar:100/{ztot:.3f}">'
                        + "".join(telas) + f"</div>{cap}</figure>")
             continue
         if b.startswith("## "):
