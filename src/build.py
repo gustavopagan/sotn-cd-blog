@@ -53,7 +53,16 @@ def render(body):
         m = re.match(r"!\[\]\(\.\./imagens/([^)]+)\)\n\*(.*)\*$", b)
         if m:
             alt = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", m.group(2))
-            out.append(f'<figure><img src="../img/{img_name(m.group(1))}" alt="{html.escape(alt)}" loading="lazy">'
+            nome = img_name(m.group(1))
+            try:
+                from PIL import Image as _I
+                with _I.open(os.path.join(ROOT, "public", "img", nome)) as _im:
+                    _w, _h = _im.size
+            except Exception:
+                _w, _h = 0, 0
+            cls = ' class="px"' if 0 < _w < 900 else ""
+            dim = f' width="{_w}" height="{_h}"' if _w else ""
+            out.append(f'<figure><img src="../img/{nome}"{cls}{dim} alt="{html.escape(alt)}" loading="lazy">'
                        f"<figcaption>{inline(m.group(2))}</figcaption></figure>")
             continue
         if b.startswith("## "):

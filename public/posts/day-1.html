@@ -108,11 +108,44 @@
     padding-right: 70px;
   }
   article p { margin: 0 0 1.1em; }
-  figure { margin: 30px -12px; }
+  figure { margin: 32px -12px; }
   figure img {
     display: block; width: 100%; height: auto;
     border: 3px solid var(--ink);
     background: #000;
+    cursor: zoom-in;
+  }
+  figure img.px { image-rendering: pixelated; }
+  @media (min-width: 900px) {
+    figure { margin: 36px -110px; }
+  }
+  .zoom {
+    position: fixed; inset: 0; z-index: 50;
+    background: #000;
+    overflow: auto; -webkit-overflow-scrolling: touch;
+    display: none;
+  }
+  .zoom.on { display: block; }
+  .zoom img {
+    display: block; margin: auto;
+    max-width: 100vw; max-height: 100vh;
+    width: auto; height: auto;
+    position: relative; top: 50%; transform: translateY(-50%);
+    cursor: zoom-in;
+  }
+  .zoom.big img {
+    max-width: none; max-height: none;
+    width: 250vw; top: 0; transform: none; cursor: zoom-out;
+  }
+  .zoom img.px { image-rendering: pixelated; }
+  .zoom .x {
+    position: fixed; top: 10px; right: 10px; z-index: 51;
+    width: 44px; height: 44px; border: 3px solid #fff; background: var(--red);
+    color: #fff; font: 700 24px/36px sans-serif; text-align: center; cursor: pointer;
+  }
+  .zoom .tip {
+    position: fixed; left: 0; right: 0; bottom: 12px; text-align: center;
+    color: #ccc; font-size: 13px; pointer-events: none;
   }
   figcaption a { color: var(--blue); }
   figcaption {
@@ -195,7 +228,9 @@
     pre.term { margin: 20px -4px; font-size: 12.5px; }
     body { font-size: 17px; }
     article { padding: 34px 20px 22px; }
-    figure { margin: 24px -4px; }
+    figure { margin: 26px -39px; }
+    figure img { border-left: 0; border-right: 0; }
+    figcaption { margin-left: 16px; margin-right: 16px; }
     .badge { width: 84px; height: 84px; font-size: 12px; right: -6px; }
     .badge b { font-size: 24px; }
     h1 { padding-right: 52px; }
@@ -218,17 +253,17 @@
 <p>So, which console?</p>
 <p>My first question that night, at 11 p.m. on October 17, was about the Mega Drive. Now that someone had fully decompiled Symphony of the Night, could it be ported?</p>
 <p>The answer was no. Without its videos, voice clips and streamed music, the game still weighs about 46 MB. A Mega Drive cartridge doesn't come close, not without cutting the game to pieces.</p>
-<figure><img src="../img/10-mega-drive.jpg" alt="The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
+<figure><img src="../img/10-mega-drive.jpg" width="1200" height="600" alt="The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
 <h2>A word about Pigsy</h2>
 <p>Someone is already doing it the hard way. Pigsy, of Pigsy's Retro Game Dev Tutorials, is building his own Symphony of the Night for the Mega Drive, and it's a different project from mine: a new game written from scratch for the cartridge, split into stages. And it looks fantastic. Look at the backgrounds in his Alchemy Laboratory. Look at that Royal Chapel staircase, with a Bone Pillar breathing fire down at Alucard.</p>
-<figure><img src="../img/13-pigsy-alchemy-lab.jpg" alt="Pigsy&#x27;s Alchemy Laboratory. Screenshot from Pigsy&#x27;s demos." loading="lazy"><figcaption>Pigsy's Alchemy Laboratory. Screenshot from <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">Pigsy's demos</a>.</figcaption></figure>
-<figure><img src="../img/14-pigsy-royal-chapel.jpg" alt="The Royal Chapel stairs, Bone Pillar included. Screenshot from Pigsy&#x27;s demos." loading="lazy"><figcaption>The Royal Chapel stairs, Bone Pillar included. Screenshot from Pigsy's demos.</figcaption></figure>
+<figure><img src="../img/13-pigsy-alchemy-lab.jpg" width="1200" height="835" alt="Pigsy&#x27;s Alchemy Laboratory. Screenshot from Pigsy&#x27;s demos." loading="lazy"><figcaption>Pigsy's Alchemy Laboratory. Screenshot from <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">Pigsy's demos</a>.</figcaption></figure>
+<figure><img src="../img/14-pigsy-royal-chapel.jpg" width="1200" height="644" alt="The Royal Chapel stairs, Bone Pillar included. Screenshot from Pigsy&#x27;s demos." loading="lazy"><figcaption>The Royal Chapel stairs, Bone Pillar included. Screenshot from Pigsy's demos.</figcaption></figure>
 <p>Go follow him: <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">YouTube</a> and <a href="https://x.com/PigsyRetro">X</a>.</p>
 <p>My project wanted something else: the castle itself. Every room connected, the inverted castle, the equipment, the familiars. That meant a bigger machine.</p>
 <p>I also want a port with a few things the original never got. Remember the menu Igarashi had no time to finish? To me, finishing that design means extra care for everything that lives inside the menu: customizing your familiars, customizing the menu itself.</p>
 <p>As for the balance between fidelity and change, the rule is simple. This is a port first, and it should look and play the way you remember it. But I couldn't resist hiding a few Easter eggs as a tribute to Sega and to the Mega CD itself. Those are for a later post.</p>
 <p>So, Mega CD. Same video chip as the Mega Drive, but with a CD drive, a second processor and extra memory. And the original game is already split into pieces that load one area at a time, which is exactly how a CD system wants to work.</p>
-<figure><img src="../img/11-mega-cd.jpg" alt="The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Model1-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
+<figure><img src="../img/11-mega-cd.jpg" width="1200" height="908" alt="The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Model1-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
 <p>Eleven minutes after the first question, I asked where to start. Half an hour later, Claude Code was installed. Then it refused to start.</p>
 <pre class="term"><code>PS C:\Users\pagan\desktop\SOTN CD\Castlevania - Symphony of the Night&gt; claude
 claude : The term &#x27;claude&#x27; is not recognized as the name of a cmdlet,
@@ -239,7 +274,7 @@ function, script file, or operable program.</code></pre>
 <h2>The trick: two processors, two jobs</h2>
 <p>The Mega Drive's main processor runs at about 7.67 MHz. The PlayStation's runs at about 34 MHz. Asking the first one to run the second one's game and also draw the screen is not a plan.</p>
 <p>The Mega CD adds a second processor, at 12.5 MHz. So the port splits the work. The second processor runs the game: Alucard, enemies, collision. The main one only draws what it's told. They trade notes once per frame through a shared block of memory. The price is one frame of delay between the game deciding something and the screen showing it.</p>
-<figure><img src="../img/12-mega-cd-inside.jpg" alt="Inside the Mega CD. The chip marked HD68HC000 is the second processor: another 68000, this one at 12.5 MHz. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>Inside the Mega CD. The chip marked HD68HC000 is the second processor: another 68000, this one at 12.5 MHz. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Base-Mk1-Inside.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
+<figure><img src="../img/12-mega-cd-inside.jpg" width="1200" height="848" alt="Inside the Mega CD. The chip marked HD68HC000 is the second processor: another 68000, this one at 12.5 MHz. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>Inside the Mega CD. The chip marked HD68HC000 is the second processor: another 68000, this one at 12.5 MHz. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Base-Mk1-Inside.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
 <p>My verdict at 8:40 p.m., after trying the controls: "Movement and physics are great, keep going." (Translated from Portuguese.)</p>
 <h2>The number</h2>
 <p>12 commits on day one. Two phases of the original plan closed, and the third already moving.</p>
@@ -252,5 +287,27 @@ function, script file, or operable program.</code></pre>
     <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
   </footer>
 </div>
+<div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
+<script>
+(function () {
+  var z = document.getElementById('zoom'), zi = document.getElementById('zoomimg');
+  document.querySelectorAll('figure img').forEach(function (im) {
+    im.addEventListener('click', function () {
+      zi.src = im.currentSrc || im.src; zi.className = im.className;
+      z.className = 'zoom on'; document.body.style.overflow = 'hidden';
+    });
+  });
+  function fecha() { z.className = 'zoom'; zi.src = ''; document.body.style.overflow = ''; }
+  document.getElementById('zoomx').addEventListener('click', fecha);
+  z.addEventListener('click', function (e) { if (e.target === z) fecha(); });
+  zi.addEventListener('click', function (e) {
+    var big = z.className.indexOf('big') < 0;
+    var rx = e.offsetX / zi.clientWidth, ry = e.offsetY / zi.clientHeight;
+    z.className = big ? 'zoom on big' : 'zoom on';
+    if (big) { z.scrollLeft = rx * zi.clientWidth - innerWidth / 2; z.scrollTop = ry * zi.clientHeight - innerHeight / 2; }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecha(); });
+})();
+</script>
 </body>
 </html>
