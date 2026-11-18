@@ -98,6 +98,9 @@ At 5:03 p.m. I asked if we could take some sound effects from the other games in
 ![](../imagens/79-bloodlines.png)
 *Castlevania: Bloodlines on the Mega Drive, one of the two reference games.*
 
+![](../imagens/172-rondo.png)
+*Rondo of Blood on the PC Engine CD, the other one. This frame was saved in our tester a day later.*
+
 At 5:52, after listening:
 
 > "These Bloodlines effects seem to be samples too."
@@ -123,4 +126,4 @@ So at 8:12 p.m. I did it the long way: exported the Linux to my E: drive (60 GB)
 
 79 commits, 121 messages from me, a good part of them PowerShell output. The question from 1997 paid off the most.
 
-*How this is made: I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post was drafted by Claude from my chat messages and the project's commit history, and reviewed by me. The images are previews and diagrams Claude made, a capture of Bloodlines from my own cartridge dump, and a redrawn queue page.*
+*How this is made: I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post was drafted by Claude from my chat messages and the project's commit history, and reviewed by me. The images are previews and diagrams Claude made, a capture of Bloodlines from my own cartridge dump, a Rondo of Blood frame saved in our tester, and a redrawn queue page.*
