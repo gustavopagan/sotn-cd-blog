@@ -24,6 +24,9 @@ The same report had a request. On the PlayStation, while the wind plays, the lig
 
 Claude looked at how the original does it, and the answer was good news: on the PlayStation, the darkness, the lightning and the room lighting up are all palette swaps. No transparency, no layers. The port could do the same thing with its own palettes, prepared during the build.
 
+![](../imagens/61-corredor-escuro.gif)
+*The hallway in the 9:37 p.m. build, rebuilt from that commit, with the lights still off: silhouettes, lit windows and a warg. The white box in the top right is the new text box, showing an enemy's name. In this run Alucard never walks far enough for the lights to come on.*
+
 ## Death learns to talk
 
 The scene with Death worked that afternoon, without any text. The original draws its dialogue in a box with portraits, which is expensive here. So I suggested something more Mega Drive: speech balloons like Comix Zone. I offered Claude a memory dump of the game, and later asked to use the Comix Zone font too, so the letters would match the balloons. The other texts, like the name of an item you pick up, went to a small box in the top right corner, since the original's translucent box at the bottom isn't an option without transparency.
@@ -50,10 +53,16 @@ It's the most important decision of that week, and I didn't think of it as a dec
 
 Alucard uses one palette line of 15 colors. Every sword, shield and item he holds has to be drawn with those same colors. At 7:20 p.m. I asked how many we could reserve for weapons, then asked to see a preview of Alucard with four fewer colors. It looked fine. So I picked the fixed colors myself, as hex values: blue #4c00ff, light blue #1cb3ff, red #ff0026, and then asked Claude to merge two pairs of Alucard's shades to open a slot for a green, #02c93e. A gold joined them.
 
+![](../imagens/62-alucard-menos4.png)
+*The preview I asked for at 7:26 p.m., labels in Portuguese. Top: Alucard in the port that day. Middle: as on the PlayStation. Bottom: four palette slots freed. Hard to tell apart, which was the point.*
+
 ![](../imagens/58-paleta-alucard.png)
 *Schematic, not the real palette. Five of the fifteen slots now belong to the weapons.*
 
 Then I spent half an hour asking for preview sheets: every relic and item, every weapon's effect, Alucard with every cape in three poses, Alucard attacking with every weapon, Alucard holding every shield. One cape lost the highlight at its tip, so I asked to keep it with dithering. For the gray of the capes I chose between two options and made one the standard.
+
+![](../imagens/63-capas-pontilhado.png)
+*Claude's preview sheet, labels in Portuguese. Left to right: the PlayStation, the cape with one shade fewer, and the same with the lost shade rebuilt as a dither. Rows: Twilight Cloak, Blood Cloak, Reverse Cloak. The dithered column won.*
 
 At 8:08 p.m. I noticed that in Claude's preview the shield was behind Alucard and asked for it to cover him. Strictly speaking, the PlayStation draws it behind him too. I wanted it in front, and it's in front.
 
