@@ -16,308 +16,210 @@
 @font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-italic.ad6d313a.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Noto Sans JP";src:url(../fonts/noto-jp-titulo.f7f1ca99.woff2) format("woff2");font-style:normal;font-weight:900;font-display:block}
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 <style>
+  /* Visual: a caixa japonesa do Mega-CD (KV aprovado em 18/11). Papel creme quadriculado com
+     grade de 24 px centralizada; tudo encaixado nela. CD Drive nos cabeçalhos, monoMMM_5 nos
+     textos curtos, Archivo no texto corrido. */
   :root {
-    --red: #c8262c;
-    --green: #15924a;
-    --yellow: #f4c400;
-    --blue: #0464b6;
-    --ink: #111;
-    --paper: #fff;
-    --grid-bg: #eef3f2;
-    --grid-line: #c9cfcf;
-    --cell: 24px;
-    /* Headline: placeholder até chegar o arquivo da fonte escolhida pelo usuário */
-    --head: "Russo One", "Arial Black", sans-serif;
-    --body: "Segoe UI", "Segoe UI Variable", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --ink: #18181A; --red: #D2232A; --blue: #1B56B0; --navy: #1E2C66; --yellow: #F3D23C;
+    --faixa: #AE2900; --paper: #EAE6DA; --cream: #FBF7E8;
+    --cd: "CD Drive", "Archivo", sans-serif;
+    --mono: "monoMMM5", ui-monospace, monospace;
+    --body: "Archivo", system-ui, sans-serif;
+    --chk: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%) 0 0 / 4px 4px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    font-family: var(--body);
-    color: var(--ink);
-    background-color: var(--grid-bg);
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: var(--cell) var(--cell);
-    line-height: 1.65;
-    font-size: 18px;
+    background-color: var(--paper);
+    background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: calc(50% + 12px) 0, calc(50% + 12px) 0;
+    color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px;
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  a { color: var(--blue); }
+  .topo { height: 18px; background: var(--ink); }
+  .cores { display: flex; height: 6px; }
+  .cores i { flex: 1; } .cores i:nth-child(1) { background: var(--red); } .cores i:nth-child(2) { background: #00964B; }
+  .cores i:nth-child(3) { background: var(--yellow); } .cores i:nth-child(4) { background: var(--blue); }
+  .col { padding: 0 24px; }
+  .w1056 { width: 1056px; max-width: 100%; margin: 0 auto; }
+  .w720 { width: 720px; max-width: 100%; margin: 0 auto; }
+  .cdx { font-family: var(--cd); font-weight: 400; text-transform: uppercase; }
+  .mono { font-family: var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
 
-  header.site {
-    position: relative;
-    background: var(--paper);
-    border: 3px solid var(--ink);
-    padding: 22px 24px 18px;
-    margin-bottom: 28px;
-  }
-  .stripes { display: flex; height: 10px; margin: -22px -24px 18px; }
-  .stripes span { flex: 1; }
-  .stripes .r { background: var(--red); }
-  .stripes .g { background: var(--green); }
-  .stripes .y { background: var(--yellow); }
-  .stripes .b { background: var(--blue); }
-  .site-name {
-    font-family: var(--head);
-    font-size: clamp(30px, 6vw, 48px);
-    line-height: 1;
-    margin: 0;
-    letter-spacing: 0.5px;
-    transform: skewX(-10deg);
-    transform-origin: left bottom;
-    text-transform: uppercase;
-  }
-  .site-name a { color: var(--ink); text-decoration: none; }
-  .site-sub {
-    margin: 10px 0 0;
-    color: var(--red);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-  }
+  /* cabeçalho do site */
+  header.site { padding-top: 24px; padding-bottom: 24px; }
+  .hdr { display: flex; align-items: flex-start; gap: 48px; isolation: isolate; }
+  .hdr .tt { flex: 1; min-width: 0; }
+  .jp { height: 24px; font: 900 15px/24px var(--mono), "Noto Sans JP", sans-serif; letter-spacing: .12em; }
+  .wordmark { margin: 0; font-family: var(--cd); font-size: 64px; line-height: 72px; text-transform: uppercase; }
+  .wordmark a { color: var(--ink); text-decoration: none; }
+  .sub2 { height: 24px; display: flex; align-items: center; gap: 12px; }
+  .sub2 span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--red); text-transform: uppercase; white-space: nowrap; }
+  .sub2 i { flex: 1; height: 3px; background: var(--ink); }
+  .badge { position: relative; flex: 0 0 auto; width: 96px; height: 120px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; background: var(--ink); color: #fff; text-decoration: none; }
+  .badge::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .badge span { font: 400 14px/24px var(--mono); letter-spacing: .1em; }
+  .badge b { font: 400 44px/48px var(--mono); color: var(--yellow); }
 
-  article {
-    position: relative;
-    background: var(--paper);
-    border: 3px solid var(--ink);
-    padding: 40px 40px 28px;
-  }
-  .badge {
-    position: absolute;
-    top: -26px; right: -14px;
-    width: 104px; height: 104px;
-    background: var(--yellow);
-    color: var(--ink);
-    display: grid; place-items: center;
-    text-align: center;
-    font-family: var(--head);
-    font-size: 15px; line-height: 1.05;
-    text-transform: uppercase;
-    clip-path: polygon(50% 0%, 61% 18%, 82% 10%, 79% 32%, 100% 38%, 84% 54%, 96% 74%, 74% 76%, 68% 98%, 50% 85%, 32% 98%, 26% 76%, 4% 74%, 16% 54%, 0% 38%, 21% 32%, 18% 10%, 39% 18%);
-    transform: rotate(8deg);
-  }
-  .badge b { display: block; font-size: 30px; font-weight: 400; }
-  .kicker {
-    color: var(--blue);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 0 0 6px;
-  }
-  h1 {
-    font-family: var(--head);
-    font-weight: 400;
-    font-size: clamp(28px, 5vw, 40px);
-    line-height: 1.12;
-    margin: 0 0 26px;
-    padding-right: 70px;
-  }
-  article p { margin: 0 0 1.1em; }
-  figure { margin: 32px -12px; }
-  /* tela de CRT, como os screenshots nas caixas de jogos e consoles da época:
-     bordas abauladas (o recorte vem do clipPath #crt) e sombra dura em xadrez para o lado da tela de baixo */
+  /* post */
+  .kicker { height: 24px; margin-top: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--blue); text-transform: uppercase; }
+  h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
+  article, .list, figure { isolation: isolate; }
+  article p { margin: 0 0 24px; }
+  .note { display: inline-block; background: var(--red); color: #fff; font: 400 15px/24px var(--mono); padding: 0 8px; text-transform: uppercase; margin-bottom: 24px; }
+  .secr { display: flex; align-items: center; gap: 24px; height: 48px; margin: 48px 0 24px; isolation: isolate; }
+  .secr i { flex: 1; height: 3px; background: var(--ink); }
+  h2.sec { position: relative; margin: 0; height: 48px; line-height: 50px; padding: 0 24px; background: var(--red); color: #fff;
+    font-family: var(--cd); font-weight: 400; font-size: 22px; text-transform: uppercase; white-space: nowrap; }
+  h2.sec::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote { position: relative; margin: 48px 0; }
+  .quote::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote .in { background: var(--yellow); box-shadow: inset 0 0 0 2px var(--ink); padding: 24px; }
+  .quote .q { margin: 0; font: italic 700 20px/24px var(--body); }
+  .quote .tr { margin: 0; font-size: 13px; line-height: 24px; }
+  pre.term { background: var(--ink); color: #E6E9F5; padding: 12px 24px; margin: 24px 0 48px; overflow-x: auto;
+    font: 15px/24px var(--mono); white-space: pre-wrap; }
+  .how { position: relative; margin: 48px 0 0; background: #D6E7F6; }
+  .how::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .how .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .how .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .how .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; }
+  .how p { margin: 0; padding: 24px; font-size: 15px; }
+
+  /* figuras: largura de 960 no computador, a coluna no celular */
+  figure { --fw: min(960px, calc(100vw - 48px)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
+  figure + p, figure + .secr, figure + figure { margin-top: 48px; }
+  figure img { display: block; width: 100%; height: auto; }
+  figure picture { display: block; }
+  figure img.px { image-rendering: pixelated; }
+  .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
+  .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
+  .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
+  /* tela de CRT: bordas abauladas (#crt) e sombra dura em xadrez */
   .crt { display: block; position: relative; cursor: zoom-in; }
-  /* sombra em xadrez, como a transparência do Mega Drive, para o sudeste; fora do fluxo,
-     então não empurra o alinhamento da tela */
-  .crt::before { content: ""; position: absolute; inset: 0; transform: translate(8px, 8px);
-    background: repeating-conic-gradient(#111 0 25%, transparent 0 50%) 0 0 / 4px 4px;
-    -webkit-clip-path: url(#crt); clip-path: url(#crt); z-index: 0; pointer-events: none; }
-  .tubo { position: relative; z-index: 1; }
-  .tubo { display: block; background: var(--ink); padding: 3px;
-    -webkit-clip-path: url(#crt); clip-path: url(#crt); }
-  figure img { display: block; width: 100%; height: auto; background: #000;
-    -webkit-clip-path: url(#crt); clip-path: url(#crt); }
-  .degrau { position: relative; aspect-ratio: var(--ar); }
-  .degrau .crt { left: var(--l); top: var(--t); width: var(--w); }
-  @media (max-width: 560px) {
-    .degrau.zz { aspect-ratio: var(--zar); }
-    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
-  }
-  .degrau .crt { position: absolute; }
+  .crt::before { content: ""; position: absolute; inset: 0; transform: translate(8px, 8px); background: var(--chk);
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); z-index: 0; pointer-events: none; transition: transform .28s ease-out; }
   .crt.so::before { transform: translate(-8px, 8px); }
-  .crt::before { transition: transform .28s ease-out; }
-  /* troca de quem fica na frente: a tela sobe um pouco e assenta */
+  .tubo { position: relative; z-index: 1; display: block; background: var(--ink); padding: 4px; -webkit-clip-path: url(#crt); clip-path: url(#crt); }
+  .tubo img { -webkit-clip-path: url(#crt); clip-path: url(#crt); background: #000; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { position: absolute; left: var(--l); top: var(--t); width: var(--w); }
   .crt.sobe { animation: sobe .32s ease-out; }
   @keyframes sobe { 0% { transform: translateY(6px) scale(.97); } 55% { transform: translateY(-5px) scale(1.025); } 100% { transform: none; } }
-  figure img.px { image-rendering: pixelated; }
-  @media (min-width: 900px) {
-    figure { margin: 36px -110px; }
-  }
-  .zoom {
-    position: fixed; inset: 0; z-index: 50;
-    background: #000;
-    overflow: auto; -webkit-overflow-scrolling: touch;
-    display: none;
-  }
+  /* painel (diagramas e gráficos): chapado, sem tubo, sombra em xadrez */
+  .painel { position: relative; display: block; cursor: zoom-in; }
+  .painel::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+
+  /* navegação e lista */
+  .posts-nav { display: flex; gap: 24px; margin-top: 72px; }
+  .posts-nav a { flex: 1; display: block; text-decoration: none; color: var(--ink); background: var(--cream);
+    box-shadow: inset 0 0 0 2px var(--ink); padding: 12px 24px; min-height: 72px; }
+  .posts-nav a:hover { background: #fff; }
+  .posts-nav .d { display: block; color: var(--red); font: 400 17px/24px var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+  .posts-nav .t { display: block; font: 400 20px/24px var(--cd); text-transform: uppercase; }
+  .posts-nav .next { text-align: right; }
+  .list { display: grid; gap: 48px; padding-top: 24px; }
+  .card { position: relative; display: block; text-decoration: none; color: var(--ink); background: var(--cream); }
+  .card::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .card .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .card .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .card .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; }
+  .card .t { display: block; padding: 24px 24px 0; font: 400 26px/24px var(--cd); text-transform: uppercase; }
+  .card .ex { display: block; padding: 24px; font-size: 15px; color: #3a3a3e; }
+  .card:hover .t { color: var(--red); }
+
+  footer.site { padding-top: 48px; padding-bottom: 24px; }
+  footer.site .rule { height: 3px; background: var(--ink); }
+  footer.site .row { display: flex; align-items: center; gap: 24px; min-height: 69px; flex-wrap: wrap; }
+  footer.site p { flex: 1 1 360px; margin: 0; font-size: 13px; line-height: 24px; color: #3a3a3e; }
+  footer.site .marca { font: 400 40px/48px var(--cd); color: var(--blue); }
+
+  .zoom { position: fixed; inset: 0; z-index: 50; background: #000; overflow: auto; -webkit-overflow-scrolling: touch; display: none; }
   .zoom.on { display: block; }
-  .zoom img {
-    display: block; margin: auto;
-    max-width: 100vw; max-height: 100vh;
-    width: auto; height: auto;
-    position: relative; top: 50%; transform: translateY(-50%);
-    cursor: zoom-in;
-  }
-  .zoom.big img {
-    max-width: none; max-height: none;
-    width: 250vw; top: 0; transform: none; cursor: zoom-out;
-  }
+  .zoom img { display: block; margin: auto; max-width: 100vw; max-height: 100vh; width: auto; height: auto;
+    position: relative; top: 50%; transform: translateY(-50%); cursor: zoom-in; }
+  .zoom.big img { max-width: none; max-height: none; width: 250vw; top: 0; transform: none; cursor: zoom-out; }
   .zoom img.px { image-rendering: pixelated; }
-  .zoom .x {
-    position: fixed; top: 10px; right: 10px; z-index: 51;
-    width: 44px; height: 44px; border: 3px solid #fff; background: var(--red);
-    color: #fff; font: 700 24px/36px sans-serif; text-align: center; cursor: pointer;
-  }
-  .zoom .seta {
-    position: fixed; top: 50%; z-index: 51; transform: translateY(-50%);
-    width: 44px; height: 64px; border: 3px solid #fff; background: var(--blue);
-    color: #fff; font: 700 28px/56px sans-serif; text-align: center; cursor: pointer;
-    user-select: none;
-  }
+  .zoom .x { position: fixed; top: 10px; right: 10px; z-index: 51; width: 48px; height: 48px; background: var(--red);
+    color: #fff; font: 400 24px/48px var(--mono); text-align: center; cursor: pointer; }
+  .zoom .seta { position: fixed; top: 50%; z-index: 51; transform: translateY(-50%); width: 48px; height: 72px; background: var(--navy);
+    color: #fff; font: 400 32px/72px var(--mono); text-align: center; cursor: pointer; user-select: none; }
   .zoom .seta.ant { left: 8px; } .zoom .seta.prox { right: 8px; }
   .zoom.so1 .seta, .zoom.big .seta { display: none; }
-  .zoom .tip {
-    position: fixed; left: 0; right: 0; bottom: 12px; text-align: center;
-    color: #ccc; font-size: 13px; pointer-events: none;
-  }
-  figcaption a { color: var(--blue); }
-  figcaption {
-    font-size: 15px;
-    color: #444;
-    padding: 8px 4px 0;
-    border-left: 6px solid var(--green);
-    padding-left: 10px;
-    margin-top: 10px;
-    margin-left: 12px; margin-right: 12px;
-  }
-  @media (min-width: 900px) {
-    figcaption { margin-left: 110px; margin-right: 110px; }
-  }
-  .note {
-    display: inline;
-    background: var(--yellow);
-    font-size: 14px;
-    padding: 1px 6px;
-  }
-  .how {
-    margin-top: 34px;
-    padding: 16px 18px;
-    background: #f3f7fb;
-    border-left: 6px solid var(--blue);
-    font-size: 15px;
-    color: #333;
-  }
-  h2 {
-    font-family: var(--head);
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1.2;
-    margin: 34px 0 12px;
-  }
-  pre.term {
-    background: #0b0b0b;
-    color: #e8e8e8;
-    border: 3px solid var(--ink);
-    padding: 14px 16px;
-    margin: 24px -12px;
-    overflow-x: auto;
-    font: 14px/1.5 Consolas, "Cascadia Mono", Menlo, monospace;
-    white-space: pre-wrap;
-  }
-  .posts-nav { display: flex; gap: 12px; justify-content: space-between; margin-top: 18px; flex-wrap: wrap; }
-  .posts-nav a {
-    background: var(--paper); border: 3px solid var(--ink); padding: 10px 14px;
-    color: var(--ink); text-decoration: none; font-weight: 700; font-size: 15px; max-width: 48%;
-  }
-  .posts-nav .next { margin-left: auto; text-align: right; }
-  .posts-nav a:hover { background: var(--yellow); }
-  .list { display: grid; gap: 16px; }
-  .card {
-    display: flex; gap: 18px; align-items: stretch;
-    background: var(--paper); border: 3px solid var(--ink);
-    color: var(--ink); text-decoration: none;
-  }
-  .card:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-3px, -3px); }
-  .card .num {
-    flex: 0 0 88px; display: grid; place-items: center;
-    background: var(--red); color: #fff; border-right: 3px solid var(--ink);
-    font-family: var(--head); font-size: 40px;
-  }
-  .card:nth-child(4n+2) .num { background: var(--green); }
-  .card:nth-child(4n+3) .num { background: var(--yellow); color: var(--ink); }
-  .card:nth-child(4n+4) .num { background: var(--blue); }
-  .card .txt { padding: 16px 18px 16px 0; display: grid; gap: 4px; }
-  .card .t { font-family: var(--head); font-size: 22px; line-height: 1.2; }
-  .card .ex { color: #444; font-size: 16px; }
-  .card .kicker { margin: 0; }
-  footer.site {
-    margin-top: 28px;
-    background: var(--blue);
-    color: #fff;
-    border: 3px solid var(--ink);
-    padding: 14px 20px;
-    font-size: 14px;
-  }
-  footer.site p { margin: 0; }
-  @media (max-width: 560px) {
-    .card .num { flex-basis: 64px; font-size: 30px; }
-    .posts-nav a { max-width: 100%; }
-    pre.term { margin: 20px -4px; font-size: 12.5px; }
-    body { font-size: 17px; }
-    article { padding: 34px 20px 22px; }
-    figure { margin: 26px -39px; }
-    figcaption { margin-left: 39px; margin-right: 39px; }
-    .badge { width: 84px; height: 84px; font-size: 12px; right: -6px; }
-    .badge b { font-size: 24px; }
-    h1 { padding-right: 52px; }
+  .zoom .tip { position: fixed; left: 0; right: 0; bottom: 12px; text-align: center; color: #ccc; font: 13px/24px var(--mono); pointer-events: none; }
+
+  /* celular: coluna de 336 px presa à grade */
+  @media (max-width: 700px) {
+    .col { padding: 0 calc((100% - 336px) / 2); }
+    figure { --fw: 336px; }
+    .hdr { flex-direction: column; gap: 0; }
+    .badge { order: -1; width: auto; height: 48px; flex-direction: row; gap: 12px; padding: 0 12px; margin-bottom: 24px; }
+    .badge b { font-size: 28px; }
+    .wordmark { font-size: 34px; line-height: 36px; }
+    .sub2 span { font-size: 14px; }
+    h1.ttl { font-size: 30px; line-height: 36px; }
+    h2.sec { font-size: 20px; padding: 0 12px; }
+    .secr { gap: 12px; }
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+    .posts-nav { flex-direction: column; }
+    .card .t { font-size: 22px; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="site">
-    <div class="stripes"><span class="r"></span><span class="g"></span><span class="y"></span><span class="b"></span></div>
-    <p class="site-name"><a href="../">Symphony of the Night</a></p>
-    <p class="site-sub">A Mega CD port &middot; Development log</p>
-  </header>
-
-<article>
-<div class="badge"><span>Post<b>2</b></span></div>
-<p class="kicker">Interlude</p>
-<h1>What AI can&#x27;t do in this port</h1>
+<div class="topo"></div><div class="cores"><i></i><i></i><i></i><i></i></div>
+<header class="site col">
+  <div class="w1056 hdr">
+    <div class="tt">
+      <div class="jp">メガCD移植・開発日誌</div>
+      <p class="wordmark"><a href="../">Symphony of the Night</a></p>
+      <div class="sub2"><span>A Mega CD port &middot; Development log</span><i></i></div>
+    </div>
+    <div class="badge"><span>POST</span><b>2</b></div>
+  </div>
+</header>
+<main class="col">
+<article class="w720">
+<div class="kicker">Interlude</div>
+<h1 class="ttl">What AI can&#x27;t do in this port</h1>
 
 <p>In the last post I showed Pigsy's Symphony of the Night for the Mega Drive. There's one thing about his work I left for today.</p>
 <p>Pigsy is a programmer. He writes his game himself. I don't.</p>
 <p>People like to say that programming is becoming a worthless skill. I think it's the opposite. As developers lean more and more on AI to write code, and as the money for writing it by hand dries up, the reasons left to keep programming are entirely personal: taste, curiosity, stubbornness, the pleasure of it. The people who keep going for those reasons alone are getting rare, and that makes them more valuable, not less. If one day the companies that own these platforms decide to switch the AI engines off, people like Pigsy will still be able to build things.</p>
 <p>What I bring is the other half. I'm not a sprite artist, and I don't draw new sprites from scratch. What I do is take the original game's art and rework it for the Mega Drive, piece by piece, mostly in LibreSprite. That's where my years as an art director in audiovisual production get put to the test. Nothing slips by. Two examples.</p>
-<h2>The title screen</h2>
-<figure class="grupo"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption>First the PlayStation title screen, then the one this port has now.</figcaption></figure>
+<div class="secr"><h2 class="sec">The title screen</h2><i></i></div>
+<figure class="grupo"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">1</span><p>First the PlayStation title screen, then the one this port has now.</p></figcaption></figure>
 <p>The background started as a photo of a real stone wall. I crushed its palette down to a handful of grays, cut the carvings out of the original background art and pasted them over the wall, dithered the whole thing, and asked Claude to put it in the Mega Drive's shadow mode, a hardware trick that draws a layer at half brightness.</p>
-<figure><span class="crt"><span class="tubo"><img src="../img/16-fundo-parede.png" width="960" height="669" alt="The background on its own, before shadow mode: a real wall, the original carvings, a few grays and a lot of dithering." loading="lazy"></span></span><figcaption>The background on its own, before shadow mode: a real wall, the original carvings, a few grays and a lot of dithering.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/16-fundo-parede.png" width="960" height="669" alt="The background on its own, before shadow mode: a real wall, the original carvings, a few grays and a lot of dithering." loading="lazy"></span></span><figcaption class="cap"><span class="num">2</span><p>The background on its own, before shadow mode: a real wall, the original carvings, a few grays and a lot of dithering.</p></figcaption></figure>
 <p>For the logo I took the Castlevania lettering and the red banner from Bloodlines and repainted them. The "Symphony of the Night" line came out of a straight conversion looking rough, so I fixed it by hand, pixel by pixel, and gave it a drop shadow. The small print at the bottom uses a new mini font I made for it.</p>
-<figure><span class="crt"><span class="tubo"><img src="../img/17-logo.png" width="960" height="480" alt="The logo up close: the repainted Bloodlines banner and the hand-fixed lettering." loading="lazy"></span></span><figcaption>The logo up close: the repainted Bloodlines banner and the hand-fixed lettering.</figcaption></figure>
-<h2>The menu frames</h2>
+<figure><span class="crt"><span class="tubo"><img src="../img/17-logo.png" width="960" height="480" alt="The logo up close: the repainted Bloodlines banner and the hand-fixed lettering." loading="lazy"></span></span><figcaption class="cap"><span class="num">3</span><p>The logo up close: the repainted Bloodlines banner and the hand-fixed lettering.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">The menu frames</h2><i></i></div>
 <p>In the last two posts I wrote about the plain pause menu that shipped because the team ran out of time. The ornate frames it never got were already in the game. The PlayStation's file select screen has these green ones.</p>
-<figure><span class="crt"><span class="tubo"><img src="../img/18-moldura-verde-ps1.png" class="px" width="864" height="360" alt="The green frame from the PlayStation&#x27;s file select screen." loading="lazy"></span></span><figcaption>The green frame from the PlayStation's file select screen.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/18-moldura-verde-ps1.png" class="px" width="864" height="360" alt="The green frame from the PlayStation&#x27;s file select screen." loading="lazy"></span></span><figcaption class="cap"><span class="num">4</span><p>The green frame from the PlayStation's file select screen.</p></figcaption></figure>
 <p>They were cut apart into 8 by 8 pixel pieces, which is how the Mega Drive builds a screen, and reassembled around every window of the new pause menu. The stone wall from the title screen came along as the background.</p>
-<figure><span class="crt"><span class="tubo"><img src="../img/19-menu-nativo.png" class="px" width="747" height="560" alt="The pause menu now: green frames, a stone wall behind, and a status plate on top." loading="lazy"></span></span><figcaption>The pause menu now: green frames, a stone wall behind, and a status plate on top.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/19-menu-nativo.png" class="px" width="747" height="560" alt="The pause menu now: green frames, a stone wall behind, and a status plate on top." loading="lazy"></span></span><figcaption class="cap"><span class="num">5</span><p>The pause menu now: green frames, a stone wall behind, and a status plate on top.</p></figcaption></figure>
 <p>Even this kind of adaptation is still not something AI is good at. Pixel art runs on abstract symbolism, and on a kind of synesthetic cognition that ties our phylogenetic makeup (every biological sensor we have, tuned to an environment) to arbitrarily applicable relational responding. That last one is complicated; I actually have a bachelor's degree in Psychology and a postgraduate degree in Behavior Analysis. Machines are still very far from simulating any of that in a way that works.</p>
 <p>The same goes for arranging music in a tracker, the kind of program game music is written in. Most of Michiru Yamane's soundtrack exists only as recorded audio: there is no sequenced version of it to convert. Between the waveform on the original recording and the notes in a tracker there is a thick layer of interpretation, and for the same reasons as pixel art (symbolism, phylogeny, relational responding), it can't be automated. I imagine Pigsy is running into the same wall with FM music. There are very few resources for it, and the work is colossal.</p>
 <p>So go follow Pigsy: <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">YouTube</a> and <a href="https://x.com/PigsyRetro">X</a>. People like him are the ones keeping the craft alive.</p>
-<div class="how">How this is made: I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post is my own argument, written down by Claude from my messages and reviewed by me.</div>
+<div class="how"><div class="bar"><b>How</b><span>this is made</span></div><p>I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post is my own argument, written down by Claude from my messages and reviewed by me.</p></div>
+<nav class="posts-nav"><a class="prev" href="day-1.html"><span class="d">&larr; Day 1</span><span class="t">from a PlayStation disc to Alucard walking on a Mega CD</span></a></nav>
 </article>
-<nav class="posts-nav"><a class="prev" href="day-1.html">&larr; Day 1: from a PlayStation disc to Alucard walking on a Mega CD</a></nav>
-
-  <footer class="site">
-    <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
-  </footer>
-</div>
+</main>
+<footer class="site col">
+  <div class="w1056">
+    <div class="rule"></div>
+    <div class="row">
+      <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
+      <div class="marca">SOTN&middot;CD</div>
+    </div>
+  </div>
+</footer>
+<div class="cores"><i></i><i></i><i></i><i></i></div><div class="topo"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
 <div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
 <script>
