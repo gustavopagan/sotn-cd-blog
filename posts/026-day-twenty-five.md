@@ -29,6 +29,8 @@ Blade and Gurkha were still too heavy. At 12:21 a.m. I gave the giants' task a d
 ![](../imagens/173-gigantes-ciclo.png)
 *The whole behavior, as I wrote it.*
 
+Looking back a week later, "maximum economy" wasn't really what I meant. I was trying to guess how Claude would adapt the giants, and what I wanted was a reading of them from scratch, built natively for the Mega CD's tools instead of the PlayStation's structure trimmed down. I was too lazy to explain that, so I wrote two words. Underneath, I was frustrated: Claude kept sidestepping the rewrites I'd been pushing for. We only found out why five days later.
+
 At 8:29 p.m. I agreed to one attack per giant. By 9:01 Claude had both on a fixed cycle with each pose as the whole giant in one image. At 9:26 I tested, and it failed: each pose wasn't staying on screen for the right time. Claude fixed it so each pose holds for the next key's duration, which leaves the sword extended at the end of the strike. At 10:40 I pointed at one of the moves: "this should be Blade's attack." A minute later it was: a spin ending in a thrust, with its own sound and the weapon's hitbox active from the windup to the full extension.
 
 ![](../imagens/171-blade-gurkha-port.png)

@@ -91,7 +91,7 @@ At 9:58 I liked it: "Nice, much better! Do you think we can increase the number 
 >
 > (Translated from Portuguese.)
 
-The night before, my motto had been maximum economy. Seeing it on screen, it was too stiff to read the attacks. Claude added an in-between pose where a key lasts 6 frames or more, with the angles interpolated as in the original. It only fit in the room's data package with the wolf after limiting it to swings of 45 degrees or more.
+The night before, I had written "maximum economy" when what I wanted was a native reading of the giants, and the literal version came out: too stiff to read the attacks. Claude added an in-between pose where a key lasts 6 frames or more, with the angles interpolated as in the original. It only fit in the room's data package with the wolf after limiting it to swings of 45 degrees or more.
 
 Then the walk. On the PS1, a giant's step ends when the foot touches the ground, and not every step is the same length. Claude's first version moved the whole step at once and the giant jumped. The next ones went through five rounds of my tests in fifty minutes.
 
