@@ -17,7 +17,7 @@ The title screen was finished at 12:12 a.m. on November 7. Twenty-seven minutes 
 At 12:07 a.m. I asked for the credit line in a five-pixel-tall font I had brought, in the same color, with a drop shadow to the southwest. At 12:08: on a single line, if it fits. At 12:10: there's a period missing after "PAGAN". At 12:12: done, we have the title screen.
 
 ![](../imagens/141-titulo-cores.png)
-*The title screen, two color versions from the same files. The credit line at the bottom ends with the period I asked for.*
+*The title screen before and after a color pass, from the title's history folder. The credit line at the bottom ends with the period I asked for.*
 
 ## A period Konami logo
 
