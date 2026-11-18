@@ -25,7 +25,7 @@ One chat that started fresh on the desktop got a little lost, so at 12:59 a.m. I
 
 That evening I installed WSL, the Linux that runs inside Windows, and Debian on top of it. At 9:31 p.m. I asked how to give more memory and threads to the virtual machine. Claude walked me through giving them to WSL, and at 9:59 p.m. I had to stop it: "Calm down, you misunderstood me, I want to give more resources to YOUR VM." (Translated from Portuguese.)
 
-Claude's own workspace on my computer runs inside the Claude app, and it can't be resized from a chat. What Claude could do was use WSL as a second machine. At 10:22 p.m. I asked whether that meant I should leave more tabs ready for parallel tasks. At 10:30 p.m. I agreed to all of it, and added the part that mattered: now we need to teach the project to use this new tool.
+What followed was a search through the app's settings, a restart of the Claude app, and a better idea: use WSL as a second machine, just for builds. At 10:22 p.m. I asked whether that meant I should leave more tabs ready for parallel tasks. At 10:30 p.m. I agreed to all of it, and added the part that mattered: now we need to teach the project to use this new tool.
 
 ## A queue
 
