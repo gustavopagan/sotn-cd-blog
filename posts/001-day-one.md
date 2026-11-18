@@ -21,10 +21,10 @@ The answer was no. Without its videos, voice clips and streamed music, the game 
 Someone is already doing it the hard way. Pigsy, of Pigsy's Retro Game Dev Tutorials, is building his own Symphony of the Night for the Mega Drive, and it's a different project from mine: a new game written from scratch for the cartridge, split into stages. And it looks fantastic. Look at the backgrounds in his Alchemy Laboratory. Look at that Royal Chapel staircase, with a Bone Pillar breathing fire down at Alucard.
 
 ![](../imagens/13-pigsy-alchemy-lab.jpg)
-*Pigsy's Alchemy Laboratory. My own screenshot, taken from one of the public demo ROMs [Pigsy has released](https://www.youtube.com/@PigsysRetroGameDevTutorials).*
+*Pigsy's Alchemy Laboratory. Screenshot from [Pigsy's demos](https://www.youtube.com/@PigsysRetroGameDevTutorials).*
 
 ![](../imagens/14-pigsy-royal-chapel.jpg)
-*The Royal Chapel stairs, Bone Pillar included. Also from Pigsy's public demo ROM.*
+*The Royal Chapel stairs, Bone Pillar included. Screenshot from Pigsy's demos.*
 
 Go follow him: [YouTube](https://www.youtube.com/@PigsysRetroGameDevTutorials) and [X](https://x.com/PigsyRetro).
 
