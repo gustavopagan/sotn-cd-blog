@@ -122,7 +122,12 @@
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
   figure img { display: block; width: 100%; height: auto; background: #000;
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
-  .degrau { position: relative; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { left: var(--l); top: var(--t); width: var(--w); }
+  @media (max-width: 560px) {
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+  }
   .degrau .crt { position: absolute; }
   .crt.so::before { transform: translate(-8px, 8px); }
   .crt::before { transition: transform .28s ease-out; }
@@ -280,7 +285,7 @@
 <p>People like to say that programming is becoming a worthless skill. I think it's the opposite. As developers lean more and more on AI to write code, and as the money for writing it by hand dries up, the reasons left to keep programming are entirely personal: taste, curiosity, stubbornness, the pleasure of it. The people who keep going for those reasons alone are getting rare, and that makes them more valuable, not less. If one day the companies that own these platforms decide to switch the AI engines off, people like Pigsy will still be able to build things.</p>
 <p>What I bring is the other half. I'm not a sprite artist, and I don't draw new sprites from scratch. What I do is take the original game's art and rework it for the Mega Drive, piece by piece, mostly in LibreSprite. That's where my years as an art director in audiovisual production get put to the test. Nothing slips by. Two examples.</p>
 <h2>The title screen</h2>
-<figure class="grupo"><div class="degrau" style="aspect-ratio:100/51.094"><span class="crt" style="left:0.000%;top:0.000%;width:54.500%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="left:45.500%;top:0.000%;width:54.500%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption>First the PlayStation title screen, then the one this port has now.</figcaption></figure>
+<figure class="grupo"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption>First the PlayStation title screen, then the one this port has now.</figcaption></figure>
 <p>The background started as a photo of a real stone wall. I crushed its palette down to a handful of grays, cut the carvings out of the original background art and pasted them over the wall, dithered the whole thing, and asked Claude to put it in the Mega Drive's shadow mode, a hardware trick that draws a layer at half brightness.</p>
 <figure><span class="crt"><span class="tubo"><img src="../img/16-fundo-parede.png" width="960" height="669" alt="The background on its own, before shadow mode: a real wall, the original carvings, a few grays and a lot of dithering." loading="lazy"></span></span><figcaption>The background on its own, before shadow mode: a real wall, the original carvings, a few grays and a lot of dithering.</figcaption></figure>
 <p>For the logo I took the Castlevania lettering and the red banner from Bloodlines and repainted them. The "Symphony of the Night" line came out of a straight conversion looking rough, so I fixed it by hand, pixel by pixel, and gave it a drop shadow. The small print at the bottom uses a new mini font I made for it.</p>
