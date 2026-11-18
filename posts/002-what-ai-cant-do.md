@@ -17,8 +17,9 @@ What I bring is the other half. I'm not a sprite artist, and I don't draw new sp
 
 ## The title screen
 
-![](../imagens/15-titulo-ps1-x-megacd.png)
-*Left: the PlayStation title screen. Right: the one this port has now.*
+![](../imagens/15-titulo-ps1-x-megacd-a.png)
+![](../imagens/15-titulo-ps1-x-megacd-b.png)
+*First the PlayStation title screen, then the one this port has now.*
 
 The background started as a photo of a real stone wall. I crushed its palette down to a handful of grays, cut the carvings out of the original background art and pasted them over the wall, dithered the whole thing, and asked Claude to put it in the Mega Drive's shadow mode, a hardware trick that draws a layer at half brightness.
 

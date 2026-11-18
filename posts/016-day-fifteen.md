@@ -16,11 +16,13 @@ November 1 had more art in it than any day so far, and most of it was decided by
 
 The PlayStation's title screen is 512 pixels wide. The port runs at 256. Before going to sleep I looked at Claude's versions and approved the one at the Mega Drive's narrow resolution at 2:40 a.m. On the file menu, I asked to drop the "Select your destiny" sign and keep the original position and size of the options.
 
-![](../imagens/116-titulo-ps1-x-md.png)
-*Left: the PlayStation title. Right: the version I approved for the port, at 256 x 224, shown at the same size.*
+![](../imagens/116-titulo-ps1-x-md-a.png)
+![](../imagens/116-titulo-ps1-x-md-b.png)
+*First the PlayStation title, then the version I approved for the port, at 256 x 224, shown at the same pixel size.*
 
-![](../imagens/117-menu-ps1-x-md.png)
-*Left: the PlayStation's file menu. Right: the port's, on the stone wall from the title, without the "Select your destiny" sign.*
+![](../imagens/117-menu-ps1-x-md-a.png)
+![](../imagens/117-menu-ps1-x-md-b.png)
+*First the PlayStation's file menu, then the port's, on the stone wall from the title, without the "Select your destiny" sign.*
 
 At 10:53 a.m. the title opened slightly stretched sideways in the emulator, unlike the preview Claude had shown me, and I asked to fix the aspect.
 
