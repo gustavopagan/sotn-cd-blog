@@ -28,8 +28,8 @@ def inline(t):
 
 
 def img_name(f):
-    base = re.sub(r"\.(png|jpg)$", "", f)
-    for ext in (".jpg", ".png"):
+    base = re.sub(r"\.(png|jpg|gif)$", "", f)
+    for ext in (".jpg", ".png", ".gif"):
         if os.path.exists(os.path.join(ROOT, "public", "img", base + ext)):
             return base + ext
     raise SystemExit("imagem faltando em public/img: " + f)
