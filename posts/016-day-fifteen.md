@@ -44,7 +44,7 @@ At 2:39 p.m. I asked for one more thing: when a cutscene starts, the HUD fades o
 ![](../imagens/119-mapa.png)
 *One of the minimap options from the map task that day, drawn over the room with the VDP's shadow mode. At 2:09 p.m. I asked for the position marker to be the exact outline of the cell Alucard is in.*
 
-## Alucard without a cape
+## Capeless Alucard
 
 Each cape in the game recolors Alucard's cape. I wanted to go further: individual tasks to customize each one. At 2:57 p.m. I changed plans for the first: the Twilight Cloak is his starting cape and the most iconic one in the game, so it stays as it is.
 
@@ -55,7 +55,7 @@ Without a cape, though, Alucard has holes where the cape used to be. At 3:03 p.m
 
 At 4:18 p.m. it was close, except for the shoulder. I asked for the sheet as it was in the game, to fix it in LibreSprite myself. At 5:08 p.m. I had edited frames 1 and 19, two very similar poses: removed the cape and redrew the gold accents, which stand out more without it. I changed one color to #6d4824 and used three slots for the gold. At 6:56 p.m. I had fixed frames 19 to 25 and asked Claude to extend what I did to the others: compare my versions with the originals and go by probability. At 7:00 p.m.: it's working very well.
 
-## The parts that didn't work
+## What didn't work
 
 At 1:56 p.m. I said the dithering had done its job, but up close the checkerboard pattern was bothering me, everywhere. At 5:10 p.m. pressing Mode darkened the screen and froze the game; at 5:19 it froze again, and I wished out loud for a debug screen in my emulator, offering a save state instead. At 3:23 p.m. I also worried about one of Claude's proposals: letting the game skip frames whenever it needs to. A situation could demand a big jump in work very suddenly, and I didn't want the game to lurch.
 

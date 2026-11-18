@@ -12,7 +12,7 @@ The morning test was about sound. In the original, the opening plays only wind u
 ![](../imagens/56-dia5-linha-do-tempo.png)
 *October 22. The afternoon is where the day really starts, and it doesn't stop until midnight.*
 
-## A hunch about a counterweight
+## Counterweight hunch
 
 At 3:08 p.m. I reported that one room on the return visit was slow, until I killed two zombies and walked down the stairs. Then the speed came back. I asked whether it had anything to do with the switch and the gate in the top right of that room.
 
@@ -58,7 +58,7 @@ At 5:29 p.m. I changed how I work. Instead of one long conversation, I opened a 
 
 It's the most important decision of that week, and I didn't think of it as a decision. I just wanted to test more things per evening.
 
-## Five colors for every weapon
+## 5 colors per weapon
 
 Alucard uses one palette line of 15 colors. Every sword, shield and item he holds has to be drawn with those same colors. At 7:20 p.m. I asked how many we could reserve for weapons, then asked to see a preview of Alucard with four fewer colors. It looked fine. So I picked the fixed colors myself, as hex values: blue #4c00ff, light blue #1cb3ff, red #ff0026, and then asked Claude to merge two pairs of Alucard's shades to open a slot for a green, #02c93e. A gold joined them.
 
@@ -82,7 +82,7 @@ For the items on the floor, the first attempt was a dithered glow, following my 
 ![](../imagens/59-item-pisca.png)
 *The final timing, second by second.*
 
-## The coffin Pigsy built first
+## Pigsy's coffin
 
 The save room in Symphony of the Night has a coffin that spins in 3D. Pigsy had already made a version that looks like it rotates on a Mega Drive, crediting the work of a developer called Space Bruce, part of a modern scene doing 3D on the 68000 alone. I sent Claude the names I found and asked to study them. By the evening there was a 3D coffin preview, and at 7:43 p.m. I asked the obvious question: does it run at 30 frames per second without slowdown?
 
@@ -91,7 +91,7 @@ The save room in Symphony of the Night has a coffin that spins in 3D. Pigsy had 
 
 At 8:30 p.m. I tested the save room build. The game seemed to save, but I didn't see anything 3D on my emulator. Before the feedback, I asked Claude to add a rule to the project: from now on, always put Alucard in or next to the room I'm going to test.
 
-## A night shift for a cheaper AI
+## Cheap AI, night shift
 
 At 11:13 p.m. I asked whether Claude could drive a browser tab logged into Claude and hand out tasks to other chats all night: a big model supervising a row of small, cheaper ones, checking on each with a timer. Ten minutes later I was asking how subagents work, and whether the idea was worth it in tokens, time and quality. I went to bed with the question open.
 

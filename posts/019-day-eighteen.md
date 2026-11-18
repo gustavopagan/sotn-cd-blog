@@ -12,7 +12,7 @@ After rewriting the project's rules on November 2, November 4 was the day the pr
 ![](../imagens/134-dia18-linha-do-tempo.png)
 *November 4. Ninety commits, ninety-five messages, and most of the afternoon spent looking at other people's games.*
 
-## The Diplocephalus walks in a loop
+## Diplo in a loop
 
 At 9:34 a.m. I asked the enemy chat whether it had already simplified the Diplocephalus's logic to a fixed loop, and if not, why. Five minutes later I spelled out the routine. At 10:37 a.m. I asked whether, in the end, the fixed logic had made the result worse. Then I specified the walk itself: the legs alternate A then B going forward, and B then A coming back. The return is always the outward walk in reverse.
 
@@ -43,7 +43,7 @@ At 2:14 p.m. I asked whether Claude could only learn from gameplay, or whether t
 
 At 3:30 p.m., after playing Rondo of Blood myself with the emulator's sprite limit on, I reported that sprites blinking or failing were extremely rare; the most I saw was slowdown, worst in the fight with Death when I used the Bible subweapon.
 
-## Could a Mac do it faster?
+## A faster Mac?
 
 At 10:47 a.m. I asked whether my Mac mini would run the project better. At 10:52 I asked what makes Claude's replies take so long, because when I open the reasoning, what shows up most is "ran a command on your computer". At 11:01: that's a lot of time spent building the whole thing every time; could we avoid a full build every time I need to test something? At 11:21 a.m. I noticed the CPU was maxed out the whole time, and asked whether the GPU could help with builds and tests.
 

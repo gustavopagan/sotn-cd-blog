@@ -25,7 +25,7 @@ By 12:29 p.m. the port had a provisional title with NEW GAME and CONTINUE, and l
 
 That night I had opened two new tasks, one for the save and one for a pause menu that was slow to respond. At 10:18 a.m. I found out something had gone wrong: my laptop's battery died in the middle of the prompt for the second one, and both tasks had ended up using the same backlog number. At 10:25 I sent the correction: the save keeps B-063, since three commits already cite it, and the menu becomes B-066. Twenty minutes later I added that the Windows clock was wrong, so Claude would have to rely on its own history to know when it lost access to the laptop.
 
-## The menu that reloaded itself
+## A self-reloading menu
 
 At 1:55 p.m. I was testing the menu, and it still wasn't right, especially in the relics list: any movement of the cursor redrew the whole list. Half an hour later, at 2:25 p.m., the list only scrolled a whole line when the cursor left the eleven visible lines.
 
@@ -42,7 +42,7 @@ At 2:03 p.m. I asked Claude to explain something as if it were Mike Tyson. My ar
 ![](../imagens/105-tyson.png)
 *The question survived. The answer didn't.*
 
-## The hardware question
+## Hardware question
 
 At 6:55 p.m. I asked what Space Bruce meant by a tweet about games that tell you not to use the Kega emulator: they're probably exploiting the hardware in a way that emulator doesn't support. Then the bigger questions. What is our main technical difficulty with this hardware? Would the solution be rewriting the logic in assembly? Three weeks later, that became the project's rule.
 

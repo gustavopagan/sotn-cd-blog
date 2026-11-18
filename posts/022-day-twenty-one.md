@@ -31,11 +31,11 @@ The PlayStation version opens with a Konami video before the title. At 12:31 a.m
 
 At 12:39 a.m.: "Something went very wrong! That was the edit I had made on the title screen! It took a lot of work, but I think I lost the file! I had cleaned up a lot of dirt..." A minute later I worked out what happened: I hadn't saved, then opened the version without my work and saved over it. What I had left was a screenshot I had taken of it. (Translated from Portuguese.)
 
-## Watching instead of describing
+## Watch, don't describe
 
 At 1:01 a.m. I used the live editor for the warg's slowdown spikes: "see comment logica ce1". Then I asked the question that made the tool worth it: when I leave a comment like this, can you watch the gameplay and see the metrics? I had just waited for the intro and let the warg attack Alucard, nothing else. At 1:57 a.m. I noted that the HP orb sometimes doesn't blink, but maybe because Alucard, at level 99 in the first area, sometimes takes no damage at all.
 
-## Sparks, blood and fonts
+## Sparks, blood, fonts
 
 In the afternoon the effects. At 10:15 a.m. I asked for a general cleanup of invisible sparks, and to see them on screen first. At 12:43 p.m., about the orb's bubbles: this kind of particle effect could be used a lot, even replacing the blood particles on damage, if we can make it cheap. At 1:36 p.m.: it has to be programmed so particles don't pile up on the same line. At 7:23 p.m. I guessed that some blue sparks I'd seen were the Alucard Sword's effect.
 

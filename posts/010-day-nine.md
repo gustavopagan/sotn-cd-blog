@@ -12,7 +12,7 @@ Only one commit reached the main build on October 26. The rest of the day happen
 ![](../imagens/91-dia9-linha-do-tempo.png)
 *October 26. One red mark: the main build barely moved while the colors were being decided elsewhere.*
 
-## An explosion without red
+## No red explosion
 
 The fixed colors I had reserved for weapons were turning into the palette for everything that lasts the whole game: Alucard, items, dust, fire. After midnight I asked for more slots in that fixed palette, and accepted that we'd have to take some artistic liberties.
 
@@ -24,7 +24,7 @@ The test case was an explosion. In the comparison sheet one of them kept coming 
 ![](../imagens/93-itens-paleta.png)
 *Candles, hearts, money and subweapons, from the same round. Top: the PlayStation. Middle: what the port had that day. Bottom: the shared fixed palette chosen automatically. The hearts went orange in the middle row; the shared palette brought the red back.*
 
-## "8 tones is the sweet spot"
+## "8 tones, sweet spot"
 
 At 4:56 p.m. I tested a build and found a regression: the wargs and zombies had vanished from the first hallway, the second hallway had no enemies either, and the breakable stair that hides an item before the Death scene no longer broke. Then Claude explained what would happen if a room didn't fit the new color plan, and I didn't like the answer: "What do you mean, if a room doesn't fit the new plan? That sounds kind of spaghetti." (Translated from Portuguese, 5:01 p.m.)
 

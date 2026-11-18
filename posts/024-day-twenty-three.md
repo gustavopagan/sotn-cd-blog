@@ -69,7 +69,7 @@ It also looked at the title screen's lightning. On the PS1 it isn't transparency
 
 One idea from that chat didn't stay. Death steals Alucard's gear in the prologue, and on the PS1 the stolen icon grows out of the center. Claude made the growing icon as ready-made frames. It fit, but it took the spot in that room's data package where the wolf and mist are read from the CD, so Alucard couldn't transform in Death's room. Claude undid it and left the item open.
 
-## Did we already do that?
+## Done that already?
 
 At 8:18 p.m. two chats got a question from me in the same minute.
 

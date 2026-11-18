@@ -79,7 +79,7 @@ At 1:05 p.m. I explained what happens to the ornaments: they're the cape's colla
 ![](../imagens/181-gola.png)
 *Eight frames, four versions each: original, cape removed, the mask (magenta is cape, green is collar), and the collar recolored gold.*
 
-## A video that won't bleed
+## Video without bleed
 
 From 4:31 to 5:30 p.m. I was in another chat, directing generated video for the prologue: Dracula on his throne, line by line. Claude wrote the prompts and I corrected them. At 4:38: don't describe the character so much, he came out with short hair and a modern beard. At 4:41: careful with negative prompts, sometimes they hurt more than they help. At 4:44: the fangs need to be much more prominent.
 
@@ -88,7 +88,7 @@ At 5:09 I asked for the shot from the knees down: he rises, the goblet falls and
 ![](../imagens/186-storyboard.png)
 *The shots of that afternoon. The video isn't shown here.*
 
-## From the phone, properly
+## Phone, properly
 
 At 11:38 p.m. I described a problem. Every night there are tests for me from tasks I left running, and often I'm not at the computer. I connect with Moonlight and use the on-screen joypad, but the screen is too small to read the test descriptions well, and I need a mouse to navigate the tester. I asked for a plan, nothing built yet, for real access to the tester from the phone.
 

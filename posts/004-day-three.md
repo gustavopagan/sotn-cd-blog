@@ -64,7 +64,7 @@ Four weeks later, reviewing this post, I could have sworn the blink had been my 
 ![](../imagens/82-warg-antes-depois-b.png)
 *Before and after, same frame of the same run. First, 9:52 a.m.: a cloud of fire and the twin warg floating top left. Then, 11:40 p.m.: fewer flames, no twin. The numbers on top are the debug readout.*
 
-## An idea that waited a month
+## A month on hold
 
 At 2:22 p.m. I sent a longer report: the dead warg's blink moved along with Alucard, the red merman left a trail of its body behind its falling skeleton, and one of the two splash effects showed up black. Then I asked how much all of this weighed, and suggested a different approach. Use one water splash instead of two. Draw the swimming mermen in the background layer, the way big bosses are done on the Mega Drive. Give all the mermen the same entrance and death routines, just in different colors.
 
@@ -97,7 +97,7 @@ In the afternoon I brought up music. Inglebard made Sega Genesis versions of the
 
 At 10:32 p.m. I wrote that something had gone radically wrong and the whole game was slow. Ten minutes later Claude found it: on my emulator, the song was being read back from the sound chip's memory as blanks, and the main processor dutifully played the result: hundreds of junk writes per frame, two thirds of its time gone. The FM mode is shelved today, for reasons that deserve their own post.
 
-## Sprites with missing lines
+## Missing lines
 
 The same 11:11 p.m. message reported something else. With many mermen, splashes and fire on screen, other sprites lost lines. Same thing when a warg died next to zombies. That's the Mega Drive's 16-sprites-per-line limit again, and this time the cuts were landing on random objects.
 

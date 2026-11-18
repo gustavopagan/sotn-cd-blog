@@ -91,7 +91,7 @@ Instead I asked for the project's usual approach: unify their sprites and simpli
 ![](../imagens/164-gurkha-poses.png)
 *Gurkha's key poses as whole images, from that afternoon's preview.*
 
-## Sounds from other games
+## Borrowed sounds
 
 At 5:03 p.m. I asked if we could take some sound effects from the other games in our reference folder, Bloodlines and Rondo of Blood, in place of some of SOTN's recordings, and whether that would be cheaper or more expensive in resources. At 5:33 I asked for a comparison tool: SOTN's sound on one side, a Bloodlines sound on the other, and a "match" button. Matches replace the SOTN sound; the rest stay.
 

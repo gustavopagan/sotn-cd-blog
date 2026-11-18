@@ -19,7 +19,7 @@ The request from the night before got done at 12:43 a.m.: the whole project fold
 ![](../imagens/101-pastas.png)
 *Not a screenshot: a reconstruction. On the left, folder names that appear in the chat history from that week.*
 
-## Why compression, again
+## Compression, again
 
 At 1:26 a.m. I asked whether the compression chat had finished or left loose ends, and reminded it why it existed: it was created to make the warg fit without cutting animation frames. At 1:45 a.m., twenty minutes later, its work was merged into the main build: the smaller format for loading, the faster one for whatever unpacks during gameplay.
 

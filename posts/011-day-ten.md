@@ -34,7 +34,7 @@ At 1:46 p.m. I wrote that with one warg and two zombies on screen, the sprites b
 ![](../imagens/98-sala0-20-x-27-b.png)
 *The first room a week apart. First: October 20, colors rounded one by one. Then: October 27, with the area's color plan. Not the same spot: the starting position changed between builds.*
 
-## Inventory, nothing else
+## Only inventory
 
 At 4:27 p.m. I opened a new chat with a single instruction: "Don't develop anything. Just make an inventory of the documents in this Claude project." (Translated from Portuguese.) Then I sent the same opening prompt to every chat that might have something pending, collected their answers, and pasted them back, part by part.
 

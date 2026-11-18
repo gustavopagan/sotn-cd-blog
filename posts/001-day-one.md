@@ -53,7 +53,7 @@ The next evening I was frustrated. I had spent hours on it and had nothing playa
 
 By 9:30 p.m. the disc booted on a Mega CD emulator, loaded an image from the CD, played an audio track, and then did the thing I actually cared about: Alucard, running the original game code, walking down a real Castle Entrance hallway. Real sprites, original collision, working stairs. Not long after, zombies rose out of the floor, walked at him and died to his bare fists.
 
-## The trick: two processors, two jobs
+## 2 processors, 2 jobs
 
 The Mega Drive's main processor runs at about 7.67 MHz. The PlayStation's runs at about 34 MHz. Asking the first one to run the second one's game and also draw the screen is not a plan.
 

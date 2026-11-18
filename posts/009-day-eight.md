@@ -12,7 +12,7 @@ Sunday. Eight commits and twenty-three messages, most of them after midnight or 
 ![](../imagens/86-dia8-linha-do-tempo.png)
 *October 25. Two short sessions, a whole day off in between.*
 
-## An organ made of borrowed parts
+## A borrowed organ
 
 After midnight I was working on the Mega Drive version of one of the songs, in a tracker. The organ riff that opens it didn't sound right, and I had a reference in mind: the riff at the start of Rusty Ruin, Act 2, in Sonic 3D Blast. At 12:53 a.m. I asked Claude to pull that instrument's sound out of the music file I had sent, to use in place of the organ.
 
@@ -26,7 +26,7 @@ The riff needs several notes at once, and the Mega Drive's sound chip only has s
 
 A minute later I had the plan: list the intervals the riff uses and build one instrument for each. At 1:38 a.m. I asked for exactly that, plus an echo on the organ.
 
-## The Castle Entrance gets its colors
+## Entrance colors
 
 The color work I started on the 23rd reached its first area. Each room of the Castle Entrance got a color plan calculated together with the enemies that appear in it, Alucard, and the fixed item colors, instead of every color being rounded on its own.
 
@@ -40,7 +40,7 @@ The first room exists twice in the game, once for each visit. At 8:09 p.m. I ask
 ![](../imagens/90-corredor-antes-depois-b.png)
 *The dark hallway, same frame of the same run, three days apart. First: October 22, with the plain white text box. Then: October 25: the enemy's name now sits in a box drawn with the pause menu's frame, which I had asked for the day before, and the dust under Alucard's feet is dithered.*
 
-## Every pickup, one palette
+## 1 palette, all pickups
 
 At 9:04 p.m. the scenery was done and the enemies of the Castle Entrance were next. Reviewing the first round, I noticed how many assets repeat between areas: items, candles, the same small things in every room. I asked for a shared set, and at 11:27 p.m. I made sure of one thing: every collectible in the map, not just weapons and armor, but hearts, money and power-ups, has to be drawn with Alucard's fixed colors as much as possible.
 

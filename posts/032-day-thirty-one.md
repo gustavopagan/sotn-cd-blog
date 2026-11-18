@@ -28,7 +28,7 @@ In the afternoon came a second idea, not a rewrite but a change in how the code 
 
 Speed stayed the same or got slightly better. In each step, 20 of 20 recordings had the game's state identical frame by frame. The report also listed Claude's own mistakes: a routine for Alucard's colors used by another one it hadn't seen, a sign error in a comparison caught by the checker on the first run, and later a measurement of 712 bytes saved that turned out to be false, taken before linking. Measured properly, it was 92.
 
-## The menu that didn't come over
+## A menu left behind
 
 The native menu merged into the main branch overnight. At 11:31 a.m. I tested it:
 

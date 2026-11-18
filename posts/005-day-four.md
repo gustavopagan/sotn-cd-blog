@@ -12,7 +12,7 @@ At 12:24 a.m. I was away from the computer and asked Claude what it could get do
 ![](../imagens/44-dia4-linha-do-tempo.png)
 *October 21. Two nights of work in one day: Claude's before dawn, mine after dinner.*
 
-## "Consider the accumulated gains"
+## "Accumulated gains"
 
 At 6:35 a.m. I noticed Claude had rewritten a small piece of the game in assembly, the processor's own language, and wrote: consider the accumulated gains of doing this for more things. Ten minutes later the loop that walks through the entities at the end of every frame was in assembly too.
 
@@ -63,7 +63,7 @@ The trade was also technical. Transparent water meant drawing the swimming merme
 ![](../imagens/54-agua-bloodlines.gif)
 *The mermen room in that build. Never more than three of them.*
 
-## A detour through Gunstar Heroes
+## Gunstar detour
 
 In the afternoon I asked Claude to analyze how Gunstar Heroes handles its explosions and bullets, from a memory dump of the game. The analysis made me ask an uncomfortable question: is the Mega CD still worth it, or should we move to a cartridge? And what about the 32X? We stayed on the Mega CD, and that conversation deserves its own post. What came out of Gunstar right away was smaller: room transitions faded by darkening the palette in eight steps, which costs almost nothing.
 

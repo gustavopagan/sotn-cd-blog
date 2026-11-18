@@ -15,7 +15,7 @@ The night before, I had decided that before fixing the colors of any enemy, I ne
 ![](../imagens/65-marble-gallery-2310.gif)
 *The Marble Gallery running in the port, rebuilt from the 6:28 p.m. code that day. The colors are still the direct conversion. That's the next problem.*
 
-## A question for Space Bruce
+## Asking Space Bruce
 
 The day before, I had mentioned that Pigsy's spinning coffin was inspired by Space Bruce, a developer in the modern 68000 scene. At 12:25 a.m. I came back to it: his version is so efficient he can spin three coffins and still have room for enemies on screen. Ours wasn't. I asked Claude to look for clues on his Twitter, then to write my question in his own way of talking. His inbox was closed, so at 12:36 a.m. I posted it as a reply:
 
@@ -23,7 +23,7 @@ The day before, I had mentioned that Pigsy's spinning coffin was inspired by Spa
 
 By noon he had answered, with advice. I asked Claude to draft a reply that promised, more or less, that if our code got at least half as efficient as his, I'd post it. Time to uncook my spaghetti.
 
-## "Give the hardware a chance to shine"
+## "Let hardware shine"
 
 At 12:20 p.m. I wrote the sentence that, a few weeks later, became the spine of the project: keep optimizing as close to optimal as possible, and don't be bound to the original code. Make whatever adaptations the hardware needs to shine. If the shape comes out a little different from the original, no problem; the priority is not total aesthetic fidelity.
 
@@ -36,7 +36,7 @@ The evening was a back-and-forth about that explosion. Claude slowed the crystal
 
 "Let's nickname this triangle doritos, ok? Call it doritos." (Translated from Portuguese, 11:17 p.m.)
 
-## Rotation, the cheap way
+## Cheap rotation
 
 Several enemies spin parts of their bodies: the Blade's limbs, the Axe Knight's axe, the Cthulhu's fireball, the Skelerang's boomerang. The PlayStation rotates sprites for free. The Mega Drive can't, so overnight Claude decided, on its own, to do the rotation during the build: each spinning part gets a set of pre-drawn angles, and the game picks the closest one.
 
@@ -64,7 +64,7 @@ In the afternoon I worked with a comparison viewer Claude built: the Mega Drive 
 ![](../imagens/64-paleta-cenario-c.png)
 *Another room, from the Colosseum. First: the PlayStation. Next: the direct conversion. Then: a palette planned for the whole area, sharing colors with its enemies.*
 
-## Fixing my own emulator
+## Fixing my emulator
 
 Testing was slow, and not because of the port. Every boot went through the Sega and Mega CD logos, and fast-forward didn't work on the emulator I was using. So I switched to RetroArch, and spent an hour of the afternoon with Claude making a test disc open with a double click, closing the terminal window afterwards, setting the window to 3x, the d-pad to WASD, and putting the six buttons back where they belong after they got scrambled.
 

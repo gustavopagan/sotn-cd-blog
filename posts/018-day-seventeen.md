@@ -16,7 +16,7 @@ Some days the most important thing that happens is a sentence. On November 3 it 
 
 At 1:15 a.m. I opened a chat about rewriting the game in assembly, the processor's own language. At 1:28 a.m. I gave it the night: work autonomously, without stopping to ask me anything, until 10 a.m.
 
-## "Always answer like this"
+## "Answer like this"
 
 In the morning I asked for a layman's summary of what that chat had found. The answer was good enough that I understood all of it, and I said so.
 
@@ -32,15 +32,15 @@ At 1:55 p.m. the Diplocephalus looked better and was still slow. At 1:57 I remem
 ![](../imagens/129-pernas.png)
 *The trade, drawn. Less independence, a quarter of the objects.*
 
-## Frame skipping, after all
+## Frame skip after all
 
 The day before, I had worried about letting the game skip frames whenever it needs to. At 2:27 p.m. I asked for both options to be described again, the frame skip and the 30 Hz logic. At 2:29 p.m. I chose: frame skipping becomes the standard. Today the project treats it as a safety net: skipped frames are counted and reported, and the goal is to keep them at zero.
 
-## Alucard, frame by frame
+## Frame by frame
 
 The cape-less Alucard continued all afternoon and evening, and this time the division of work was clear. At 2:32 p.m. I asked for a LibreSprite file with only the cape colors removed from the frames I hadn't edited yet. At 2:45 I asked Claude to study how I replace the golds of the jacket, original to port, paying attention to how I interpret the shadows. At 8:11 p.m. I was erasing the cape by hand and leaving the space blank for Claude to fill in, frames 30 to 46. At 8:47 it was looking great, and I asked it to continue to 66, which is where I had gotten. At 8:57 I had fixed pixels I'd forgotten to erase, with a warning: don't forget the gold collar, and don't leave parts of his body empty. At 10:20 p.m. I found one where it had: the frame where he turns around, missing part of his shoulders and collar.
 
-## Big enemies go to the background
+## Giants as background
 
 At 8:13 p.m. I asked how the third option for the Diplocephalus worked, and at 8:16 I decided: push it to the background. If it works, it becomes the standard for big enemies, including the warg. A big enemy drawn on one of the Mega Drive's background planes doesn't count against the sprite limits at all.
 

@@ -12,7 +12,7 @@ November 14 had three threads running all day: the tester on my phone, two famil
 ![](../imagens/191-dia28-linha-do-tempo.png)
 *November 14. Ninety-seven messages from me, most of them in the afternoon and evening.*
 
-## The tester on my phone
+## Phone tester
 
 The plan from the night before became real just after midnight. At 12:13 a.m. I raised a detail about my own marks on the screen: when I point at something, I write the mark's number and a comment and keep playing, but the mark stays on screen. I wasn't sure that when Claude looked at it, the screen would match the moment I pointed. It should disappear when I unpause, to make clear that the mark belongs to that one frame.
 

@@ -81,7 +81,7 @@ At 8:30 I asked for the empty fields to be filled: the item description in two l
 
 At 11:56 I asked whether, with those two as models, Claude could make the other screens. They're simpler: only the flourishes in the four corners, like Equip and the title.
 
-## Meanwhile, the mermen
+## Meanwhile, mermen
 
 The performance work continued in another chat. At 11:02 p.m. it needed tiles for the mermen room. I asked whether they could come from hidden places, like underwater, then caught myself: taking them from the water would remove the reflection. Then a better observation: in that room, the reflection already hides those tiles. They only have collision.
 

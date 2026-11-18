@@ -18,7 +18,7 @@ At 12:07 a.m. I asked one chat to check every open task that was ready to merge 
 
 At 11:35 a.m., reading the chat's summary, I noticed the task names from the last 24 hours didn't match all the tasks that had actually run.
 
-## Two giants, one sentence
+## 2 giants, 1 sentence
 
 Blade and Gurkha were still too heavy. At 12:21 a.m. I gave the giants' task a design:
 

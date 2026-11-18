@@ -12,7 +12,7 @@ The day before ended with the PS1 original running inside our tester. November 1
 ![](../imagens/175-dia26-linha-do-tempo.png)
 *November 12. A burst after midnight, the night shift until 4 a.m., then the giants in the evening.*
 
-## Sending the port to the PS1
+## Back to the PS1
 
 At 12:24 a.m. I asked how we could use the new feature to improve the port. At 12:28 I saw the catch:
 
@@ -74,7 +74,7 @@ At 9:05 p.m. I decided: the water stays in that room only, as a tribute to Blood
 ![](../imagens/49-agua-bloodlines.png)
 *The reflection the mermen room borrows from Bloodlines.*
 
-## One giant at a time, again
+## 1 giant at a time
 
 The same report brought back an old proposal: show only one giant at a time in Blade and Gurkha's room. It hadn't implemented it, because the other task was redoing the two. At 9:05 p.m. I answered it again:
 

@@ -30,7 +30,7 @@ I picked the cap myself: three. Nobody has complained.
 
 While testing that, I also noticed Alucard was being knocked back too hard by zombie contact. In the original, the size of the recoil depends on how much damage he takes. Noted.
 
-## Three transformations, six buttons
+## 3 forms, 6 buttons
 
 The PlayStation controller has shoulder buttons for the transformations. The Mega Drive pad doesn't, so I laid them out myself: X for the bat, Z for the wolf, up plus X for the mist. That evening only the bat had graphics; the wolf and the mist worked, invisibly. The double jump felt perfect on the first try.
 

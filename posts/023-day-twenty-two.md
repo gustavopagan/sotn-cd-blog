@@ -53,7 +53,7 @@ At 4:24 p.m. I asked for options using Alucard's colors, in a comparison tool, w
 
 At 4:54 p.m. I asked for a switch to turn a shader on and off, remembering the choice every time I close and open it.
 
-## Borrowing the music's buffer
+## The music's buffer
 
 At 10:43 p.m. I had an idea for the wolf's graphics. We have the room-loading buffer in the music. We could use it to load the wolf's assets. The worst that can happen is the buffer running out and the music cutting out for a moment.
 

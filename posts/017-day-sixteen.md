@@ -27,7 +27,7 @@ The map got the same treatment as the HUD the day before. At 12:46 a.m. I descri
 
 That night one chat also reported that Claude's own workspace was out of disk space. Cleaning it was risky with several chats working at once, so I ran the same cleanup script in every chat myself, one by one.
 
-## A concession I didn't accept
+## A refused concession
 
 At 4:52 a.m. I caught something in a report: with the full map, the music buffer would stop working. "Wait, that's a concession I did not accept." (Translated from Portuguese.) I wasn't going to trade the music away quietly.
 
