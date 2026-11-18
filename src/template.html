@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{TITLE}} | Symphony of the Night for Mega CD</title>
+<title>{{TITLE}}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
@@ -137,6 +137,49 @@
     font-size: 15px;
     color: #333;
   }
+  h2 {
+    font-family: var(--head);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 34px 0 12px;
+  }
+  pre.term {
+    background: #0b0b0b;
+    color: #e8e8e8;
+    border: 3px solid var(--ink);
+    padding: 14px 16px;
+    margin: 24px -12px;
+    overflow-x: auto;
+    font: 14px/1.5 Consolas, "Cascadia Mono", Menlo, monospace;
+    white-space: pre-wrap;
+  }
+  .posts-nav { display: flex; gap: 12px; justify-content: space-between; margin-top: 18px; flex-wrap: wrap; }
+  .posts-nav a {
+    background: var(--paper); border: 3px solid var(--ink); padding: 10px 14px;
+    color: var(--ink); text-decoration: none; font-weight: 700; font-size: 15px; max-width: 48%;
+  }
+  .posts-nav .next { margin-left: auto; text-align: right; }
+  .posts-nav a:hover { background: var(--yellow); }
+  .list { display: grid; gap: 16px; }
+  .card {
+    display: flex; gap: 18px; align-items: stretch;
+    background: var(--paper); border: 3px solid var(--ink);
+    color: var(--ink); text-decoration: none;
+  }
+  .card:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-3px, -3px); }
+  .card .num {
+    flex: 0 0 88px; display: grid; place-items: center;
+    background: var(--red); color: #fff; border-right: 3px solid var(--ink);
+    font-family: var(--head); font-size: 40px;
+  }
+  .card:nth-child(4n+2) .num { background: var(--green); }
+  .card:nth-child(4n+3) .num { background: var(--yellow); color: var(--ink); }
+  .card:nth-child(4n+4) .num { background: var(--blue); }
+  .card .txt { padding: 16px 18px 16px 0; display: grid; gap: 4px; }
+  .card .t { font-family: var(--head); font-size: 22px; line-height: 1.2; }
+  .card .ex { color: #444; font-size: 16px; }
+  .card .kicker { margin: 0; }
   footer.site {
     margin-top: 28px;
     background: var(--blue);
@@ -147,6 +190,9 @@
   }
   footer.site p { margin: 0; }
   @media (max-width: 560px) {
+    .card .num { flex-basis: 64px; font-size: 30px; }
+    .posts-nav a { max-width: 100%; }
+    pre.term { margin: 20px -4px; font-size: 12.5px; }
     body { font-size: 17px; }
     article { padding: 34px 20px 22px; }
     figure { margin: 24px -4px; }
@@ -160,17 +206,11 @@
 <div class="wrap">
   <header class="site">
     <div class="stripes"><span class="r"></span><span class="g"></span><span class="y"></span><span class="b"></span></div>
-    <p class="site-name"><a href="#">Symphony of the Night</a></p>
+    <p class="site-name"><a href="{{HOME}}">Symphony of the Night</a></p>
     <p class="site-sub">A Mega CD port &middot; Development log</p>
   </header>
 
-  <article>
-    <div class="badge"><span>Post<b>0</b></span></div>
-    <p class="kicker">Prologue</p>
-    <h1>{{TITLE}}</h1>
-{{BODY}}
-    <div class="how">{{FOOTER}}</div>
-  </article>
+{{CONTENT}}
 
   <footer class="site">
     <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>

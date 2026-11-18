@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
-"""Gera index.html do blog a partir do post em Markdown simples."""
-import html, os, re, sys
+"""Gera o site em public/ a partir de posts/*.md.
 
-SRC = sys.argv[1]
-raw = open(SRC, encoding="utf-8").read()
-fm, body = raw.split("---", 2)[1], raw.split("---", 2)[2]
-title = re.search(r'title:\s*"(.*)"', fm).group(1)
+Uso: python3 src/build.py [--drafts]
+  --drafts inclui os posts com status: draft (só para prévia, nunca para o push).
+
+Saída: public/index.html (lista de posts) e public/posts/<slug>.html.
+"""
+import glob, html, os, re, sys
+
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+DRAFTS = "--drafts" in sys.argv
+SITE = "Symphony of the Night for Mega CD"
+
+
+def front(raw):
+    _, fm, body = raw.split("---", 2)
+    meta = dict(re.findall(r'^(\w+):\s*"?(.*?)"?\s*$', fm, re.M))
+    return meta, body
+
 
 def inline(t):
     t = html.escape(t, quote=False)
@@ -14,26 +26,89 @@ def inline(t):
     t = re.sub(r"(?<![\w/])\*(.+?)\*(?![\w])", r"<em>\1</em>", t)
     return t
 
-blocks = [b.strip() for b in body.strip().split("\n\n") if b.strip()]
-out, footer = [], ""
-for i, b in enumerate(blocks):
-    if b == "---":
-        continue
-    m = re.match(r"!\[\]\(\.\./imagens/([^)]+)\)\n\*(.*)\*$", b)
-    if m:
-        f = re.sub(r"\.(png|jpg)$", "", m.group(1))
-        f = f + (".png" if f.startswith("06") else ".jpg")
-        out.append(f'<figure><img src="img/{f}" alt="{html.escape(re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", m.group(2)))}" loading="lazy">'
-                   f'<figcaption>{inline(m.group(2))}</figcaption></figure>')
-        continue
-    if b.startswith("*How this is made"):
-        footer = inline(b.strip("*"))
-        continue
-    out.append(f"<p>{inline(b)}</p>")
 
-tpl = open(os.path.join(os.path.dirname(__file__), "template.html"), encoding="utf-8").read()
-page = (tpl.replace("{{TITLE}}", html.escape(title))
-           .replace("{{BODY}}", "\n".join(out))
-           .replace("{{FOOTER}}", footer))
-open(os.path.join(os.path.dirname(__file__), "..", "public", "index.html"), "w", encoding="utf-8").write(page)
-print("ok", len(out), "blocos")
+def img_name(f):
+    base = re.sub(r"\.(png|jpg)$", "", f)
+    for ext in (".jpg", ".png"):
+        if os.path.exists(os.path.join(ROOT, "public", "img", base + ext)):
+            return base + ext
+    raise SystemExit("imagem faltando em public/img: " + f)
+
+
+def render(body):
+    # blocos de código primeiro, para as linhas em branco dentro deles não quebrarem o bloco
+    codes = []
+    def keep(m):
+        codes.append(m.group(1))
+        return f"\n\n@@CODE{len(codes) - 1}@@\n\n"
+    body = re.sub(r"```\n(.*?)\n```", keep, body, flags=re.S)
+    out, how = [], ""
+    for b in [x.strip() for x in body.strip().split("\n\n") if x.strip()]:
+        if b == "---":
+            continue
+        m = re.match(r"@@CODE(\d+)@@$", b)
+        if m:
+            out.append(f'<pre class="term"><code>{html.escape(codes[int(m.group(1))])}</code></pre>')
+            continue
+        m = re.match(r"!\[\]\(\.\./imagens/([^)]+)\)\n\*(.*)\*$", b)
+        if m:
+            alt = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", m.group(2))
+            out.append(f'<figure><img src="../img/{img_name(m.group(1))}" alt="{html.escape(alt)}" loading="lazy">'
+                       f"<figcaption>{inline(m.group(2))}</figcaption></figure>")
+            continue
+        if b.startswith("## "):
+            out.append(f"<h2>{inline(b[3:])}</h2>")
+            continue
+        if b.startswith("*How this is made"):
+            how = inline(b.strip("*"))
+            continue
+        out.append(f"<p>{inline(b)}</p>")
+    return "\n".join(out), how
+
+
+def page(title, content, depth):
+    tpl = open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8").read()
+    home = "../" if depth else "./"
+    return (tpl.replace("{{TITLE}}", html.escape(title))
+               .replace("{{HOME}}", home)
+               .replace("{{CONTENT}}", content))
+
+
+posts = []
+for f in sorted(glob.glob(os.path.join(ROOT, "posts", "*.md"))):
+    meta, body = front(open(f, encoding="utf-8").read())
+    if meta.get("status") != "published" and not DRAFTS:
+        continue
+    posts.append((meta, body))
+
+os.makedirs(os.path.join(ROOT, "public", "posts"), exist_ok=True)
+for old in glob.glob(os.path.join(ROOT, "public", "posts", "*.html")):
+    os.remove(old)
+
+for i, (meta, body) in enumerate(posts):
+    content, how = render(body)
+    nav = []
+    if i > 0:
+        p = posts[i - 1][0]
+        nav.append(f'<a class="prev" href="{p["slug"]}.html">&larr; {html.escape(p["title"])}</a>')
+    if i + 1 < len(posts):
+        n = posts[i + 1][0]
+        nav.append(f'<a class="next" href="{n["slug"]}.html">{html.escape(n["title"])} &rarr;</a>')
+    draft = '<p class="note">Draft: not published yet.</p>' if meta.get("status") != "published" else ""
+    art = (f'<article>\n<div class="badge"><span>Post<b>{html.escape(meta["badge"])}</b></span></div>\n'
+           f'<p class="kicker">{html.escape(meta["kicker"])}</p>\n<h1>{html.escape(meta["title"])}</h1>\n{draft}\n'
+           f'{content}\n<div class="how">{how}</div>\n</article>\n'
+           f'<nav class="posts-nav">{"".join(nav)}</nav>')
+    open(os.path.join(ROOT, "public", "posts", meta["slug"] + ".html"), "w", encoding="utf-8").write(
+        page(f'{meta["title"]} | {SITE}', art, 1))
+
+cards = []
+for meta, _ in reversed(posts):
+    cards.append(f'<a class="card" href="posts/{meta["slug"]}.html">'
+                 f'<span class="num">{html.escape(meta["badge"])}</span>'
+                 f'<span class="txt"><span class="kicker">{html.escape(meta["kicker"])}</span>'
+                 f'<span class="t">{html.escape(meta["title"])}</span>'
+                 f'<span class="ex">{html.escape(meta.get("excerpt", ""))}</span></span></a>')
+idx = '<section class="list">\n' + "\n".join(cards) + "\n</section>"
+open(os.path.join(ROOT, "public", "index.html"), "w", encoding="utf-8").write(page(SITE, idx, 0))
+print("ok:", ", ".join(m["slug"] + ("" if m.get("status") == "published" else " (rascunho)") for m, _ in posts))

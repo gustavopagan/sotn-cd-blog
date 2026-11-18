@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why I&#x27;m porting Symphony of the Night to the Mega CD | Symphony of the Night for Mega CD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c8262c;
+    --green: #15924a;
+    --yellow: #f4c400;
+    --blue: #0464b6;
+    --ink: #111;
+    --paper: #fff;
+    --grid-bg: #eef3f2;
+    --grid-line: #c9cfcf;
+    --cell: 24px;
+    /* Headline: placeholder até chegar o arquivo da fonte escolhida pelo usuário */
+    --head: "Russo One", "Arial Black", sans-serif;
+    --body: "Segoe UI", "Segoe UI Variable", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background-color: var(--grid-bg);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    line-height: 1.65;
+    font-size: 18px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  header.site {
+    position: relative;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 22px 24px 18px;
+    margin-bottom: 28px;
+  }
+  .stripes { display: flex; height: 10px; margin: -22px -24px 18px; }
+  .stripes span { flex: 1; }
+  .stripes .r { background: var(--red); }
+  .stripes .g { background: var(--green); }
+  .stripes .y { background: var(--yellow); }
+  .stripes .b { background: var(--blue); }
+  .site-name {
+    font-family: var(--head);
+    font-size: clamp(30px, 6vw, 48px);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: 0.5px;
+    transform: skewX(-10deg);
+    transform-origin: left bottom;
+    text-transform: uppercase;
+  }
+  .site-name a { color: var(--ink); text-decoration: none; }
+  .site-sub {
+    margin: 10px 0 0;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  article {
+    position: relative;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 40px 40px 28px;
+  }
+  .badge {
+    position: absolute;
+    top: -26px; right: -14px;
+    width: 104px; height: 104px;
+    background: var(--yellow);
+    color: var(--ink);
+    display: grid; place-items: center;
+    text-align: center;
+    font-family: var(--head);
+    font-size: 15px; line-height: 1.05;
+    text-transform: uppercase;
+    clip-path: polygon(50% 0%, 61% 18%, 82% 10%, 79% 32%, 100% 38%, 84% 54%, 96% 74%, 74% 76%, 68% 98%, 50% 85%, 32% 98%, 26% 76%, 4% 74%, 16% 54%, 0% 38%, 21% 32%, 18% 10%, 39% 18%);
+    transform: rotate(8deg);
+  }
+  .badge b { display: block; font-size: 30px; font-weight: 400; }
+  .kicker {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-family: var(--head);
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.12;
+    margin: 0 0 26px;
+    padding-right: 70px;
+  }
+  article p { margin: 0 0 1.1em; }
+  figure { margin: 30px -12px; }
+  figure img {
+    display: block; width: 100%; height: auto;
+    border: 3px solid var(--ink);
+    background: #000;
+  }
+  figcaption a { color: var(--blue); }
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    padding: 8px 4px 0;
+    border-left: 6px solid var(--green);
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+  .note {
+    display: inline;
+    background: var(--yellow);
+    font-size: 14px;
+    padding: 1px 6px;
+  }
+  .how {
+    margin-top: 34px;
+    padding: 16px 18px;
+    background: #f3f7fb;
+    border-left: 6px solid var(--blue);
+    font-size: 15px;
+    color: #333;
+  }
+  h2 {
+    font-family: var(--head);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 34px 0 12px;
+  }
+  pre.term {
+    background: #0b0b0b;
+    color: #e8e8e8;
+    border: 3px solid var(--ink);
+    padding: 14px 16px;
+    margin: 24px -12px;
+    overflow-x: auto;
+    font: 14px/1.5 Consolas, "Cascadia Mono", Menlo, monospace;
+    white-space: pre-wrap;
+  }
+  .posts-nav { display: flex; gap: 12px; justify-content: space-between; margin-top: 18px; flex-wrap: wrap; }
+  .posts-nav a {
+    background: var(--paper); border: 3px solid var(--ink); padding: 10px 14px;
+    color: var(--ink); text-decoration: none; font-weight: 700; font-size: 15px; max-width: 48%;
+  }
+  .posts-nav .next { margin-left: auto; text-align: right; }
+  .posts-nav a:hover { background: var(--yellow); }
+  .list { display: grid; gap: 16px; }
+  .card {
+    display: flex; gap: 18px; align-items: stretch;
+    background: var(--paper); border: 3px solid var(--ink);
+    color: var(--ink); text-decoration: none;
+  }
+  .card:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-3px, -3px); }
+  .card .num {
+    flex: 0 0 88px; display: grid; place-items: center;
+    background: var(--red); color: #fff; border-right: 3px solid var(--ink);
+    font-family: var(--head); font-size: 40px;
+  }
+  .card:nth-child(4n+2) .num { background: var(--green); }
+  .card:nth-child(4n+3) .num { background: var(--yellow); color: var(--ink); }
+  .card:nth-child(4n+4) .num { background: var(--blue); }
+  .card .txt { padding: 16px 18px 16px 0; display: grid; gap: 4px; }
+  .card .t { font-family: var(--head); font-size: 22px; line-height: 1.2; }
+  .card .ex { color: #444; font-size: 16px; }
+  .card .kicker { margin: 0; }
+  footer.site {
+    margin-top: 28px;
+    background: var(--blue);
+    color: #fff;
+    border: 3px solid var(--ink);
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+  footer.site p { margin: 0; }
+  @media (max-width: 560px) {
+    .card .num { flex-basis: 64px; font-size: 30px; }
+    .posts-nav a { max-width: 100%; }
+    pre.term { margin: 20px -4px; font-size: 12.5px; }
+    body { font-size: 17px; }
+    article { padding: 34px 20px 22px; }
+    figure { margin: 24px -4px; }
+    .badge { width: 84px; height: 84px; font-size: 12px; right: -6px; }
+    .badge b { font-size: 24px; }
+    h1 { padding-right: 52px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="stripes"><span class="r"></span><span class="g"></span><span class="y"></span><span class="b"></span></div>
+    <p class="site-name"><a href="../">Symphony of the Night</a></p>
+    <p class="site-sub">A Mega CD port &middot; Development log</p>
+  </header>
+
+<article>
+<div class="badge"><span>Post<b>0</b></span></div>
+<p class="kicker">Prologue</p>
+<h1>Why I&#x27;m porting Symphony of the Night to the Mega CD</h1>
+
+<p>When I was a kid, I was a true hack job. The bad kind. I opened things, yes, but very often I didn't know how to put them back together. Being resourceful with the little you have is something you learn early when you don't have access to much. It's a skill you can learn early, if you have the nerve.</p>
+<p>When I was about seven, my first Mega Drive broke. It was the middle of the July holidays and I was stuck at home with no video game. That same day, the family 486 was open for some reason, with a few boards lying on the table. I noticed the contacts on those boards looked a lot like the contacts on a Mega Drive cartridge. I also remembered that my dad had once put some electronic part inside that computer, and after that it ran different games. The logic was airtight: if it fits, it works.</p>
+<figure><img src="../img/02-eu-e-o-486.jpg" alt="Me and the family 486. The suspect and the scene." loading="lazy"><figcaption>Me and the family 486. The suspect and the scene.</figcaption></figure>
+<p>I unscrewed my Sonic the Hedgehog cartridge, took out the board and plugged it into an ISA slot. I even thought ahead: there would be empty pins left over, but if I pushed it to one end of the slot, the first pins would line up. I turned the computer on. Nothing happened. I pulled it out, blew on it, turned it on again. Nothing.</p>
+<figure><img src="../img/04-slot-isa.jpg" alt="It looked suspiciously similar to the Sega Genesis cartridge slot. Photo: u/Majestic_Buffalo4655 on r/vintagecomputing." loading="lazy"><figcaption>It looked suspiciously similar to the Sega Genesis cartridge slot. Photo: <a href="https://www.reddit.com/r/vintagecomputing/comments/1xc0ymk/help_identifying_huge_386_motherboard/">u/Majestic_Buffalo4655 on r/vintagecomputing</a>.</figcaption></figure>
+<p>Two weeks later the Mega Drive came back from the repair shop. I put in Sonic. Nothing. I broke the damn cartridge.</p>
+<figure><img src="../img/01-cartucho-sonic.jpg" alt="The cartridge, found again for this post more than thirty years later." loading="lazy"><figcaption>The cartridge, found again for this post more than thirty years later.</figcaption></figure>
+<p>I remember this story, which caused me a lot of bitterness and suffering as a child, because here I am at 40, by some irony of fate, with a very similar motivation.</p>
+<p>Like most people not living under a rock, I've been using AI for everyday stuff for a while now, and honestly, sometimes it's a real blast. My old car broke down, and the proper diagnostic scanner costs five grand. So I plugged the car into my laptop's USB port and asked Claude what was wrong. It worked. It walked me through the whole thing, reading the beeps and bloops from the car's computer and asking me to "look at this and describe it", "listen to that and tell me the rhythm", until we got to "smell this; if it smells like gasoline, we found the problem". Injector number 5 was stuck open, flooding the cylinder and killing combustion, with the fuel draining down into the oil pan. I would never have figured that out on my own.</p>
+<figure><img src="../img/03-pajero-notebook.jpg" alt="A 1998 Pajero, a 2015 laptop and a USB cable. The scanner stayed at the dealership." loading="lazy"><figcaption>A 1998 Pajero, a 2015 laptop and a USB cable. The scanner stayed at the dealership.</figcaption></figure>
+<p>It felt great. Then I thought about what had just happened. A car from 1998, on a laptop from 2015, using tech from 2026, in the hands of a guy from 1986, and somehow it worked. It reminded me of that Sonic cartridge, and of discovering emulation a few years later, and how incredible all of that was to me. As incredible as this bonkers mix. Which led me to wonder: what else could I do now that I couldn't do without coding skills?</p>
+<p>I know. It's officially a flood. The homebrew scene is drowning in ports of everything to everywhere, and most of it is trash. We all see it, we all know it. But hear me out. I think most of these projects are missing a crucial ingredient: relentless obstinacy. And, honestly, some aesthetic sense and artistic talent. My years in art direction and in music give me plenty of both.</p>
+<p>All that was left was picking the game.</p>
+<p>Symphony of the Night has a history with Sega. Before it existed, Konami had a Castlevania in the works for the Sega 32X. It was cancelled when Konami turned away from the 32X and toward the PlayStation, and Koji Igarashi and part of that team went on to make Symphony of the Night. The family tree goes further. The director, Toru Hagihara, had just directed Rondo of Blood on the PC Engine CD. The composer, Michiru Yamane, wrote her first Castlevania score for Bloodlines, on the Mega Drive, and then wrote the soundtrack that made Symphony of the Night famous.</p>
+<p>Sega hardware did get the game in the end: a Japan-only Saturn version in 1998, with Maria as a playable character and two areas the PlayStation never got, the Underground Garden and the Cursed Prison. On the PlayStation there is a small hatch at the castle gate that never opens. Behind it, in the game data, is a small cave with a save room. On the Saturn, that room leads to the Underground Garden.</p>
+<p>Some of what was cut is hiding in plain sight. The pause menu of a gothic game is a set of plain windows on flat blue, with no ornament at all. In 2015, playing the game for Double Fine's Devs Play series, Igarashi explained why: the menu was a temporary screen, and with no time left, it shipped as the real one. After that, the team's rule became "treat every temporary spec as final."</p>
+<figure><img src="../img/06-menu-ps1-x-megacd.png" alt="Left: the PlayStation pause menu. Right: the one this port has now." loading="lazy"><figcaption>Left: the PlayStation pause menu. Right: the one this port has now.</figcaption></figure>
+<p>In Brazil it was a phenomenon. The PlayStation was easy to pirate, so the game was within everyone's reach, and its progression loop was addictive enough to work even if you didn't read a word of English. A few years later it lived a second life on emulators, because it ran fine on the modest PCs most of us had.</p>
+<p>And on top of all that, I simply have an unshakable love for this game and every part of it. Every part that was finished in time, at least.</p>
+<p>So, which console? That's tomorrow's post.</p>
+<div class="how">How this is made: I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post is my own text, translated from Portuguese and edited by Claude, and reviewed by me.</div>
+</article>
+<nav class="posts-nav"><a class="next" href="day-1.html">Day 1: from a PlayStation disc to Alucard walking on a Mega CD &rarr;</a></nav>
+
+  <footer class="site">
+    <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
+  </footer>
+</div>
+</body>
+</html>
