@@ -38,7 +38,7 @@ The evening was a back-and-forth about that explosion. Claude slowed the crystal
 
 ## Rotation, the cheap way
 
-Several enemies spin parts of their bodies: the Blade's limbs, the Axe Knight's axe, the Cthulhu's fireball, the Skelerang's boomerang. The PlayStation rotates sprites for free. The Mega Drive can't, so overnight Claude made the rotation happen during the build: each spinning part gets a set of pre-drawn angles, and the game picks the closest one.
+Several enemies spin parts of their bodies: the Blade's limbs, the Axe Knight's axe, the Cthulhu's fireball, the Skelerang's boomerang. The PlayStation rotates sprites for free. The Mega Drive can't, so overnight Claude decided, on its own, to do the rotation during the build: each spinning part gets a set of pre-drawn angles, and the game picks the closest one.
 
 ![](../imagens/67-giro-passos.png)
 *More angles look smoother and cost more memory. Claude had used 16 and 32.*

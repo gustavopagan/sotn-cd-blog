@@ -98,7 +98,7 @@ The same 11:11 p.m. message reported something else. With many mermen, splashes 
 ![](../imagens/36-orcamento-por-linha.png)
 *Before: the chip decides who loses lines. After: the port decides, and the loser blinks instead of getting sliced.*
 
-Claude's fix, at 11:40 p.m., counts the sprites on every line before the chip does: Alucard first, then enemy bodies, then effects. Whatever doesn't fit sits out that frame, whole, and the turn rotates, so the leftover object blinks. That's exactly what Mega Drive games do, and it's still how the port works.
+The fix, Claude's choice, landed at 11:40 p.m. It counts the sprites on every line before the chip does: Alucard first, then enemy bodies, then effects. Whatever doesn't fit sits out that frame, whole, and the turn rotates, so the leftover object blinks. That's exactly what Mega Drive games do, and it's still how the port works.
 
 ## 11:56 p.m.
 
