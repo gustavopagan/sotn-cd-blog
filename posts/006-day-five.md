@@ -34,6 +34,9 @@ Claude looked at how the original does it, and the answer was good news: on the 
 
 The scene with Death worked that afternoon, without any text. The original draws its dialogue in a box with portraits, which is expensive here. So I suggested something more Mega Drive: speech balloons like Comix Zone. I offered Claude a memory dump of the game, and later asked to use the Comix Zone font too, so the letters would match the balloons. The other texts, like the name of an item you pick up, went to a small box in the top right corner, since the original's translucent box at the bottom isn't an option without transparency.
 
+![](../imagens/214-comix.png)
+*Comix Zone (Sega, 1995), captured from my own dump: the speech balloons I had in mind.*
+
 At 7:31 p.m. I found the first bug: every period came with a parenthesis. "I will not(." and "Still befriending mortals(.(.(."
 
 At 9:27 p.m. I sent three rules for the balloons. They can't cover the speaker's face, so Claude has to account for how the sprites move during the scene. The balloon should lean toward whoever is listening, with the tail pointing back at the speaker's head. And they should appear half a second late, which probably applies to every dialogue in the game.

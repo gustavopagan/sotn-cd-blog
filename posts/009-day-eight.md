@@ -16,6 +16,9 @@ Sunday. Eight commits and twenty-three messages, most of them after midnight or 
 
 After midnight I was working on the Mega Drive version of one of the songs, in a tracker. The organ riff that opens it didn't sound right, and I had a reference in mind: the riff at the start of Rusty Ruin, Act 2, in Sonic 3D Blast. At 12:53 a.m. I asked Claude to pull that instrument's sound out of the music file I had sent, to use in place of the organ.
 
+![](../imagens/216-sonic3d.png)
+*Sonic 3D Blast, from the Director's Cut version in my dumps folder. Its first zone, not Rusty Ruin.*
+
 The riff needs several notes at once, and the Mega Drive's sound chip only has six channels. One of the instruments I was looking at played two notes from a single key, and at 12:59 a.m. I asked how. The answer is in how FM works: an FM instrument is built from four oscillators, and when two of them sound at frequencies in a 4 to 3 ratio, you hear two notes a fourth apart.
 
 ![](../imagens/87-fm-duas-vozes.png)

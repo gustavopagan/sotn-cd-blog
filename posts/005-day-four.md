@@ -60,6 +60,9 @@ The trade was also technical. Transparent water meant drawing the swimming merme
 
 In the afternoon I asked Claude to analyze how Gunstar Heroes handles its explosions and bullets, from a memory dump of the game. The analysis made me ask an uncomfortable question: is the Mega CD still worth it, or should we move to a cartridge? And what about the 32X? We stayed on the Mega CD, and that conversation deserves its own post. What came out of Gunstar right away was smaller: room transitions faded by darkening the palette in eight steps, which costs almost nothing.
 
+![](../imagens/213-gunstar.png)
+*Gunstar Heroes (Treasure, 1993), captured from my own cartridge dump: the title and the first stage.*
+
 ![](../imagens/85-32x.jpg)
 *The 32X, the other way out I asked about. Photo: [Evan-Amos](https://commons.wikimedia.org/wiki/File:Sega-Genesis-32X-02.jpg), public domain, via Wikimedia Commons.*
 

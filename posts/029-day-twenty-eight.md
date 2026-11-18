@@ -24,6 +24,9 @@ At 1:11 I asked for a vertical, phone-sized version of the sound comparison tool
 
 At 1:32 a.m., choosing sounds from several games, I asked whether mixing them would weigh more because of the instruments each one brings. At 1:34: how do I know how many channels an effect uses? At 1:56 I pointed Claude to more of my dumps: Shinobi III, Streets of Rage 2 and 3, and QuackShot.
 
+![](../imagens/217-tres-jogos.png)
+*Shinobi III, Streets of Rage 2 and QuackShot, captured from my dumps.*
+
 ## A fly
 
 At 2:13 a.m. I came back to what that chat was opened for: original familiars for the Mega CD version. The first one is a fly, obtained after killing Beelzebub, the corpse covered in flies. Its card would be in the room where the Bat card sits in the normal castle, but in the inverted one.
