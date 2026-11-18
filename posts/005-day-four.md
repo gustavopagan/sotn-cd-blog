@@ -86,6 +86,12 @@ At 6:03 p.m. I asked whether the death animations had any randomness. They did: 
 ![](../imagens/46-merman-morte.png)
 *The red merman's death. Six random pieces became three in a fixed, symmetric fan.*
 
+Weeks later, going back over this with Claude, I understood my own request better. The dice cost almost nothing to roll; what weighed was the number of clouds. On the PlayStation, six random clouds work by brute force: even if three land in a pile, there's fire left to cover the rest of the body. Cut it to three and leave them random, and sometimes they all land in one corner. In this case, randomness was a tool for haste.
+
+> "With few resources, you start to really notice where RNG is actually an aesthetic decision."
+>
+> (Translated from Portuguese.)
+
 I also noticed that the red merman's sprite had been losing detail with each version, compared to the yellow one. The colors were being squeezed into a shared palette. Claude stopped squeezing them in that room.
 
 ## The drawbridge
