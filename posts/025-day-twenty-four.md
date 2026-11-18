@@ -42,7 +42,7 @@ What came out of that chat was simple. Every test disc starts in a specific room
 ![](../imagens/162-sala-de-teste.png)
 *Starting a test in another room, before and after.*
 
-The same chat made the format converters share their caches across build folders. At 2:01 p.m. I asked how to make the change count in the other nine chats. At 2:04 I said merge, and at 2:24 I pasted "continue" into all of them, with instructions to pull the new main branch in.
+The same chat made the format converters share their caches across build folders. At 2:01 p.m. I asked how to make the change count in the other nine chats. At 2:04 I said merge, and at 2:24 I pasted the chat's instructions into all of them: pull the new main branch in and continue.
 
 At 3:36 something was building that shouldn't have been, and at 3:40 I was confused:
 
@@ -75,7 +75,7 @@ And at 4:09 a detail I didn't want lost: if the original's timing counted on the
 
 ## Two giants
 
-Blade and Gurkha are two big enemies that share a room in the Castle Entrance's second visit. Drawing both was heavy. Claude's proposal was to show one giant at a time.
+Blade and Gurkha are two big enemies that share a room in the later version of the Castle Entrance. Drawing both was heavy. Claude's proposal was to show one giant at a time.
 
 At 4:39 p.m. I wasn't convinced:
 
@@ -112,7 +112,7 @@ At 4:47 I had also reported a menu test: the dither didn't match the start menu'
 
 At 4:55 p.m. I noticed my C: drive was filling up fast. At 4:58 I asked whether WSL used the same disk. It did: WSL keeps its whole Linux in one disk file, and that file grows but doesn't shrink on its own.
 
-The next hour and a half is mostly PowerShell, pasted back into the chat. Claude suggested commands, I ran them. A cleanup script for the old build folders. At 5:18 I asked whether it would hurt tasks that were finished but not merged yet. At 6:22 I reopened WSL and the space still hadn't come back. I trimmed the disk, switched it to sparse, and the file stayed at 408 GB. DiskPart froze. The command to compact the file doesn't exist on my Windows edition.
+The next hour and a half is mostly PowerShell, pasted back into the chat. Claude suggested commands, I ran them. A cleanup script for the old build folders. At 5:18 I asked whether it would hurt tasks that were finished but not merged yet. At 6:22 I reopened WSL and the space still hadn't come back. I trimmed the disk, switched it to sparse, and the file stayed at 408 GB. DiskPart froze. The command that compacts that kind of file wasn't available on my Windows.
 
 So at 8:12 p.m. I did it the long way: exported the Linux to my E: drive (60 GB), removed it from WSL, and checked C:. Free space went from 84 GB to 488 GB. The import failed the first time because the target folder didn't exist; at 8:30 I created it.
 
