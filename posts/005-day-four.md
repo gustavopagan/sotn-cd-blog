@@ -37,6 +37,9 @@ At 1:36 p.m. I sent a list. The dying warg spawns a new smoke cloud every two fr
 
 The water from the day before was still flashing the whole screen. I told Claude I'd look for a Mega Drive game with water I liked, and found it in our own family: Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I sent Claude a summary of a video explaining the effect, and asked to replace Symphony's water with it.
 
+![](../imagens/79-bloodlines.png)
+*Castlevania Bloodlines (1994), captured from the cartridge in an emulator. The reflecting water comes later, in the second stage.*
+
 Then I added the most important rule of the day: Alucard is half vampire, so he has no reflection.
 
 ![](../imagens/49-agua-bloodlines.png)
