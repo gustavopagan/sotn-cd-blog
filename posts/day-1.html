@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 1: from a PlayStation disc to Alucard walking on a Mega CD | Symphony of the Night for Mega CD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c8262c;
+    --green: #15924a;
+    --yellow: #f4c400;
+    --blue: #0464b6;
+    --ink: #111;
+    --paper: #fff;
+    --grid-bg: #eef3f2;
+    --grid-line: #c9cfcf;
+    --cell: 24px;
+    /* Headline: placeholder até chegar o arquivo da fonte escolhida pelo usuário */
+    --head: "Russo One", "Arial Black", sans-serif;
+    --body: "Segoe UI", "Segoe UI Variable", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background-color: var(--grid-bg);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    line-height: 1.65;
+    font-size: 18px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  header.site {
+    position: relative;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 22px 24px 18px;
+    margin-bottom: 28px;
+  }
+  .stripes { display: flex; height: 10px; margin: -22px -24px 18px; }
+  .stripes span { flex: 1; }
+  .stripes .r { background: var(--red); }
+  .stripes .g { background: var(--green); }
+  .stripes .y { background: var(--yellow); }
+  .stripes .b { background: var(--blue); }
+  .site-name {
+    font-family: var(--head);
+    font-size: clamp(30px, 6vw, 48px);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: 0.5px;
+    transform: skewX(-10deg);
+    transform-origin: left bottom;
+    text-transform: uppercase;
+  }
+  .site-name a { color: var(--ink); text-decoration: none; }
+  .site-sub {
+    margin: 10px 0 0;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  article {
+    position: relative;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 40px 40px 28px;
+  }
+  .badge {
+    position: absolute;
+    top: -26px; right: -14px;
+    width: 104px; height: 104px;
+    background: var(--yellow);
+    color: var(--ink);
+    display: grid; place-items: center;
+    text-align: center;
+    font-family: var(--head);
+    font-size: 15px; line-height: 1.05;
+    text-transform: uppercase;
+    clip-path: polygon(50% 0%, 61% 18%, 82% 10%, 79% 32%, 100% 38%, 84% 54%, 96% 74%, 74% 76%, 68% 98%, 50% 85%, 32% 98%, 26% 76%, 4% 74%, 16% 54%, 0% 38%, 21% 32%, 18% 10%, 39% 18%);
+    transform: rotate(8deg);
+  }
+  .badge b { display: block; font-size: 30px; font-weight: 400; }
+  .kicker {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-family: var(--head);
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.12;
+    margin: 0 0 26px;
+    padding-right: 70px;
+  }
+  article p { margin: 0 0 1.1em; }
+  figure { margin: 30px -12px; }
+  figure img {
+    display: block; width: 100%; height: auto;
+    border: 3px solid var(--ink);
+    background: #000;
+  }
+  figcaption a { color: var(--blue); }
+  figcaption {
+    font-size: 15px;
+    color: #444;
+    padding: 8px 4px 0;
+    border-left: 6px solid var(--green);
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+  .note {
+    display: inline;
+    background: var(--yellow);
+    font-size: 14px;
+    padding: 1px 6px;
+  }
+  .how {
+    margin-top: 34px;
+    padding: 16px 18px;
+    background: #f3f7fb;
+    border-left: 6px solid var(--blue);
+    font-size: 15px;
+    color: #333;
+  }
+  h2 {
+    font-family: var(--head);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 34px 0 12px;
+  }
+  pre.term {
+    background: #0b0b0b;
+    color: #e8e8e8;
+    border: 3px solid var(--ink);
+    padding: 14px 16px;
+    margin: 24px -12px;
+    overflow-x: auto;
+    font: 14px/1.5 Consolas, "Cascadia Mono", Menlo, monospace;
+    white-space: pre-wrap;
+  }
+  .posts-nav { display: flex; gap: 12px; justify-content: space-between; margin-top: 18px; flex-wrap: wrap; }
+  .posts-nav a {
+    background: var(--paper); border: 3px solid var(--ink); padding: 10px 14px;
+    color: var(--ink); text-decoration: none; font-weight: 700; font-size: 15px; max-width: 48%;
+  }
+  .posts-nav .next { margin-left: auto; text-align: right; }
+  .posts-nav a:hover { background: var(--yellow); }
+  .list { display: grid; gap: 16px; }
+  .card {
+    display: flex; gap: 18px; align-items: stretch;
+    background: var(--paper); border: 3px solid var(--ink);
+    color: var(--ink); text-decoration: none;
+  }
+  .card:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-3px, -3px); }
+  .card .num {
+    flex: 0 0 88px; display: grid; place-items: center;
+    background: var(--red); color: #fff; border-right: 3px solid var(--ink);
+    font-family: var(--head); font-size: 40px;
+  }
+  .card:nth-child(4n+2) .num { background: var(--green); }
+  .card:nth-child(4n+3) .num { background: var(--yellow); color: var(--ink); }
+  .card:nth-child(4n+4) .num { background: var(--blue); }
+  .card .txt { padding: 16px 18px 16px 0; display: grid; gap: 4px; }
+  .card .t { font-family: var(--head); font-size: 22px; line-height: 1.2; }
+  .card .ex { color: #444; font-size: 16px; }
+  .card .kicker { margin: 0; }
+  footer.site {
+    margin-top: 28px;
+    background: var(--blue);
+    color: #fff;
+    border: 3px solid var(--ink);
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+  footer.site p { margin: 0; }
+  @media (max-width: 560px) {
+    .card .num { flex-basis: 64px; font-size: 30px; }
+    .posts-nav a { max-width: 100%; }
+    pre.term { margin: 20px -4px; font-size: 12.5px; }
+    body { font-size: 17px; }
+    article { padding: 34px 20px 22px; }
+    figure { margin: 24px -4px; }
+    .badge { width: 84px; height: 84px; font-size: 12px; right: -6px; }
+    .badge b { font-size: 24px; }
+    h1 { padding-right: 52px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="stripes"><span class="r"></span><span class="g"></span><span class="y"></span><span class="b"></span></div>
+    <p class="site-name"><a href="../">Symphony of the Night</a></p>
+    <p class="site-sub">A Mega CD port &middot; Development log</p>
+  </header>
+
+<article>
+<div class="badge"><span>Post<b>1</b></span></div>
+<p class="kicker">Day 1 · October 17–18, 2026</p>
+<h1>Day 1: from a PlayStation disc to Alucard walking on a Mega CD</h1>
+
+<p>So, which console?</p>
+<p>My first question that night, at 11 p.m. on October 17, was about the Mega Drive. Now that someone had fully decompiled Symphony of the Night, could it be ported?</p>
+<p>The answer was no. Without its videos, voice clips and streamed music, the game still weighs about 46 MB. A Mega Drive cartridge doesn't come close, not without cutting the game to pieces.</p>
+<figure><img src="../img/10-mega-drive.jpg" alt="The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
+<h2>A word about Pigsy</h2>
+<p>Someone is already doing it the hard way. Pigsy, of Pigsy's Retro Game Dev Tutorials, is building his own Symphony of the Night for the Mega Drive, and it's a different project from mine: a new game written from scratch for the cartridge, split into stages. And it looks fantastic. Look at the backgrounds in his Alchemy Laboratory. Look at that Royal Chapel staircase, with a Bone Pillar breathing fire down at Alucard.</p>
+<figure><img src="../img/13-pigsy-alchemy-lab.jpg" alt="Pigsy&#x27;s Alchemy Laboratory. Screenshot from Pigsy&#x27;s Symphony of the Night demo for Mega Drive." loading="lazy"><figcaption>Pigsy's Alchemy Laboratory. Screenshot from <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">Pigsy's Symphony of the Night demo for Mega Drive</a>.</figcaption></figure>
+<figure><img src="../img/14-pigsy-royal-chapel.jpg" alt="The Royal Chapel stairs, Bone Pillar included. Screenshot from Pigsy&#x27;s demo." loading="lazy"><figcaption>The Royal Chapel stairs, Bone Pillar included. Screenshot from <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">Pigsy's demo</a>.</figcaption></figure>
+<p>Go follow him: <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">YouTube</a> and <a href="https://x.com/PigsyRetro">X</a>.</p>
+<p>My project wanted something else: the castle itself. Every room connected, the inverted castle, the equipment, the familiars. That meant a bigger machine.</p>
+<p>I also want a port with a few things the original never got. Remember the menu Igarashi had no time to finish? To me, finishing that design means extra care for everything that lives inside the menu: customizing your familiars, customizing the menu itself.</p>
+<p>As for the balance between fidelity and change, the rule is simple. This is a port first, and it should look and play the way you remember it. But I couldn't resist hiding a few Easter eggs as a tribute to Sega and to the Mega CD itself. Those are for a later post.</p>
+<p>So, Mega CD. Same video chip as the Mega Drive, but with a CD drive, a second processor and extra memory. And the original game is already split into pieces that load one area at a time, which is exactly how a CD system wants to work.</p>
+<figure><img src="../img/11-mega-cd.jpg" alt="The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Model1-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
+<p>Eleven minutes after the first question, I asked where to start. Half an hour later, Claude Code was installed. Then it refused to start.</p>
+<pre class="term"><code>PS C:\Users\pagan\desktop\SOTN CD\Castlevania - Symphony of the Night&gt; claude
+claude : The term &#x27;claude&#x27; is not recognized as the name of a cmdlet,
+function, script file, or operable program.</code></pre>
+<p>A promising beginning.</p>
+<p>The next evening I was frustrated. I had spent hours on it and had nothing playable. On my Mega Man X3 port, X was controllable almost right away. So I moved the work into a regular Claude chat and kept going from there.</p>
+<p>By 9:30 p.m. the disc booted on a Mega CD emulator, loaded an image from the CD, played an audio track, and then did the thing I actually cared about: Alucard, running the original game code, walking down a real Castle Entrance hallway. Real sprites, original collision, working stairs. Not long after, zombies rose out of the floor, walked at him and died to his bare fists.</p>
+<h2>The trick: two processors, two jobs</h2>
+<p>The Mega Drive's main processor runs at about 7.67 MHz. The PlayStation's runs at about 34 MHz. Asking the first one to run the second one's game and also draw the screen is not a plan.</p>
+<p>The Mega CD adds a second processor, at 12.5 MHz. So the port splits the work. The second processor runs the game: Alucard, enemies, collision. The main one only draws what it's told. They trade notes once per frame through a shared block of memory. The price is one frame of delay between the game deciding something and the screen showing it.</p>
+<figure><img src="../img/12-mega-cd-inside.jpg" alt="Inside the Mega CD. The chip marked HD68HC000 is the second processor: another 68000, this one at 12.5 MHz. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"><figcaption>Inside the Mega CD. The chip marked HD68HC000 is the second processor: another 68000, this one at 12.5 MHz. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Base-Mk1-Inside.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</figcaption></figure>
+<p>My verdict at 8:40 p.m., after trying the controls: "Movement and physics are great, keep going." (Translated from Portuguese.)</p>
+<h2>The number</h2>
+<p>12 commits on day one. Two phases of the original plan closed, and the third already moving.</p>
+<p>Next on the log, a detour: what AI can't do in this port. After that, day 2: candles, explosions, a HUD, and the castle music pulled straight from the original disc.</p>
+<div class="how">How this is made: I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post was drafted by Claude from my chat messages and the project's commit history, and reviewed by me.</div>
+</article>
+<nav class="posts-nav"><a class="prev" href="why.html">&larr; Why I&#x27;m porting Symphony of the Night to the Mega CD</a><a class="next" href="what-ai-cant-do.html">What AI can&#x27;t do in this port &rarr;</a></nav>
+
+  <footer class="site">
+    <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
+  </footer>
+</div>
+</body>
+</html>
