@@ -7,21 +7,21 @@ excerpt: "The folder gets reorganized overnight, the compression work lands, cha
 status: draft
 ---
 
-After the cleanup started, October 28 was a day of closing things. Four commits reached the main build, all of them before 7 a.m., and most of my messages were about what to close next.
+After the cleanup started, October 28 was a day of closing things. Four commits reached the main build, all of them before 4 a.m., and most of my messages were about what to close next.
 
 ![](../imagens/102-dia11-linha-do-tempo.png)
 *October 28. Claude worked overnight; I mostly asked questions and gave orders.*
 
 ## A folder you can read
 
-The request from the night before got done at 3:43 a.m.: the whole project folder reorganized, with numbers in front of the names so they sort in the order you use them. Disc, inputs, tools, the main build, the side tasks, previews, audio, references.
+The request from the night before got done at 12:43 a.m.: the whole project folder reorganized, with numbers in front of the names so they sort in the order you use them. Disc, inputs, tools, the main build, the side tasks, previews, audio, references.
 
 ![](../imagens/101-pastas.png)
 *Not a screenshot: a reconstruction. On the left, folder names that appear in the chat history from that week.*
 
 ## Why compression, again
 
-At 1:26 a.m. I asked whether the compression chat had finished or left loose ends, and reminded it why it existed: it was created to make the warg fit without cutting animation frames. At 4:45 a.m. its work was merged into the main build: the smaller format for loading, the faster one for whatever unpacks during gameplay.
+At 1:26 a.m. I asked whether the compression chat had finished or left loose ends, and reminded it why it existed: it was created to make the warg fit without cutting animation frames. At 1:45 a.m., twenty minutes later, its work was merged into the main build: the smaller format for loading, the faster one for whatever unpacks during gameplay.
 
 At 1:41 a.m. I also made a small rule that stuck. Each prompt I send to a chat starts with its title, and in the title the code comes before the long name. With a dozen chats open, I needed to find things by code.
 

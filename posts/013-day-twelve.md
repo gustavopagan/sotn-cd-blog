@@ -19,7 +19,7 @@ At 1:02 a.m. I asked what I called a crazy question: how much space is there in 
 ![](../imagens/104-bram.png)
 *The two ways of saving, side by side.*
 
-By 3:29 p.m. the port had a provisional title with NEW GAME and CONTINUE, and loaded the save from the Backup RAM. At 2:05 p.m. I had checked what goes into it besides HP, the saved room, the open doors, the level and the gold. The answer was that it covers everything; the only difference from the original is that just one save fits.
+By 12:29 p.m. the port had a provisional title with NEW GAME and CONTINUE, and loaded the save from the Backup RAM. At 2:05 p.m. I checked what goes into it besides HP, the saved room, the open doors, the level and the gold. The answer was that it covers everything; the only difference from the original is that just one save fits.
 
 ## The battery
 
@@ -27,10 +27,10 @@ That night I had opened two new tasks, one for the save and one for a pause menu
 
 ## The menu that reloaded itself
 
-At 1:55 p.m. I was testing the menu, and it still wasn't right, especially in the relics list: any movement of the cursor redrew the whole list. By 5:25 p.m. the list only scrolled a whole line when the cursor left the eleven visible lines.
+At 1:55 p.m. I was testing the menu, and it still wasn't right, especially in the relics list: any movement of the cursor redrew the whole list. Half an hour later, at 2:25 p.m., the list only scrolled a whole line when the cursor left the eleven visible lines.
 
 ![](../imagens/106-menu-2910.png)
-*The pause menu in the 5:25 p.m. build, rebuilt from that commit. The layout and frames follow the design I attached on October 24, with the original game's fonts.*
+*The pause menu in the 2:25 p.m. build, rebuilt from that commit. The layout and frames follow the design I attached on October 24, with the original game's fonts.*
 
 ![](../imagens/107-menu-cursor.gif)
 *Opening the menu and moving the cursor, same build.*

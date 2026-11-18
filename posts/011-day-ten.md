@@ -21,14 +21,14 @@ Overnight, the optimization chat I had opened the day before measured something 
 
 Smaller data also means more rooms fit in each group of rooms kept in memory, and fewer groups means fewer pauses to read the CD. With the smallest format, the whole castle went from 153 groups to 134.
 
-The catch is time. The smallest formats are slower to unpack, and some things get unpacked in the middle of gameplay. At 8:14 a.m. I told Claude to go ahead with one of the candidates; by the afternoon it had become the only format in the game; and at 5:51 p.m. part of that was undone. Whatever gets unpacked mid-game, like enemy frames and Alucard himself, went back to the faster format. The smaller one stayed for loading.
+The catch is time. The smallest formats are slower to unpack, and some things get unpacked in the middle of gameplay. At 8:14 a.m. I told Claude to go ahead with one of the candidates; by noon it had become the only format in the game; and at 2:51 p.m. part of that was undone. Whatever gets unpacked mid-game, like enemy frames and Alucard himself, went back to the faster format. The smaller one stayed for loading.
 
 ## Flicker
 
 At 1:46 p.m. I wrote that with one warg and two zombies on screen, the sprites blinked. At 4:22 p.m. the game was much more fluid, but with Alucard, a warg and two zombies at the same height, there was a lot of flicker. That's the sixteen-sprites-per-line limit again, and the rotation that makes the leftover sprite blink instead of disappearing. It was the safety net working as designed, and it still looked bad.
 
 ![](../imagens/99-espada-2710.gif)
-*Alucard swinging the prologue sword in the first room, in the 5:51 p.m. build rebuilt from that commit.*
+*Alucard swinging the prologue sword in the first room, in the 2:51 p.m. build rebuilt from that commit.*
 
 ![](../imagens/98-sala0-20-x-27.png)
 *The first room a week apart. Left: October 20, colors rounded one by one. Right: October 27, with the area's color plan. Not the same spot: the starting position changed between builds.*

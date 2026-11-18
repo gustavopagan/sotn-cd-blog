@@ -24,7 +24,7 @@ def pastas():
 
 
 def tempo():
-    C = "03:43 04:39 04:45 06:27".split()
+    C = "00:43 01:39 01:45 03:27".split()
     F = "00:34 01:14 01:26 01:32 01:34 01:37 01:39 01:41 02:54 09:49 17:47 17:49 17:53 19:16".split()
     linha_do_tempo("102-dia11-linha-do-tempo.png", "October 28, hour by hour", C, F,
                    notas=[("01:41", "1:41 a.m.: code first, then the name", "l"),
