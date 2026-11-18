@@ -146,8 +146,45 @@ def glifo(geo, ch=""):
             for x, y in pts[1:]:
                 pen.lineTo((round(x * U), round(y * U)))
             pen.closePath()
+    COLOCADA[ch] = geo
     larg = round((maxx - minx + 2 * LADO + aj_e + aj_d) * U)
     return pen.glyph(), larg, round((LADO + aj_e) * U)
+
+
+COLOCADA = {}
+ALVO = 0.6  # menor distância entre duas letras vizinhas, em unidades da grade
+
+
+def perfil(geo, lado):
+    """Para cada altura, a borda direita (lado=1) ou esquerda (lado=-1) da letra."""
+    from shapely.geometry import box as caixa
+    out = {}
+    for i in range(-8, 44):
+        y = i * 0.25
+        fatia = geo.intersection(caixa(-50, y, 50, y + 0.25))
+        if fatia.is_empty:
+            continue
+        b = fatia.bounds
+        out[i] = b[2] if lado == 1 else b[0]
+    return out
+
+
+def kerning(larguras):
+    """Kerning automático antes das letras com o pé em diagonal (M, A): aproxima a letra
+    anterior até a distância mínima entre as duas ficar igual à das outras letras."""
+    linhas = []
+    for dir_ch in ("M", "A"):
+        esq_prof = perfil(COLOCADA[dir_ch], -1)
+        for ch, geo in COLOCADA.items():
+            dp = perfil(geo, 1)
+            adv = larguras[ch] / U
+            d = min((adv - dp[i]) + esq_prof[i] for i in dp if i in esq_prof) if any(i in esq_prof for i in dp) else None
+            if d is None:
+                continue
+            k = round((ALVO - d) * U)
+            if k < -10:
+                linhas.append("pos %s %s %d;" % (nome(ch), nome(dir_ch), k))
+    return "feature kern {\n" + "\n".join(linhas) + "\n} kern;\n", len(linhas)
 
 
 def nome(ch):
@@ -181,6 +218,10 @@ def monta():
     fb.setupOS2(sTypoAscender=820, sTypoDescender=-180, usWinAscent=820, usWinDescent=180, sCapHeight=700, sxHeight=700,
                 achVendID="SOTN")
     fb.setupPost()
+    from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
+    fea, n = kerning({ch: metrics[nome(ch)][0] for ch in G})
+    addOpenTypeFeaturesFromString(fb.font, fea)
+    print("kerning:", n, "pares")
     fb.save(os.path.join(OUT, "cd-drive.ttf"))
     fb.font.flavor = "woff2"
     fb.save(os.path.join(OUT, "cd-drive.woff2"))
