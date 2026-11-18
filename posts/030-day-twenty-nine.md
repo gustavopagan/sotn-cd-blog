@@ -47,8 +47,9 @@ At 2:50 p.m. I said what the background should be: the same as the "press start"
 
 For the background I ran the image through ditherit.com myself and asked Claude for a Bayer version to compare. At 3:41: too dirty with that dithering, is there another option? At 3:42: why do the colors drift so much? At 3:44 I asked for the Mega Drive palette in the site's format. At 3:53 I picked the warm gray.
 
-![](../imagens/198-fundos-dither.png)
-*Two of the background versions I compared that afternoon. Left: Bayer dithering, which I found too dirty. Right: a lighter dither.*
+![](../imagens/198-fundos-dither-a.png)
+![](../imagens/198-fundos-dither-b.png)
+*Two of the background versions I compared that afternoon. First, Bayer dithering, which I found too dirty; then a lighter dither.*
 
 At 4:19 a small LibreSprite annoyance: copying between two files turned the transparency black. Claude fixed the exported files so index 0 is transparent.
 
@@ -73,7 +74,9 @@ At 7:29 two catches: Claude had added several colors to the palettes, would that
 
 At 8:30 I asked for the empty fields to be filled: the item description in two lines at the bottom, the missing information above, in the medium font. At 9:02 my version was ready in LibreSprite. At 10:51, on the Equip screen: instead of generic triangles, use the original's arrows, recolored. At 10:53: "It looks great." At 11:00: take the flourishes and borders from my original so they're right. At 11:10: too little room for the stats, make the list 7 items, with the equipped items moved down. At 11:34 I had edited it, and deleted the blue background by accident. At 11:53, checking from my phone: there's a blue smudge under the top-right flourish that came back.
 
-![](../imagens/197-menus-mockup.png)
+![](../imagens/197-menus-mockup-a.png)
+![](../imagens/197-menus-mockup-b.png)
+![](../imagens/197-menus-mockup-c.png)
 *From the mockups that day: the main pause screen, the first Equip layout, and the Equip layout with the original's arrows and flourishes.*
 
 At 11:56 I asked whether, with those two as models, Claude could make the other screens. They're simpler: only the flourishes in the four corners, like Equip and the title.

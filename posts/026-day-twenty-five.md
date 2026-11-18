@@ -78,7 +78,9 @@ At 10:43 one of them needed a hint from me:
 >
 > (Translated from Portuguese.)
 
-![](../imagens/169-alisia.png)
+![](../imagens/169-alisia-a.png)
+![](../imagens/169-alisia-b.png)
+![](../imagens/169-alisia-c.png)
 *Alisia Dragoon (Game Arts, 1992), captured from my cartridge dump: title, first stage, and the sound test I was talking about.*
 
 At 10:48 the voice lines in CD audio went on hold. Not urgent.

@@ -50,20 +50,43 @@ def render(body):
         if m:
             out.append(f'<pre class="term"><code>{html.escape(codes[int(m.group(1))])}</code></pre>')
             continue
-        m = re.match(r"!\[\]\(\.\./imagens/([^)]+)\)\n\*(.*)\*$", b)
+        m = re.match(r"((?:!\[\]\(\.\./imagens/[^)]+\)\n)+)\*(.*)\*$", b)
         if m:
             alt = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", m.group(2))
-            nome = img_name(m.group(1))
-            try:
-                from PIL import Image as _I
-                with _I.open(os.path.join(ROOT, "public", "img", nome)) as _im:
-                    _w, _h = _im.size
-            except Exception:
-                _w, _h = 0, 0
-            cls = ' class="px"' if 0 < _w < 900 else ""
-            dim = f' width="{_w}" height="{_h}"' if _w else ""
-            out.append(f'<figure><img src="../img/{nome}"{cls}{dim} alt="{html.escape(alt)}" loading="lazy">'
-                       f"<figcaption>{inline(m.group(2))}</figcaption></figure>")
+            itens = []
+            for f in re.findall(r"\(\.\./imagens/([^)]+)\)", m.group(1)):
+                nome = img_name(f)
+                try:
+                    from PIL import Image as _I
+                    with _I.open(os.path.join(ROOT, "public", "img", nome)) as _im:
+                        _w, _h = _im.size
+                except Exception:
+                    _w, _h = 4, 3
+                itens.append((nome, _w, _h))
+            def tela(nome, _w, _h, est=""):
+                cls = ' class="px"' if _w < 900 else ""
+                return (f'<span class="crt"{est}><span class="tubo"><img src="../img/{nome}"{cls}'
+                        f' width="{_w}" height="{_h}" alt="{html.escape(alt)}" loading="lazy"></span></span>')
+            cap = f"<figcaption>{inline(m.group(2))}</figcaption>"
+            if len(itens) == 1:
+                out.append(f"<figure>{tela(*itens[0])}{cap}</figure>")
+                continue
+            # várias telas: em degrau, da esquerda alta para a direita baixa, o canto de baixo
+            # de cada uma um pouco por cima do canto de cima da seguinte
+            n = len(itens); sob = 9.0
+            w = (100 + (n - 1) * sob) / n
+            hs = [w * h / wd for _, wd, h in itens]
+            tops = [0.0]
+            for k in range(1, n):
+                tops.append(tops[-1] + hs[k - 1] * 0.78)
+            tot = max(t + h for t, h in zip(tops, hs))
+            telas = []
+            for k, (nome, wd, h) in enumerate(itens):
+                est = (f' style="left:{k * (w - sob):.3f}%;top:{tops[k] / tot * 100:.3f}%;'
+                       f'width:{w:.3f}%;z-index:{n - k}"')
+                telas.append(tela(nome, wd, h, est))
+            out.append(f'<figure class="grupo"><div class="degrau" style="aspect-ratio:100/{tot:.3f}">'
+                       + "".join(telas) + f"</div>{cap}</figure>")
             continue
         if b.startswith("## "):
             out.append(f"<h2>{inline(b[3:])}</h2>")

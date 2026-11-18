@@ -100,7 +100,9 @@ At 7:50 p.m. I pushed for the weapons to go on the disc and be reviewed early:
 >
 > (Translated from Portuguese.)
 
-![](../imagens/195-magias.png)
+![](../imagens/195-magias-a.png)
+![](../imagens/195-magias-b.png)
+![](../imagens/195-magias-c.png)
 *Hellfire, Tetra Spirit and Soul Steal cast in the port during that review. Most of what makes them spectacular on the PS1 isn't drawn yet.*
 
 At 9:14 p.m. the Gas Cloud test passed.

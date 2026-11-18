@@ -61,7 +61,10 @@ The same chat noticed the play time had never advanced in the port. Nothing coun
 
 It also looked at the title screen's lightning. On the PS1 it isn't transparency: the game swaps between four ready-made versions of the same image area.
 
-![](../imagens/158-relampago-ps1.png)
+![](../imagens/158-relampago-ps1-a.png)
+![](../imagens/158-relampago-ps1-b.png)
+![](../imagens/158-relampago-ps1-c.png)
+![](../imagens/158-relampago-ps1-d.png)
 *The four versions of the title area on the PS1, from my disc. On the Mega Drive this can be a palette swap, if all four share the same drawing.*
 
 One idea from that chat didn't stay. Death steals Alucard's gear in the prologue, and on the PS1 the stolen icon grows out of the center. Claude made the growing icon as ready-made frames. It fit, but it took the spot in that room's data package where the wolf and mist are read from the CD, so Alucard couldn't transform in Death's room. Claude undid it and left the item open.
@@ -72,7 +75,10 @@ At 8:18 p.m. two chats got a question from me in the same minute.
 
 To the color task, about the shadows it was adding to three Entrance rooms: "If I'm not mistaken, shadow was already implemented in the mermen room today!" It had been. The prompt asked for the mermen room's method to be reused in rooms 1, 8 and 10, and those are the rooms the commits touched.
 
-![](../imagens/157-sala8-sombra.png)
+![](../imagens/157-sala8-sombra-a.png)
+![](../imagens/157-sala8-sombra-b.png)
+![](../imagens/157-sala8-sombra-c.png)
+![](../imagens/157-sala8-sombra-d.png)
 *Room 8. Options from the comparison tool for the wall-only shadow.*
 
 To the menu task: "Wait, what are you doing? Why are you messing with the menu with the old design?" At 8:30 I explained: I meant the "press start" screen, which we'd already redone and I thought was already in the main branch, and the Konami logo before it. At 8:31: go ahead.

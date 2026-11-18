@@ -12,7 +12,8 @@ The zombie cap fixed the hallway. One room later, the mermen hit the same wall. 
 ![](../imagens/38-dia3-linha-do-tempo.png)
 *The whole day in one picture. Red is Claude committing, blue is me writing. The gap in the evening is the only quiet stretch.*
 
-![](../imagens/215-sonic.png)
+![](../imagens/215-sonic-a.png)
+![](../imagens/215-sonic-b.png)
 *Sonic the Hedgehog (1991), captured from my own dump. The obvious reference.*
 
 ## The experiment

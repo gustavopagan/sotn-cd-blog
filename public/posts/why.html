@@ -109,14 +109,17 @@
   }
   article p { margin: 0 0 1.1em; }
   figure { margin: 32px -12px; }
-  figure img {
-    display: block; width: 100%; height: auto;
-    border: 3px solid var(--ink);
-    /* tela de CRT, como os screenshots nas caixas de jogos e consoles da época */
-    border-radius: 3.5% / 5%;
-    background: #000;
-    cursor: zoom-in;
-  }
+  /* tela de CRT, como os screenshots nas caixas de jogos e consoles da época:
+     bordas abauladas (o recorte vem do clipPath #crt) e sombra dura para o sudoeste */
+  .crt { display: block; position: relative; filter: drop-shadow(-7px 7px 0 #111); cursor: zoom-in; }
+  .tubo { display: block; background: var(--ink); padding: 3px;
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); }
+  figure img { display: block; width: 100%; height: auto; background: #000;
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); }
+  figure > .crt { margin-left: 7px; }
+  .degrau { position: relative; width: calc(100% - 7px); margin-left: 7px; }
+  .degrau .crt { position: absolute; }
+  .degrau .crt:hover { z-index: 9 !important; }
   figure img.px { image-rendering: pixelated; }
   @media (min-width: 900px) {
     figure { margin: 36px -110px; }
@@ -145,6 +148,14 @@
     width: 44px; height: 44px; border: 3px solid #fff; background: var(--red);
     color: #fff; font: 700 24px/36px sans-serif; text-align: center; cursor: pointer;
   }
+  .zoom .seta {
+    position: fixed; top: 50%; z-index: 51; transform: translateY(-50%);
+    width: 44px; height: 64px; border: 3px solid #fff; background: var(--blue);
+    color: #fff; font: 700 28px/56px sans-serif; text-align: center; cursor: pointer;
+    user-select: none;
+  }
+  .zoom .seta.ant { left: 8px; } .zoom .seta.prox { right: 8px; }
+  .zoom.so1 .seta, .zoom.big .seta { display: none; }
   .zoom .tip {
     position: fixed; left: 0; right: 0; bottom: 12px; text-align: center;
     color: #ccc; font-size: 13px; pointer-events: none;
@@ -236,6 +247,8 @@
     article { padding: 34px 20px 22px; }
     figure { margin: 26px -39px; }
     figcaption { margin-left: 39px; margin-right: 39px; }
+    figure > .crt, .degrau { margin-left: 30px; } .degrau { width: calc(100% - 34px); }
+    figure > .crt { width: calc(100% - 34px); }
     .badge { width: 84px; height: 84px; font-size: 12px; right: -6px; }
     .badge b { font-size: 24px; }
     h1 { padding-right: 52px; }
@@ -257,21 +270,21 @@
 
 <p>When I was a kid, I was a true hack job. The bad kind. I opened things, yes, but very often I didn't know how to put them back together. Being resourceful with the little you have is something you learn early when you don't have access to much. It's a skill you can learn early, if you have the nerve.</p>
 <p>When I was about seven, my first Mega Drive broke. It was the middle of the July holidays and I was stuck at home with no video game. That same day, the family 486 was open for some reason, with a few boards lying on the table. I noticed the contacts on those boards looked a lot like the contacts on a Mega Drive cartridge. I also remembered that my dad had once put some electronic part inside that computer, and after that it ran different games. The logic was airtight: if it fits, it works.</p>
-<figure><img src="../img/02-eu-e-o-486.jpg" width="1200" height="821" alt="Me and the family 486. The suspect and the scene." loading="lazy"><figcaption>Me and the family 486. The suspect and the scene.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/02-eu-e-o-486.jpg" width="1200" height="821" alt="Me and the family 486. The suspect and the scene." loading="lazy"></span></span><figcaption>Me and the family 486. The suspect and the scene.</figcaption></figure>
 <p>I unscrewed my Sonic the Hedgehog cartridge, took out the board and plugged it into an ISA slot. I even thought ahead: there would be empty pins left over, but if I pushed it to one end of the slot, the first pins would line up. I turned the computer on. Nothing happened. I pulled it out, blew on it, turned it on again. Nothing.</p>
-<figure><img src="../img/04-slot-isa.jpg" width="1200" height="900" alt="It looked suspiciously similar to the Sega Genesis cartridge slot. Photo: u/Majestic_Buffalo4655 on r/vintagecomputing." loading="lazy"><figcaption>It looked suspiciously similar to the Sega Genesis cartridge slot. Photo: <a href="https://www.reddit.com/r/vintagecomputing/comments/1xc0ymk/help_identifying_huge_386_motherboard/">u/Majestic_Buffalo4655 on r/vintagecomputing</a>.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/04-slot-isa.jpg" width="1200" height="900" alt="It looked suspiciously similar to the Sega Genesis cartridge slot. Photo: u/Majestic_Buffalo4655 on r/vintagecomputing." loading="lazy"></span></span><figcaption>It looked suspiciously similar to the Sega Genesis cartridge slot. Photo: <a href="https://www.reddit.com/r/vintagecomputing/comments/1xc0ymk/help_identifying_huge_386_motherboard/">u/Majestic_Buffalo4655 on r/vintagecomputing</a>.</figcaption></figure>
 <p>Two weeks later the Mega Drive came back from the repair shop. I put in Sonic. Nothing. I broke the damn cartridge.</p>
-<figure><img src="../img/01-cartucho-sonic.jpg" width="1200" height="1137" alt="The cartridge, found again for this post more than thirty years later." loading="lazy"><figcaption>The cartridge, found again for this post more than thirty years later.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/01-cartucho-sonic.jpg" width="1200" height="1137" alt="The cartridge, found again for this post more than thirty years later." loading="lazy"></span></span><figcaption>The cartridge, found again for this post more than thirty years later.</figcaption></figure>
 <p>I remember this story, which caused me a lot of bitterness and suffering as a child, because here I am at 40, by some irony of fate, with a very similar motivation.</p>
 <p>Like most people not living under a rock, I've been using AI for everyday stuff for a while now, and honestly, sometimes it's a real blast. My old car broke down, and the proper diagnostic scanner costs five grand. So I plugged the car into my laptop's USB port and asked Claude what was wrong. It worked. It walked me through the whole thing, reading the beeps and bloops from the car's computer and asking me to "look at this and describe it", "listen to that and tell me the rhythm", until we got to "smell this; if it smells like gasoline, we found the problem". Injector number 5 was stuck open, flooding the cylinder and killing combustion, with the fuel draining down into the oil pan. I would never have figured that out on my own.</p>
-<figure><img src="../img/03-pajero-notebook.jpg" class="px" width="675" height="1200" alt="A 1998 Pajero, a 2015 laptop and a USB cable. The scanner stayed at the dealership." loading="lazy"><figcaption>A 1998 Pajero, a 2015 laptop and a USB cable. The scanner stayed at the dealership.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/03-pajero-notebook.jpg" class="px" width="675" height="1200" alt="A 1998 Pajero, a 2015 laptop and a USB cable. The scanner stayed at the dealership." loading="lazy"></span></span><figcaption>A 1998 Pajero, a 2015 laptop and a USB cable. The scanner stayed at the dealership.</figcaption></figure>
 <p>It felt great. Then I thought about what had just happened. A car from 1998, on a laptop from 2015, using tech from 2026, in the hands of a guy from 1986, and somehow it worked. It reminded me of that Sonic cartridge, and of discovering emulation a few years later, and how incredible all of that was to me. As incredible as this bonkers mix. Which led me to wonder: what else could I do now that I couldn't do without coding skills?</p>
 <p>I know. It's officially a flood. The homebrew scene is drowning in ports of everything to everywhere, and most of it is trash. We all see it, we all know it. But hear me out. I think most of these projects are missing a crucial ingredient: relentless obstinacy. And, honestly, some aesthetic sense and artistic talent. My years in art direction and in music give me plenty of both.</p>
 <p>All that was left was picking the game.</p>
 <p>Symphony of the Night has a history with Sega. Before it existed, Konami had a Castlevania in the works for the Sega 32X. It was cancelled when Konami turned away from the 32X and toward the PlayStation, and Koji Igarashi and part of that team went on to make Symphony of the Night. The family tree goes further. The director, Toru Hagihara, had just directed Rondo of Blood on the PC Engine CD. The composer, Michiru Yamane, wrote her first Castlevania score for Bloodlines, on the Mega Drive, and then wrote the soundtrack that made Symphony of the Night famous.</p>
 <p>Sega hardware did get the game in the end: a Japan-only Saturn version in 1998, with Maria as a playable character and two areas the PlayStation never got, the Underground Garden and the Cursed Prison. On the PlayStation there is a small hatch at the castle gate that never opens. Behind it, in the game data, is a small cave with a save room. On the Saturn, that room leads to the Underground Garden.</p>
 <p>Some of what was cut is hiding in plain sight. The pause menu of a gothic game is a set of plain windows on flat blue, with no ornament at all. In 2015, playing the game for Double Fine's Devs Play series, Igarashi explained why: the menu was a temporary screen, and with no time left, it shipped as the real one. After that, the team's rule became "treat every temporary spec as final."</p>
-<figure><img src="../img/06-menu-ps1-x-megacd.png" width="1210" height="448" alt="Left: the PlayStation pause menu. Right: the one this port has now." loading="lazy"><figcaption>Left: the PlayStation pause menu. Right: the one this port has now.</figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/06-menu-ps1-x-megacd.png" width="1210" height="448" alt="Left: the PlayStation pause menu. Right: the one this port has now." loading="lazy"></span></span><figcaption>Left: the PlayStation pause menu. Right: the one this port has now.</figcaption></figure>
 <p>In Brazil it was a phenomenon. The PlayStation was easy to pirate, so the game was within everyone's reach, and its progression loop was addictive enough to work even if you didn't read a word of English. A few years later it lived a second life on emulators, because it ran fine on the modest PCs most of us had.</p>
 <p>And on top of all that, I simply have an unshakable love for this game and every part of it. Every part that was finished in time, at least.</p>
 <p>So, which console? That's tomorrow's post.</p>
@@ -283,15 +296,28 @@
     <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
   </footer>
 </div>
-<div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
+<div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
 <script>
 (function () {
   var z = document.getElementById('zoom'), zi = document.getElementById('zoomimg');
-  document.querySelectorAll('figure img').forEach(function (im) {
-    im.addEventListener('click', function () {
-      zi.src = im.currentSrc || im.src; zi.className = im.className;
-      z.className = 'zoom on'; document.body.style.overflow = 'hidden';
-    });
+  var todas = Array.prototype.slice.call(document.querySelectorAll('figure img')), atual = 0;
+  function mostra(i) {
+    atual = (i + todas.length) % todas.length; var im = todas[atual];
+    zi.src = im.currentSrc || im.src; zi.className = im.className;
+    z.className = 'zoom on' + (todas.length < 2 ? ' so1' : ''); document.body.style.overflow = 'hidden';
+  }
+  todas.forEach(function (im, i) {
+    (im.closest('.crt') || im).addEventListener('click', function () { mostra(i); });
+  });
+  document.getElementById('zoomant').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual - 1); });
+  document.getElementById('zoomprox').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual + 1); });
+  var tx = null;
+  z.addEventListener('touchstart', function (e) { tx = e.touches.length === 1 ? e.touches[0].clientX : null; }, {passive: true});
+  z.addEventListener('touchend', function (e) {
+    if (tx === null || z.className.indexOf('big') >= 0) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 60) mostra(atual + (dx < 0 ? 1 : -1));
   });
   function fecha() { z.className = 'zoom'; zi.src = ''; document.body.style.overflow = ''; }
   document.getElementById('zoomx').addEventListener('click', fecha);
@@ -302,7 +328,10 @@
     z.className = big ? 'zoom on big' : 'zoom on';
     if (big) { z.scrollLeft = rx * zi.clientWidth - innerWidth / 2; z.scrollTop = ry * zi.clientHeight - innerHeight / 2; }
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecha(); });
+  document.addEventListener('keydown', function (e) { if (z.className.indexOf('on') < 0) return;
+    if (e.key === 'Escape') fecha();
+    else if (e.key === 'ArrowLeft') mostra(atual - 1);
+    else if (e.key === 'ArrowRight') mostra(atual + 1); });
 })();
 </script>
 </body>

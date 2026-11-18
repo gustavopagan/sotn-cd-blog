@@ -38,7 +38,8 @@ The native menu merged into the main branch overnight. At 11:31 a.m. I tested it
 
 At 11:32, in the menu chat: "Take a look at the merge result. It seems very little of the native menu's work went over there. I found that strange." At 1:58 p.m. the second merge made the native pause menu the default.
 
-![](../imagens/211-menu-nativo.png)
+![](../imagens/211-menu-nativo-a.png)
+![](../imagens/211-menu-nativo-b.png)
 *The native menu running in the emulator: the main screen at 12:52 p.m. that day, and the Familiars screen from the evening before.*
 
 At 11:34 I asked what was on the Time Attack screen. At 11:40: go ahead, it's simple, we already have the base art and it only needs text. Approved at 12:12. At 12:26 I asked for the elemental icons: send me options, and use the available colors to shade and gradient inside the icons' tiny space. At 12:32: the version with shadow, approved.
