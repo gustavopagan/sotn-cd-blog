@@ -53,6 +53,8 @@ At 2:22 p.m. I approved the warg, and found one more problem:
 
 The blink read as transparency to me. And the dying warg had been pinned to the screen instead of to the room, so it followed the camera.
 
+Four weeks later, reviewing this post, I could have sworn the blink had been my idea. I even remembered thinking about it. The record says otherwise: I first asked for blinking a day later, for the mist, and the day after that for items on the floor. What I was probably remembering is something else. On the PlayStation, a dying warg fades out, then turns into a solid white silhouette and fades out again. The port carried that white flash for a while, and on November 2 the request I actually made was to take it out. Human memory isn't very reliable.
+
 ![](../imagens/41-warg-morte-2340.gif)
 *The same death in the build from 11:40 p.m. that night. One warg, less fire.*
 
