@@ -7,30 +7,23 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 OUT = os.path.join(ROOT, "public", "img")
-# cores da caixa japonesa do Mega-CD: papel creme quadriculado, faixas vermelhas com letra
-# branca em itálico, preto do aparelho, azul da SEGA e o logo do Mega Drive
-RED, GREEN, YELLOW, BLUE = (214, 32, 40), (0, 150, 70), (246, 200, 20), (20, 84, 176)
-INK, PAPER, GRAY, LIGHT = (20, 20, 22), (255, 255, 255), (120, 120, 118), (236, 236, 236)
-CREME, GRADE = (247, 245, 237), (214, 216, 218)
-PAD = 60  # margem de segurança: a borda abaulada de CRT do blog não corta nada
-DJ = "/usr/share/fonts/truetype/dejavu/"
+# visual do blog (KV da caixa do Mega-CD, 18/11): cada diagrama é um painel chapado de fundo
+# pastel, com barra de título azul-marinho (CD Drive + mono) e, quando diz o que a figura é,
+# uma faixa vermelha embaixo. A sombra em xadrez fica por conta da página.
+RED, GREEN, YELLOW, BLUE = (210, 35, 42), (0, 150, 75), (243, 210, 60), (27, 86, 176)
+INK, PAPER, GRAY, LIGHT = (24, 24, 26), (255, 255, 255), (110, 110, 112), (236, 236, 236)
+NAVY, FAIXA, SUB = (30, 44, 102), (174, 41, 0), (230, 233, 245)
+FUNDOS = {"barras": (255, 242, 184), "linha": (217, 238, 213), "geral": (214, 231, 246), "rosa": (248, 220, 228)}
+FT = os.path.join(ROOT, "fontes")
+DIAGRAMAS = os.path.join(ROOT, "src", "diagramas.txt")
 
 
 def fonte(px, bold=True, mono=False, ital=False):
     if ital:
-        return ImageFont.truetype(DJ + "DejaVuSans-BoldOblique.ttf", px)
-    nome = "DejaVuSansMono-Bold.ttf" if mono else ("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf")
-    return ImageFont.truetype(DJ + nome, px)
-
-
-def papel(w, h):
-    im = Image.new("RGB", (w, h), CREME)
-    d = ImageDraw.Draw(im)
-    for x in range(0, w, 20):
-        d.line((x, 0, x, h), fill=GRADE)
-    for y in range(0, h, 20):
-        d.line((0, y, w, y), fill=GRADE)
-    return im
+        return ImageFont.truetype(os.path.join(FT, "cd-drive.ttf"), px)
+    if mono or bold:
+        return ImageFont.truetype(os.path.join(FT, "monommm5.ttf"), px)
+    return ImageFont.truetype(os.path.join(FT, "archivo-regular.ttf"), px)
 
 
 def xadrez(d, x0, y0, x1, y1, cor=INK, p=2):
@@ -40,31 +33,51 @@ def xadrez(d, x0, y0, x1, y1, cor=INK, p=2):
             d.rectangle((x, y, x + p - 1, y + p - 1), fill=cor)
 
 
-def faixa(d, x, y, texto, tam=24, cor=RED, h=44):
-    """Faixa vermelha inclinada com letra branca em itálico, como "MEGA-CD SYSTEM" na caixa."""
-    f = fonte(tam, ital=True)
-    tw = d.textlength(texto, font=f)
-    k = h * 0.35
-    d.polygon([(x + k, y), (x + tw + 44 + k, y), (x + tw + 44, y + h), (x, y + h)], fill=cor)
-    d.text((x + 22 + k / 2, y + h / 2), texto, font=f, fill=PAPER, anchor="lm")
-    return x + tw + 44 + k
+def divide_titulo(t):
+    """Título principal com no máximo 2 palavras; o resto vira subtítulo na mono."""
+    if "," in t and len(t.split(",")[0].split()) <= 2:
+        a, b = t.split(",", 1)
+        return a.strip(), b.strip()
+    w = t.split()
+    return " ".join(w[:2]), " ".join(w[2:])
+
+
+def faixa_texto(im, x, y, h, principal, sub, s, cor_sub=SUB):
+    """Escreve título (CD Drive a 87% de altura, enchendo a faixa) + subtítulo (mono) numa faixa de altura h."""
+    d = ImageDraw.Draw(im)
+    if principal:
+        f = fonte(round(29 * s), ital=True)
+        tw = int(d.textlength(principal.upper(), font=f)) + 4
+        tmp = Image.new("RGBA", (tw, round(29 * s * 1.3)), (0, 0, 0, 0))
+        ImageDraw.Draw(tmp).text((0, round(29 * s * 1.05)), principal.upper(), font=f, fill=PAPER, anchor="ls")
+        bb = tmp.getbbox() or (0, 0, 1, 1)
+        tmp = tmp.crop((0, bb[1], tw, bb[3]))
+        tmp = tmp.resize((tw, max(1, round(tmp.height * 0.87))), Image.LANCZOS)
+        im.paste(tmp, (x, y + (h - tmp.height) // 2), tmp)
+        x += int(d.textlength(principal.upper() + " ", font=f))
+    if sub:
+        fm = fonte(round(17 * s), mono=True)
+        if x + d.textlength(sub.upper(), font=fm) <= im.width - round(11 * s):  # não cabe: fica só o título
+            d.text((x, y + h / 2), sub.upper(), font=fm, fill=cor_sub, anchor="lm")
 
 
 class Tela:
-    def __init__(self, w, h, titulo=None, selo=None):
+    def __init__(self, w, h, titulo=None, selo=None, tipo=None, escala=960):
+        # escala: largura em que a imagem aparece na página (960 no computador, 336 no celular),
+        # para a barra de título sair com 24 px de altura na tela
         self.w, self.h = w, h
-        self.im = papel(w, h)
+        self.s = w / escala
+        self.selo = selo
+        tipo = tipo or "geral"
+        self.fundo = FUNDOS[tipo]
+        self.im = Image.new("RGB", (w, h), self.fundo)
         self.d = ImageDraw.Draw(self.im)
         self.top = 0
         if titulo:
-            self.d.line((0, 47, w, 47), fill=INK, width=4)
-            faixa(self.d, 0, 2, titulo, 24)
-            self.top = 54
-        if selo:
-            f = fonte(14)
-            tw = self.d.textlength(selo, font=f)
-            self.d.rectangle((w - tw - 36, self.top + 12, w - 12, self.top + 38), fill=YELLOW, outline=INK, width=2)
-            self.d.text((w - tw - 24, self.top + 25), selo, font=f, fill=INK, anchor="lm")
+            B = round(24 * self.s)
+            self.d.rectangle((0, 0, w, B), fill=NAVY)
+            faixa_texto(self.im, round(11 * self.s), 0, B, *divide_titulo(titulo), self.s)
+            self.top = B + round(12 * self.s)
 
     def caixa(self, x0, y0, x1, y1, cab=None, cor=BLUE, linhas=(), tam=18, fundo=PAPER):
         d = self.d
@@ -103,13 +116,13 @@ class Tela:
             self.d.text((x, y + i * int(tam * 1.35)), ln, font=f, fill=cor, anchor=anchor)
 
     def salva(self, nome):
-        salva_com_margem(self.im, nome)
+        salva_com_margem(self.im, nome, self.selo, self.fundo, self.s)
         
 
 def barras(nome, titulo, rotulos, valores, cores, unidade="", linha=None, linha_rot=None,
            w=1200, h=560, maxv=None, selo=None, notas=None):
     """Barras horizontais com valor no fim; linha tracejada opcional."""
-    t = Tela(w, h, titulo, selo)
+    t = Tela(w, h, titulo, selo, "barras")
     d = t.d
     x0, x1 = 300, w - 120
     n = len(valores)
@@ -132,6 +145,24 @@ def barras(nome, titulo, rotulos, valores, cores, unidade="", linha=None, linha_
         if linha_rot:
             d.text((xl, topo - 34), linha_rot, font=fonte(16), fill=RED, anchor="mm")
     t.salva(nome)
+    # versão do celular: 672 px de largura para aparecer em 336, rótulo em cima de cada barra
+    W, n = 672, len(valores)
+    tm = Tela(W, 0 + 48 + 24 + n * 120 + 24, titulo, None, "barras", escala=336)
+    tm.im = tm.im.resize((W, tm.h)); tm.d = ImageDraw.Draw(tm.im)
+    tm.d.rectangle((0, 0, W, round(24 * tm.s)), fill=NAVY)
+    faixa_texto(tm.im, round(11 * tm.s), 0, round(24 * tm.s), *divide_titulo(titulo), tm.s)
+    x0, x1 = 24, W - 120
+    for i, (r, v, c) in enumerate(zip(rotulos, valores, cores)):
+        y = 48 + 24 + i * 120
+        tm.d.text((x0, y + 20), r, font=fonte(30), fill=INK, anchor="lm")
+        xe = x0 + (x1 - x0) * v / maxv
+        tm.d.rectangle((x0, y + 48, xe, y + 96), fill=c, outline=INK, width=2)
+        tm.d.text((xe + 14, y + 72), f"{v:g}{unidade}", font=fonte(32), fill=INK, anchor="lm")
+    if linha:
+        xl = x0 + (x1 - x0) * linha / maxv
+        for yy in range(72, tm.h - 12, 20):
+            tm.d.line((xl, yy, xl, yy + 10), fill=RED, width=4)
+    salva_com_margem(tm.im, nome.replace(".png", "-m.png"), selo, tm.fundo, tm.s)
 
 
 def hm(s):
@@ -141,7 +172,7 @@ def hm(s):
 
 def linha_do_tempo(nome, titulo, commits, falas, notas=(), sombras=()):
     """notas: (hora, texto, lado) com lado 'l' ou 'r'; sombras: (h0, h1, texto)."""
-    t = Tela(1200, 540, titulo)
+    t = Tela(1200, 540, titulo, None, "linha")
     d = t.d
     x0, x1 = 70, 1150
     X = lambda h: x0 + (x1 - x0) * h / 24
@@ -169,17 +200,57 @@ def linha_do_tempo(nome, titulo, commits, falas, notas=(), sombras=()):
         t.seta(x + (-30 if lado == "r" else 30), y + 6, x, yf - 12, BLUE, 3, cab=10)
         t.texto(x + (-34 if lado == "r" else 34), y - 10, s, 14, BLUE, True, "rs" if lado == "r" else "ls")
     t.salva(nome)
+    # versão do celular: 672 px para aparecer em 336, letras de 13 px na tela, sem as notas
+    # (a legenda conta o que elas diziam)
+    W, H = 672, 48 + 360
+    tm = Tela(W, H, titulo, None, "linha", escala=336)
+    d = tm.d
+    x0, x1 = 24, W - 24
+    X = lambda h: x0 + (x1 - x0) * h / 24
+    yc, yf = 48 + 104, 48 + 232
+    for h0, h1, s in sombras:
+        d.rectangle((X(h0), 48 + 24, X(h1), 48 + 300), fill=(222, 230, 244))
+        d.text(((X(h0) + X(h1)) / 2, 48 + 40), s.upper()[:14], font=fonte(22), fill=BLUE, anchor="mm")
+    d.text((x0, yc - 44), f"CLAUDE'S COMMITS ({len(commits)})", font=fonte(26), fill=RED, anchor="ls")
+    d.text((x0, yf - 44), f"MY MESSAGES ({len(falas)})", font=fonte(26), fill=BLUE, anchor="ls")
+    d.line((x0, yc, x1, yc), fill=INK, width=3)
+    d.line((x0, yf, x1, yf), fill=INK, width=3)
+    for c in commits:
+        x = X(hm(c))
+        d.rectangle((x - 2, yc - 20, x + 2, yc + 20), fill=RED)
+    for f in falas:
+        x = X(hm(f))
+        d.ellipse((x - 8, yf - 8, x + 8, yf + 8), fill=BLUE, outline=INK)
+    for h in range(0, 25, 6):
+        x = X(h)
+        d.line((x, 48 + 300, x, 48 + 314), fill=INK, width=3)
+        d.text((x, 48 + 336), f"{h:02d}", font=fonte(26), fill=INK,
+               anchor="lm" if h == 0 else ("rm" if h == 24 else "mm"))
+    salva_com_margem(tm.im, nome.replace(".png", "-m.png"), None, tm.fundo, tm.s)
 
 
-def salva_com_margem(im, nome):
-    out = papel(im.width + 2 * PAD, im.height + 2 * PAD)
-    out.paste(im, (PAD, PAD))
+def salva_com_margem(im, nome, selo=None, fundo=None, s=None):
+    s = s or im.width / 960
+    if selo:
+        B, m = round(24 * s), round(24 * s)
+        out = Image.new("RGB", (im.width, im.height + m + B + m), fundo or FUNDOS["geral"])
+        out.paste(im, (0, 0))
+        d = ImageDraw.Draw(out)
+        d.rectangle((m, im.height + m, im.width - m, im.height + m + B), fill=FAIXA)
+        faixa_texto(out, m + round(11 * s), im.height + m, B, "", selo, s, cor_sub=PAPER)
+        im = out
     global SALVANDO
     SALVANDO = True
     try:
-        out.save(os.path.join(OUT, nome), optimize=True)
+        im.save(os.path.join(OUT, nome), optimize=True)
     finally:
         SALVANDO = False
+    try:
+        feitos = set(open(DIAGRAMAS).read().split())
+    except FileNotFoundError:
+        feitos = set()
+    if nome not in feitos and not nome.endswith("-m.png"):
+        open(DIAGRAMAS, "a").write(nome + "\n")
     print("ok", nome)
 
 

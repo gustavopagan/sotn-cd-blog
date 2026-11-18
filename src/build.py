@@ -43,6 +43,7 @@ def render(body):
         return f"\n\n@@CODE{len(codes) - 1}@@\n\n"
     body = re.sub(r"```\n(.*?)\n```", keep, body, flags=re.S)
     out, how = [], ""
+    numero = [0]
     for b in [x.strip() for x in body.strip().split("\n\n") if x.strip()]:
         if b == "---":
             continue
@@ -64,10 +65,18 @@ def render(body):
                     _w, _h = 4, 3
                 itens.append((nome, _w, _h))
             def tela(nome, _w, _h, est=""):
+                if nome in DIAGRAMAS:  # diagrama: painel chapado, sem tubo de CRT
+                    cel = nome.replace(".png", "-m.png")
+                    fonte_cel = (f'<source media="(max-width: 700px)" srcset="../img/{cel}">'
+                                 if os.path.exists(os.path.join(ROOT, "public", "img", cel)) else "")
+                    return (f'<span class="painel"{est}><picture>{fonte_cel}<img src="../img/{nome}" width="{_w}"'
+                            f' height="{_h}" alt="{html.escape(alt)}" loading="lazy"></picture></span>')
                 cls = ' class="px"' if _w < 900 else ""
                 return (f'<span class="crt"{est}><span class="tubo"><img src="../img/{nome}"{cls}'
                         f' width="{_w}" height="{_h}" alt="{html.escape(alt)}" loading="lazy"></span></span>')
-            cap = f"<figcaption>{inline(m.group(2))}</figcaption>"
+            numero[0] += 1
+            cap = (f'<figcaption class="cap"><span class="num">{numero[0]}</span>'
+                   f'<p>{inline(m.group(2))}</p></figcaption>')
             if len(itens) == 1:
                 out.append(f"<figure>{tela(*itens[0])}{cap}</figure>")
                 continue
@@ -93,7 +102,15 @@ def render(body):
                        + "".join(telas) + f"</div>{cap}</figure>")
             continue
         if b.startswith("## "):
-            out.append(f"<h2>{inline(b[3:])}</h2>")
+            out.append(f'<div class="secr"><h2 class="sec">{inline(b[3:])}</h2><i></i></div>')
+            continue
+        if b.startswith(">"):
+            linhas = [ln[1:].strip() for ln in b.split("\n")]
+            linhas = [ln for ln in linhas if ln]
+            q = [ln for ln in linhas if not ln.startswith("(Translated")]
+            tr = [ln for ln in linhas if ln.startswith("(Translated")]
+            out.append('<div class="quote"><div class="in">' + "".join(f'<p class="q">{inline(ln)}</p>' for ln in q)
+                       + "".join(f'<p class="tr">{inline(ln)}</p>' for ln in tr) + "</div></div>")
             continue
         if b.startswith("*How this is made"):
             how = inline(b.strip("*"))
@@ -106,12 +123,26 @@ sys.path.insert(0, os.path.join(ROOT, "src"))
 import fontes  # noqa: E402
 
 FONTES_HEAD = fontes.publica()
+try:
+    DIAGRAMAS = set(open(os.path.join(ROOT, "src", "diagramas.txt")).read().split())
+except FileNotFoundError:
+    DIAGRAMAS = set()
 
 
-def page(title, content, depth):
+def sem_dia(t):
+    """\"Day 23: Nine chats...\" vira \"Nine chats...\": o dia já está no selo e na linha de cima."""
+    return re.sub(r"^Day \d+:\s*", "", t)
+
+
+def dia(meta):
+    m = re.match(r"Day (\d+)", meta.get("kicker", ""))
+    return ("Day", m.group(1)) if m else ("Post", meta.get("badge", ""))
+
+
+def page(title, content, depth, badge=""):
     tpl = open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8").read()
     home = "../" if depth else "./"
-    return (tpl.replace("{{FONTES}}", FONTES_HEAD)
+    return (tpl.replace("{{FONTES}}", FONTES_HEAD).replace("{{BADGE}}", badge)
                .replace("{{TITLE}}", html.escape(title))
                .replace("{{HOME}}", home)
                .replace("{{CONTENT}}", content))
@@ -144,25 +175,36 @@ for i, (meta, body) in enumerate(posts):
     nav = []
     if i > 0:
         p = posts[i - 1][0]
-        nav.append(f'<a class="prev" href="{p["slug"]}.html">&larr; {html.escape(p["title"])}</a>')
+        d = " ".join(dia(p))
+        nav.append(f'<a class="prev" href="{p["slug"]}.html"><span class="d">&larr; {html.escape(d)}</span>'
+                   f'<span class="t">{html.escape(sem_dia(p["title"]))}</span></a>')
     if i + 1 < len(posts):
         n = posts[i + 1][0]
-        nav.append(f'<a class="next" href="{n["slug"]}.html">{html.escape(n["title"])} &rarr;</a>')
-    draft = '<p class="note">Draft: not published yet.</p>' if meta.get("status") != "published" else ""
-    art = (f'<article>\n<div class="badge"><span>Post<b>{html.escape(meta["badge"])}</b></span></div>\n'
-           f'<p class="kicker">{html.escape(meta["kicker"])}</p>\n<h1>{html.escape(meta["title"])}</h1>\n{draft}\n'
-           f'{content}\n<div class="how">{how}</div>\n</article>\n'
-           f'<nav class="posts-nav">{"".join(nav)}</nav>')
+        d = " ".join(dia(n))
+        nav.append(f'<a class="next" href="{n["slug"]}.html"><span class="d">{html.escape(d)} &rarr;</span>'
+                   f'<span class="t">{html.escape(sem_dia(n["title"]))}</span></a>')
+    draft = '<p class="note">Draft: not published yet</p>' if meta.get("status") != "published" else ""
+    rot, num = dia(meta)
+    badge = f'<div class="badge"><span>{rot.upper()}</span><b>{html.escape(num)}</b></div>'
+    how_html = ""
+    if how:
+        how_html = ('<div class="how"><div class="bar"><b>How</b><span>this is made</span></div>'
+                    f'<p>{re.sub(r"^How this is made:\s*", "", how)}</p></div>')
+    art = (f'<article class="w720">\n<div class="kicker">{html.escape(meta["kicker"])}</div>\n'
+           f'<h1 class="ttl">{html.escape(sem_dia(meta["title"]))}</h1>\n{draft}\n'
+           f'{content}\n{how_html}\n'
+           f'<nav class="posts-nav">{"".join(nav)}</nav>\n</article>')
     open(os.path.join(ROOT, "public", "posts", meta["slug"] + ".html"), "w", encoding="utf-8").write(
-        page(f'{meta["title"]} | {SITE}', art, 1))
+        page(f'{meta["title"]} | {SITE}', art, 1, badge))
 
 cards = []
 for meta, _ in reversed(posts):
+    rot, num = dia(meta)
+    data = meta["kicker"].split("·", 1)[1].strip() if "·" in meta["kicker"] else meta["kicker"]
     cards.append(f'<a class="card" href="posts/{meta["slug"]}.html">'
-                 f'<span class="num">{html.escape(meta["badge"])}</span>'
-                 f'<span class="txt"><span class="kicker">{html.escape(meta["kicker"])}</span>'
-                 f'<span class="t">{html.escape(meta["title"])}</span>'
-                 f'<span class="ex">{html.escape(meta.get("excerpt", ""))}</span></span></a>')
-idx = '<section class="list">\n' + "\n".join(cards) + "\n</section>"
+                 f'<span class="bar"><b>{rot.upper()} {html.escape(num)}</b><span>{html.escape(data)}</span></span>'
+                 f'<span class="t">{html.escape(sem_dia(meta["title"]))}</span>'
+                 f'<span class="ex">{html.escape(meta.get("excerpt", ""))}</span></a>')
+idx = '<section class="list w720">\n' + "\n".join(cards) + "\n</section>"
 open(os.path.join(ROOT, "public", "index.html"), "w", encoding="utf-8").write(page(SITE, idx, 0))
 print("ok:", ", ".join(m["slug"] + ("" if m.get("status") == "published" else " (rascunho)") for m, _ in posts))
