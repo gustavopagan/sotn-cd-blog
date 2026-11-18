@@ -110,14 +110,19 @@
   article p { margin: 0 0 1.1em; }
   figure { margin: 32px -12px; }
   /* tela de CRT, como os screenshots nas caixas de jogos e consoles da época:
-     bordas abauladas (o recorte vem do clipPath #crt) e sombra dura para o sudoeste */
-  .crt { display: block; position: relative; filter: drop-shadow(-7px 7px 0 #111); cursor: zoom-in; }
+     bordas abauladas (o recorte vem do clipPath #crt) e sombra dura para o sudeste, em xadrez */
+  .crt { display: block; position: relative; cursor: zoom-in; }
+  /* sombra em xadrez, como a transparência do Mega Drive, para o sudeste; fora do fluxo,
+     então não empurra o alinhamento da tela */
+  .crt::before { content: ""; position: absolute; inset: 0; transform: translate(8px, 8px);
+    background: repeating-conic-gradient(#111 0 25%, transparent 0 50%) 0 0 / 4px 4px;
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); z-index: 0; pointer-events: none; }
+  .tubo { position: relative; z-index: 1; }
   .tubo { display: block; background: var(--ink); padding: 3px;
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
   figure img { display: block; width: 100%; height: auto; background: #000;
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
-  figure > .crt { margin-left: 7px; }
-  .degrau { position: relative; width: calc(100% - 7px); margin-left: 7px; }
+  .degrau { position: relative; }
   .degrau .crt { position: absolute; }
   .degrau .crt:hover { z-index: 9 !important; }
   figure img.px { image-rendering: pixelated; }
@@ -247,8 +252,6 @@
     article { padding: 34px 20px 22px; }
     figure { margin: 26px -39px; }
     figcaption { margin-left: 39px; margin-right: 39px; }
-    figure > .crt, .degrau { margin-left: 30px; } .degrau { width: calc(100% - 34px); }
-    figure > .crt { width: calc(100% - 34px); }
     .badge { width: 84px; height: 84px; font-size: 12px; right: -6px; }
     .badge b { font-size: 24px; }
     h1 { padding-right: 52px; }
