@@ -36,8 +36,8 @@ As for the balance between fidelity and change, the rule is simple. This is a po
 
 So, Mega CD. Same video chip as the Mega Drive, but with a CD drive, a second processor and extra memory. And the original game is already split into pieces that load one area at a time, which is exactly how a CD system wants to work.
 
-![](../imagens/11-mega-cd.jpg)
-*The Mega CD, sold as the Sega CD in North America, goes under the console. Photo: [Evan-Amos](https://commons.wikimedia.org/wiki/File:Sega-CD-Model1-Set.jpg), public domain, via Wikimedia Commons.*
+![](../imagens/11-mega-cd-caixa.jpg)
+*The Mega-CD in its original Japanese box. It goes under the Mega Drive, as the drawing on the left shows; in North America it was sold as the Sega CD. Photo: [Sega Retro](https://segaretro.org/Mega-CD_consoles_in_Asia) (Mega-CD HAA-2910 box).*
 
 Eleven minutes after the first question, I asked where to start. Half an hour later, Claude Code was installed. Then it refused to start.
 
