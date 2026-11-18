@@ -110,7 +110,7 @@
   article p { margin: 0 0 1.1em; }
   figure { margin: 32px -12px; }
   /* tela de CRT, como os screenshots nas caixas de jogos e consoles da época:
-     bordas abauladas (o recorte vem do clipPath #crt) e sombra dura para o sudeste, em xadrez */
+     bordas abauladas (o recorte vem do clipPath #crt) e sombra dura em xadrez para o lado da tela de baixo */
   .crt { display: block; position: relative; cursor: zoom-in; }
   /* sombra em xadrez, como a transparência do Mega Drive, para o sudeste; fora do fluxo,
      então não empurra o alinhamento da tela */
@@ -124,7 +124,7 @@
     -webkit-clip-path: url(#crt); clip-path: url(#crt); }
   .degrau { position: relative; }
   .degrau .crt { position: absolute; }
-  .degrau .crt:hover { z-index: 9 !important; }
+  .crt.so::before { transform: translate(-8px, 8px); }
   figure img.px { image-rendering: pixelated; }
   @media (min-width: 900px) {
     figure { margin: 36px -110px; }
@@ -292,6 +292,20 @@
   });
   document.getElementById('zoomant').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual - 1); });
   document.getElementById('zoomprox').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual + 1); });
+  document.querySelectorAll('.degrau').forEach(function (g) {
+    var cs = Array.prototype.slice.call(g.querySelectorAll('.crt')), n = cs.length;
+    // a tela sob o mouse fica por cima; as outras se empilham a partir dela, como cartas,
+    // e cada sombra cai sobre a vizinha que está por baixo
+    function topo(k) {
+      cs.forEach(function (c, j) {
+        c.style.zIndex = n - Math.abs(j - k);
+        var esq = j > k || (j === k && k === n - 1 && n > 1);
+        c.className = esq ? 'crt so' : 'crt';
+      });
+    }
+    cs.forEach(function (c, k) { c.addEventListener('mouseenter', function () { topo(k); }); });
+    topo(0);
+  });
   var tx = null;
   z.addEventListener('touchstart', function (e) { tx = e.touches.length === 1 ? e.touches[0].clientX : null; }, {passive: true});
   z.addEventListener('touchend', function (e) {

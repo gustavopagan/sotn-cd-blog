@@ -71,15 +71,12 @@ def render(body):
             if len(itens) == 1:
                 out.append(f"<figure>{tela(*itens[0])}{cap}</figure>")
                 continue
-            # várias telas: em degrau, da esquerda alta para a direita baixa, o canto de baixo
-            # de cada uma um pouco por cima do canto de cima da seguinte
+            # várias telas lado a lado, levemente sobrepostas; a de cima muda ao passar o mouse
             n = len(itens); sob = 9.0
             w = (100 + (n - 1) * sob) / n
             hs = [w * h / wd for _, wd, h in itens]
-            tops = [0.0]
-            for k in range(1, n):
-                tops.append(tops[-1] + hs[k - 1] * 0.78)
-            tot = max(t + h for t, h in zip(tops, hs))
+            tops = [0.0] * n
+            tot = max(hs)
             telas = []
             for k, (nome, wd, h) in enumerate(itens):
                 est = (f' style="left:{k * (w - sob):.3f}%;top:{tops[k] / tot * 100:.3f}%;'
