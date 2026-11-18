@@ -18,7 +18,10 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 OUT = os.path.join(ROOT, "public", "fonts")
 U = 70          # unidades da fonte por unidade da grade (altura das maiúsculas: 700)
-LADO = 1.1      # espaço de cada lado da letra, em unidades da grade
+LADO = 0.35     # espaço de cada lado: as letras quase encostam, como no letreiro MEGA-CD
+# ajuste ótico (esquerda, direita) das letras com lado em diagonal, que parecem afastadas
+AJUSTE = {"M": (-0.75, 0), "W": (0, 0), "A": (-0.75, 0), "X": (-0.5, -0.5), "Y": (-0.4, -0.4),
+          "V": (0, 0), "7": (0, -1.2), "/": (-1.2, -1.2), "1": (-0.4, 0), "K": (0, -0.3)}
 V, H = 3.2, 2.2  # haste vertical, barra horizontal
 
 
@@ -127,12 +130,13 @@ G["→"] = un(R(0, 3.9, 8, 6.1), P((6, 1.4), (8.6, 1.4), (12, 5), (8.6, 8.6), (6
 G["←"] = scale(G["→"], -1, 1, origin=(6, 5))
 
 
-def glifo(geo):
+def glifo(geo, ch=""):
     pen = TTGlyphPen(None)
     if geo is None or geo.is_empty:
         return pen.glyph(), 0, 0
     minx, _, maxx, _ = geo.bounds
-    geo = translate(geo, LADO - minx, 0)
+    aj_e, aj_d = AJUSTE.get(ch, (0, 0))
+    geo = translate(geo, LADO + aj_e - minx, 0)
     polys = [geo] if geo.geom_type == "Polygon" else list(geo.geoms)
     for p in polys:
         p = orient(p, sign=-1.0)  # contorno externo no sentido horário (TrueType)
@@ -142,8 +146,8 @@ def glifo(geo):
             for x, y in pts[1:]:
                 pen.lineTo((round(x * U), round(y * U)))
             pen.closePath()
-    larg = round((maxx - minx + 2 * LADO) * U)
-    return pen.glyph(), larg, round(LADO * U)
+    larg = round((maxx - minx + 2 * LADO + aj_e + aj_d) * U)
+    return pen.glyph(), larg, round((LADO + aj_e) * U)
 
 
 def nome(ch):
@@ -159,9 +163,9 @@ def monta():
     glyphs, metrics = {}, {}
     vazio = TTGlyphPen(None).glyph()
     glyphs[".notdef"], metrics[".notdef"] = vazio, (500, 0)
-    glyphs["space"], metrics["space"] = vazio, (int(4.2 * U), 0)
+    glyphs["space"], metrics["space"] = vazio, (int(3.4 * U), 0)
     for ch, geo in G.items():
-        g, w, lsb = glifo(geo)
+        g, w, lsb = glifo(geo, ch)
         glyphs[nome(ch)] = g
         metrics[nome(ch)] = (w, lsb)
         cmap[ord(ch)] = nome(ch)

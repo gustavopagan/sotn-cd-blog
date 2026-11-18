@@ -65,8 +65,10 @@ I had tried removing the cape with a script back on November 4, and it hadn't wo
 
 At 11:11 a.m. one frame looked wrong to me: "LS100 in particular is strange. There's a set of golden pixels forming two horizontal lines that I find odd, but I could be wrong too!" At 12:58, comparing with the PS1 original: "Yes, they really seem to be the wrists! So it's working correctly." My doubt was wrong.
 
-![](../imagens/182-ls100.png)
-*Frame LS100: the PS1 original on the left. The golden lines I doubted are the wrists.*
+![](../imagens/182-ls100-a.png)
+![](../imagens/182-ls100-b.png)
+![](../imagens/182-ls100-c.png)
+*Frame LS100: the PS1 original first. The golden lines I doubted are the wrists.*
 
 At 1:05 p.m. I explained what happens to the ornaments: they're the cape's collar and a chain that holds its ends across the chest. Without the cape they go. But maybe we could reuse the collar, recolored gold. I had started that in a LibreSprite file and pointed Claude to it. At 2:28 I proposed the method:
 

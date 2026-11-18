@@ -85,8 +85,9 @@ To the menu task: "Wait, what are you doing? Why are you messing with the menu w
 
 Since I wasn't there to pick colors in the comparison tool, I had asked the color task to build options for each item, put its recommendation on the disc, and say where the others were. At 8:14 p.m. I told it my decisions and report were in the comparison folders.
 
-![](../imagens/155-portao.png)
-*The castle gate. Left, the old conversion; right, the new one in neutral grays. In each, the top is the source and the bottom is the Mega Drive version.*
+![](../imagens/155-portao-a.png)
+![](../imagens/155-portao-b.png)
+*The castle gate. First the old conversion, then the new one in neutral grays. In each, the top is the source and the bottom is the Mega Drive version.*
 
 ![](../imagens/156-slogra.png)
 *Slogra. Top, before; bottom, the recommendation: yellower beak, greener body.*

@@ -34,7 +34,11 @@ The eye with the ring I'd drawn two days before had a name now: Ophan. At 9:30 a
 
 At 4:50 p.m. it merged into the main branch: the first original familiar of the port, with its card in the Royal Chapel's confessional.
 
-![](../imagens/207-ophan-jogo.png)
+![](../imagens/207-ophan-jogo-a.png)
+![](../imagens/207-ophan-jogo-b.png)
+![](../imagens/207-ophan-jogo-c.png)
+![](../imagens/207-ophan-jogo-d.png)
+![](../imagens/207-ophan-jogo-e.png)
 *The Ophan next to Alucard in the port, from that day's measurements.*
 
 ## Assembly, all of it
@@ -70,7 +74,8 @@ At 11:50 p.m., ready to start the rewrite, I admitted a worry: "Before opening i
 
 In the afternoon the menu chat reached the Familiars screen. At 1:54 p.m. I asked for the D-pad and button glyphs in LibreSprite to edit them myself. At 3:23: "glyphs edited". At 3:24 I spotted leftover black pixels under the small B, and at 3:31 I'd fixed A and B myself.
 
-![](../imagens/204-glifos.png)
+![](../imagens/204-glifos-a.png)
+![](../imagens/204-glifos-b.png)
 *The button glyphs after my edits.*
 
 At 3:51 I asked whether familiars have a list of attacks unlocked by level. At 4:01 I set the layout: locked abilities show "Lv 40 ------------" until they unlock, to hint there's more to come; inside a familiar's sheet you scroll through its attacks and the bottom of the screen describes each one, all in English. At 4:17: the main background in shadow instead of blue. At 4:22 I noticed the ON button's green matched the border green: if the player customizes the border color, wouldn't the ON change too?
@@ -90,13 +95,17 @@ At 6:27 I sent images of the familiars: I wanted portraits of their faces instea
 
 Another chat was making the indicators for status effects and buffs. At 4:42 p.m. I described one pixel by pixel: white pixels in threes rising from the middle of the bottom of Alucard's outline until they meet at the top, three clockwise and three counterclockwise. At 4:47 the catch: could we reproduce those colors in the fixed palette? No. At 4:51: "Neither A nor B. We'll have to make do with the fixed colors!" At 4:56 I asked for the palette with each index's number so I could describe exactly what I wanted. At 5:28: for curse and poison, double the frequency, and the pixels travel top to bottom; for curse, blue base with green pixels.
 
-![](../imagens/205-estados.gif)
+![](../imagens/205-estados-a.gif)
+![](../imagens/205-estados-b.gif)
 *The bad-status indicators that evening, at the editor's preview size.*
 
 At 9:24 I reasoned through the cost: what makes it need recalculating all the time is the glow of a different color, dynamic, never in a known place in each pose. Otherwise it would be just another sprite on screen. At 9:30 I suggested particles that rise like steam from the top of Alucard, and asked whether they'd fall behind when he walks. They should, by gravity.
 
-![](../imagens/206-vapor.png)
-*The steam particles. On the right, walking, they trail behind.*
+![](../imagens/206-vapor-a.png)
+![](../imagens/206-vapor-b.png)
+![](../imagens/206-vapor-c.png)
+![](../imagens/206-vapor-d.png)
+*The steam particles. In the last ones, walking, they trail behind.*
 
 ## From my phone
 

@@ -29,7 +29,14 @@ That last option came from me too. At 12:40 I'd pointed out that in their room B
 
 At 12:43 the first try had a problem: "You spawned inside the floor in the next room and fell into the corridor below."
 
-![](../imagens/176-blade-ps1.png)
+![](../imagens/176-blade-ps1-a.png)
+![](../imagens/176-blade-ps1-b.png)
+![](../imagens/176-blade-ps1-c.png)
+![](../imagens/176-blade-ps1-d.png)
+![](../imagens/176-blade-ps1-e.png)
+![](../imagens/176-blade-ps1-f.png)
+![](../imagens/176-blade-ps1-g.png)
+![](../imagens/176-blade-ps1-h.png)
 *Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons.*
 
 ## Missing boxes
