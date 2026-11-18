@@ -47,6 +47,9 @@ In the same test I noticed the zombies flashing fully above the ground for one f
 ![](../imagens/41-warg-morte-2340.gif)
 *The same death in the build from 11:40 p.m. that night. One warg, less fire.*
 
+![](../imagens/82-warg-antes-depois.png)
+*Before and after, same frame of the same run. Left, 9:52 a.m.: a cloud of fire and the twin warg floating top left. Right, 11:40 p.m.: fewer flames, no twin. The numbers on top are the debug readout.*
+
 ## An idea that waited a month
 
 At 2:22 p.m. I sent a longer report: the dead warg's blink moved along with Alucard, the red merman left a trail of its body behind its falling skeleton, and one of the two splash effects showed up black. Then I asked how much all of this weighed, and suggested a different approach. Use one water splash instead of two. Draw the swimming mermen in the background layer, the way big bosses are done on the Mega Drive. Give all the mermen the same entrance and death routines, just in different colors.

@@ -33,6 +33,9 @@ At 1:36 p.m. I sent a list. The dying warg spawns a new smoke cloud every two fr
 ![](../imagens/53-morcego-pontilhado.gif)
 *Alucard turning into the bat and back in the 4:36 p.m. build, rebuilt from that commit. The dither replaces the PlayStation's wavy distortion.*
 
+![](../imagens/81-morcego-sequencia.png)
+*The same transformation, frame by frame, every 12 frames. Alucard thins out in the 4 x 4 pattern while the bat appears.*
+
 ## Bloodlines water
 
 The water from the day before was still flashing the whole screen. I told Claude I'd look for a Mega Drive game with water I liked, and found it in our own family: Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I sent Claude a summary of a video explaining the effect, and asked to replace Symphony's water with it.
@@ -69,6 +72,9 @@ Claude's answer made me ask, at 5:29, whether the extra attacks and the two merm
 ![](../imagens/45-mermen-teto.png)
 *Seven at worst, then three.*
 
+![](../imagens/83-mermen-1910-x-2110.png)
+*The mermen room two days apart, same frame of the same run. Left: October 19, palettes converted directly, water still missing. Right: October 21, Bloodlines-style water and the red merman's colors restored.*
+
 At 6:03 p.m. I asked whether the death animations had any randomness. They did: the red merman's death throws six pieces and six smoke clouds with random shapes and angles. I asked Claude to remove the dice. With fewer pieces, I argued, each one has to be placed so it looks good, or the result can come out lopsided.
 
 ![](../imagens/46-merman-morte.png)
@@ -82,6 +88,9 @@ The game begins with Alucard running through a forest toward the castle while th
 
 ![](../imagens/52-ponte-prologo.gif)
 *The opening run in the build from 11 p.m., rebuilt from that commit. The bridge rises in steps, and shakes.*
+
+![](../imagens/80-ponte-angulos.png)
+*Six frames of the bridge, 20 frames apart. Each angle is a picture prepared during the build; the game only picks which one to show.*
 
 At 10:33 p.m. I pointed out that Mega Turrican manages to rotate, or at least fake rotating, platforms and sprites, and asked if there was a documented trick to rotate the bridge. The Mega CD even has a chip for scaling and rotation. Claude did the math and said no.
 

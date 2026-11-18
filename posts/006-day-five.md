@@ -27,6 +27,9 @@ Claude looked at how the original does it, and the answer was good news: on the 
 ![](../imagens/61-corredor-escuro.gif)
 *The hallway in the 9:37 p.m. build, rebuilt from that commit, with the lights still off: silhouettes, lit windows and a warg. The white box in the top right is the new text box, showing an enemy's name. In this run Alucard never walks far enough for the lights to come on.*
 
+![](../imagens/84-corredor-19-x-22.png)
+*Three days apart. Left: a hallway on October 19, every color converted straight from the PlayStation. Right: the dark hallway of October 22, lit only by the windows, with the new text box in the corner.*
+
 ## Death learns to talk
 
 The scene with Death worked that afternoon, without any text. The original draws its dialogue in a box with portraits, which is expensive here. So I suggested something more Mega Drive: speech balloons like Comix Zone. I offered Claude a memory dump of the game, and later asked to use the Comix Zone font too, so the letters would match the balloons. The other texts, like the name of an item you pick up, went to a small box in the top right corner, since the original's translucent box at the bottom isn't an option without transparency.
