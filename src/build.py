@@ -102,10 +102,17 @@ def render(body):
     return "\n".join(out), how
 
 
+sys.path.insert(0, os.path.join(ROOT, "src"))
+import fontes  # noqa: E402
+
+FONTES_HEAD = fontes.publica()
+
+
 def page(title, content, depth):
     tpl = open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8").read()
     home = "../" if depth else "./"
-    return (tpl.replace("{{TITLE}}", html.escape(title))
+    return (tpl.replace("{{FONTES}}", FONTES_HEAD)
+               .replace("{{TITLE}}", html.escape(title))
                .replace("{{HOME}}", home)
                .replace("{{CONTENT}}", content))
 
@@ -116,6 +123,17 @@ for f in sorted(glob.glob(os.path.join(ROOT, "posts", "*.md"))):
     if meta.get("status") != "published" and not DRAFTS:
         continue
     posts.append((meta, body))
+
+# cada título e subtítulo vai sair na CD Drive: letra que a fonte não tem cairia em outra fonte
+faltas = []
+for meta, body in posts:
+    for s in [meta["title"]] + re.findall(r"^## (.*)$", body, re.M):
+        f = fontes.cobertura("CD Drive", s)
+        if f:
+            faltas.append(f'{meta["slug"]}: "{s}" -> sem {" ".join(f)}')
+if faltas:
+    raise SystemExit("A fonte CD Drive não tem estas letras (desenhe-as em src/fonte_drive.py ou troque o texto):\n  "
+                     + "\n  ".join(faltas))
 
 os.makedirs(os.path.join(ROOT, "public", "posts"), exist_ok=True)
 for old in glob.glob(os.path.join(ROOT, "public", "posts", "*.html")):

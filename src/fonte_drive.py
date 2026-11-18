@@ -16,7 +16,7 @@ from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-OUT = os.path.join(ROOT, "public", "fonts")
+OUT = os.path.join(ROOT, "fontes")  # o build copia daqui para public/fonts com hash no nome
 U = 70          # unidades da fonte por unidade da grade (altura das maiúsculas: 700)
 LADO = 0.35     # espaço de cada lado: as letras quase encostam, como no letreiro MEGA-CD
 # ajuste ótico (esquerda, direita) das letras com lado em diagonal, que parecem afastadas
