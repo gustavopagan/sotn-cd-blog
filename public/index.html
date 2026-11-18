@@ -292,6 +292,7 @@
   });
   document.getElementById('zoomant').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual - 1); });
   document.getElementById('zoomprox').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual + 1); });
+  var grupos = [];
   document.querySelectorAll('.degrau').forEach(function (g) {
     var cs = Array.prototype.slice.call(g.querySelectorAll('.crt')), n = cs.length;
     // a tela sob o mouse fica por cima; as outras se empilham a partir dela, como cartas,
@@ -305,7 +306,25 @@
     }
     cs.forEach(function (c, k) { c.addEventListener('mouseenter', function () { topo(k); }); });
     topo(0);
+    grupos.push({ g: g, n: n, topo: topo, k: 0 });
   });
+  // sem mouse (celular): a rolagem embaralha; conforme o grupo atravessa a tela,
+  // cada tela passa a vez para a seguinte
+  if (window.matchMedia && matchMedia('(hover: none)').matches && grupos.length) {
+    var pend = false;
+    function rola() {
+      pend = false;
+      grupos.forEach(function (o) {
+        var r = o.g.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        var p = (innerHeight * 0.85 - r.top) / (innerHeight * 0.7);
+        var k = Math.max(0, Math.min(o.n - 1, Math.floor(p * o.n)));
+        if (k !== o.k) { o.k = k; o.topo(k); }
+      });
+    }
+    addEventListener('scroll', function () { if (!pend) { pend = true; requestAnimationFrame(rola); } }, { passive: true });
+    rola();
+  }
   var tx = null;
   z.addEventListener('touchstart', function (e) { tx = e.touches.length === 1 ? e.touches[0].clientX : null; }, {passive: true});
   z.addEventListener('touchend', function (e) {
