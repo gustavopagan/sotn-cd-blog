@@ -80,29 +80,29 @@ def sprites_por_linha():
     img = tela.resize((W * 3, H * 3), Image.NEAREST)
     out = img
     d2 = ImageDraw.Draw(out)
-    d2.text((W * 3 - 200, 12), "ILLUSTRATION", font=fonte(20), fill=(170, 170, 190))
+    d2.text((W * 3 - 250, 40), "ILLUSTRATION", font=fonte(20), fill=(170, 170, 190))
     out.save(os.path.join(OUT, "21-sprites-por-linha.png"), optimize=True)
 
 
 def musica():
-    W, H = 768, 330
-    im = Image.new("RGB", (W, H), PAPER)
-    d = ImageDraw.Draw(im)
-    f, fb = fonte(20), fonte(24)
-    d.text((24, 18), "The music math (minutes of CD audio)", font=fb, fill=INK)
-    barras = [("All songs, intro + loop", 114, RED),
-              ("Room for music on the disc", 75, GREEN),
-              ("Loops only", 50, BLUE)]
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import ilus
+    t = ilus.Tela(768, 330, "The music math (minutes of CD audio)")
+    d, f, fb = t.d, ilus.fonte(20), ilus.fonte(24)
+    barras = [("All songs, intro + loop", 114, ilus.RED),
+              ("Room for music on the disc", 75, ilus.GREEN),
+              ("Loops only", 50, ilus.BLUE)]
     esc = 5.2
     for k, (nome, v, cor) in enumerate(barras):
-        y = 80 + k * 76
-        d.text((24, y), nome, font=f, fill=INK)
-        d.rectangle((24, y + 28, 24 + v * esc, y + 58), fill=cor, outline=INK, width=3)
-        d.text((34 + v * esc, y + 30), f"~{v}", font=fb, fill=INK)
+        y = 72 + k * 82
+        d.text((24, y), nome, font=f, fill=ilus.INK)
+        d.rectangle((24, y + 28, 24 + v * esc, y + 58), fill=cor, outline=ilus.INK, width=3)
+        d.text((34 + v * esc, y + 30), f"~{v}", font=fb, fill=ilus.INK)
     x75 = 24 + 75 * esc
-    for yy in range(70, 300, 10):
-        d.line((x75, yy, x75, yy + 5), fill=INK, width=2)
-    im.save(os.path.join(OUT, "22-musica-em-minutos.png"), optimize=True)
+    for yy in range(64, 320, 10):
+        d.line((x75, yy, x75, yy + 5), fill=ilus.INK, width=2)
+    t.salva("22-musica-em-minutos.png")
 
 
 if __name__ == "__main__":
