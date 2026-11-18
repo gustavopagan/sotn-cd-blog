@@ -41,8 +41,9 @@ By noon I had a list. The first screens with wargs didn't feel fluid, even with 
 
 Claude didn't touch the fire itself. It rewrote how the drawing processor deals with a burst of sprites: each new frame is decompressed while the screen is being drawn and sent to video memory in the next vertical blank, with a budget per frame, and whatever doesn't fit waits for the next one. I tested it at 1:20 p.m.: the fire cloud really was better, but now a whole warg appeared up in the corner of the screen while the other one burned.
 
-![](../imagens/40-warg-fantasma.png)
-*Two frames apart. On the right, the dying warg has a twin floating at the top of the screen.*
+![](../imagens/40-warg-fantasma-a.png)
+![](../imagens/40-warg-fantasma-b.png)
+*Two frames apart. In the second, the dying warg has a twin floating at the top of the screen.*
 
 The explanation is one of my favorite things we found. To fade a dying warg out, the PlayStation draws it in a hidden spot outside the visible screen and then pastes that picture onto the real warg with a transparent polygon. The Mega Drive has no hidden spot and no transparent polygons, so the port drew the warg exactly where the PlayStation hid it: in plain view. Claude moved the drawing to the right place and, with no transparency to work with, made the dying warg blink instead of fading. That was Claude's call, not mine. In the same test I had noticed the zombies flashing fully above the ground for one frame before their rising animation started. They're supposed to be buried. That one got fixed in the same change.
 
@@ -59,8 +60,9 @@ Four weeks later, reviewing this post, I could have sworn the blink had been my 
 ![](../imagens/41-warg-morte-2340.gif)
 *The same death in the build from 11:40 p.m. that night. One warg, less fire.*
 
-![](../imagens/82-warg-antes-depois.png)
-*Before and after, same frame of the same run. Left, 9:52 a.m.: a cloud of fire and the twin warg floating top left. Right, 11:40 p.m.: fewer flames, no twin. The numbers on top are the debug readout.*
+![](../imagens/82-warg-antes-depois-a.png)
+![](../imagens/82-warg-antes-depois-b.png)
+*Before and after, same frame of the same run. First, 9:52 a.m.: a cloud of fire and the twin warg floating top left. Then, 11:40 p.m.: fewer flames, no twin. The numbers on top are the debug readout.*
 
 ## An idea that waited a month
 
@@ -82,8 +84,9 @@ It worked, and then it broke in creative ways. At 6:05 p.m. I reported that Aluc
 
 At 11:11 p.m. a new one: sometimes the whole screen flashed with a pale layer. The cause was a late frame. When the game logic didn't finish in time, the palette from the previous swap stayed in place for the entire screen.
 
-![](../imagens/31-agua-pisca.png)
-*Left: the water as intended. Right: the frame where the whole screen kept the water colors, HUD included.*
+![](../imagens/31-agua-pisca-a.png)
+![](../imagens/31-agua-pisca-b.png)
+*First: the water as intended. Then: the frame where the whole screen kept the water colors, HUD included.*
 
 ## FM, because I said so
 

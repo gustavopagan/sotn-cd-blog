@@ -40,7 +40,8 @@ At 1:36 p.m. I sent a list. The dying warg spawns a new smoke cloud every two fr
 
 The water from the day before was still flashing the whole screen. I told Claude I'd look for a Mega Drive game with water I liked, and found it in our own family: Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I sent Claude a summary of a video explaining the effect, and asked to replace Symphony's water with it.
 
-![](../imagens/79-bloodlines.png)
+![](../imagens/79-bloodlines-a.png)
+![](../imagens/79-bloodlines-b.png)
 *Castlevania Bloodlines (1994), captured from the cartridge in an emulator. The reflecting water comes later, in the second stage.*
 
 Then I added the most important rule of the day: Alucard is half vampire, so he has no reflection.
@@ -50,8 +51,9 @@ Then I added the most important rule of the day: Alucard is half vampire, so he 
 
 The trade was also technical. Transparent water meant drawing the swimming mermen all the time. With a reflection, they only need to exist when they jump out. At 6:34 p.m. I asked for two more touches I remembered from Bloodlines: the water level rising and falling by a few pixels, and a very subtle ripple in the reflection. Both arrived at 7:11 p.m.
 
-![](../imagens/55-agua-antes-depois.png)
-*The same spot, a day apart. Left: the palette-swap water from October 20. Right: the Bloodlines-style water from the 7:11 p.m. build, darker and mirrored, and a red merman that got his colors back.*
+![](../imagens/55-agua-antes-depois-a.png)
+![](../imagens/55-agua-antes-depois-b.png)
+*The same spot, a day apart. First: the palette-swap water from October 20. Then: the Bloodlines-style water from the 7:11 p.m. build, darker and mirrored, and a red merman that got his colors back.*
 
 ![](../imagens/54-agua-bloodlines.gif)
 *The mermen room in that build. Never more than three of them.*
@@ -79,8 +81,9 @@ Claude's answer made me ask, at 5:29, whether the extra attacks and the two merm
 ![](../imagens/45-mermen-teto.png)
 *Seven at worst, then three.*
 
-![](../imagens/83-mermen-1910-x-2110.png)
-*The mermen room two days apart, same frame of the same run. Left: October 19, palettes converted directly, water still missing. Right: October 21, Bloodlines-style water and the red merman's colors restored.*
+![](../imagens/83-mermen-1910-x-2110-a.png)
+![](../imagens/83-mermen-1910-x-2110-b.png)
+*The mermen room two days apart, same frame of the same run. First: October 19, palettes converted directly, water still missing. Then: October 21, Bloodlines-style water and the red merman's colors restored.*
 
 At 6:03 p.m. I asked whether the death animations had any randomness. They did: the red merman's death throws six pieces and six smoke clouds with random shapes and angles. I asked Claude to remove the dice. With fewer pieces, I argued, each one has to be placed so it looks good, or the result can come out lopsided.
 

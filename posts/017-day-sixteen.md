@@ -35,8 +35,9 @@ At 4:52 a.m. I caught something in a report: with the full map, the music buffer
 
 One of the night's experiments ran the game logic at 30 updates per second instead of 60, with the screen still at 60. At 12:53 p.m. I tested it: apart from some slowdowns noticeable on a first playthrough, the lost sprites around the wargs had improved.
 
-![](../imagens/123-diplo-60-x-30.png)
-*The Diplocephalus room in the Marble Gallery, two recordings Claude made for the comparison. Left: logic at 60 Hz. Right: logic at 30 Hz. Same frame number; the two runs drift apart, so the poses differ. Note the new HUD in the top left.*
+![](../imagens/123-diplo-60-x-30-a.png)
+![](../imagens/123-diplo-60-x-30-b.png)
+*The Diplocephalus room in the Marble Gallery, two recordings Claude made for the comparison. First: logic at 60 Hz. Then: logic at 30 Hz. Same frame number; the two runs drift apart, so the poses differ. Note the new HUD in the top left.*
 
 ## The first heavy enemy
 

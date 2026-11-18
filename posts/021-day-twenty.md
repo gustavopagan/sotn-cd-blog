@@ -34,8 +34,9 @@ At 7:33 p.m. I noticed the new HUD cost more than the old one and asked to optim
 
 In the evening I opened a chat for the opening screens. At 5:38 p.m. I asked for the Bloodlines title screen, from the cartridge in the project folder, as layers I could edit. At 5:48, the PlayStation's background as a PNG. At 6:41 p.m. I made the decision: use the "Castlevania" lettering and the red banner from Bloodlines for Symphony.
 
-![](../imagens/138-bloodlines-x-titulo.png)
-*Left: Castlevania Bloodlines' title, captured from the cartridge. Right: the port's title as it is today, with that lettering and banner, repainted.*
+![](../imagens/138-bloodlines-x-titulo-a.png)
+![](../imagens/138-bloodlines-x-titulo-b.png)
+*First: Castlevania Bloodlines' title, captured from the cartridge. Then: the port's title as it is today, with that lettering and banner, repainted.*
 
 Then the corrections, one after another. At 7:35 p.m.: the red banner has a red glow underneath in Bloodlines; remove it and make it darker than the top. At 7:38: the "Castlevania" lettering has the same red light underneath, because in Bloodlines the whole set sits above a river of lava. Remove it too. At 7:46: it's still red; for the bottom edge of the banner, mirror the metal edge from the top. At 7:53: put the background in shadow mode, or darken its palette if that's safer.
 

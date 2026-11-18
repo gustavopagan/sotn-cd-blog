@@ -95,7 +95,8 @@ Instead I asked for the project's usual approach: unify their sprites and simpli
 
 At 5:03 p.m. I asked if we could take some sound effects from the other games in our reference folder, Bloodlines and Rondo of Blood, in place of some of SOTN's recordings, and whether that would be cheaper or more expensive in resources. At 5:33 I asked for a comparison tool: SOTN's sound on one side, a Bloodlines sound on the other, and a "match" button. Matches replace the SOTN sound; the rest stay.
 
-![](../imagens/79-bloodlines.png)
+![](../imagens/79-bloodlines-a.png)
+![](../imagens/79-bloodlines-b.png)
 *Castlevania: Bloodlines on the Mega Drive, one of the two reference games.*
 
 ![](../imagens/172-rondo.png)

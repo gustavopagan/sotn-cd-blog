@@ -26,7 +26,8 @@ At around 3 a.m. I opened the night's chats one after another, each with the sam
 ![](../imagens/146-nevoa-gas.png)
 *The mist as a gas, from the mist task's previews: a dithered cloud instead of the PlayStation's transparent one.*
 
-![](../imagens/148-pedras-sombra.png)
+![](../imagens/148-pedras-sombra-a.png)
+![](../imagens/148-pedras-sombra-b.png)
 *Two versions of the rocks in the mermen room with the VDP's shadow mode, side by side in the comparison tool.*
 
 ## From my phone

@@ -27,8 +27,9 @@ Claude looked at how the original does it, and the answer was good news: on the 
 ![](../imagens/61-corredor-escuro.gif)
 *The hallway in the 9:37 p.m. build, rebuilt from that commit, with the lights still off: silhouettes, lit windows and a warg. The white box in the top right is the new text box, showing an enemy's name. In this run Alucard never walks far enough for the lights to come on.*
 
-![](../imagens/84-corredor-19-x-22.png)
-*Three days apart. Left: a hallway on October 19, every color converted straight from the PlayStation. Right: the dark hallway of October 22, lit only by the windows, with the new text box in the corner.*
+![](../imagens/84-corredor-19-x-22-a.png)
+![](../imagens/84-corredor-19-x-22-b.png)
+*Three days apart. First: a hallway on October 19, every color converted straight from the PlayStation. Then: the dark hallway of October 22, lit only by the windows, with the new text box in the corner.*
 
 ## Death learns to talk
 

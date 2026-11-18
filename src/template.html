@@ -125,6 +125,10 @@
   .degrau { position: relative; }
   .degrau .crt { position: absolute; }
   .crt.so::before { transform: translate(-8px, 8px); }
+  .crt::before { transition: transform .28s ease-out; }
+  /* troca de quem fica na frente: a tela sobe um pouco e assenta */
+  .crt.sobe { animation: sobe .32s ease-out; }
+  @keyframes sobe { 0% { transform: translateY(6px) scale(.97); } 55% { transform: translateY(-5px) scale(1.025); } 100% { transform: none; } }
   figure img.px { image-rendering: pixelated; }
   @media (min-width: 900px) {
     figure { margin: 36px -110px; }
@@ -297,11 +301,14 @@
       cs.forEach(function (c, j) {
         c.style.zIndex = n - Math.abs(j - k);
         var esq = j > k || (j === k && k === n - 1 && n > 1);
-        c.className = esq ? 'crt so' : 'crt';
+        var cl = esq ? 'crt so' : 'crt';
+        if (j === k && c.dataset.topo !== '1' && g.dataset.pronto) cl += ' sobe';
+        c.dataset.topo = j === k ? '1' : '';
+        c.className = cl;
       });
     }
     cs.forEach(function (c, k) { c.addEventListener('mouseenter', function () { topo(k); }); });
-    topo(0);
+    topo(0); g.dataset.pronto = '1';
     grupos.push({ g: g, n: n, topo: topo, k: 0 });
   });
   // sem mouse (celular): a rolagem embaralha; conforme o grupo atravessa a tela,
@@ -313,7 +320,7 @@
       grupos.forEach(function (o) {
         var r = o.g.getBoundingClientRect();
         if (r.bottom < 0 || r.top > innerHeight) return;
-        var p = (innerHeight * 0.85 - r.top) / (innerHeight * 0.7);
+        var p = (innerHeight * 0.62 - (r.top + r.height / 2)) / (innerHeight * 0.24);
         var k = Math.max(0, Math.min(o.n - 1, Math.floor(p * o.n)));
         if (k !== o.k) { o.k = k; o.topo(k); }
       });

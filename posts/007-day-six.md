@@ -49,16 +49,20 @@ At 2:58 p.m. I reported that the Cthulhu's fireball and the Skelerang's boomeran
 
 At 1:05 a.m. I opened another chat for the scenery colors. The literal conversion was making the backgrounds look posterized. I wanted something adapted to the Mega Drive's look while keeping, as much as possible, the relationship between the colors of the background and the sprites. At 1:30 a.m. I added the constraint that makes it hard: compute each area's palettes together with that area's enemies, Alucard, and the fixed colors I had picked for the items.
 
-![](../imagens/69-marble-ps1-x-port.png)
-*Marble Gallery, first room. Left: the PlayStation, 75 colors. Right: the port that day, every color rounded to the nearest one the Mega Drive has.*
+![](../imagens/69-marble-ps1-x-port-a.png)
+![](../imagens/69-marble-ps1-x-port-b.png)
+*Marble Gallery, first room. First: the PlayStation, 75 colors. Then: the port that day, every color rounded to the nearest one the Mega Drive has.*
 
-![](../imagens/70-marble-paleta-nova.png)
-*Two of the experiments from that chat. Left: new palettes. Right: the same with dithered gradients.*
+![](../imagens/70-marble-paleta-nova-a.png)
+![](../imagens/70-marble-paleta-nova-b.png)
+*Two of the experiments from that chat. First: new palettes. Then: the same with dithered gradients.*
 
 In the afternoon I worked with a comparison viewer Claude built: the Mega Drive version on each side and the PlayStation reference in the middle. I asked for a levels adjustment on the PlayStation image, because the Mega Drive comes out more contrasted and I needed to judge them on equal footing. I asked why the dithering always used a 50% pattern and whether it could vary. I noticed the PlayStation references themselves had a levels problem and sent a corrected one to compare. At 5:23 p.m. I picked a winner from the candidates, and at 5:27 I asked for a new viewer with six versions per room, so I could choose one by one and send back a report.
 
-![](../imagens/64-paleta-cenario.png)
-*Another room, from the Colosseum. Left: the PlayStation. Middle: the direct conversion. Right: a palette planned for the whole area, sharing colors with its enemies.*
+![](../imagens/64-paleta-cenario-a.png)
+![](../imagens/64-paleta-cenario-b.png)
+![](../imagens/64-paleta-cenario-c.png)
+*Another room, from the Colosseum. First: the PlayStation. Next: the direct conversion. Then: a palette planned for the whole area, sharing colors with its enemies.*
 
 ## Fixing my own emulator
 

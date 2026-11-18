@@ -32,11 +32,13 @@ The color work I started on the 23rd reached its first area. Each room of the Ca
 
 The first room exists twice in the game, once for each visit. At 8:09 p.m. I asked for the first-visit room to use the same color plan as the return visit's. At 8:14 p.m. the tests were done and approved, and at 8:21 the plan was in the main build.
 
-![](../imagens/89-entrada-antes-depois.png)
-*The opening forest, which belongs to the Castle Entrance, four days apart. Left: October 21, colors rounded one by one, with the debug readout still on top and Alucard not yet on screen. Right: October 25, with the area's color plan: more depth between the rows of trees.*
+![](../imagens/89-entrada-antes-depois-a.png)
+![](../imagens/89-entrada-antes-depois-b.png)
+*The opening forest, which belongs to the Castle Entrance, four days apart. First: October 21, colors rounded one by one, with the debug readout still on top and Alucard not yet on screen. Then: October 25, with the area's color plan: more depth between the rows of trees.*
 
-![](../imagens/90-corredor-antes-depois.png)
-*The dark hallway, same frame of the same run, three days apart. Left: October 22, with the plain white text box. Right: October 25: the enemy's name now sits in a box drawn with the pause menu's frame, which I had asked for the day before, and the dust under Alucard's feet is dithered.*
+![](../imagens/90-corredor-antes-depois-a.png)
+![](../imagens/90-corredor-antes-depois-b.png)
+*The dark hallway, same frame of the same run, three days apart. First: October 22, with the plain white text box. Then: October 25: the enemy's name now sits in a box drawn with the pause menu's frame, which I had asked for the day before, and the dust under Alucard's feet is dithered.*
 
 ## Every pickup, one palette
 
