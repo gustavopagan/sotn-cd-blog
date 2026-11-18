@@ -30,7 +30,7 @@ At 6:28 p.m. I explained the point: at first, it's just a better way for us to c
 ![](../imagens/136-live-antes-depois.png)
 *Why I wanted it.*
 
-At 11:37 p.m. I tested the recording: clicking record and then replay only paused the game. Was that right? At 11:48 p.m. recording was working. In between, at 11:45, I gave the program an icon I had made.
+At 11:37 p.m. I tested the recording: clicking record and then replay only paused the game. Was that right? At 11:48 p.m. recording was working. In between, at 11:45, I gave the program its icon.
 
 Today the project's instructions have a line for it: when I say "see comment" and a name, Claude opens that comment in the editor, looks at the pictures, and makes the correction.
 
