@@ -31,11 +31,11 @@ The rest of the night was the same kind of work. The enemies' drawings live on a
 
 One finding was mine to approve. When Alucard gets knocked back by a hit, the game was checking his collision with the room four times per frame, even in midair with nothing nearby, and that alone took about 40% of the logic's time. Claude made it check only at the start and end of the movement when the path is clear. At 8:24 a.m. I asked the obvious question, and asked it not to touch anything, just answer: if that happens with Alucard against a wall, does he go through? The shortcut only applies when the whole area his sensors cover is free; with a wall in reach, all four checks still run. And 178 frame-by-frame comparisons between the two versions came out identical. At 8:38: "Good solution!"
 
-| 13 Entrance rooms, 76,000 frames | Start | That morning |
-|---|---|---|
-| Skipped frames per 1,000 | 19.3 | 2.2 |
-| Frames where drawing didn't fit | 979 | 11 |
-| Frames where logic didn't fit | 508 | 64 |
+Across 13 Entrance rooms and 76,000 frames, from the start of the review to that morning:
+
+- skipped frames per 1,000: 19.3 to 2.2;
+- frames where the drawing didn't fit: 979 to 11;
+- frames where the logic didn't fit: 508 to 64.
 
 Part of that drop, in the giants' room, came from the giants' own task. Not zero, as I'd asked. What's left is mostly the logic during hits, and enemies taking an instant to change drawing in the mermen room.
 
