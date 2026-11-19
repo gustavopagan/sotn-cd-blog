@@ -59,7 +59,7 @@ I did a Google search about game menus and ended up crossing paths with [a rewor
 For the background, I asked Google's image AI to put vines on the wall I had made for the title screen and take the carvings out. For whatever reason it filled the stones with little round holes, which triggered my trypophobia. It also couldn't keep to my wall; it seems to carry an inexorable idea of what a castle wall is. Cleaning that up, hole by hole in Photoshop, was the devil's own work. Anyway, for now I'm betting on the RNG and sending the assets to Claude to see what comes out. Closed mouths don't get fed.
 
 ![](../imagens/218-muro-vinhas.jpg)
-*The menu background after the cleanup. My title-screen wall, the AI's vines, and not a single round hole left.*
+*The menu background after the cleanup. What's left of the title-screen wall, the AI's vines, and not a single round hole left.*
 
 [gus]
 On October 24, at 2:26 a.m., I asked Claude to put that menu on Start, with that design but keeping the original game's fonts. Along with the reference menu, the windows on their own and the clean background, I sent icons for the buttons. The spells and the two attack lines on the main screen are tied to buttons, and on the PlayStation those are a square and a circle.
