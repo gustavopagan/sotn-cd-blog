@@ -182,14 +182,17 @@ if(post){
   var v=S.getItem('sotnVolta'); S.removeItem('sotnVolta');
   if(v!==null) addEventListener('load',function(){scrollTo(0,+v)});
   var t=0; addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){
-    S.setItem('sotnUlt',JSON.stringify({u:location.href,y:scrollY}))},200)});
-  S.setItem('sotnUlt',JSON.stringify({u:location.href,y:v!==null?+v:0}));
+    S.setItem('sotnUlt2',JSON.stringify({u:location.pathname.split('/').pop(),y:scrollY}))},200)});
+  S.setItem('sotnUlt2',JSON.stringify({u:location.pathname.split('/').pop(),y:v!==null?+v:0}));
 }else{
   var r=document.referrer, dentro=false;
   try{dentro=r&&new URL(r).origin===location.origin}catch(e){}
-  var u=S.getItem('sotnUlt');
-  if(dentro) S.removeItem('sotnUlt');
-  else if(u){u=JSON.parse(u); S.setItem('sotnVolta',u.y); location.replace(u.u)}
+  S.removeItem('sotnUlt');
+  var u=S.getItem('sotnUlt2');
+  if(dentro) S.removeItem('sotnUlt2');
+  else if(u){u=JSON.parse(u);
+    // só o nome do post, relativo a esta página: o endereço completo muda a cada versão
+    if(/^[a-z0-9-]+\.html$/.test(u.u)){S.removeItem('sotnUlt2'); S.setItem('sotnVolta',u.y); location.replace('posts/'+u.u+location.search)}}
 }
 }catch(e){}})();
 </script>
