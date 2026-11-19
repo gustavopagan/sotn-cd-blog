@@ -44,6 +44,13 @@ In the last two posts I wrote about the plain pause menu that shipped because th
 ![](../imagens/18-moldura-verde-ps1.png)
 *The green frame from the PlayStation's file select screen.*
 
+Even though humans have a monstrous capacity to adapt, and even though, in the end, I find the original menu nostalgic, it's hideous. It doesn't match anything that was being made at the time.
+
+![](../imagens/226-menu-sotn-ps1.png)
+*The original pause menu on the PlayStation.*
+
+In 1997, on the PlayStation itself, there were already much more pompous menus with heavy design, like Mega Man 8's. I could have gone that way, but I felt it would stray too far from the menus you found in 16-bit games. Then I thought about the Mega Man X series. It has exploration and character growth too, and its menus could be an inspiration further ahead (something we'll get into later). For now, we'd have to settle for something temporary.
+
 I did a Google search about game menus and ended up crossing paths with [a rework of SOTN's pause menu](https://www.reddit.com/r/castlevania/comments/1gxebux/i_tried_to_fix_the_sotn_pause_menu/) that u/Plubby_ had posted on r/castlevania. I used it as the reference for a placeholder menu. My plan was a more radical redesign further ahead, reusing the flourishes deliberately and working transparency in.
 
 ![](../imagens/219-plubby-menu.png)
