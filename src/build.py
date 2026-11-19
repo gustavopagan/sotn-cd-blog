@@ -192,7 +192,7 @@ if(post){
   if(dentro) S.removeItem('sotnUlt2');
   else if(u){u=JSON.parse(u);
     // só o nome do post, relativo a esta página: o endereço completo muda a cada versão
-    if(/^[a-z0-9-]+\.html$/.test(u.u)){S.removeItem('sotnUlt2'); S.setItem('sotnVolta',u.y); location.replace('posts/'+u.u+location.search)}}
+    if(/^[a-z0-9-]+\\.html$/.test(u.u)){S.removeItem('sotnUlt2'); S.setItem('sotnVolta',u.y); location.replace('posts/'+u.u+location.search)}}
 }
 }catch(e){}})();
 </script>
