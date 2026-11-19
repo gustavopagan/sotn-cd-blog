@@ -28,7 +28,7 @@ Someone is already doing it the hard way. Pigsy, of Pigsy's Retro Game Dev Tutor
 
 Go follow him: [YouTube](https://www.youtube.com/@PigsysRetroGameDevTutorials) and [X](https://x.com/PigsyRetro).
 
-My project wanted something else: the castle itself. Every room connected, the inverted castle, the equipment, the familiars. That meant a bigger machine.
+Unlike him, I start this project with the naivety of a kid who jammed a Mega Drive cartridge into an ISA slot. I want to see if the game runs or, at least, how far the Mega CD can go with this game. The castle itself: every room connected, the inverted castle, the equipment, the familiars. That meant a bigger machine.
 
 I also want a port with a few things the original never got. Remember the menu Igarashi had no time to finish? To me, finishing that design means extra care for everything that lives inside the menu: customizing your familiars, customizing the menu itself.
 
