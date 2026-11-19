@@ -14,7 +14,7 @@ Pigsy is a programmer. He writes his game himself. I don't.
 
 Some would argue that some skills are gonna lose their value because of AI. I think it's the opposite. As developers lean more and more on AI to write code, and as the money for writing it by hand dries up, the reasons left to keep programming are entirely personal, like taste, curiosity, stubbornness and the pleasure of it. The people who keep going for those reasons alone are getting rare, and that makes them more valuable, not less. If one day the companies that own these platforms decide to switch the AI engines off, people like Pigsy will still be able to build things.
 
-What I bring is the other half. I'm not a sprite artist, and I don't draw new sprites from scratch. What I do is take the original game's art and rework it for the Mega Drive, piece by piece, mostly in LibreSprite. That's where my years as an art director in audiovisual production get put to the test. Nothing slips by. Two examples.
+What I bring is the other half. I'm not a professional sprite artist, but I do my best while using my art direction skills. What I do is take the original game's art and rework it for the Mega Drive, piece by piece, mostly in LibreSprite. That's where my years as an art director in audiovisual production get put to the test. Nothing slips by. Two examples.
 
 ## The title screen
 
