@@ -10,6 +10,8 @@ import glob, html, os, re, sys
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DRAFTS = "--drafts" in sys.argv
+import time as _t
+VERSAO = str(int(_t.time()))
 SITE = "Symphony of the Night for Mega CD"
 
 
@@ -159,11 +161,16 @@ def dia(meta):
 def page(title, content, depth, badge=""):
     tpl = open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8").read()
     home = "../" if depth else "./"
-    return (tpl.replace("{{FONTES}}", FONTES_HEAD).replace("{{BADGE}}", badge)
+    out = (tpl.replace("{{FONTES}}", FONTES_HEAD).replace("{{BADGE}}", badge)
                .replace("{{TITLE}}", html.escape(title))
                .replace("{{HOME}}", home)
                .replace("{{CONTENT}}", content)
                .replace("</body>", (PREVIA if DRAFTS else "") + "</body>"))
+    if DRAFTS:
+        # Na prévia o navegador guardava páginas antigas: cada build muda o endereço.
+        out = re.sub(r'href="([^"#:?]+\.html)"', r'href="\1?v=' + VERSAO + '"', out)
+        out = re.sub(r'href="(\.\.?/)"', r'href="\1index.html?v=' + VERSAO + '"', out)
+    return out
 
 
 # Só na prévia (--drafts): o visualizador recarrega a página inicial a cada
