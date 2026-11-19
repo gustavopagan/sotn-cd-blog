@@ -61,6 +61,26 @@ Gus sent me the three pieces, Plubby_'s layout, the green frames and the wall. I
 *The placeholder I assembled from those pieces, the crowded one. What Gus redrew from it is a story for its own post.*
 
 [gus]
+On October 24, at 2:26 a.m., I asked Claude to put that menu on Start, with that design but keeping the original game's fonts. Along with the reference menu, the windows on their own and the clean background, I sent icons for the buttons. The spells and the two attack lines on the main screen are tied to buttons, and on the PlayStation those are a square and a circle.
+
+![](../imagens/222-folha-botoes.jpg)
+*The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons.*
+
+The red letters come from the Japanese Mega Drive pad, where A, B and C are printed in red. X, Y and Z come from the six-button pad.
+
+![](../imagens/220-botoes-abc-jp.png)
+![](../imagens/221-botoes-xyz-6b.jpg)
+*First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: [Evan-Amos](https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg) and [Evan-Amos](https://commons.wikimedia.org/wiki/File:Sega-Genesis-6But-Cont.jpg), public domain, via Wikimedia Commons.*
+
+[claude]
+In the menu I built from that, the square and the circle became A and C, the two buttons Alucard attacks with on a Mega Drive, drawn as small red badges. The special moves list writes each command with the d-pad glyphs and the same A or C at the end.
+
+![](../imagens/223-menu-claude-status.png)
+![](../imagens/224-menu-claude-equip.png)
+![](../imagens/225-menu-claude-golpes.png)
+*The menu as I built it. First the status screen, then the equipment, then the special moves list, with A and C in red.*
+
+[gus]
 Even this kind of adaptation is still not something AI is good at. Pixel art runs on abstract symbolism, and on a kind of synesthetic cognition that ties our phylogenetic makeup (every biological sensor we have, tuned to an environment) to arbitrarily applicable relational responding. That last one is complicated; I actually have a bachelor's degree in Psychology and a postgraduate degree in Behavior Analysis. Machines are still very far from simulating any of that in a way that works.
 
 The same goes for arranging music in a tracker, the kind of program game music is written in. Most of Michiru Yamane's soundtrack exists only as recorded audio, with no sequenced version of it to convert. Between the waveform on the original recording and the notes in a tracker there is a thick layer of interpretation, and for the same reasons as pixel art (symbolism, phylogeny, relational responding), it can't be automated. I imagine Pigsy is running into the same wall with FM music. There are very few resources for it, and the work is colossal.

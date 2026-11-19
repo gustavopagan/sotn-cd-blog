@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 23: Nine chats and a traffic light | Symphony of the Night for Mega CD</title>
+<link rel="preload" href="../fonts/cd-drive.ce3e78d0.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/monommm5.917a3649.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/archivo-latin-wdth-normal.258a93fe.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"CD Drive";src:url(../fonts/cd-drive.ce3e78d0.woff2) format("woff2");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:"monoMMM5";src:url(../fonts/monommm5.917a3649.woff2) format("woff2");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-wdth-normal.258a93fe.woff2) format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-normal.837705d4.woff2) format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-wdth-italic.dd09f728.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-italic.ad6d313a.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Noto Sans JP";src:url(../fonts/noto-jp-titulo.f7f1ca99.woff2) format("woff2");font-style:normal;font-weight:900;font-display:block}
+</style>
+<style>
+  /* Visual: a caixa japonesa do Mega-CD (KV aprovado em 18/11). Papel creme quadriculado com
+     grade de 24 px centralizada; tudo encaixado nela. CD Drive nos cabeçalhos, monoMMM_5 nos
+     textos curtos, Archivo no texto corrido. */
+  :root {
+    --ink: #18181A; --red: #D2232A; --blue: #1B56B0; --navy: #1E2C66; --yellow: #F3D23C;
+    --faixa: #AE2900; --paper: #EAE6DA; --cream: #FBF7E8;
+    --cd: "CD Drive", "Archivo", sans-serif;
+    --mono: "monoMMM5", ui-monospace, monospace;
+    --body: "Archivo", system-ui, sans-serif;
+    --chk: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%) 0 0 / 4px 4px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background-color: var(--paper);
+    background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: calc(50% + 12px) 0, calc(50% + 12px) 0;
+    color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px;
+  }
+  a { color: var(--blue); }
+  .topo { height: 18px; background: var(--ink); }
+  .cores { display: flex; height: 6px; }
+  .cores i { flex: 1; } .cores i:nth-child(1) { background: var(--red); } .cores i:nth-child(2) { background: #00964B; }
+  .cores i:nth-child(3) { background: var(--yellow); } .cores i:nth-child(4) { background: var(--blue); }
+  .col { padding: 0 24px; }
+  .w1056 { width: 1056px; max-width: 100%; margin: 0 auto; }
+  .w720 { width: 720px; max-width: 100%; margin: 0 auto; }
+  .cdx { font-family: var(--cd); font-weight: 400; text-transform: uppercase; }
+  .mono { font-family: var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+
+  /* cabeçalho do site */
+  header.site { padding-top: 24px; padding-bottom: 24px; }
+  .hdr { display: flex; align-items: flex-start; gap: 48px; isolation: isolate; }
+  .hdr .tt { flex: 1; min-width: 0; }
+  .jp { height: 24px; font: 900 15px/24px var(--mono), "Noto Sans JP", sans-serif; letter-spacing: .12em; }
+  .wordmark { margin: 0; font-family: var(--cd); font-size: 64px; line-height: 72px; text-transform: uppercase; }
+  .wordmark a { color: var(--ink); text-decoration: none; }
+  .sub2 { height: 24px; display: flex; align-items: center; gap: 12px; }
+  .sub2 span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--red); text-transform: uppercase; white-space: nowrap; }
+  .sub2 i { flex: 1; height: 3px; background: var(--ink); }
+  .badge { position: relative; flex: 0 0 auto; width: 96px; height: 120px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; background: var(--ink); color: #fff; text-decoration: none; }
+  .badge::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .badge span { font: 400 14px/24px var(--mono); letter-spacing: .1em; }
+  .badge b { font: 400 44px/48px var(--mono); color: var(--yellow); }
+
+  /* post */
+  .kicker { height: 24px; margin-top: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--blue); text-transform: uppercase; }
+  /* Narrador: [gus] vermelho, [claude] azul; nome em texto, linha à esquerda no grid. */
+  .voz { border-left: 3px solid var(--faixa); padding-left: 21px; margin: 24px 0; }
+  .voz-claude { border-left-color: var(--blue); }
+  .voz > :last-child { margin-bottom: 0; }
+  .voz .quem { margin: 0; height: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--faixa); }
+  .voz-claude .quem { color: var(--blue); }
+  .voz figure { left: calc(50% - 12px); }
+  h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
+  article, .list, figure { isolation: isolate; }
+  article p { margin: 0 0 24px; }
+  .note { display: inline-block; background: var(--red); color: #fff; font: 400 15px/24px var(--mono); padding: 0 8px; text-transform: uppercase; margin-bottom: 24px; }
+  .secr { display: flex; align-items: center; gap: 24px; height: 48px; margin: 48px 0 24px; isolation: isolate; }
+  .secr i { flex: 1; height: 3px; background: var(--ink); }
+  h2.sec { position: relative; margin: 0; height: 48px; line-height: 50px; padding: 0 24px; background: var(--red); color: #fff;
+    font-family: var(--cd); font-weight: 400; font-size: 22px; text-transform: uppercase; white-space: nowrap; }
+  h2.sec::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote { position: relative; margin: 48px 0; }
+  .quote::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote .in { background: var(--yellow); box-shadow: inset 0 0 0 2px var(--ink); padding: 24px; }
+  .quote .q { margin: 0; font: italic 700 20px/24px var(--body); }
+  .quote .tr { margin: 0; font-size: 13px; line-height: 24px; }
+  pre.term { background: var(--ink); color: #E6E9F5; padding: 12px 24px; margin: 24px 0 48px; overflow-x: auto;
+    font: 15px/24px var(--mono); white-space: pre-wrap; }
+  .how { position: relative; margin: 48px 0 0; background: #D6E7F6; }
+  .how::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .how .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .how .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .how .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; }
+  .how p { margin: 0; padding: 24px; font-size: 15px; }
+
+  /* figuras: largura de 960 no computador, a coluna no celular */
+  figure { --fw: min(960px, calc(100vw - 48px)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
+  figure + p, figure + .secr, figure + figure { margin-top: 48px; }
+  figure img { display: block; width: 100%; height: auto; }
+  figure picture { display: block; }
+  figure img.px { image-rendering: pixelated; }
+  .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
+  .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
+  .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
+  /* tela de CRT: bordas abauladas (#crt) e sombra dura em xadrez */
+  .crt { display: block; position: relative; cursor: zoom-in; }
+  .crt::before { content: ""; position: absolute; inset: 0; transform: translate(8px, 8px); background: var(--chk);
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); z-index: 0; pointer-events: none; transition: transform .28s ease-out; }
+  .crt.so::before { transform: translate(-8px, 8px); }
+  .tubo { position: relative; z-index: 1; display: block; background: var(--ink); padding: 4px; -webkit-clip-path: url(#crt); clip-path: url(#crt); }
+  .tubo img { -webkit-clip-path: url(#crt); clip-path: url(#crt); background: #000; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { position: absolute; left: var(--l); top: var(--t); width: var(--w); }
+  .crt.sobe { animation: sobe .32s ease-out; }
+  @keyframes sobe { 0% { transform: translateY(6px) scale(.97); } 55% { transform: translateY(-5px) scale(1.025); } 100% { transform: none; } }
+  /* painel (diagramas e gráficos): chapado, sem tubo, sombra em xadrez */
+  .painel { position: relative; display: block; cursor: zoom-in; }
+  .painel::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+
+  /* navegação e lista */
+  .posts-nav { display: flex; gap: 24px; margin-top: 72px; }
+  .posts-nav a { flex: 1; display: block; text-decoration: none; color: var(--ink); background: var(--cream);
+    box-shadow: inset 0 0 0 2px var(--ink); padding: 12px 24px; min-height: 72px; }
+  .posts-nav a:hover { background: #fff; }
+  .posts-nav .d { display: block; color: var(--red); font: 400 17px/24px var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+  .posts-nav .t { display: block; font: 400 20px/24px var(--cd); text-transform: uppercase; }
+  .posts-nav .next { text-align: right; }
+  .list { display: grid; gap: 48px; padding-top: 24px; }
+  .card { position: relative; display: block; text-decoration: none; color: var(--ink); background: var(--cream); }
+  .card::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .card .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .card .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .card .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; }
+  .card .t { display: block; padding: 24px 24px 0; font: 400 26px/24px var(--cd); text-transform: uppercase; }
+  .card .ex { display: block; padding: 24px; font-size: 15px; color: #3a3a3e; }
+  .card:hover .t { color: var(--red); }
+
+  footer.site { padding-top: 48px; padding-bottom: 24px; }
+  footer.site .rule { height: 3px; background: var(--ink); }
+  footer.site .row { display: flex; align-items: center; gap: 24px; min-height: 69px; flex-wrap: wrap; }
+  footer.site p { flex: 1 1 360px; margin: 0; font-size: 13px; line-height: 24px; color: #3a3a3e; }
+  footer.site .marca { font: 400 40px/48px var(--cd); color: var(--blue); }
+
+  .zoom { position: fixed; inset: 0; z-index: 50; background: #000; overflow: auto; -webkit-overflow-scrolling: touch; display: none; }
+  .zoom.on { display: block; }
+  .zoom img { display: block; margin: auto; max-width: 100vw; max-height: 100vh; width: auto; height: auto;
+    position: relative; top: 50%; transform: translateY(-50%); cursor: zoom-in; }
+  .zoom.big img { max-width: none; max-height: none; width: 250vw; top: 0; transform: none; cursor: zoom-out; }
+  .zoom img.px { image-rendering: pixelated; }
+  .zoom .x { position: fixed; top: 10px; right: 10px; z-index: 51; width: 48px; height: 48px; background: var(--red);
+    color: #fff; font: 400 24px/48px var(--mono); text-align: center; cursor: pointer; }
+  .zoom .seta { position: fixed; top: 50%; z-index: 51; transform: translateY(-50%); width: 48px; height: 72px; background: var(--navy);
+    color: #fff; font: 400 32px/72px var(--mono); text-align: center; cursor: pointer; user-select: none; }
+  .zoom .seta.ant { left: 8px; } .zoom .seta.prox { right: 8px; }
+  .zoom.so1 .seta, .zoom.big .seta { display: none; }
+  .zoom .tip { position: fixed; left: 0; right: 0; bottom: 12px; text-align: center; color: #ccc; font: 13px/24px var(--mono); pointer-events: none; }
+
+  /* celular: coluna de 336 px presa à grade */
+  @media (max-width: 700px) {
+    .col { padding: 0 calc((100% - 336px) / 2); }
+    figure { --fw: 336px; }
+    .hdr { flex-direction: column; gap: 0; }
+    .badge { order: -1; width: auto; height: 48px; flex-direction: row; gap: 12px; padding: 0 12px; margin-bottom: 24px; }
+    .badge b { font-size: 28px; }
+    .wordmark { font-size: 34px; line-height: 36px; }
+    .sub2 span { font-size: 14px; }
+    h1.ttl { font-size: 30px; line-height: 36px; }
+    h2.sec { font-size: 20px; padding: 0 12px; }
+    .secr { gap: 12px; }
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+    .posts-nav { flex-direction: column; }
+    .card .t { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="topo"></div><div class="cores"><i></i><i></i><i></i><i></i></div>
+<header class="site col">
+  <div class="w1056 hdr">
+    <div class="tt">
+      <div class="jp">メガCD移植・開発日誌</div>
+      <p class="wordmark"><a href="../index.html?v=1795059240">Symphony of the Night</a></p>
+      <div class="sub2"><span>A Mega CD port &middot; Development log</span><i></i></div>
+    </div>
+    <div class="badge"><span>DAY</span><b>23</b></div>
+  </div>
+</header>
+<main class="col">
+<article class="w720">
+<div class="kicker">Day 23 · November 9, 2026</div>
+<h1 class="ttl">Nine chats and a traffic light</h1>
+<p class="note">Draft: not published yet</p>
+<p>November 9 started with tests of what the night shift had left: the wolf, the mermen room shadow, the mist, the door. By 12:05 p.m. I had approved or waved through all four. Then the day turned into logistics.</p>
+<figure><span class="painel"><picture><source media="(max-width: 700px)" srcset="../img/152-dia23-linha-do-tempo-m.png"><img src="../img/152-dia23-linha-do-tempo.png" width="1200" height="540" alt="November 9. The shaded block is the afternoon I was out. The commits kept coming." loading="lazy"></picture></span><figcaption class="cap"><span class="num">1</span><p>November 9. The shaded block is the afternoon I was out. The commits kept coming.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">The VM is full again</h2><i></i></div>
+<p>At 12:27 p.m., before anything else, I said we had to clean the VM: the virtual machine on my PC where Claude's chats compile and run the emulator was out of space again. At 1:03 p.m. I hesitated to ask the finished chats to merge their work, because merging takes space and there wasn't any.</p>
+<p>There was a cleanup script. The problem was knowing which chat had used it. At 2:49 p.m. I pasted the same command into ten chats, one after the other, asking each to report the free space before and after. At 2:53 p.m.:</p>
+<div class="quote"><div class="in"><p class="q">"I ran it in several merged chats, but it doesn't look like I found the problem."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<figure><span class="painel"><picture><img src="../img/160-colar.png" width="1100" height="604" alt="Three times that day I pasted the same message into nine or ten chats. This was the first." loading="lazy"></picture></span><figcaption class="cap"><span class="num">2</span><p>Three times that day I pasted the same message into nine or ten chats. This was the first.</p></figcaption></figure>
+<p>At 4:05 p.m. one chat finally came back with real numbers. Its own corner of the VM had gone from 2.0 GB to 7 MB, and the VM's free space from 1.0 GB to 3.0 GB. The script had skipped most of it on the first pass, because it doesn't touch what it doesn't recognize, so Claude deleted its own leftovers by hand: 19 copies of test discs and old measurement files.</p>
+<figure><span class="painel"><picture><source media="(max-width: 700px)" srcset="../img/154-vm-espaco-m.png"><img src="../img/154-vm-espaco.png" width="1100" height="524" alt="One chat&#x27;s cleanup, as that chat reported it." loading="lazy"></picture></span><figcaption class="cap"><span class="num">3</span><p>One chat's cleanup, as that chat reported it.</p></figcaption></figure>
+<p>I wasn't satisfied:</p>
+<div class="quote"><div class="in"><p class="q">"There has to be a more efficient way to do this. That's the only chat I managed to find! The folders don't have the same names as the chats or the tasks, because when I create a chat the task doesn't necessarily exist yet, and that's where the names diverge. And there are a lot of chats open."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>I asked for two things: permission to delete any chat's folders, and more space for the VM. At 4:10 p.m. I couldn't find the menu or the folder Claude pointed me to, so I opened PowerShell and searched my user folders for the VM's disk file myself. It turned up at 4:12: `sessiondata.vhdx`, inside the Claude app's data folder. At 4:14 the VM reported 9.3 GB free out of 9.8.</p>
+<p>That same reply came with an admission: Claude had first run the free-space check in its cloud container, where that path doesn't exist, instead of on my PC.</p>
+<div class="secr"><h2 class="sec">Leaving them to work</h2><i></i></div>
+<p>At 3:45 p.m. I had to leave for a few hours and asked whether chats could start only when it made sense: if one depends on another finishing something, it waits.</p>
+<p>Claude wrote a rulebook for unattended work and a small traffic light script. Each task turns on a light when it ends: merged, ready for testing, or stopped, with the reason. Anyone waiting checks the light, leaves a note on a shared board, and comes back on its own 20 minutes later. Nobody asks me anything. A decision that can't be undone gets prepared, written down as pending, and left for me.</p>
+<p>At 4:16 p.m. I pasted nine prompts into nine chats.</p>
+<figure><span class="painel"><picture><img src="../img/153-nove-chats.png" width="1200" height="730" alt="Who waited for whom. One chat frees code space; the others need that space before making their test discs." loading="lazy"></picture></span><figcaption class="cap"><span class="num">4</span><p>Who waited for whom. One chat frees code space; the others need that space before making their test discs.</p></figcaption></figure>
+<p>At 4:41 p.m. I left. I came back at 8:14 p.m. In between, the chats made 58 commits, and the code-space task merged by itself at 6:44 p.m. One trick in it: a decompression table of 256 jumps became one of 32, which freed 896 bytes in each of the two tightest memory areas. Same output, four cycles more per token.</p>
+<div class="secr"><h2 class="sec">Prayer</h2><i></i></div>
+<p>One of the nine tasks was the menu sounds. I had written in its prompt that the menu music was my call, and to leave it silent. The chat looked at the decompiled sound code and came back with a finding: "Prayer", the menu track, isn't a sequenced song that would need rearranging. It's a regular streamed track on the original disc. Claude's proposal was to play that file as-is, through the same path as the area music, with the PS1's loop point. At 4:41 p.m., on my way out, I agreed.</p>
+<p>The same chat noticed the play time had never advanced in the port. Nothing counted the seconds, so the status screen always showed 0:00:00, and so did saves. It counts now, and stops in the menu and the map, as on the PS1.</p>
+<p>It also looked at the title screen's lightning. On the PS1 it isn't transparency: the game swaps between four ready-made versions of the same image area.</p>
+<figure class="grupo"><div class="degrau zz" style="--ar:100/29.766;--zar:100/134.156"><span class="crt" style="--l:0.000%;--t:0%;--w:31.750%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:4"><span class="tubo"><img src="../img/158-relampago-ps1-a.png" class="px" width="512" height="480" alt="The four versions of the title area on the PS1, from my disc. On the Mega Drive this can be a palette swap, if all four share the same drawing." loading="lazy"></span></span><span class="crt" style="--l:22.750%;--t:0%;--w:31.750%;--zl:46.000%;--zt:20.755%;--zw:54.000%;z-index:3"><span class="tubo"><img src="../img/158-relampago-ps1-b.png" class="px" width="512" height="480" alt="The four versions of the title area on the PS1, from my disc. On the Mega Drive this can be a palette swap, if all four share the same drawing." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:31.750%;--zl:0.000%;--zt:41.509%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/158-relampago-ps1-c.png" class="px" width="512" height="480" alt="The four versions of the title area on the PS1, from my disc. On the Mega Drive this can be a palette swap, if all four share the same drawing." loading="lazy"></span></span><span class="crt" style="--l:68.250%;--t:0%;--w:31.750%;--zl:46.000%;--zt:62.264%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/158-relampago-ps1-d.png" class="px" width="512" height="480" alt="The four versions of the title area on the PS1, from my disc. On the Mega Drive this can be a palette swap, if all four share the same drawing." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">5</span><p>The four versions of the title area on the PS1, from my disc. On the Mega Drive this can be a palette swap, if all four share the same drawing.</p></figcaption></figure>
+<p>One idea from that chat didn't stay. Death steals Alucard's gear in the prologue, and on the PS1 the stolen icon grows out of the center. Claude made the growing icon as ready-made frames. It fit, but it took the spot in that room's data package where the wolf and mist are read from the CD, so Alucard couldn't transform in Death's room. Claude undid it and left the item open.</p>
+<div class="secr"><h2 class="sec">Done that already?</h2><i></i></div>
+<p>At 8:18 p.m. two chats got a question from me in the same minute.</p>
+<p>To the color task, about the shadows it was adding to three Entrance rooms: "If I'm not mistaken, shadow was already implemented in the mermen room today!" It had been. The prompt asked for the mermen room's method to be reused in rooms 1, 8 and 10, and those are the rooms the commits touched.</p>
+<figure class="grupo"><div class="degrau zz" style="--ar:100/32.742;--zar:100/146.244"><span class="crt" style="--l:0.000%;--t:0%;--w:31.750%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:4"><span class="tubo"><img src="../img/157-sala8-sombra-a.png" class="px" width="260" height="264" alt="Room 8. Options from the comparison tool for the wall-only shadow." loading="lazy"></span></span><span class="crt" style="--l:22.750%;--t:0%;--w:31.750%;--zl:46.000%;--zt:20.621%;--zw:54.000%;z-index:3"><span class="tubo"><img src="../img/157-sala8-sombra-b.png" class="px" width="256" height="264" alt="Room 8. Options from the comparison tool for the wall-only shadow." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:31.750%;--zl:0.000%;--zt:41.564%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/157-sala8-sombra-c.png" class="px" width="256" height="264" alt="Room 8. Options from the comparison tool for the wall-only shadow." loading="lazy"></span></span><span class="crt" style="--l:68.250%;--t:0%;--w:31.750%;--zl:46.000%;--zt:62.507%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/157-sala8-sombra-d.png" class="px" width="260" height="264" alt="Room 8. Options from the comparison tool for the wall-only shadow." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">6</span><p>Room 8. Options from the comparison tool for the wall-only shadow.</p></figcaption></figure>
+<p>To the menu task: "Wait, what are you doing? Why are you messing with the menu with the old design?" At 8:30 I explained: I meant the "press start" screen, which we'd already redone and I thought was already in the main branch, and the Konami logo before it. At 8:31: go ahead.</p>
+<p>Since I wasn't there to pick colors in the comparison tool, I had asked the color task to build options for each item, put its recommendation on the disc, and say where the others were. At 8:14 p.m. I told it my decisions and report were in the comparison folders.</p>
+<figure class="grupo"><div class="degrau" style="--ar:100/192.184;--zar:100/292.680"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/155-portao-a.png" class="px" width="228" height="804" alt="The castle gate. First the old conversion, then the new one in neutral grays. In each, the top is the source and the bottom is the Mega Drive version." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:35.784%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/155-portao-b.png" class="px" width="231" height="804" alt="The castle gate. First the old conversion, then the new one in neutral grays. In each, the top is the source and the bottom is the Mega Drive version." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">7</span><p>The castle gate. First the old conversion, then the new one in neutral grays. In each, the top is the source and the bottom is the Mega Drive version.</p></figcaption></figure>
+<figure><span class="crt"><span class="tubo"><img src="../img/156-slogra.png" class="px" width="720" height="336" alt="Slogra. Top, before; bottom, the recommendation: yellower beak, greener body." loading="lazy"></span></span><figcaption class="cap"><span class="num">8</span><p>Slogra. Top, before; bottom, the recommendation: yellower beak, greener body.</p></figcaption></figure>
+<p>One of its changes was switched off by default: the new colors for every area's loading rooms made the full-castle build stop in those rooms.</p>
+<div class="secr"><h2 class="sec">The door</h2><i></i></div>
+<p>At 2:59 p.m., testing the merged wolf and mist, I reported: "the game froze right when the door closes." Claude fixed it by 3:13. At 3:38 the remaining issue was a pause of about 0.7 seconds the first time Alucard turns into a wolf or mist after the door, while the wolf's data is re-read from the CD.</p>
+<div class="quote"><div class="in"><p class="q">"It bothers me. Leave that pending."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>In the budget task's prompt I wrote that I wanted it without the pause, reading from the CD in the background from the moment the door closes. It's the idea from the night before, borrowing the music's buffer, now with an item number. By 11:54 p.m. that chat had the door holding on its last frame until the new data arrived.</p>
+<figure><span class="crt"><span class="tubo"><img src="../img/159-lobo-porta.png" class="px" width="512" height="448" alt="The wolf in the door room, from the merge tests that day." loading="lazy"></span></span><figcaption class="cap"><span class="num">9</span><p>The wolf in the door room, from the merge tests that day.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">Housekeeping</h2><i></i></div>
+<p>At 9:52 p.m. one chat answered me in English. I told it to speak Portuguese. At 8:36 p.m. I had to ask a chat whether it was the one that wanted me to test a CD audio build. It wasn't; the one that was got told to drop the test.</p>
+<p>At 10:34 p.m. I asked whether the test discs were being built with all areas or only the tested ones. My own prompts had asked for the whole castle, for the measurements. At 10:40 I pasted the answer into nine chats: from now on, the whole castle only when it's needed; otherwise just the Castle Entrance and the Alchemy Laboratory.</p>
+<p>At 10:39 p.m. I approved the budget plan for the Castle Entrance.</p>
+<div class="secr"><h2 class="sec">The number</h2><i></i></div>
+<p>159 commits, 94 messages from me, a few of them the same message nine times. Nine chats, one traffic light, one VM disk I had to find myself.</p>
+<div class="how"><div class="bar"><b>How</b><span>this is made</span></div><p>I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post was drafted by Claude from my chat messages and the project's commit history, and reviewed by me. The images are previews and comparisons Claude made during that work, plus frames from my own PS1 disc.</p></div>
+<nav class="posts-nav"><a class="prev" href="day-22.html?v=1795059240"><span class="d">&larr; Day 22</span><span class="t">I have the sensors</span></a><a class="next" href="day-24.html?v=1795059240"><span class="d">Day 24 &rarr;</span><span class="t">How did they test in 1997?</span></a></nav>
+</article>
+</main>
+<footer class="site col">
+  <div class="w1056">
+    <div class="rule"></div>
+    <div class="row">
+      <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
+      <div class="marca">SOTN&middot;CD</div>
+    </div>
+  </div>
+</footer>
+<div class="cores"><i></i><i></i><i></i><i></i></div><div class="topo"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
+<div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
+<script>
+// Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
+(function(){try{
+  var n=performance.getEntriesByType('navigation')[0];
+  if(!location.hash && (!n||n.type==='navigate')){
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    scrollTo(0,0);
+    var h=document.querySelector('header'); if(h&&h.scrollIntoView) h.scrollIntoView({block:'start'});
+  }
+}catch(e){}})();
+(function () {
+  var z = document.getElementById('zoom'), zi = document.getElementById('zoomimg');
+  var todas = Array.prototype.slice.call(document.querySelectorAll('figure img')), atual = 0;
+  function mostra(i) {
+    atual = (i + todas.length) % todas.length; var im = todas[atual];
+    zi.src = im.currentSrc || im.src; zi.className = im.className;
+    z.className = 'zoom on' + (todas.length < 2 ? ' so1' : ''); document.body.style.overflow = 'hidden';
+  }
+  todas.forEach(function (im, i) {
+    (im.closest('.crt') || im).addEventListener('click', function () { mostra(i); });
+  });
+  document.getElementById('zoomant').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual - 1); });
+  document.getElementById('zoomprox').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual + 1); });
+  var grupos = [];
+  document.querySelectorAll('.degrau').forEach(function (g) {
+    var cs = Array.prototype.slice.call(g.querySelectorAll('.crt')), n = cs.length;
+    // a tela sob o mouse fica por cima; as outras se empilham a partir dela, como cartas,
+    // e cada sombra cai sobre a vizinha que está por baixo
+    function topo(k) {
+      cs.forEach(function (c, j) {
+        c.style.zIndex = n - Math.abs(j - k);
+        var esq = j > k || (j === k && k === n - 1 && n > 1);
+        var cl = esq ? 'crt so' : 'crt';
+        if (j === k && c.dataset.topo !== '1' && g.dataset.pronto) cl += ' sobe';
+        c.dataset.topo = j === k ? '1' : '';
+        c.className = cl;
+      });
+    }
+    cs.forEach(function (c, k) { c.addEventListener('mouseenter', function () { topo(k); }); });
+    topo(0); g.dataset.pronto = '1';
+    grupos.push({ g: g, n: n, topo: topo, k: 0 });
+  });
+  // sem mouse (celular): a rolagem embaralha; conforme o grupo atravessa a tela,
+  // cada tela passa a vez para a seguinte
+  if (window.matchMedia && matchMedia('(hover: none)').matches && grupos.length) {
+    var pend = false;
+    function rola() {
+      pend = false;
+      grupos.forEach(function (o) {
+        var r = o.g.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        var p = (innerHeight * 0.62 - (r.top + r.height / 2)) / (innerHeight * 0.24);
+        var k = Math.max(0, Math.min(o.n - 1, Math.floor(p * o.n)));
+        if (k !== o.k) { o.k = k; o.topo(k); }
+      });
+    }
+    addEventListener('scroll', function () { if (!pend) { pend = true; requestAnimationFrame(rola); } }, { passive: true });
+    rola();
+  }
+  var tx = null;
+  z.addEventListener('touchstart', function (e) { tx = e.touches.length === 1 ? e.touches[0].clientX : null; }, {passive: true});
+  z.addEventListener('touchend', function (e) {
+    if (tx === null || z.className.indexOf('big') >= 0) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 60) mostra(atual + (dx < 0 ? 1 : -1));
+  });
+  function fecha() { z.className = 'zoom'; zi.src = ''; document.body.style.overflow = ''; }
+  document.getElementById('zoomx').addEventListener('click', fecha);
+  z.addEventListener('click', function (e) { if (e.target === z) fecha(); });
+  zi.addEventListener('click', function (e) {
+    var big = z.className.indexOf('big') < 0;
+    var rx = e.offsetX / zi.clientWidth, ry = e.offsetY / zi.clientHeight;
+    z.className = big ? 'zoom on big' : 'zoom on';
+    if (big) { z.scrollLeft = rx * zi.clientWidth - innerWidth / 2; z.scrollTop = ry * zi.clientHeight - innerHeight / 2; }
+  });
+  document.addEventListener('keydown', function (e) { if (z.className.indexOf('on') < 0) return;
+    if (e.key === 'Escape') fecha();
+    else if (e.key === 'ArrowLeft') mostra(atual - 1);
+    else if (e.key === 'ArrowRight') mostra(atual + 1); });
+})();
+</script>
+<script>
+(function(){try{
+var S=sessionStorage, post=!!document.querySelector('article');
+if(post){
+  var v=S.getItem('sotnVolta'); S.removeItem('sotnVolta');
+  if(v!==null) addEventListener('load',function(){scrollTo(0,+v)});
+  var t=0; addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){
+    S.setItem('sotnUlt',JSON.stringify({u:location.href,y:scrollY}))},200)});
+  S.setItem('sotnUlt',JSON.stringify({u:location.href,y:v!==null?+v:0}));
+}else{
+  var r=document.referrer, dentro=false;
+  try{dentro=r&&new URL(r).origin===location.origin}catch(e){}
+  var u=S.getItem('sotnUlt');
+  if(dentro) S.removeItem('sotnUlt');
+  else if(u){u=JSON.parse(u); S.setItem('sotnVolta',u.y); location.replace(u.u)}
+}
+}catch(e){}})();
+</script>
+</body>
+</html>
