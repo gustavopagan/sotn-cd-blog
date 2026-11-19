@@ -188,6 +188,15 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
 <div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
 <script>
+// Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
+(function(){try{
+  var n=performance.getEntriesByType('navigation')[0];
+  if(!location.hash && (!n||n.type==='navigate')){
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    scrollTo(0,0);
+    var h=document.querySelector('header'); if(h&&h.scrollIntoView) h.scrollIntoView({block:'start'});
+  }
+}catch(e){}})();
 (function () {
   var z = document.getElementById('zoom'), zi = document.getElementById('zoomimg');
   var todas = Array.prototype.slice.call(document.querySelectorAll('figure img')), atual = 0;

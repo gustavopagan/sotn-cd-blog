@@ -145,7 +145,31 @@ def page(title, content, depth, badge=""):
     return (tpl.replace("{{FONTES}}", FONTES_HEAD).replace("{{BADGE}}", badge)
                .replace("{{TITLE}}", html.escape(title))
                .replace("{{HOME}}", home)
-               .replace("{{CONTENT}}", content))
+               .replace("{{CONTENT}}", content)
+               .replace("</body>", (PREVIA if DRAFTS else "") + "</body>"))
+
+
+# Só na prévia (--drafts): o visualizador recarrega a página inicial a cada
+# nova versão; volta para o último post aberto, na mesma altura.
+PREVIA = """<script>
+(function(){try{
+var S=sessionStorage, post=!!document.querySelector('article');
+if(post){
+  var v=S.getItem('sotnVolta'); S.removeItem('sotnVolta');
+  if(v!==null) addEventListener('load',function(){scrollTo(0,+v)});
+  var t=0; addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){
+    S.setItem('sotnUlt',JSON.stringify({u:location.href,y:scrollY}))},200)});
+  S.setItem('sotnUlt',JSON.stringify({u:location.href,y:v!==null?+v:0}));
+}else{
+  var r=document.referrer, dentro=false;
+  try{dentro=r&&new URL(r).origin===location.origin}catch(e){}
+  var u=S.getItem('sotnUlt');
+  if(dentro) S.removeItem('sotnUlt');
+  else if(u){u=JSON.parse(u); S.setItem('sotnVolta',u.y); location.replace(u.u)}
+}
+}catch(e){}})();
+</script>
+"""
 
 
 posts = []
