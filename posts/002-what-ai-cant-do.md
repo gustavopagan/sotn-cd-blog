@@ -44,11 +44,21 @@ In the last two posts I wrote about the plain pause menu that shipped because th
 ![](../imagens/18-moldura-verde-ps1.png)
 *The green frame from the PlayStation's file select screen.*
 
-[claude]
-I cut them apart into 8 by 8 pixel pieces, which is how the Mega Drive builds a screen, and reassembled them around every window of the new pause menu. The stone wall from the title screen came along as the background.
+I did a Google search about game menus and ended up crossing paths with [a rework of SOTN's pause menu](https://www.reddit.com/r/castlevania/comments/1gxebux/i_tried_to_fix_the_sotn_pause_menu/) that u/Plubby_ had posted on r/castlevania. I used it as the reference for a placeholder menu. My plan was a more radical redesign further ahead, reusing the flourishes deliberately and working transparency in.
 
-![](../imagens/19-menu-nativo.png)
-*The pause menu now, with green frames, a stone wall behind and a status plate on top.*
+![](../imagens/219-plubby-menu.png)
+*The reference, "I tried to fix the SotN pause menu", posted by u/Plubby_ on r/castlevania.*
+
+For the background, I asked Google's image AI to put vines on the wall I had made for the title screen and take the carvings out. For whatever reason it filled the stones with little round holes, which triggered my trypophobia. It also couldn't keep to my wall; it seems to carry an inexorable idea of what a castle wall is. Cleaning that up, hole by hole in Photoshop, was the devil's own work. Anyway, for now I'm betting on the RNG and sending the assets to Claude to see what comes out. Closed mouths don't get fed.
+
+![](../imagens/218-muro-vinhas.jpg)
+*The menu background after the cleanup. My title-screen wall, the AI's vines, and not a single round hole left.*
+
+[claude]
+Gus sent me the three pieces, Plubby_'s layout, the green frames and the wall. I cut the frames apart into 8 by 8 pixel tiles, which is how the Mega Drive builds a screen, reassembled them around every window, and arranged the windows the way the reference laid them out. That was the placeholder.
+
+![](../imagens/197-menus-mockup-a.png)
+*The placeholder I assembled from those pieces, the crowded one. What Gus redrew from it is a story for its own post.*
 
 [gus]
 Even this kind of adaptation is still not something AI is good at. Pixel art runs on abstract symbolism, and on a kind of synesthetic cognition that ties our phylogenetic makeup (every biological sensor we have, tuned to an environment) to arbitrarily applicable relational responding. That last one is complicated; I actually have a bachelor's degree in Psychology and a postgraduate degree in Behavior Analysis. Machines are still very far from simulating any of that in a way that works.
