@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 26: As smooth as the PS1 | Symphony of the Night for Mega CD</title>
+<link rel="preload" href="../fonts/cd-drive.ce3e78d0.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/monommm5.917a3649.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/archivo-latin-wdth-normal.258a93fe.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"CD Drive";src:url(../fonts/cd-drive.ce3e78d0.woff2) format("woff2");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:"monoMMM5";src:url(../fonts/monommm5.917a3649.woff2) format("woff2");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-wdth-normal.258a93fe.woff2) format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-normal.837705d4.woff2) format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-wdth-italic.dd09f728.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-italic.ad6d313a.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Noto Sans JP";src:url(../fonts/noto-jp-titulo.f7f1ca99.woff2) format("woff2");font-style:normal;font-weight:900;font-display:block}
+</style>
+<style>
+  /* Visual: a caixa japonesa do Mega-CD (KV aprovado em 18/11). Papel creme quadriculado com
+     grade de 24 px centralizada; tudo encaixado nela. CD Drive nos cabeçalhos, monoMMM_5 nos
+     textos curtos, Archivo no texto corrido. */
+  :root {
+    --ink: #18181A; --red: #D2232A; --blue: #1B56B0; --navy: #1E2C66; --yellow: #F3D23C;
+    --faixa: #AE2900; --paper: #EAE6DA; --cream: #FBF7E8;
+    --cd: "CD Drive", "Archivo", sans-serif;
+    --mono: "monoMMM5", ui-monospace, monospace;
+    --body: "Archivo", system-ui, sans-serif;
+    --chk: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%) 0 0 / 4px 4px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background-color: var(--paper);
+    background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: calc(50% + 12px) 0, calc(50% + 12px) 0;
+    color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px;
+  }
+  a { color: var(--blue); }
+  .topo { height: 18px; background: var(--ink); }
+  .cores { display: flex; height: 6px; }
+  .cores i { flex: 1; } .cores i:nth-child(1) { background: var(--red); } .cores i:nth-child(2) { background: #00964B; }
+  .cores i:nth-child(3) { background: var(--yellow); } .cores i:nth-child(4) { background: var(--blue); }
+  .col { padding: 0 24px; }
+  .w1056 { width: 1056px; max-width: 100%; margin: 0 auto; }
+  .w720 { width: 720px; max-width: 100%; margin: 0 auto; }
+  .cdx { font-family: var(--cd); font-weight: 400; text-transform: uppercase; }
+  .mono { font-family: var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+
+  /* cabeçalho do site */
+  header.site { padding-top: 24px; padding-bottom: 24px; }
+  .hdr { display: flex; align-items: flex-start; gap: 48px; isolation: isolate; }
+  .hdr .tt { flex: 1; min-width: 0; }
+  .jp { height: 24px; font: 900 15px/24px var(--mono), "Noto Sans JP", sans-serif; letter-spacing: .12em; }
+  .wordmark { margin: 0; font-family: var(--cd); font-size: 64px; line-height: 72px; text-transform: uppercase; }
+  .wordmark a { color: var(--ink); text-decoration: none; }
+  .sub2 { height: 24px; display: flex; align-items: center; gap: 12px; }
+  .sub2 span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--red); text-transform: uppercase; white-space: nowrap; }
+  .sub2 i { flex: 1; height: 3px; background: var(--ink); }
+  .badge { position: relative; flex: 0 0 auto; width: 96px; height: 120px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; background: var(--ink); color: #fff; text-decoration: none; }
+  .badge::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .badge span { font: 400 14px/24px var(--mono); letter-spacing: .1em; }
+  .badge b { font: 400 44px/48px var(--mono); color: var(--yellow); }
+
+  /* post */
+  .kicker { height: 24px; margin-top: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--blue); text-transform: uppercase; }
+  /* Narrador: [gus] vermelho, [claude] azul; nome em texto, linha à esquerda no grid. */
+  .voz { border-left: 3px solid var(--faixa); padding-left: 21px; margin: 24px 0; }
+  .voz-claude { border-left-color: var(--blue); }
+  .voz > :last-child { margin-bottom: 0; }
+  .voz .quem { margin: 0; height: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--faixa); }
+  .voz-claude .quem { color: var(--blue); }
+  .voz figure { left: calc(50% - 12px); }
+  h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
+  article, .list, figure { isolation: isolate; }
+  article p { margin: 0 0 24px; }
+  .note { display: inline-block; background: var(--red); color: #fff; font: 400 15px/24px var(--mono); padding: 0 8px; text-transform: uppercase; margin-bottom: 24px; }
+  .secr { display: flex; align-items: center; gap: 24px; height: 48px; margin: 48px 0 24px; isolation: isolate; }
+  .secr i { flex: 1; height: 3px; background: var(--ink); }
+  h2.sec { position: relative; margin: 0; height: 48px; line-height: 50px; padding: 0 24px; background: var(--red); color: #fff;
+    font-family: var(--cd); font-weight: 400; font-size: 22px; text-transform: uppercase; white-space: nowrap; }
+  h2.sec::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote { position: relative; margin: 48px 0; }
+  .quote::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote .in { background: var(--yellow); box-shadow: inset 0 0 0 2px var(--ink); padding: 24px; }
+  .quote .q { margin: 0; font: italic 700 20px/24px var(--body); }
+  .quote .tr { margin: 0; font-size: 13px; line-height: 24px; }
+  pre.term { background: var(--ink); color: #E6E9F5; padding: 12px 24px; margin: 24px 0 48px; overflow-x: auto;
+    font: 15px/24px var(--mono); white-space: pre-wrap; }
+  .how { position: relative; margin: 48px 0 0; background: #D6E7F6; }
+  .how::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .how .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .how .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .how .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; }
+  .how p { margin: 0; padding: 24px; font-size: 15px; }
+
+  /* figuras: largura de 960 no computador, a coluna no celular */
+  figure { --fw: min(960px, calc(100vw - 48px)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
+  figure + p, figure + .secr, figure + figure { margin-top: 48px; }
+  figure img { display: block; width: 100%; height: auto; }
+  figure picture { display: block; }
+  figure img.px { image-rendering: pixelated; }
+  .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
+  .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
+  .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
+  /* tela de CRT: bordas abauladas (#crt) e sombra dura em xadrez */
+  .crt { display: block; position: relative; cursor: zoom-in; }
+  .crt::before { content: ""; position: absolute; inset: 0; transform: translate(8px, 8px); background: var(--chk);
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); z-index: 0; pointer-events: none; transition: transform .28s ease-out; }
+  .crt.so::before { transform: translate(-8px, 8px); }
+  .tubo { position: relative; z-index: 1; display: block; background: var(--ink); padding: 4px; -webkit-clip-path: url(#crt); clip-path: url(#crt); }
+  .tubo img { -webkit-clip-path: url(#crt); clip-path: url(#crt); background: #000; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { position: absolute; left: var(--l); top: var(--t); width: var(--w); }
+  .crt.sobe { animation: sobe .32s ease-out; }
+  @keyframes sobe { 0% { transform: translateY(6px) scale(.97); } 55% { transform: translateY(-5px) scale(1.025); } 100% { transform: none; } }
+  /* painel (diagramas e gráficos): chapado, sem tubo, sombra em xadrez */
+  .painel { position: relative; display: block; cursor: zoom-in; }
+  .painel::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+
+  /* navegação e lista */
+  .posts-nav { display: flex; gap: 24px; margin-top: 72px; }
+  .posts-nav a { flex: 1; display: block; text-decoration: none; color: var(--ink); background: var(--cream);
+    box-shadow: inset 0 0 0 2px var(--ink); padding: 12px 24px; min-height: 72px; }
+  .posts-nav a:hover { background: #fff; }
+  .posts-nav .d { display: block; color: var(--red); font: 400 17px/24px var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+  .posts-nav .t { display: block; font: 400 20px/24px var(--cd); text-transform: uppercase; }
+  .posts-nav .next { text-align: right; }
+  .list { display: grid; gap: 48px; padding-top: 24px; }
+  .card { position: relative; display: block; text-decoration: none; color: var(--ink); background: var(--cream); }
+  .card::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .card .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .card .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .card .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; }
+  .card .t { display: block; padding: 24px 24px 0; font: 400 26px/24px var(--cd); text-transform: uppercase; }
+  .card .ex { display: block; padding: 24px; font-size: 15px; color: #3a3a3e; }
+  .card:hover .t { color: var(--red); }
+
+  footer.site { padding-top: 48px; padding-bottom: 24px; }
+  footer.site .rule { height: 3px; background: var(--ink); }
+  footer.site .row { display: flex; align-items: center; gap: 24px; min-height: 69px; flex-wrap: wrap; }
+  footer.site p { flex: 1 1 360px; margin: 0; font-size: 13px; line-height: 24px; color: #3a3a3e; }
+  footer.site .marca { font: 400 40px/48px var(--cd); color: var(--blue); }
+
+  .zoom { position: fixed; inset: 0; z-index: 50; background: #000; overflow: auto; -webkit-overflow-scrolling: touch; display: none; }
+  .zoom.on { display: block; }
+  .zoom img { display: block; margin: auto; max-width: 100vw; max-height: 100vh; width: auto; height: auto;
+    position: relative; top: 50%; transform: translateY(-50%); cursor: zoom-in; }
+  .zoom.big img { max-width: none; max-height: none; width: 250vw; top: 0; transform: none; cursor: zoom-out; }
+  .zoom img.px { image-rendering: pixelated; }
+  .zoom .x { position: fixed; top: 10px; right: 10px; z-index: 51; width: 48px; height: 48px; background: var(--red);
+    color: #fff; font: 400 24px/48px var(--mono); text-align: center; cursor: pointer; }
+  .zoom .seta { position: fixed; top: 50%; z-index: 51; transform: translateY(-50%); width: 48px; height: 72px; background: var(--navy);
+    color: #fff; font: 400 32px/72px var(--mono); text-align: center; cursor: pointer; user-select: none; }
+  .zoom .seta.ant { left: 8px; } .zoom .seta.prox { right: 8px; }
+  .zoom.so1 .seta, .zoom.big .seta { display: none; }
+  .zoom .tip { position: fixed; left: 0; right: 0; bottom: 12px; text-align: center; color: #ccc; font: 13px/24px var(--mono); pointer-events: none; }
+
+  /* celular: coluna de 336 px presa à grade */
+  @media (max-width: 700px) {
+    .col { padding: 0 calc((100% - 336px) / 2); }
+    figure { --fw: 336px; }
+    .hdr { flex-direction: column; gap: 0; }
+    .badge { order: -1; width: auto; height: 48px; flex-direction: row; gap: 12px; padding: 0 12px; margin-bottom: 24px; }
+    .badge b { font-size: 28px; }
+    .wordmark { font-size: 34px; line-height: 36px; }
+    .sub2 span { font-size: 14px; }
+    h1.ttl { font-size: 30px; line-height: 36px; }
+    h2.sec { font-size: 20px; padding: 0 12px; }
+    .secr { gap: 12px; }
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+    .posts-nav { flex-direction: column; }
+    .card .t { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="topo"></div><div class="cores"><i></i><i></i><i></i><i></i></div>
+<header class="site col">
+  <div class="w1056 hdr">
+    <div class="tt">
+      <div class="jp">メガCD移植・開発日誌</div>
+      <p class="wordmark"><a href="../index.html?v=1795059240">Symphony of the Night</a></p>
+      <div class="sub2"><span>A Mega CD port &middot; Development log</span><i></i></div>
+    </div>
+    <div class="badge"><span>DAY</span><b>26</b></div>
+  </div>
+</header>
+<main class="col">
+<article class="w720">
+<div class="kicker">Day 26 · November 12, 2026</div>
+<h1 class="ttl">As smooth as the PS1</h1>
+<p class="note">Draft: not published yet</p>
+<p>The day before ended with the PS1 original running inside our tester. November 12 started with me asking what we could do with it.</p>
+<figure><span class="painel"><picture><source media="(max-width: 700px)" srcset="../img/175-dia26-linha-do-tempo-m.png"><img src="../img/175-dia26-linha-do-tempo.png" width="1200" height="540" alt="November 12. A burst after midnight, the night shift until 4 a.m., then the giants in the evening." loading="lazy"></picture></span><figcaption class="cap"><span class="num">1</span><p>November 12. A burst after midnight, the night shift until 4 a.m., then the giants in the evening.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">Back to the PS1</h2><i></i></div>
+<p>At 12:24 a.m. I asked how we could use the new feature to improve the port. At 12:28 I saw the catch:</p>
+<div class="quote"><div class="in"><p class="q">"For some of these things you depend on me positioning Alucard in the room for you and activating something like Gas Cloud so he stays inert and the enemy runs its routine. It would be great to have a tool that lets you transfer a game state from the Mega CD to the PSX. Then you'd have autonomy to do that."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>By 12:48 the tools had it: a script writes Alucard's position from the port into the PS1, the capture tool takes a position in the world rather than on the screen, Alucard can be made untouchable, and other enemies can be removed from the scene.</p>
+<figure><span class="painel"><picture><img src="../img/180-port-para-ps1.png" width="1100" height="564" alt="The idea: start the PS1 exactly where the port is." loading="lazy"></picture></span><figcaption class="cap"><span class="num">2</span><p>The idea: start the PS1 exactly where the port is.</p></figcaption></figure>
+<p>That last option came from me too. At 12:40 I'd pointed out that in their room Blade and Gurkha walk together, and if the capture worked from the image, they'd probably overlap, so it would pay to kill one while analyzing the other.</p>
+<p>At 12:43 the first try had a problem: "You spawned inside the floor in the next room and fell into the corridor below."</p>
+<figure class="grupo"><div class="degrau zz" style="--ar:100/22.639;--zar:100/289.378"><span class="crt" style="--l:0.000%;--t:0%;--w:20.375%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:8"><span class="tubo"><img src="../img/176-blade-ps1-a.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:11.375%;--t:0%;--w:20.375%;--zl:46.000%;--zt:11.404%;--zw:54.000%;z-index:7"><span class="tubo"><img src="../img/176-blade-ps1-b.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:22.750%;--t:0%;--w:20.375%;--zl:0.000%;--zt:22.808%;--zw:54.000%;z-index:6"><span class="tubo"><img src="../img/176-blade-ps1-c.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:34.125%;--t:0%;--w:20.375%;--zl:46.000%;--zt:34.211%;--zw:54.000%;z-index:5"><span class="tubo"><img src="../img/176-blade-ps1-d.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:20.375%;--zl:0.000%;--zt:45.615%;--zw:54.000%;z-index:4"><span class="tubo"><img src="../img/176-blade-ps1-e.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:56.875%;--t:0%;--w:20.375%;--zl:46.000%;--zt:57.019%;--zw:54.000%;z-index:3"><span class="tubo"><img src="../img/176-blade-ps1-f.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:68.250%;--t:0%;--w:20.375%;--zl:0.000%;--zt:68.423%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/176-blade-ps1-g.png" class="px" width="216" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span><span class="crt" style="--l:79.625%;--t:0%;--w:20.375%;--zl:46.000%;--zt:79.826%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/176-blade-ps1-h.png" class="px" width="222" height="240" alt="Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">3</span><p>Blade on the PS1, from my disc, with the boxes the capture measured: blue for the body, red for the weapons.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">Missing boxes</h2><i></i></div>
+<p>At 12:51 a.m. I brought up something I'd noticed playing:</p>
+<div class="quote"><div class="in"><p class="q">"I noticed other enemies and missed some damage boxes. The skeleton, for example: when it finishes its sword swing, the sword doesn't seem to deal damage the same way as the original. So we'll have to review the enemies, starting with the Castle Entrance. It's a pending item!"</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>It went on the backlog as a review of every enemy's damage boxes against the PS1.</p>
+<div class="secr"><h2 class="sec">The goal</h2><i></i></div>
+<p>At 1:02 a.m. I asked how the PS1 in the tester could help optimize the port's performance, and at 1:05 what to do after measuring, for each possibility, according to the port's philosophy. At 1:11 I set the goal:</p>
+<div class="quote"><div class="in"><p class="q">"I want the game's smoothness to reach PS1 levels in the Castle Entrance. It's one of SOTN's most prominent characteristics, the smoothness of the gameplay!"</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>At 1:26 I went to sleep with that task waiting for another merge to finish. I allowed it to implement things for me to test: if I approved them, they'd already be done.</p>
+<p>By 4:03 a.m. the report was in. Claude had a tool that plays the same room on the PS1 and the Mega CD, from the same spot with the same buttons, and compares the two runs. The port got closer, not equal.</p>
+<figure><span class="painel"><picture><source media="(max-width: 700px)" srcset="../img/177-pulados-m.png"><img src="../img/177-pulados.png" width="1100" height="484" alt="Frames the port skipped, across ten Entrance rooms and 59,000 frames. The PS1 skips none." loading="lazy"></picture></span><figcaption class="cap"><span class="num">4</span><p>Frames the port skipped, across ten Entrance rooms and 59,000 frames. The PS1 skips none.</p></figcaption></figure>
+<figure><span class="painel"><picture><source media="(max-width: 700px)" srcset="../img/178-porta-m.png"><img src="../img/178-porta.png" width="1100" height="484" alt="The pause when crossing the door between room groups. Better, still almost five times the PS1&#x27;s." loading="lazy"></picture></span><figcaption class="cap"><span class="num">5</span><p>The pause when crossing the door between room groups. Better, still almost five times the PS1's.</p></figcaption></figure>
+<p>Two findings in that report were for me. The controls respond one frame later than on the PS1, in every action, because one processor draws on the next frame what the other calculated. And in the mermen room, the water reflection in the style of Bloodlines, which I had asked for, costs 14 to 17% of the drawing processor's frame. The PS1 doesn't have it.</p>
+<p>At 9:05 p.m. I decided: the water stays in that room only, as a tribute to Bloodlines.</p>
+<figure><span class="painel"><picture><img src="../img/49-agua-bloodlines.png" width="1200" height="750" alt="The reflection the mermen room borrows from Bloodlines." loading="lazy"></picture></span><figcaption class="cap"><span class="num">6</span><p>The reflection the mermen room borrows from Bloodlines.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">1 giant at a time</h2><i></i></div>
+<p>The same report brought back an old proposal: show only one giant at a time in Blade and Gurkha's room. It hadn't implemented it, because the other task was redoing the two. At 9:05 p.m. I answered it again:</p>
+<div class="quote"><div class="in"><p class="q">"One giant at a time doesn't work. The fight can reach the area where the other spawns. How would the second giant come in? I don't think it's nice! And the Blade and Gurkha task already did a good job lowering their cost a lot. What's missing there is refinement."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>At 9:13, I told the giants' task what I cared about:</p>
+<div class="quote"><div class="in"><p class="q">"I'm more interested in 1, gameplay smoothness, and 2, enemy quality: good sprites, decent animation. As for the cycle, since fights with regular enemies aren't long, simplifying them won't have an impact. A lot of people won't even notice."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<div class="secr"><h2 class="sec">Refinement</h2><i></i></div>
+<p>At 9:39 p.m.: "The orientation of the blades doesn't match the PS1. On the PS1 they rotate, and we need to adapt that to sprites." By 9:41 the weapons' angle during attacks came from measurements on the PS1.</p>
+<p>At 9:58 I liked it: "Nice, much better! Do you think we can increase the number of animation frames?" And at 9:59:</p>
+<div class="quote"><div class="in"><p class="q">"Yeah, I'm feeling everything a bit stiff, including the walk. Sometimes that makes it hard to telegraph the attacks."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>The night before, I had written "maximum economy" when what I wanted was a native reading of the giants, and the literal version came out: too stiff to read the attacks. Claude added an in-between pose where a key lasts 6 frames or more, with the angles interpolated as in the original. It only fit in the room's data package with the wolf after limiting it to swings of 45 degrees or more.</p>
+<p>Then the walk. On the PS1, a giant's step ends when the foot touches the ground, and not every step is the same length. Claude's first version moved the whole step at once and the giant jumped. The next ones went through five rounds of my tests in fifty minutes.</p>
+<figure><span class="painel"><picture><img src="../img/179-rodadas-caminhada.png" width="1100" height="724" alt="Each red box is a version I rejected." loading="lazy"></picture></span><figcaption class="cap"><span class="num">7</span><p>Each red box is a version I rejected.</p></figcaption></figure>
+<p>At 10:42 my note was: "Now instead of a jump he accelerates abruptly. I think there's a variable timing between his steps in the original that's causing confusion between the distance he walks and the number of steps. Not every step is the same." At 11:13: approved.</p>
+<figure><span class="crt"><span class="tubo"><img src="../img/171-blade-gurkha-port.png" class="px" width="512" height="448" alt="The two giants in the port, from the day before. That night&#x27;s version moves differently, but I don&#x27;t have a capture of it." loading="lazy"></span></span><figcaption class="cap"><span class="num">8</span><p>The two giants in the port, from the day before. That night's version moves differently, but I don't have a capture of it.</p></figcaption></figure>
+<div class="secr"><h2 class="sec">The number</h2><i></i></div>
+<p>61 commits, 36 messages from me. One PS1 inside the tester, five rejected walks, and the same "no" to one giant at a time, for the second time.</p>
+<div class="how"><div class="bar"><b>How</b><span>this is made</span></div><p>I decide what the port should be, draw and pick colors, and test every build. The code, tools and measurements are written by Claude (Anthropic's AI). This post was drafted by Claude from my chat messages, the project's commit history and that day's report, and reviewed by me. The images are diagrams, measurements, and frames from my own PS1 disc and from Bloodlines.</p></div>
+<nav class="posts-nav"><a class="prev" href="day-25.html?v=1795059240"><span class="d">&larr; Day 25</span><span class="t">Maximum economy</span></a><a class="next" href="day-27.html?v=1795059240"><span class="d">Day 27 &rarr;</span><span class="t">Zero stutters</span></a></nav>
+</article>
+</main>
+<footer class="site col">
+  <div class="w1056">
+    <div class="rule"></div>
+    <div class="row">
+      <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
+      <div class="marca">SOTN&middot;CD</div>
+    </div>
+  </div>
+</footer>
+<div class="cores"><i></i><i></i><i></i><i></i></div><div class="topo"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
+<div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
+<script>
+// Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
+(function(){try{
+  var n=performance.getEntriesByType('navigation')[0];
+  if(!location.hash && (!n||n.type==='navigate')){
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    scrollTo(0,0);
+    var h=document.querySelector('header'); if(h&&h.scrollIntoView) h.scrollIntoView({block:'start'});
+  }
+}catch(e){}})();
+(function () {
+  var z = document.getElementById('zoom'), zi = document.getElementById('zoomimg');
+  var todas = Array.prototype.slice.call(document.querySelectorAll('figure img')), atual = 0;
+  function mostra(i) {
+    atual = (i + todas.length) % todas.length; var im = todas[atual];
+    zi.src = im.currentSrc || im.src; zi.className = im.className;
+    z.className = 'zoom on' + (todas.length < 2 ? ' so1' : ''); document.body.style.overflow = 'hidden';
+  }
+  todas.forEach(function (im, i) {
+    (im.closest('.crt') || im).addEventListener('click', function () { mostra(i); });
+  });
+  document.getElementById('zoomant').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual - 1); });
+  document.getElementById('zoomprox').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual + 1); });
+  var grupos = [];
+  document.querySelectorAll('.degrau').forEach(function (g) {
+    var cs = Array.prototype.slice.call(g.querySelectorAll('.crt')), n = cs.length;
+    // a tela sob o mouse fica por cima; as outras se empilham a partir dela, como cartas,
+    // e cada sombra cai sobre a vizinha que está por baixo
+    function topo(k) {
+      cs.forEach(function (c, j) {
+        c.style.zIndex = n - Math.abs(j - k);
+        var esq = j > k || (j === k && k === n - 1 && n > 1);
+        var cl = esq ? 'crt so' : 'crt';
+        if (j === k && c.dataset.topo !== '1' && g.dataset.pronto) cl += ' sobe';
+        c.dataset.topo = j === k ? '1' : '';
+        c.className = cl;
+      });
+    }
+    cs.forEach(function (c, k) { c.addEventListener('mouseenter', function () { topo(k); }); });
+    topo(0); g.dataset.pronto = '1';
+    grupos.push({ g: g, n: n, topo: topo, k: 0 });
+  });
+  // sem mouse (celular): a rolagem embaralha; conforme o grupo atravessa a tela,
+  // cada tela passa a vez para a seguinte
+  if (window.matchMedia && matchMedia('(hover: none)').matches && grupos.length) {
+    var pend = false;
+    function rola() {
+      pend = false;
+      grupos.forEach(function (o) {
+        var r = o.g.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        var p = (innerHeight * 0.62 - (r.top + r.height / 2)) / (innerHeight * 0.24);
+        var k = Math.max(0, Math.min(o.n - 1, Math.floor(p * o.n)));
+        if (k !== o.k) { o.k = k; o.topo(k); }
+      });
+    }
+    addEventListener('scroll', function () { if (!pend) { pend = true; requestAnimationFrame(rola); } }, { passive: true });
+    rola();
+  }
+  var tx = null;
+  z.addEventListener('touchstart', function (e) { tx = e.touches.length === 1 ? e.touches[0].clientX : null; }, {passive: true});
+  z.addEventListener('touchend', function (e) {
+    if (tx === null || z.className.indexOf('big') >= 0) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 60) mostra(atual + (dx < 0 ? 1 : -1));
+  });
+  function fecha() { z.className = 'zoom'; zi.src = ''; document.body.style.overflow = ''; }
+  document.getElementById('zoomx').addEventListener('click', fecha);
+  z.addEventListener('click', function (e) { if (e.target === z) fecha(); });
+  zi.addEventListener('click', function (e) {
+    var big = z.className.indexOf('big') < 0;
+    var rx = e.offsetX / zi.clientWidth, ry = e.offsetY / zi.clientHeight;
+    z.className = big ? 'zoom on big' : 'zoom on';
+    if (big) { z.scrollLeft = rx * zi.clientWidth - innerWidth / 2; z.scrollTop = ry * zi.clientHeight - innerHeight / 2; }
+  });
+  document.addEventListener('keydown', function (e) { if (z.className.indexOf('on') < 0) return;
+    if (e.key === 'Escape') fecha();
+    else if (e.key === 'ArrowLeft') mostra(atual - 1);
+    else if (e.key === 'ArrowRight') mostra(atual + 1); });
+})();
+</script>
+<script>
+(function(){try{
+var S=sessionStorage, post=!!document.querySelector('article');
+if(post){
+  var v=S.getItem('sotnVolta'); S.removeItem('sotnVolta');
+  if(v!==null) addEventListener('load',function(){scrollTo(0,+v)});
+  var t=0; addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){
+    S.setItem('sotnUlt',JSON.stringify({u:location.href,y:scrollY}))},200)});
+  S.setItem('sotnUlt',JSON.stringify({u:location.href,y:v!==null?+v:0}));
+}else{
+  var r=document.referrer, dentro=false;
+  try{dentro=r&&new URL(r).origin===location.origin}catch(e){}
+  var u=S.getItem('sotnUlt');
+  if(dentro) S.removeItem('sotnUlt');
+  else if(u){u=JSON.parse(u); S.setItem('sotnVolta',u.y); location.replace(u.u)}
+}
+}catch(e){}})();
+</script>
+</body>
+</html>
