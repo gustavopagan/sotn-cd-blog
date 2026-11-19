@@ -262,7 +262,7 @@
   if(!location.hash && (!n||n.type==='navigate')){
     if('scrollRestoration' in history) history.scrollRestoration='manual';
     scrollTo(0,0);
-    var h=document.querySelector('header'); if(h&&h.scrollIntoView) h.scrollIntoView({block:'start'});
+    var h=document.documentElement; if(h.scrollIntoView) h.scrollIntoView({block:'start'});
   }
 }catch(e){}})();
 (function () {
