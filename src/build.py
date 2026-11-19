@@ -44,8 +44,23 @@ def render(body):
     body = re.sub(r"```\n(.*?)\n```", keep, body, flags=re.S)
     out, how = [], ""
     numero = [0]
+    # [gus] / [claude] numa linha própria: quem narra daqui até a próxima troca.
+    body = re.sub(r"^\[(gus|claude)\][ \t]*\n?", r"\n\n@@VOZ:\1@@\n\n", body, flags=re.M)
+    voz = None
     for b in [x.strip() for x in body.strip().split("\n\n") if x.strip()]:
         if b == "---":
+            continue
+        # Seção nova e rodapé "How this is made" encerram a voz aberta.
+        if voz and (b.startswith("## ") or b.startswith("*How this is made")):
+            out.append("</div>")
+            voz = None
+        m = re.match(r"@@VOZ:(gus|claude)@@$", b)
+        if m:
+            if voz:
+                out.append("</div>")
+            voz = m.group(1)
+            nome = "GUS" if voz == "gus" else "CLAUDE"
+            out.append(f'<div class="voz voz-{voz}"><p class="quem mono">{nome}</p>')
             continue
         m = re.match(r"@@CODE(\d+)@@$", b)
         if m:
@@ -116,6 +131,8 @@ def render(body):
             how = inline(b.strip("*"))
             continue
         out.append(f"<p>{inline(b)}</p>")
+    if voz:
+        out.append("</div>")
     return "\n".join(out), how
 
 

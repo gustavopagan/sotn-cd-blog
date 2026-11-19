@@ -56,6 +56,13 @@
 
   /* post */
   .kicker { height: 24px; margin-top: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--blue); text-transform: uppercase; }
+  /* Narrador: [gus] vermelho, [claude] azul; nome em texto, linha à esquerda no grid. */
+  .voz { border-left: 3px solid var(--faixa); padding-left: 21px; margin: 24px 0; }
+  .voz-claude { border-left-color: var(--blue); }
+  .voz > :last-child { margin-bottom: 0; }
+  .voz .quem { margin: 0; height: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--faixa); }
+  .voz-claude .quem { color: var(--blue); }
+  .voz figure { left: calc(50% - 12px); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }
