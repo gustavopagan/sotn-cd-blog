@@ -39,7 +39,7 @@ At 1:44 p.m. I told Claude to lower the cap to three. Nobody has complained.
 ![](../imagens/43-zumbis-teto.png)
 *Eight on the PlayStation, three here.*
 
-While testing that, I also noticed Alucard was being knocked back too hard by zombie contact. In the original, the size of the recoil depends on how much damage he takes. Noted.
+While testing that, I also noticed Alucard was being knocked back too hard by zombie contact. I told Claude that in the original, the size of the recoil depends on how much damage he takes.
 
 ## 3 forms, 6 buttons
 
