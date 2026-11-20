@@ -58,6 +58,9 @@ I laid them out myself. X for the bat, Z for the wolf, up plus X for the mist. T
 [gus]
 It wasn't the first time I played Symphony of the Night with a Mega Drive pad. In 2000 I played it for the first time, on an emulator, on an Athlon computer the family had at home. Around then I found a DIY schematic for an adapter that let you plug a Mega Drive controller into the PC's parallel port, something like [this Instructables tutorial](https://www.instructables.com/Build-Sega-Genesis-Controller-Ports-for-your-PC/). I had no digital camera back then, and smartphones didn't exist, so there are no photos of mine. It was my first experience with a soldering iron, and it wasn't pretty, but it worked almost too well. The Mega Drive had been retired at home for a long time, and its joypad became my main controller. There was a driver for it, [PPJoy](https://github.com/elitak/PPJoy), written by Deon van der Westhuysen.
 
+![](../imagens/228-adaptador-crrimson.jpg)
+*An adapter like the one I soldered. Two Mega Drive ports and a parallel port connector on a board. Photo: crrimson, from the [Instructables tutorial](https://www.instructables.com/Build-Sega-Genesis-Controller-Ports-for-your-PC/).*
+
 ![](../imagens/227-adaptador-paralela.jpg)
 *The kind of wiring diagram that adapter follows, with two Mega Drive pads on one parallel port.*
 
