@@ -76,7 +76,7 @@ def render(body):
                 fecha_voz()
             voz = m.group(1)
             nome = "GUS" if voz == "gus" else "CLAUDE"
-            out.append(f'<div class="voz voz-{voz}"><div class="vl"><p class="quem mono">{nome}</p>')
+            out.append(f'<div class="voz voz-{voz}"><p class="quem mono">{nome}</p><div class="vl">')
             continue
         m = re.match(r"@@CODE(\d+)@@$", b)
         if m:

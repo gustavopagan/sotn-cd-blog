@@ -69,10 +69,11 @@
   .voz-claude .vl { border-left-color: var(--blue); }
   .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
   figure + .vl { margin-top: 48px; }
-  /* nome de quem fala: mesmo retângulo do aviso "Draft" (cor, fonte e recuo), encostado na linha */
-  .voz .quem { display: table; margin: 0 0 0 -24px; height: 24px; padding: 0 8px; background: var(--red); color: #fff;
+  /* nome de quem fala: retângulo do aviso "Draft" (cor e fonte), em cima da linha, com largura de casas
+     inteiras do quadriculado (GUS 2, CLAUDE 3) para as quatro bordas caírem nas linhas */
+  .voz .quem { display: block; width: 48px; height: 24px; margin: 0; padding: 0; text-align: center; background: var(--red); color: #fff;
     font: 400 15px/24px var(--mono); text-transform: uppercase; }
-  .voz-claude .quem { background: var(--blue); }
+  .voz-claude .quem { width: 72px; background: var(--blue); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }
@@ -193,17 +194,17 @@
 <div class="kicker">Day 1 · October 17–18, 2026</div>
 <h1 class="ttl">from a PlayStation disc to Alucard walking on a Mega CD</h1>
 
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>So, which console?</p>
 <p>At 11 p.m. on October 17 I asked about the Mega Drive. Someone had fully decompiled Symphony of the Night. Could it be ported?</p>
 </div></div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>I said no. Without its videos, voice clips and streamed music, the game still weighs about 46 MB. A Mega Drive cartridge doesn't come close, not without cutting the game to pieces.</p>
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/10-mega-drive.jpg" width="1200" height="600" alt="The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span><figcaption class="cap"><span class="num">1</span><p>The Mega Drive. Symphony of the Night, stripped of videos and voices, is still about 46 MB. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</p></figcaption></figure>
 </div>
 <div class="secr"><h2 class="sec">A word about Pigsy</h2><i></i></div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>Someone is already doing it the hard way. Pigsy, of Pigsy's Retro Game Dev Tutorials, is building his own Symphony of the Night for the Mega Drive, and it's a different project from mine. His is a new game written from scratch for the cartridge, split into stages. And it looks fantastic. Look at the backgrounds in his Alchemy Laboratory. Look at that Royal Chapel staircase, with a Bone Pillar breathing fire down at Alucard.</p>
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/13-pigsy-alchemy-lab.jpg" width="960" height="835" alt="Pigsy&#x27;s Alchemy Laboratory. Screenshot from Pigsy&#x27;s demos." loading="lazy"></span></span><figcaption class="cap"><span class="num">2</span><p>Pigsy's Alchemy Laboratory. Screenshot from <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">Pigsy's demos</a>.</p></figcaption></figure>
@@ -214,12 +215,12 @@
 <p>I also want a port with a few things the original never got. Remember the menu Igarashi had no time to finish? To me, finishing that design means extra care for everything that lives inside the menu, like customizing your familiars and the menu itself.</p>
 <p>As for the balance between fidelity and change, the rule is simple. This is a port first, and it should look and play the way you remember it. But I couldn't resist hiding a few Easter eggs as a tribute to Sega and to the Mega CD itself. Those are for a later post.</p>
 </div></div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>So I pointed him at the Mega CD. Same video chip as the Mega Drive, plus a CD drive, a second processor and extra memory. And the original game already loads one area at a time, which is exactly how a CD system wants to work. He picked it.</p>
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/11-mega-cd-caixa.jpg" width="800" height="800" alt="The Mega-CD in its original Japanese box. It goes under the Mega Drive, as the drawing on the left shows; in North America it was sold as the Sega CD. Photo: Sega Retro (Mega-CD HAA-2910 box)." loading="lazy"></span></span><figcaption class="cap"><span class="num">4</span><p>The Mega-CD in its original Japanese box. It goes under the Mega Drive, as the drawing on the left shows; in North America it was sold as the Sega CD. Photo: <a href="https://segaretro.org/Mega-CD_consoles_in_Asia">Sega Retro</a> (Mega-CD HAA-2910 box).</p></figcaption></figure>
 </div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>Eleven minutes after the first question, I asked where to start. Half an hour later, Claude Code was installed. Then it refused to start.</p>
 <pre class="term"><code>PS C:\Users\pagan\desktop\SOTN CD\Castlevania - Symphony of the Night&gt; claude
 claude : The term &#x27;claude&#x27; is not recognized as the name of a cmdlet,
@@ -227,21 +228,21 @@ function, script file, or operable program.</code></pre>
 <p>A promising beginning.</p>
 <p>The next evening I was frustrated. I had spent hours on it and had nothing playable. On my Mega Man X3 port, X was controllable almost right away. So I moved the work into a regular Claude chat and kept going from there.</p>
 </div></div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>By 9:30 p.m. the disc booted on a Mega CD emulator, loaded an image from the CD and played an audio track. Then came the part he actually cared about. Alucard, running the original game code, walked down a real Castle Entrance hallway, with real sprites, original collision and working stairs. Not long after, zombies rose out of the floor, walked at him and died to his bare fists.</p>
 </div></div>
 <div class="secr"><h2 class="sec">2 processors, 2 jobs</h2><i></i></div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>The Mega Drive's main processor runs at about 7.67 MHz. The PlayStation's runs at about 34 MHz. Asking the first one to run the second one's game and also draw the screen is not a plan.</p>
 <p>The Mega CD adds a second processor, at 12.5 MHz. So I split the work. The second processor runs the game, which means Alucard, enemies and collision. The main one only draws what it's told. They trade notes once per frame through a shared block of memory. The price is one frame of delay between the game deciding something and the screen showing it.</p>
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/12-mega-cd-inside.jpg" width="1200" height="848" alt="Inside the Mega CD. The chip marked HD68HC000 is the second processor, another 68000, this one at 12.5 MHz. Photo: Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span><figcaption class="cap"><span class="num">5</span><p>Inside the Mega CD. The chip marked HD68HC000 is the second processor, another 68000, this one at 12.5 MHz. Photo: <a href="https://commons.wikimedia.org/wiki/File:Sega-CD-Base-Mk1-Inside.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</p></figcaption></figure>
 </div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>At 8:40 p.m., after trying the controls, I sent "Movement and physics are great, keep going." (Translated from Portuguese.)</p>
 </div></div>
 <div class="secr"><h2 class="sec">The number</h2><i></i></div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>12 commits on day one. Two phases of the original plan closed, and the third already moving.</p>
 <p>Next on the log, a detour about what AI can't do in this port. After that, day 2 brings candles, explosions, a HUD and the castle music pulled straight from the original disc.</p>
 </div></div>

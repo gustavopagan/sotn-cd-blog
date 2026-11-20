@@ -69,10 +69,11 @@
   .voz-claude .vl { border-left-color: var(--blue); }
   .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
   figure + .vl { margin-top: 48px; }
-  /* nome de quem fala: mesmo retângulo do aviso "Draft" (cor, fonte e recuo), encostado na linha */
-  .voz .quem { display: table; margin: 0 0 0 -24px; height: 24px; padding: 0 8px; background: var(--red); color: #fff;
+  /* nome de quem fala: retângulo do aviso "Draft" (cor e fonte), em cima da linha, com largura de casas
+     inteiras do quadriculado (GUS 2, CLAUDE 3) para as quatro bordas caírem nas linhas */
+  .voz .quem { display: block; width: 48px; height: 24px; margin: 0; padding: 0; text-align: center; background: var(--red); color: #fff;
     font: 400 15px/24px var(--mono); text-transform: uppercase; }
-  .voz-claude .quem { background: var(--blue); }
+  .voz-claude .quem { width: 72px; background: var(--blue); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }
@@ -193,7 +194,7 @@
 <div class="kicker">Prologue</div>
 <h1 class="ttl">Why I&#x27;m porting Symphony of the Night to the Mega CD</h1>
 
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>When I was a kid, I was a true hack job. The bad kind. I opened things, yes, but very often I didn't know how to put them back together. Being resourceful with the little you have is something you learn early when you don't have access to much. It's a skill you can learn early, if you have the nerve.</p>
 <p>When I was about seven, my first Mega Drive broke. It was the middle of the July holidays and I was stuck at home with no video game. That same day, the family 486 was open for some reason, with a few boards lying on the table. I noticed the contacts on those boards looked a lot like the contacts on a Mega Drive cartridge. I also remembered that my dad had once put some electronic part inside that computer, and after that it ran different games. The logic was airtight. If it fits, it works.</p>
 </div>
