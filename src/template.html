@@ -31,11 +31,19 @@
     width: var(--W); max-width: none; margin-left: round(down, (100% - var(--W)) / 2, 1px);
     min-height: 100vh; container-type: inline-size; }
   .grade::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px;
-    /* um desenho só, do tamanho do bloco, e não um azulejo de 24 px repetido: navegador que arredonda
-       o azulejo para pixel inteiro do aparelho (zoom ou escala de tela quebrados) acumulava o erro a
-       cada casa e o quadriculado ia saindo do lugar ao longo da página */
-    background-image: repeating-linear-gradient(rgba(38,48,70,.14) 0 1px, transparent 1px 24px),
-                      repeating-linear-gradient(90deg, rgba(38,48,70,.14) 0 1px, transparent 1px 24px); }
+    background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
+    background-size: 24px 24px; }
+  /* Com zoom ou escala de tela quebrados (110%, por exemplo) uma casa não tem um número inteiro de
+     pixels do aparelho. Fundo repetido sai do lugar aos poucos e degradê único dá moiré. Por isso o
+     script risca o quadriculado com um elemento por linha (.fundo): o navegador encaixa cada linha
+     no pixel do mesmo jeito que encaixa as bordas do conteúdo. O fundo em CSS acima fica para quem
+     está sem script. */
+  .grade.riscada::before { content: none; }
+  .fundo { position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px; overflow: hidden; pointer-events: none; }
+  .fundo i { position: absolute; background: rgba(38,48,70,.14); }
+  .fundo .h { left: 0; right: 0; height: 1px; }
+  .fundo .v { top: 0; bottom: 0; width: 1px; }
   a { color: var(--blue); }
   .w720 { width: min(720px, 100%); margin: 0 auto; }
   /* dentro de um parágrafo, link, itálico e código não aumentam a linha: quem manda é o parágrafo */
@@ -248,6 +256,18 @@
       ' round=' + !velho + '\n' + navigator.userAgent;
     document.body.appendChild(d);
   };
+  var fundo = null, fh = -1, fw = -1;
+  function risca() {
+    var r = g.getBoundingClientRect(), nh = Math.ceil(r.height / 24), vw = document.documentElement.clientWidth;
+    var e = Math.ceil(r.left / 24) + 2, d = Math.ceil((vw - r.left) / 24) + 2;
+    if (fundo && nh === fh && e * 1000 + d === fw) return;
+    fh = nh; fw = e * 1000 + d;
+    var h = '', i;
+    for (i = 0; i < nh; i++) h += '<i class="h" style="top:' + (i * 24) + 'px"></i>';
+    for (i = -e; i < d; i++) h += '<i class="v" style="left:' + (4800 + i * 24) + 'px"></i>';
+    if (!fundo) { fundo = document.createElement('div'); fundo.className = 'fundo'; fundo.setAttribute('aria-hidden', 'true'); g.insertBefore(fundo, g.firstChild); g.classList.add('riscada'); }
+    fundo.innerHTML = h;
+  }
   var ocupado = false;
   function grade() {
     if (ocupado) return; ocupado = true;
@@ -269,12 +289,14 @@
       e.parentNode.insertBefore(c, e);
       var r2 = erro(e, t0); if (r2) c.style.height = ((24 - r) + (24 - r2)) % 24 + 'px';
     });
+    risca();
     setTimeout(function () { ocupado = false; }, 0);
   }
   grade();
   window.addEventListener('load', grade);
   window.addEventListener('resize', grade);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(grade);
+  if (window.ResizeObserver) new ResizeObserver(risca).observe(g);
 })();
 
 // Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
