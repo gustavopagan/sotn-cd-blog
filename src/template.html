@@ -53,12 +53,13 @@
   /* post */
   .kicker { height: 24px; margin-top: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--blue); text-transform: uppercase; }
   /* Narrador: [gus] vermelho, [claude] azul; nome em texto, linha à esquerda no grid. */
-  .voz { border-left: 3px solid var(--faixa); padding-left: 21px; margin: 24px 0; }
-  .voz-claude { border-left-color: var(--blue); }
-  .voz > :last-child { margin-bottom: 0; }
+  .voz { margin: 24px 0; }
+  .vl { border-left: 3px solid var(--faixa); padding-left: 21px; }
+  .voz-claude .vl { border-left-color: var(--blue); }
+  .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
+  figure + .vl { margin-top: 48px; }
   .voz .quem { margin: 0; height: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--faixa); }
   .voz-claude .quem { color: var(--blue); }
-  .voz figure { left: calc(50% - 12px); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }
@@ -90,6 +91,7 @@
   figure img.px { image-rendering: pixelated; }
   .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
   .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
+  .voz-claude .cap .num { background: var(--blue); }
   .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
   /* tela de CRT: bordas abauladas (#crt) e sombra dura em xadrez */
   .crt { display: block; position: relative; cursor: zoom-in; }

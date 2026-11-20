@@ -49,24 +49,38 @@ def render(body):
     # [gus] / [claude] numa linha própria: quem narra daqui até a próxima troca.
     body = re.sub(r"^\[(gus|claude)\][ \t]*\n?", r"\n\n@@VOZ:\1@@\n\n", body, flags=re.M)
     voz = None
+    # A linha da voz (div.vl) se interrompe nas figuras e volta depois delas.
+    def fecha_voz():
+        if out and out[-1].startswith("<figure"):
+            out.append("</div>")
+        else:
+            out.append("</div></div>")
+    def figura(h):
+        if voz and not out[-1].startswith("<figure"):
+            out.append("</div>")
+        out.append(h)
+    def poe(h):
+        if voz and out and out[-1].startswith("<figure"):
+            out.append('<div class="vl">')
+        out.append(h)
     for b in [x.strip() for x in body.strip().split("\n\n") if x.strip()]:
         if b == "---":
             continue
         # Seção nova e rodapé "How this is made" encerram a voz aberta.
         if voz and (b.startswith("## ") or b.startswith("*How this is made")):
-            out.append("</div>")
+            fecha_voz()
             voz = None
         m = re.match(r"@@VOZ:(gus|claude)@@$", b)
         if m:
             if voz:
-                out.append("</div>")
+                fecha_voz()
             voz = m.group(1)
             nome = "GUS" if voz == "gus" else "CLAUDE"
-            out.append(f'<div class="voz voz-{voz}"><p class="quem mono">{nome}</p>')
+            out.append(f'<div class="voz voz-{voz}"><div class="vl"><p class="quem mono">{nome}</p>')
             continue
         m = re.match(r"@@CODE(\d+)@@$", b)
         if m:
-            out.append(f'<pre class="term"><code>{html.escape(codes[int(m.group(1))])}</code></pre>')
+            poe(f'<pre class="term"><code>{html.escape(codes[int(m.group(1))])}</code></pre>')
             continue
         m = re.match(r"((?:!\[\]\(\.\./imagens/[^)]+\)\n)+)\*(.*)\*$", b)
         if m:
@@ -97,7 +111,7 @@ def render(body):
             cap = (f'<figcaption class="cap"><span class="num">{numero[0]}</span>'
                    f'<p>{inline(m.group(2))}</p></figcaption>')
             if len(itens) == 1:
-                out.append(f"<figure>{tela(*itens[0])}{cap}</figure>")
+                figura(f"<figure>{tela(*itens[0])}{cap}</figure>")
                 continue
             # várias telas lado a lado, levemente sobrepostas; a de cima muda ao passar o mouse.
             # No celular, de 3 telas para cima, viram um zigue-zague em duas colunas.
@@ -117,7 +131,7 @@ def render(body):
                        f'--zl:{(k % 2) * zcol:.3f}%;--zt:{zt[k] / ztot * 100:.3f}%;--zw:{zw:.3f}%;z-index:{n - k}"')
                 telas.append(tela(nome, wd, h, est))
             zz = " zz" if n >= 3 else ""
-            out.append(f'<figure class="grupo"><div class="degrau{zz}" style="--ar:100/{tot:.3f};--zar:100/{ztot:.3f}">'
+            figura(f'<figure class="grupo"><div class="degrau{zz}" style="--ar:100/{tot:.3f};--zar:100/{ztot:.3f}">'
                        + "".join(telas) + f"</div>{cap}</figure>")
             continue
         if b.startswith("## "):
@@ -128,15 +142,15 @@ def render(body):
             linhas = [ln for ln in linhas if ln]
             q = [ln for ln in linhas if not ln.startswith("(Translated")]
             tr = [ln for ln in linhas if ln.startswith("(Translated")]
-            out.append('<div class="quote"><div class="in">' + "".join(f'<p class="q">{inline(ln)}</p>' for ln in q)
+            poe('<div class="quote"><div class="in">' + "".join(f'<p class="q">{inline(ln)}</p>' for ln in q)
                        + "".join(f'<p class="tr">{inline(ln)}</p>' for ln in tr) + "</div></div>")
             continue
         if b.startswith("*How this is made"):
             how = inline(b.strip("*"))
             continue
-        out.append(f"<p>{inline(b)}</p>")
+        poe(f"<p>{inline(b)}</p>")
     if voz:
-        out.append("</div>")
+        fecha_voz()
     return "\n".join(out), how
 
 

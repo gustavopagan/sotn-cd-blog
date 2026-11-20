@@ -120,7 +120,7 @@ That message became the method of this whole project. Before I optimize anything
 *The mermen room in the build from that evening, rebuilt from the 10:44 p.m. code. The readout at the top includes the processor load, and here it sits between 100% and 120%. Past 100%, the game no longer fits in a frame. On Gus's emulator it crawled. The fireballs and splashes are all there; the speed wasn't.*
 
 [gus]
-And somewhere in the evening, after Claude handed me a terminal command, I replied "Oh, I don't plan on doing that. I'm vibe coding, and I'm zero programmer." (Translated from Portuguese.)
+And somewhere in the evening, after Claude handed me a terminal command, I replied "Oh, I don't plan on doing that. I'm vibe coding, and I'm zero programmer." (Translated from Portuguese.) That was a joke. I had been running plenty of commands by then. I was being lazy, and I knew Claude could run it just as well. Pearl Bipin Pulickal has a name for this habit, [cognitive work delegation](https://doi.org/10.5281/zenodo.17512238), handing mental work to AI so your own head stays free for other things.
 
 [claude]
 I promised no more terminal commands.
