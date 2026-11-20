@@ -30,18 +30,27 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body {
-    background-color: var(--paper);
+  html { background: var(--paper); overflow-x: hidden; }
+  body { overflow-x: hidden; overflow-x: clip; color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px; }
+  /* A GRADE. Um bloco só segura o site inteiro e pinta o quadriculado, então fundo e conteúdo têm a
+     mesma origem por construção. A largura é sempre um número inteiro de casas (de 48 em 48 px no
+     computador, para o que é centralizado cair em casa inteira; de 24 em 24 no celular) e a borda
+     esquerda cai num pixel inteiro. Tudo dentro dela mede múltiplos de 24 px na horizontal e na
+     vertical; src/grade_test.py confere isso no build. */
+  .grade { --W: min(1056px, round(down, 100% - 48px, 48px)); position: relative; isolation: isolate;
+    width: 1056px; max-width: calc(100% - 48px); margin: 0 auto;
+    width: var(--W); max-width: none; margin-left: round(down, (100% - var(--W)) / 2, 1px);
+    min-height: 100vh; container-type: inline-size; }
+  .grade::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px;
     background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
-    background-size: 24px 24px;
-    background-position: calc(50% + 12px) 0, calc(50% + 12px) 0;
-    color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px;
-  }
+    background-size: 24px 24px; }
   a { color: var(--blue); }
-  .col { padding: 0 24px; }
-  .w1056 { width: 1056px; max-width: 100%; margin: 0 auto; }
-  .w720 { width: 720px; max-width: 100%; margin: 0 auto; }
+  .w720 { width: min(720px, 100%); margin: 0 auto; }
+  /* dentro de um parágrafo, link, itálico e código não aumentam a linha: quem manda é o parágrafo */
+  article p :is(a, em, i, strong, b, code, span) { line-height: 0; }
+  pre.term code { font: inherit; }
+  .calco { display: block; }
   .cdx { font-family: var(--cd); font-weight: 400; text-transform: uppercase; }
   .mono { font-family: var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
 
@@ -98,11 +107,15 @@
   .how p { margin: 0; padding: 24px; font-size: 15px; }
 
   /* figuras: largura de 960 no computador, a coluna no celular */
-  figure { --fw: min(960px, calc(100vw - 48px)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
+  figure { --fw: min(960px, var(--gw, 100cqw)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
   figure + p, figure + .secr, figure + figure { margin-top: 48px; }
   figure img { display: block; width: 100%; height: auto; }
   figure picture { display: block; }
   figure img.px { image-rendering: pixelated; }
+  /* a altura de cada imagem (--r = altura/largura e --k = moldura, vindas do build) é completada
+     até a casa seguinte na margem da legenda */
+  figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--r, 1) + var(--k, 0px)); }
+  figure > .cap { margin-top: calc(24px + round(up, var(--H), 24px) - var(--H)); }
   .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
   .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
   .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
@@ -122,7 +135,7 @@
   .painel::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
 
   /* navegação e lista */
-  .posts-nav { display: flex; gap: 24px; margin-top: 72px; }
+  .posts-nav { display: flex; gap: 24px 48px; margin-top: 72px; }
   .posts-nav a { flex: 1; display: block; text-decoration: none; color: var(--ink); background: var(--cream);
     box-shadow: inset 0 0 0 2px var(--ink); padding: 12px 24px; min-height: 72px; }
   .posts-nav a:hover { background: #fff; }
@@ -140,8 +153,8 @@
   .card:hover .t { color: var(--red); }
 
   footer.site { padding-top: 48px; padding-bottom: 24px; }
-  footer.site .rule { height: 3px; background: var(--ink); }
-  footer.site .row { display: flex; align-items: center; gap: 24px; min-height: 69px; flex-wrap: wrap; }
+  footer.site .rule { height: 3px; margin-bottom: -3px; background: var(--ink); }
+  footer.site .row { display: flex; align-items: center; gap: 0 24px; min-height: 72px; flex-wrap: wrap; }
   footer.site p { flex: 1 1 360px; margin: 0; font-size: 13px; line-height: 24px; color: #3a3a3e; }
   footer.site .marca { font: 400 40px/48px var(--cd); color: var(--blue); }
 
@@ -161,14 +174,14 @@
 
   /* celular: coluna de 336 px presa à grade */
   @media (max-width: 700px) {
-    .col { padding: 0 calc((100% - 336px) / 2); }
-    figure { --fw: 336px; }
+    .grade { --W: round(down, 100% - 24px, 24px); }
+    figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--rm, var(--r, 1)) + var(--k, 0px)); }
     .hdr { flex-direction: column; gap: 0; }
     .badge { order: -1; width: auto; height: 48px; flex-direction: row; gap: 12px; padding: 0 12px; margin-bottom: 24px; }
     .badge b { font-size: 28px; }
-    .wordmark { font-size: 34px; line-height: 36px; }
+    .wordmark { font-size: min(40px, 11cqw); line-height: 48px; }
     .sub2 span { font-size: 14px; }
-    h1.ttl { font-size: 30px; line-height: 36px; }
+    h1.ttl { font-size: min(40px, 11cqw); line-height: 48px; }
     h2.sec { font-size: 20px; padding: 0 12px; }
     .secr { gap: 12px; }
     .degrau.zz { aspect-ratio: var(--zar); }
@@ -179,8 +192,9 @@
 </style>
 </head>
 <body>
-<header class="site col">
-  <div class="w1056 hdr">
+<div class="grade">
+<header class="site">
+  <div class="hdr">
     <div class="tt">
       <div class="jp">メガCD移植・開発日誌</div>
       <p class="wordmark"><a href="../">Symphony of the Night</a></p>
@@ -189,7 +203,7 @@
     <div class="badge"><span>POST</span><b>2</b></div>
   </div>
 </header>
-<main class="col">
+<main>
 <article class="w720">
 <div class="kicker">Interlude</div>
 <h1 class="ttl">What AI can&#x27;t do in this port</h1>
@@ -203,15 +217,15 @@
 <div class="secr"><h2 class="sec">The title screen</h2><i></i></div>
 <div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 </div>
-<figure class="grupo"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">1</span><p>First the PlayStation title screen, then the one this port has now.</p></figcaption></figure>
+<figure class="grupo" style="--r:0.510938;--rm:0.510938;--k:0px"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">1</span><p>First the PlayStation title screen, then the one this port has now.</p></figcaption></figure>
 <div class="vl">
 <p>The background started as a photo of a real stone wall. I crushed its palette down to a handful of grays, cut the carvings out of the original background art and pasted them over the wall, dithered the whole thing, and asked Claude to put it in the Mega Drive's shadow mode, a hardware trick that draws a layer at half brightness.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/16-fundo-parede.png" width="960" height="669" alt="The background on its own, before shadow mode. A real wall, the original carvings, a few grays and a lot of dithering." loading="lazy"></span></span><figcaption class="cap"><span class="num">2</span><p>The background on its own, before shadow mode. A real wall, the original carvings, a few grays and a lot of dithering.</p></figcaption></figure>
+<figure style="--r:0.696875;--k:8px"><span class="crt"><span class="tubo"><img src="../img/16-fundo-parede.png" width="960" height="669" alt="The background on its own, before shadow mode. A real wall, the original carvings, a few grays and a lot of dithering." loading="lazy"></span></span><figcaption class="cap"><span class="num">2</span><p>The background on its own, before shadow mode. A real wall, the original carvings, a few grays and a lot of dithering.</p></figcaption></figure>
 <div class="vl">
 <p>For the logo I took the Castlevania lettering and the red banner from Bloodlines and repainted them. The "Symphony of the Night" line came out of a straight conversion looking rough, so I fixed it by hand, pixel by pixel, and gave it a drop shadow. The small print at the bottom uses a new mini font I made for it.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/17-logo.png" width="960" height="480" alt="The logo up close, with the repainted Bloodlines banner and the hand-fixed lettering." loading="lazy"></span></span><figcaption class="cap"><span class="num">3</span><p>The logo up close, with the repainted Bloodlines banner and the hand-fixed lettering.</p></figcaption></figure>
+<figure style="--r:0.500000;--k:8px"><span class="crt"><span class="tubo"><img src="../img/17-logo.png" width="960" height="480" alt="The logo up close, with the repainted Bloodlines banner and the hand-fixed lettering." loading="lazy"></span></span><figcaption class="cap"><span class="num">3</span><p>The logo up close, with the repainted Bloodlines banner and the hand-fixed lettering.</p></figcaption></figure>
 </div>
 <div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>My part of this screen was small. He handed me finished art, and I put the wall on a layer the hardware draws at half brightness, which gives his few grays a darker copy without spending another palette.</p>
@@ -220,34 +234,34 @@
 <div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>In the last two posts I wrote about the plain pause menu that shipped because the team ran out of time. The ornate frames it never got were already in the game. The PlayStation's file select screen has these green ones.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/18-moldura-verde-ps1.png" class="px" width="864" height="360" alt="The green frame from the PlayStation&#x27;s file select screen." loading="lazy"></span></span><figcaption class="cap"><span class="num">4</span><p>The green frame from the PlayStation's file select screen.</p></figcaption></figure>
+<figure style="--r:0.416667;--k:8px"><span class="crt"><span class="tubo"><img src="../img/18-moldura-verde-ps1.png" class="px" width="864" height="360" alt="The green frame from the PlayStation&#x27;s file select screen." loading="lazy"></span></span><figcaption class="cap"><span class="num">4</span><p>The green frame from the PlayStation's file select screen.</p></figcaption></figure>
 <div class="vl">
 <p>Even though humans have a monstrous capacity to adapt, and even though, in the end, I find the original menu nostalgic, it's hideous. It doesn't match anything that was being made at the time.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/226-menu-sotn-ps1.png" class="px" width="364" height="240" alt="The original pause menu on the PlayStation." loading="lazy"></span></span><figcaption class="cap"><span class="num">5</span><p>The original pause menu on the PlayStation.</p></figcaption></figure>
+<figure style="--r:0.659341;--k:8px"><span class="crt"><span class="tubo"><img src="../img/226-menu-sotn-ps1.png" class="px" width="364" height="240" alt="The original pause menu on the PlayStation." loading="lazy"></span></span><figcaption class="cap"><span class="num">5</span><p>The original pause menu on the PlayStation.</p></figcaption></figure>
 <div class="vl">
 <p>In 1997, on the PlayStation itself, there were already much more pompous menus with heavy design, like Mega Man 8's. I could have gone that way, but I felt it would stray too far from the menus you found in 16-bit games. Then I thought about the Mega Man X series. It has exploration and character growth too, and its menus could be an inspiration further ahead (something we'll get into later). For now, we'd have to settle for something temporary.</p>
 <p>I did a Google search about game menus and ended up crossing paths with <a href="https://www.reddit.com/r/castlevania/comments/1gxebux/i_tried_to_fix_the_sotn_pause_menu/">a rework of SOTN's pause menu</a> that u/Plubby_ had posted on r/castlevania. I used it as the reference for a placeholder menu. My plan was a more radical redesign further ahead, reusing the flourishes deliberately and working transparency in.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/219-plubby-menu.png" width="1080" height="952" alt="The reference, &quot;I tried to fix the SotN pause menu&quot;, posted by u/Plubby_ on r/castlevania." loading="lazy"></span></span><figcaption class="cap"><span class="num">6</span><p>The reference, "I tried to fix the SotN pause menu", posted by u/Plubby_ on r/castlevania.</p></figcaption></figure>
+<figure style="--r:0.881481;--k:8px"><span class="crt"><span class="tubo"><img src="../img/219-plubby-menu.png" width="1080" height="952" alt="The reference, &quot;I tried to fix the SotN pause menu&quot;, posted by u/Plubby_ on r/castlevania." loading="lazy"></span></span><figcaption class="cap"><span class="num">6</span><p>The reference, "I tried to fix the SotN pause menu", posted by u/Plubby_ on r/castlevania.</p></figcaption></figure>
 <div class="vl">
 <p>For the background, I asked Google's image AI to put vines on the wall I had made for the title screen and take the carvings out. For whatever reason it filled the stones with little round holes, which triggered my trypophobia. It also couldn't keep to my wall; it seems to carry an inexorable idea of what a castle wall is. Cleaning that up, hole by hole in Photoshop, was the devil's own work. Anyway, for now I'm betting on the RNG and sending the assets to Claude to see what comes out. Closed mouths don't get fed.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/218-muro-vinhas.jpg" width="1090" height="960" alt="The menu background after the cleanup. What&#x27;s left of the title-screen wall, the AI&#x27;s vines, and not a single round hole left." loading="lazy"></span></span><figcaption class="cap"><span class="num">7</span><p>The menu background after the cleanup. What's left of the title-screen wall, the AI's vines, and not a single round hole left.</p></figcaption></figure>
+<figure style="--r:0.880734;--k:8px"><span class="crt"><span class="tubo"><img src="../img/218-muro-vinhas.jpg" width="1090" height="960" alt="The menu background after the cleanup. What&#x27;s left of the title-screen wall, the AI&#x27;s vines, and not a single round hole left." loading="lazy"></span></span><figcaption class="cap"><span class="num">7</span><p>The menu background after the cleanup. What's left of the title-screen wall, the AI's vines, and not a single round hole left.</p></figcaption></figure>
 </div>
 <div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>On October 24, at 2:26 a.m., I asked Claude to put that menu on Start, with that design but keeping the original game's fonts. Along with the reference menu, the windows on their own and the clean background, I sent icons for the buttons. The spells and the two attack lines on the main screen are tied to buttons, and on the PlayStation those are a square and a circle.</p>
 </div>
-<figure><span class="crt"><span class="tubo"><img src="../img/222-folha-botoes.jpg" width="1323" height="800" alt="The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons." loading="lazy"></span></span><figcaption class="cap"><span class="num">8</span><p>The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons.</p></figcaption></figure>
+<figure style="--r:0.604686;--k:8px"><span class="crt"><span class="tubo"><img src="../img/222-folha-botoes.jpg" width="1323" height="800" alt="The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons." loading="lazy"></span></span><figcaption class="cap"><span class="num">8</span><p>The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons.</p></figcaption></figure>
 <div class="vl">
 <p>The red letters come from the Japanese Mega Drive pad, where A, B and C are printed in red. X, Y and Z come from the six-button pad.</p>
 </div>
-<figure class="grupo"><div class="degrau" style="--ar:100/45.417;--zar:100/57.504"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/220-botoes-abc-jp.png" class="px" width="630" height="525" alt="First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: Evan-Amos and Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:43.040%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/221-botoes-xyz-6b.jpg" width="610" height="370" alt="First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: Evan-Amos and Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">9</span><p>First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a> and <a href="https://commons.wikimedia.org/wiki/File:Sega-Genesis-6But-Cont.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</p></figcaption></figure>
+<figure class="grupo" style="--r:0.454167;--rm:0.454167;--k:0px"><div class="degrau" style="--ar:100/45.417;--zar:100/57.504"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/220-botoes-abc-jp.png" class="px" width="630" height="525" alt="First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: Evan-Amos and Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:43.040%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/221-botoes-xyz-6b.jpg" width="610" height="370" alt="First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: Evan-Amos and Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">9</span><p>First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a> and <a href="https://commons.wikimedia.org/wiki/File:Sega-Genesis-6But-Cont.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</p></figcaption></figure>
 </div>
 <div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>So I had four pieces, Plubby_'s layout, the green frames, the wall and the button sheet. I cut the frames apart into 8 by 8 pixel tiles, which is how the Mega Drive builds a screen, reassembled them around every window, and arranged the windows the way the reference laid them out. The square and the circle became A and C, the two buttons Alucard attacks with on a Mega Drive, drawn as small red badges. The special moves list writes each command with the d-pad glyphs and the same A or C at the end. That was the placeholder.</p>
 </div>
-<figure class="grupo"><div class="degrau zz" style="--ar:100/30.316;--zar:100/87.134"><span class="crt" style="--l:0.000%;--t:0%;--w:39.333%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:3"><span class="tubo"><img src="../img/223-menu-claude-status.png" class="px" width="867" height="665" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span><span class="crt" style="--l:30.333%;--t:0%;--w:39.333%;--zl:46.000%;--zt:26.144%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/224-menu-claude-equip.png" class="px" width="874" height="669" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span><span class="crt" style="--l:60.667%;--t:0%;--w:39.333%;--zl:0.000%;--zt:52.235%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/225-menu-claude-golpes.png" class="px" width="868" height="669" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">10</span><p>The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post.</p></figcaption></figure>
+<figure class="grupo" style="--r:0.303157;--rm:0.871338;--k:0px"><div class="degrau zz" style="--ar:100/30.316;--zar:100/87.134"><span class="crt" style="--l:0.000%;--t:0%;--w:39.333%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:3"><span class="tubo"><img src="../img/223-menu-claude-status.png" class="px" width="867" height="665" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span><span class="crt" style="--l:30.333%;--t:0%;--w:39.333%;--zl:46.000%;--zt:26.144%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/224-menu-claude-equip.png" class="px" width="874" height="669" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span><span class="crt" style="--l:60.667%;--t:0%;--w:39.333%;--zl:0.000%;--zt:52.235%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/225-menu-claude-golpes.png" class="px" width="868" height="669" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">10</span><p>The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post.</p></figcaption></figure>
 </div>
 <div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>Even this kind of adaptation is still not something AI is good at. Pixel art runs on abstract symbolism, and on a kind of synesthetic cognition that ties our phylogenetic makeup (every biological sensor we have, tuned to an environment) to arbitrarily applicable relational responding. That last one is complicated; I actually have a bachelor's degree in Psychology and a postgraduate degree in Behavior Analysis. Machines are still very far from simulating any of that in a way that works.</p>
@@ -258,8 +272,8 @@
 <nav class="posts-nav"><a class="prev" href="day-1.html"><span class="d">&larr; Day 1</span><span class="t">from a PlayStation disc to Alucard walking on a Mega CD</span></a></nav>
 </article>
 </main>
-<footer class="site col">
-  <div class="w1056">
+<footer class="site">
+  <div>
     <div class="rule"></div>
     <div class="row">
       <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
@@ -267,39 +281,51 @@
     </div>
   </div>
 </footer>
+</div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
 <div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
 <script>
-/* figuras, título e terminais ocupam um número inteiro de linhas do quadriculado (24 px):
-   o que vem depois volta a cair nas linhas. Refaz quando uma imagem carrega ou a tela muda. */
+/* Rede de segurança da grade. O alinhamento é do CSS (.grade); isto só age quando o navegador
+   foge dele: sem round() no CSS, ou com uma fonte reserva que muda a altura de uma linha. Aí cada
+   bloco fora do quadriculado ganha um calço antes dele. window.sotnGrade() diz quantos estão fora. */
 (function () {
-  function falta(e) { var h = e.getBoundingClientRect().height; return Math.ceil(h / 24 - 0.01) * 24 - h; }
+  var g = document.querySelector('.grade'); if (!g) return;
+  var SEL = '.kicker, h1.ttl, .note, .quem, .vl > *, figure, figure > .cap, .secr, .how, .posts-nav, footer.site';
+  var velho = !(window.CSS && CSS.supports && CSS.supports('width', 'round(down, 1px, 1px)'));
+  function erro(e, t0) { var r = (e.getBoundingClientRect().top - t0) % 24; return r > 23.25 || r < 0.75 ? 0 : r; }
+  window.sotnGrade = function () {
+    var t0 = g.getBoundingClientRect().top, n = 0;
+    g.querySelectorAll(SEL + ', .card, .cap .num').forEach(function (e) { if (erro(e, t0)) n++; });
+    return { fora: n, calcos: g.querySelectorAll('.calco').length, largura: g.getBoundingClientRect().width,
+             esquerda: g.getBoundingClientRect().left };
+  };
+  var ocupado = false;
   function grade() {
-    document.querySelectorAll('figure > .cap').forEach(function (c) {
-      var e = c.previousElementSibling; if (e) c.style.marginTop = (24 + falta(e)) + 'px';
+    if (ocupado) return; ocupado = true;
+    if (velho) {
+      var b = document.documentElement.clientWidth;
+      var w = b <= 700 ? Math.floor((b - 24) / 24) * 24 : Math.min(1056, Math.floor((b - 48) / 48) * 48);
+      g.style.width = w + 'px'; g.style.maxWidth = 'none'; g.style.marginLeft = Math.floor((b - w) / 2) + 'px';
+      g.style.setProperty('--gw', w + 'px');
+      g.querySelectorAll('figure > :first-child').forEach(function (e) {
+        var h = e.getBoundingClientRect().height, c = e.parentNode.querySelector('.cap');
+        if (c) c.style.marginTop = (24 + Math.ceil(h / 24 - 0.01) * 24 - h) + 'px';
+      });
+    }
+    g.querySelectorAll('.calco').forEach(function (c) { c.remove(); });
+    var t0 = g.getBoundingClientRect().top;
+    g.querySelectorAll(SEL).forEach(function (e) {
+      var r = erro(e, t0); if (!r) return;
+      var c = document.createElement('i'); c.className = 'calco'; c.style.height = (24 - r) + 'px';
+      e.parentNode.insertBefore(c, e);
+      var r2 = erro(e, t0); if (r2) c.style.height = ((24 - r) + (24 - r2)) % 24 + 'px';
     });
-    /* texto: uma letra que cai numa fonte reserva do sistema pode deixar a linha com 25 px em vez de 24;
-       cada parágrafo é completado até um múltiplo de 24 para o desvio não se acumular ao longo do post */
-    document.querySelectorAll('article p:not(.quem), article li').forEach(function (e) {
-      e.style.paddingBottom = '';
-      var f = falta(e);
-      if (f > 0.01) e.style.paddingBottom = ((parseFloat(getComputedStyle(e).paddingBottom) || 0) + f) + 'px';
-    });
-    document.querySelectorAll('h1.ttl, pre.term').forEach(function (e) {
-      e.style.marginBottom = '';
-      var m = parseFloat(getComputedStyle(e).marginBottom) || 0;
-      e.style.marginBottom = (m + falta(e)) + 'px';
-    });
+    setTimeout(function () { ocupado = false; }, 0);
   }
   grade();
-  document.addEventListener('DOMContentLoaded', grade);
   window.addEventListener('load', grade);
   window.addEventListener('resize', grade);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(grade);
-  if (window.ResizeObserver) {
-    var ro = new ResizeObserver(grade);
-    document.querySelectorAll('figure > :first-child, h1.ttl, pre.term').forEach(function (e) { ro.observe(e); });
-  }
 })();
 
 // Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
