@@ -8,7 +8,7 @@ status: draft
 ---
 
 [gus]
-Day 2 started at 12:23 a.m., when I went to bed and asked Claude to keep working for as many hours as it could. By morning there was a new build waiting, and I sent back the review. I couldn't find the candle, nothing blinked, the zombies died without any animation, and the backdash was unacceptably slow. While I was at it, I moved the backdash from Start to Y on the six-button pad. Start is going to be the menu.
+Day 2 started at 12:23 a.m., when I went to bed and asked Claude to keep working on some tasks during bedtime. By morning there was a new build waiting, and I sent back the review. I couldn't find the candle, nothing blinked, the zombies died without any animation, and the backdash was unacceptably slow. While I was at it, I moved the backdash from Start to Y on the six-button pad. Start is going to be the menu.
 
 [claude]
 I kept committing until 2:05 a.m. and then stopped. Nobody played that build until he woke up, so his morning list was the first test it ever got.
