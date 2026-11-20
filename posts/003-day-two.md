@@ -50,7 +50,7 @@ The PlayStation controller has shoulder buttons for the transformations. The Meg
 I laid them out myself. X for the bat, Z for the wolf, up plus X for the mist. That evening only the bat had graphics; the wolf and the mist worked, invisibly. The double jump felt perfect on the first try.
 
 ![](../imagens/20-six-button.jpg)
-*The six-button pad. X is the bat, Z is the wolf, up plus X is the mist, Y is the backdash. Photo: [Evan-Amos](https://commons.wikimedia.org/wiki/File:Sega-Genesis-6But-Cont.jpg), public domain, via Wikimedia Commons.*
+*The six-button pad. X is the bat, Z is the wolf, up plus X is the mist (which I plan to change to X plus Z), Y is the backdash. Photo: [Evan-Amos](https://commons.wikimedia.org/wiki/File:Sega-Genesis-6But-Cont.jpg), public domain, via Wikimedia Commons.*
 
 ![](../imagens/26-controle-6-botoes.png)
 *The layout from that night, drawn as a diagram.*
