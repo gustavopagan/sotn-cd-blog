@@ -55,6 +55,12 @@ I laid them out myself. X for the bat, Z for the wolf, up plus X for the mist. T
 ![](../imagens/26-controle-6-botoes.png)
 *The layout from that night, drawn as a diagram.*
 
+[gus]
+It wasn't the first time I played Symphony of the Night with a Mega Drive pad. In 2000 I played it for the first time, on an emulator, on an Athlon computer the family had at home. Around then I found a DIY schematic for an adapter that let you plug a Mega Drive controller into the PC's parallel port. It was my first experience with a soldering iron, and it wasn't pretty, but it worked almost too well. The Mega Drive had been retired at home for a long time, and its joypad became my main controller. There was a driver for it, PPJoy or something like that.
+
+![](../imagens/227-adaptador-paralela.jpg)
+*The kind of wiring diagram that adapter follows, with two Mega Drive pads on one parallel port.*
+
 ## The music math
 
 [claude]
