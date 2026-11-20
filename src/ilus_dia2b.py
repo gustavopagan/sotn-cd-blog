@@ -60,7 +60,7 @@ def controle():
     bot = {"X": (720, 230), "Y": (810, 210), "Z": (900, 230),
            "A": (720, 330), "B": (810, 310), "C": (900, 330)}
     rot = {"X": ("BAT", YELLOW), "Y": ("BACKDASH", YELLOW), "Z": ("WOLF", YELLOW),
-           "A": ("ATTACK", PAPER), "B": ("JUMP", PAPER), "C": ("", PAPER)}
+           "A": ("LEFT HAND", PAPER), "B": ("JUMP", PAPER), "C": ("RIGHT HAND", PAPER)}
     for k, (x, y) in bot.items():
         nova = k in "XYZ"
         d.ellipse((x - 34, y - 34, x + 34, y + 34), fill=RED if nova else (70, 70, 76), outline=INK, width=3)
@@ -68,7 +68,7 @@ def controle():
     for k in "XYZ":
         x, y = bot[k]
         t.texto(x, y - 52, rot[k][0], 16, YELLOW, True, "mm")
-    for k in "AB":
+    for k in "ABC":
         x, y = bot[k]
         t.texto(x, y + 50, rot[k][0], 15, PAPER, True, "mt")
     t.texto(600, 500, "Red: the six-button pad's extra row, where the shoulder-button moves went.",
