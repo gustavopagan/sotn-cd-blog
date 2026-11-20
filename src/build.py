@@ -26,8 +26,9 @@ def inline(t):
     t = html.escape(t, quote=False)
     t = re.sub(r"\[\[(.*?)\]\]", r'<span class="note">\1</span>', t)
     t = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2">\1</a>', t)
+    t = t.replace("\\*", "\0")  # \* é asterisco de verdade, não itálico
     t = re.sub(r"(?<![\w/])\*(.+?)\*(?![\w])", r"<em>\1</em>", t)
-    return t
+    return t.replace("\0", "*")
 
 
 def img_name(f):
