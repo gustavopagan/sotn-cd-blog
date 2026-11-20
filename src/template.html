@@ -106,7 +106,10 @@
   /* a altura de cada imagem (--r = altura/largura e --k = moldura, vindas do build) é completada
      até a casa seguinte na margem da legenda */
   figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--r, 1) + var(--k, 0px)); }
-  figure > .cap { margin-top: calc(24px + round(up, var(--H), 24px) - var(--H)); }
+  figure { display: grid; grid-template-columns: 100%; grid-template-rows: round(up, var(--H), 24px) auto; }
+  figure > :first-child { align-self: start; }
+  figure, .voz > figure:last-child { margin-bottom: 48px; }
+  figure > .cap { margin-bottom: 0; }
   .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
   .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
   .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
