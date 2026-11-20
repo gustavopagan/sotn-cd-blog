@@ -250,6 +250,13 @@
     document.querySelectorAll('figure > .cap').forEach(function (c) {
       var e = c.previousElementSibling; if (e) c.style.marginTop = (24 + falta(e)) + 'px';
     });
+    /* texto: uma letra que cai numa fonte reserva do sistema pode deixar a linha com 25 px em vez de 24;
+       cada parágrafo é completado até um múltiplo de 24 para o desvio não se acumular ao longo do post */
+    document.querySelectorAll('article p:not(.quem), article li').forEach(function (e) {
+      e.style.paddingBottom = '';
+      var f = falta(e);
+      if (f > 0.01) e.style.paddingBottom = ((parseFloat(getComputedStyle(e).paddingBottom) || 0) + f) + 'px';
+    });
     document.querySelectorAll('h1.ttl, pre.term').forEach(function (e) {
       e.style.marginBottom = '';
       var m = parseFloat(getComputedStyle(e).marginBottom) || 0;
@@ -260,6 +267,7 @@
   document.addEventListener('DOMContentLoaded', grade);
   window.addEventListener('load', grade);
   window.addEventListener('resize', grade);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(grade);
   if (window.ResizeObserver) {
     var ro = new ResizeObserver(grade);
     document.querySelectorAll('figure > :first-child, h1.ttl, pre.term').forEach(function (e) { ro.observe(e); });
