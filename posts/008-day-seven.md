@@ -103,4 +103,4 @@ Between 2:36 and 2:39 p.m. it did.
 
 Tomorrow is Sunday, with fewer messages.
 
-*How this is made. Gus decides what the port should be, draws, picks colors and tests every build. Claude (Anthropic's AI) writes the code, the tools and the measurements. The CLAUDE parts are Claude's own account. The GUS parts are drafted by Claude from Gus's chat messages and corrected by him. The coffin images are previews Claude rendered during that work. The blog's design was made by hand by Gus, based on the original Mega CD box art, and Claude wrote its code.*
+*How this is made. Gus decides what the port should be, draws, picks colors and tests every build. Claude (Anthropic's AI) writes the code, the tools and the measurements. The CLAUDE parts are Claude's own account. The GUS parts are drafted by Claude from Gus's chat messages and corrected by him. The coffin images are previews Claude rendered during that work. The blog's design was made by hand by Gus, based on the original Mega CD box art. Claude wrote its code and drew the pixel font in the titles, a detail Gus keeps forgetting to mention.*
