@@ -203,6 +203,10 @@ def page(title, content, depth, badge=""):
 # Só na prévia (--drafts): o visualizador recarrega a página inicial a cada
 # nova versão; volta para o último post aberto, na mesma altura.
 PREVIA = """<script>
+// botão da régua de conferência da grade (só na prévia)
+(function(){var b=document.createElement('button');b.textContent='GRID CHECK';
+b.style.cssText='position:fixed;right:8px;top:8px;z-index:61;font:12px/24px monospace;padding:0 8px;background:#000;color:#0f0;border:0;cursor:pointer;opacity:.75';
+b.onclick=function(){window.sotnRegua&&window.sotnRegua()};document.body.appendChild(b)})();
 (function(){try{
 var S=sessionStorage, post=!!document.querySelector('article');
 if(post){

@@ -31,9 +31,11 @@
     width: var(--W); max-width: none; margin-left: round(down, (100% - var(--W)) / 2, 1px);
     min-height: 100vh; container-type: inline-size; }
   .grade::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px;
-    background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
-    background-size: 24px 24px; }
+    /* um desenho só, do tamanho do bloco, e não um azulejo de 24 px repetido: navegador que arredonda
+       o azulejo para pixel inteiro do aparelho (zoom ou escala de tela quebrados) acumulava o erro a
+       cada casa e o quadriculado ia saindo do lugar ao longo da página */
+    background-image: repeating-linear-gradient(rgba(38,48,70,.14) 0 1px, transparent 1px 24px),
+                      repeating-linear-gradient(90deg, rgba(38,48,70,.14) 0 1px, transparent 1px 24px); }
   a { color: var(--blue); }
   .w720 { width: min(720px, 100%); margin: 0 auto; }
   /* dentro de um parágrafo, link, itálico e código não aumentam a linha: quem manda é o parágrafo */
@@ -221,6 +223,27 @@
     g.querySelectorAll(SEL + ', .card, .cap .num').forEach(function (e) { if (erro(e, t0)) n++; });
     return { fora: n, calcos: g.querySelectorAll('.calco').length, largura: g.getBoundingClientRect().width,
              esquerda: g.getBoundingClientRect().left };
+  };
+  /* Régua de conferência: risca em vermelho, pela posição real dos blocos, uma linha a cada 24 px na
+     borda esquerda e mostra as medidas do navegador. Se o risco bate com a etiqueta e não com o
+     quadriculado, quem saiu do lugar foi o fundo; se bate com o fundo, foi o conteúdo. */
+  window.sotnRegua = function () {
+    var v = g.querySelector('.regua'); if (v) { v.remove(); document.getElementById('reguainfo').remove(); return; }
+    v = document.createElement('div'); v.className = 'regua';
+    v.style.cssText = 'position:absolute;top:0;bottom:0;left:-24px;width:48px;pointer-events:none;z-index:40;' +
+      'background:repeating-linear-gradient(rgba(255,0,0,.0) 0 0)';
+    var n = Math.floor(g.getBoundingClientRect().height / 24), h = '';
+    for (var i = 0; i < n; i++) h += '<i style="position:absolute;left:0;right:0;height:1px;background:#f0f;top:' + (i * 24) + 'px"></i>';
+    v.innerHTML = h; g.appendChild(v);
+    var s = window.sotnGrade(), q = g.querySelectorAll('.quem'), u = q[q.length - 1];
+    var d = document.createElement('div'); d.id = 'reguainfo';
+    d.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:60;background:#000;color:#0f0;font:12px/18px monospace;padding:6px 10px;white-space:pre-wrap';
+    d.textContent = 'GRADE dpr=' + window.devicePixelRatio + ' janela=' + window.innerWidth + 'x' + window.innerHeight +
+      ' zoomVV=' + (window.visualViewport ? visualViewport.scale : '?') + ' grade=' + s.largura + '@' + s.esquerda +
+      ' fora=' + s.fora + ' calcos=' + s.calcos + ' alt=' + g.getBoundingClientRect().height +
+      (u ? ' ultimaEtiqueta=' + (u.getBoundingClientRect().top - g.getBoundingClientRect().top) : '') +
+      ' round=' + !velho + '\n' + navigator.userAgent;
+    document.body.appendChild(d);
   };
   var ocupado = false;
   function grade() {
