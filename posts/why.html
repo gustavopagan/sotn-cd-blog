@@ -70,9 +70,9 @@
   .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
   figure + .vl { margin-top: 48px; }
   /* nome de quem fala: retângulo na cor da linha, encostado nela, como os números das legendas */
-  .voz .quem { display: table; margin: 0 0 0 -24px; height: 24px; padding: 0 12px; background: var(--faixa); color: #fff;
+  .voz .quem { display: block; box-sizing: border-box; width: 72px; margin: 0 0 0 -24px; height: 24px; padding: 0; text-align: center; background: var(--faixa); color: #fff;
     font: 400 17px/24px var(--mono); letter-spacing: -.012em; }
-  .voz-claude .quem { background: var(--blue); }
+  .voz-claude .quem { width: 96px; background: var(--blue); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }
@@ -241,6 +241,30 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
 <div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
 <script>
+/* figuras, título e terminais ocupam um número inteiro de linhas do quadriculado (24 px):
+   o que vem depois volta a cair nas linhas. Refaz quando uma imagem carrega ou a tela muda. */
+(function () {
+  function falta(e) { var h = e.getBoundingClientRect().height; return Math.ceil(h / 24 - 0.01) * 24 - h; }
+  function grade() {
+    document.querySelectorAll('figure > .cap').forEach(function (c) {
+      var e = c.previousElementSibling; if (e) c.style.marginTop = (24 + falta(e)) + 'px';
+    });
+    document.querySelectorAll('h1.ttl, pre.term').forEach(function (e) {
+      e.style.marginBottom = '';
+      var m = parseFloat(getComputedStyle(e).marginBottom) || 0;
+      e.style.marginBottom = (m + falta(e)) + 'px';
+    });
+  }
+  grade();
+  document.addEventListener('DOMContentLoaded', grade);
+  window.addEventListener('load', grade);
+  window.addEventListener('resize', grade);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(grade);
+    document.querySelectorAll('figure > :first-child, h1.ttl, pre.term').forEach(function (e) { ro.observe(e); });
+  }
+})();
+
 // Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
 (function(){try{
   var n=performance.getEntriesByType('navigation')[0];
