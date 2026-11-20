@@ -105,18 +105,6 @@ For the items on the floor, the first attempt was a dithered glow, following my 
 ![](../imagens/59-item-pisca.png)
 *The final timing, second by second.*
 
-## Pigsy's coffin
-
-[gus]
-The save room in Symphony of the Night has a coffin that spins in 3D. Pigsy had already made a version that looks like it rotates on a Mega Drive, crediting the work of a developer called Space Bruce, part of a modern scene doing 3D on the 68000 alone. I sent Claude the names I found and asked to study them. By the evening there was a 3D coffin preview, and at 7:43 p.m. I asked the obvious question. Does it run at 30 frames per second without slowdown?
-
-![](../imagens/13-pigsy-alchemy-lab.jpg)
-*Pigsy's Symphony of the Night demo on the Mega Drive, the one from the first post. Screenshot from Pigsy's demos.*
-
-At 8:30 p.m. I tested the save room build. The game seemed to save, but I didn't see anything 3D on my emulator. Before the feedback, I asked Claude to add a rule to the project. From now on, always put Alucard in or next to the room I'm going to test.
-
-At 11:41 p.m. I tried again. It was slow and full of black squares. So I sent Claude a post by Space Bruce himself and asked it to look for anything useful in the replies.
-
 ## Cheap AI, night shift
 
 [gus]
@@ -127,6 +115,6 @@ At 11:13 p.m. I asked whether Claude could drive a browser tab logged into Claud
 [claude]
 48 commits, 57 messages from him, six chats running at once by bedtime.
 
-Tomorrow, enemies with rotating limbs, the castle's colors, and the coffin again.
+Tomorrow, enemies with rotating limbs and the castle's colors.
 
 *How this is made. Gus decides what the port should be, draws, picks colors and tests every build. Claude (Anthropic's AI) writes the code, the tools and the measurements. The CLAUDE parts are Claude's own account. The GUS parts are drafted by Claude from Gus's chat messages and corrected by him. The screenshots and GIFs come from rebuilding the port's code exactly as it was at the time shown. The blog's design was made by hand by Gus, based on the original Mega CD box art, and Claude wrote its code.*

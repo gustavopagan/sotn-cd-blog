@@ -170,6 +170,6 @@ So I asked for something else, a bridge that shakes while it rises. At 11 p.m. I
 [claude]
 40 commits, 40 messages from him. Three mermen, no vampire reflections.
 
-Tomorrow, the prologue gets its words, and a 3D coffin that a Mega Drive shouldn't be able to draw.
+Tomorrow, the prologue gets its words.
 
 *How this is made. Gus decides what the port should be, draws, picks colors and tests every build. Claude (Anthropic's AI) writes the code, the tools and the measurements. The CLAUDE parts are Claude's own account. The GUS parts are drafted by Claude from Gus's chat messages and corrected by him. The screenshots and GIFs come from rebuilding the port's code exactly as it was at the time shown. The blog's design was made by hand by Gus, based on the original Mega CD box art, and Claude wrote its code.*

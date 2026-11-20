@@ -3,7 +3,7 @@ title: "Day 7: the coffin, by hand"
 kicker: "Day 7 · October 24, 2026"
 badge: "8"
 slug: "day-7"
-excerpt: "I stay up until six redesigning the save room, give up on 3D for the coffin, try Gemini, end up pushing pixels myself, and at 2 p.m. five tasks land in one disc."
+excerpt: "I stay up until six redesigning the save room, try Gemini for the coffin, end up pushing pixels myself, and at 2 p.m. five tasks land in one disc."
 status: draft
 ---
 
@@ -29,12 +29,10 @@ At 12:57 a.m. I said it out loud. The best way out is still rewriting the music 
 >
 > (Translated from Portuguese.)
 
-## The coffin, again
+## A new coffin
 
 [gus]
-By 1 a.m. the 3D coffin had a crystal and a cloud of doritos that looked right. At 1:04 a.m. I remembered how the original actually did it. The faces of the crystal flew outward along the depth axis and dissolved on the way. At 3:53 the crystal and the doritos were great, but the coffin still scrambled while turning, especially when seen from the side.
-
-At 2:56 a.m. I asked the question that changed direction. Would it be worth making the coffin out of sprites too? Then, a few minutes apart, I asked Claude to make it appear and disappear with the same dither as the doors, to stop it from breaking apart on the way in and out, and to remove the lines on its edges. At 3:41 a.m., after looking at the original again, I gave up on it entirely.
+The save room has a coffin, and at 3:41 a.m., after looking at the original again, I decided how ours would be.
 
 > "No, the original save coffin is really ugly. Let's go with pixel art."
 >

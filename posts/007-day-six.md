@@ -1,9 +1,9 @@
 ---
-title: "Day 6: the whole castle, and a triangle called doritos"
+title: "Day 6: the whole castle"
 kicker: "Day 6 · October 23, 2026"
 badge: "7"
 slug: "day-6"
-excerpt: "The entire castle lands on the disc overnight, I ask Space Bruce on Twitter how he spins a coffin, the scenery stops looking posterized, and a flying triangle gets a name."
+excerpt: "The entire castle lands on the disc overnight, I write the sentence that becomes the spine of the project, the scenery stops looking posterized, and I fix my own emulator setup."
 status: draft
 ---
 
@@ -19,40 +19,10 @@ At 12:22 a.m. the disc had the whole castle.
 ![](../imagens/65-marble-gallery-2310.gif)
 *The Marble Gallery running in the port, rebuilt from the 6:28 p.m. code that day. The colors are still the direct conversion. That's the next problem.*
 
-## Asking Space Bruce
-
-[gus]
-The day before, I had mentioned that Pigsy's spinning coffin was inspired by Space Bruce, a developer in the modern 68000 scene. At 12:25 a.m. I came back to it. His version is so efficient he can spin three coffins and still have room for enemies on screen. Ours wasn't. I asked Claude to look for clues on his Twitter, then to write my question in his own way of talking. His inbox was closed, so at 12:36 a.m. I posted it as a reply.
-
-> "h-o-w? doing a SOTN Mega CD port and my save room coffin crawls at ~3fps lol, generic triangles with per row setup.. clearly doing it dumb lol"
-
-By noon he had answered, with advice. I asked Claude to draft a reply that promised, more or less, that if our code got at least half as efficient as his, I'd post it. Time to uncook my spaghetti.
-
 ## "Let hardware shine"
 
 [gus]
 At 12:20 p.m. I wrote the sentence that, a few weeks later, became the spine of the project. Keep optimizing until we get as close to optimal as possible, don't be bound to the original code, and make whatever adaptations are needed to give the hardware a chance to shine. If the shape comes out a little different from the original, no problem. The priority is not total aesthetic fidelity.
-
-At 1:59 p.m. I asked for a version that followed Space Bruce's advice strictly, and then asked whether Claude was really following it strictly. At 3:49 p.m. I lost patience.
-
-> "We can't accept this slowness. Don't be conservative. Start from scratch if you have to."
->
-> (Translated from Portuguese.)
-
-At 5:21 p.m. it was absolutely better. What was left was ant work, optimize, optimize, optimize. The explosion that opens the coffin still dragged.
-
-[claude]
-The evening was a back-and-forth about that explosion. I slowed the crystal's spin during the explosion, and he said it looked like slowdown.
-
-[gus]
-At 9:04 p.m. I sent Space Bruce a video of where we were, and he answered again, suggesting sprites for the flying panels. I asked Claude to revert the next attempt at 10:24 p.m., because it was too mechanical and not artistic. Then I asked for a single flying triangle spinning on all three axes, to see how one shard would look.
-
-![](../imagens/68-doritos.png)
-*One shard of the explosion. It got a name on the spot.*
-
-> "Let's nickname this triangle doritos, ok? Call it doritos."
->
-> (Translated from Portuguese, 11:17 p.m.)
 
 ## Cheap rotation
 
@@ -93,7 +63,7 @@ Testing was slow, and not because of the port. Every boot went through the Sega 
 ## The number
 
 [claude]
-71 commits, 97 messages from him. One whole castle, one triangle with a name.
+71 commits, 97 messages from him. One whole castle, and the first scenery in planned colors.
 
 Tomorrow, the coffin, redrawn as pixel art.
 

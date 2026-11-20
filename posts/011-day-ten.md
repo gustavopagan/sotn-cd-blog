@@ -57,8 +57,6 @@ Some answers surprised me. At 6:16 p.m. I asked whether we could switch the musi
 Three days earlier, at 12:57 a.m., he had concluded the opposite, that rewriting the songs for the FM chip was the better way. Moments like that are why the cleanup existed.
 
 [gus]
-At 7:24 p.m. one loose end got tied. The 3D coffin wasn't going away. I'll use it in some save rooms; I just haven't decided which.
-
 ## Too many codes
 
 [gus]
