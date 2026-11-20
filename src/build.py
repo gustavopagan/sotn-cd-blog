@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Gera o site em public/ a partir de posts/*.md.
 
-Uso: python3 src/build.py [--drafts]
+Uso: python3 src/build.py [--drafts] [--sem-grade]
+  --sem-grade pula a conferência da grade (src/grade_test.py); sem ela o build falha se algo sair do quadriculado.
   --drafts inclui os posts com status: draft (só para prévia, nunca para o push).
 
 Saída: public/index.html (lista de posts) e public/posts/<slug>.html.
@@ -95,15 +96,24 @@ def render(body):
                 except Exception:
                     _w, _h = 4, 3
                 itens.append((nome, _w, _h))
+            medida = [""]  # altura da figura para a grade: --r (altura/largura), --rm (celular), --k (moldura)
             def tela(nome, _w, _h, est=""):
                 if nome in DIAGRAMAS:  # diagrama: painel chapado, sem tubo de CRT
                     cel = nome.replace(".png", "-m.png")
-                    fonte_cel = (f'<source media="(max-width: 700px)" srcset="../img/{cel}">'
-                                 if os.path.exists(os.path.join(ROOT, "public", "img", cel)) else "")
+                    tem_cel = os.path.exists(os.path.join(ROOT, "public", "img", cel))
+                    fonte_cel = rm = ""
+                    if tem_cel:
+                        with _I.open(os.path.join(ROOT, "public", "img", cel)) as _im:
+                            _cw, _ch = _im.size
+                        rm = f";--rm:{_ch / _cw:.6f}"
+                        fonte_cel = (f'<source media="(max-width: 700px)" srcset="../img/{cel}"'
+                                     f' width="{_cw}" height="{_ch}">')
+                    medida[0] = f"--r:{_h / _w:.6f}{rm};--k:0px"
                     return (f'<span class="painel"{est}><picture>{fonte_cel}<img src="../img/{nome}" width="{_w}"'
                             f' height="{_h}" alt="{html.escape(alt)}" loading="lazy"></picture></span>')
                 # pixel art amplia sem suavizar; foto (jpg ou "-foto.png") amplia suave
                 foto = nome.endswith((".jpg", ".jpeg", "-foto.png"))
+                medida[0] = f"--r:{_h / _w:.6f};--k:8px"
                 cls = ' class="px"' if _w < 900 and not foto else ""
                 return (f'<span class="crt"{est}><span class="tubo"><img src="../img/{nome}"{cls}'
                         f' width="{_w}" height="{_h}" alt="{html.escape(alt)}" loading="lazy"></span></span>')
@@ -111,7 +121,8 @@ def render(body):
             cap = (f'<figcaption class="cap"><span class="num">{numero[0]}</span>'
                    f'<p>{inline(m.group(2))}</p></figcaption>')
             if len(itens) == 1:
-                figura(f"<figure>{tela(*itens[0])}{cap}</figure>")
+                t1 = tela(*itens[0])
+                figura(f'<figure style="{medida[0]}">{t1}{cap}</figure>')
                 continue
             # várias telas lado a lado, levemente sobrepostas; a de cima muda ao passar o mouse.
             # No celular, de 3 telas para cima, viram um zigue-zague em duas colunas.
@@ -131,7 +142,7 @@ def render(body):
                        f'--zl:{(k % 2) * zcol:.3f}%;--zt:{zt[k] / ztot * 100:.3f}%;--zw:{zw:.3f}%;z-index:{n - k}"')
                 telas.append(tela(nome, wd, h, est))
             zz = " zz" if n >= 3 else ""
-            figura(f'<figure class="grupo"><div class="degrau{zz}" style="--ar:100/{tot:.3f};--zar:100/{ztot:.3f}">'
+            figura(f'<figure class="grupo" style="--r:{tot / 100:.6f};--rm:{(ztot if zz else tot) / 100:.6f};--k:0px"><div class="degrau{zz}" style="--ar:100/{tot:.3f};--zar:100/{ztot:.3f}">'
                        + "".join(telas) + f"</div>{cap}</figure>")
             continue
         if b.startswith("## "):
@@ -275,3 +286,15 @@ for meta, _ in reversed(posts):
 idx = '<section class="list w720">\n' + "\n".join(cards) + "\n</section>"
 open(os.path.join(ROOT, "public", "index.html"), "w", encoding="utf-8").write(page(SITE, idx, 0))
 print("ok:", ", ".join(m["slug"] + ("" if m.get("status") == "published" else " (rascunho)") for m, _ in posts))
+
+# A grade é contrato: todo bloco no quadriculado de 24 px, em várias larguras de janela.
+if "--sem-grade" not in sys.argv:
+    try:
+        import playwright  # noqa: F401
+    except ImportError:
+        print("AVISO: grade não conferida (playwright não instalado)")
+    else:
+        sys.path.insert(0, os.path.join(ROOT, "src"))
+        import grade_test
+        if grade_test.main():
+            raise SystemExit("build falhou: conteúdo fora da grade")

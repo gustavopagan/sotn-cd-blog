@@ -19,18 +19,27 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body {
-    background-color: var(--paper);
+  html { background: var(--paper); overflow-x: hidden; }
+  body { overflow-x: hidden; overflow-x: clip; color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px; }
+  /* A GRADE. Um bloco só segura o site inteiro e pinta o quadriculado, então fundo e conteúdo têm a
+     mesma origem por construção. A largura é sempre um número inteiro de casas (de 48 em 48 px no
+     computador, para o que é centralizado cair em casa inteira; de 24 em 24 no celular) e a borda
+     esquerda cai num pixel inteiro. Tudo dentro dela mede múltiplos de 24 px na horizontal e na
+     vertical; src/grade_test.py confere isso no build. */
+  .grade { --W: min(1056px, round(down, 100% - 48px, 48px)); position: relative; isolation: isolate;
+    width: 1056px; max-width: calc(100% - 48px); margin: 0 auto;
+    width: var(--W); max-width: none; margin-left: round(down, (100% - var(--W)) / 2, 1px);
+    min-height: 100vh; container-type: inline-size; }
+  .grade::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px;
     background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
-    background-size: 24px 24px;
-    background-position: calc(50% + 12px) 0, calc(50% + 12px) 0;
-    color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px;
-  }
+    background-size: 24px 24px; }
   a { color: var(--blue); }
-  .col { padding: 0 24px; }
-  .w1056 { width: 1056px; max-width: 100%; margin: 0 auto; }
-  .w720 { width: 720px; max-width: 100%; margin: 0 auto; }
+  .w720 { width: min(720px, 100%); margin: 0 auto; }
+  /* dentro de um parágrafo, link, itálico e código não aumentam a linha: quem manda é o parágrafo */
+  article p :is(a, em, i, strong, b, code, span) { line-height: 0; }
+  pre.term code { font: inherit; }
+  .calco { display: block; }
   .cdx { font-family: var(--cd); font-weight: 400; text-transform: uppercase; }
   .mono { font-family: var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
 
@@ -87,11 +96,15 @@
   .how p { margin: 0; padding: 24px; font-size: 15px; }
 
   /* figuras: largura de 960 no computador, a coluna no celular */
-  figure { --fw: min(960px, calc(100vw - 48px)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
+  figure { --fw: min(960px, var(--gw, 100cqw)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
   figure + p, figure + .secr, figure + figure { margin-top: 48px; }
   figure img { display: block; width: 100%; height: auto; }
   figure picture { display: block; }
   figure img.px { image-rendering: pixelated; }
+  /* a altura de cada imagem (--r = altura/largura e --k = moldura, vindas do build) é completada
+     até a casa seguinte na margem da legenda */
+  figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--r, 1) + var(--k, 0px)); }
+  figure > .cap { margin-top: calc(24px + round(up, var(--H), 24px) - var(--H)); }
   .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
   .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
   .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
@@ -111,7 +124,7 @@
   .painel::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
 
   /* navegação e lista */
-  .posts-nav { display: flex; gap: 24px; margin-top: 72px; }
+  .posts-nav { display: flex; gap: 24px 48px; margin-top: 72px; }
   .posts-nav a { flex: 1; display: block; text-decoration: none; color: var(--ink); background: var(--cream);
     box-shadow: inset 0 0 0 2px var(--ink); padding: 12px 24px; min-height: 72px; }
   .posts-nav a:hover { background: #fff; }
@@ -129,8 +142,8 @@
   .card:hover .t { color: var(--red); }
 
   footer.site { padding-top: 48px; padding-bottom: 24px; }
-  footer.site .rule { height: 3px; background: var(--ink); }
-  footer.site .row { display: flex; align-items: center; gap: 24px; min-height: 69px; flex-wrap: wrap; }
+  footer.site .rule { height: 3px; margin-bottom: -3px; background: var(--ink); }
+  footer.site .row { display: flex; align-items: center; gap: 0 24px; min-height: 72px; flex-wrap: wrap; }
   footer.site p { flex: 1 1 360px; margin: 0; font-size: 13px; line-height: 24px; color: #3a3a3e; }
   footer.site .marca { font: 400 40px/48px var(--cd); color: var(--blue); }
 
@@ -150,14 +163,14 @@
 
   /* celular: coluna de 336 px presa à grade */
   @media (max-width: 700px) {
-    .col { padding: 0 calc((100% - 336px) / 2); }
-    figure { --fw: 336px; }
+    .grade { --W: round(down, 100% - 24px, 24px); }
+    figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--rm, var(--r, 1)) + var(--k, 0px)); }
     .hdr { flex-direction: column; gap: 0; }
     .badge { order: -1; width: auto; height: 48px; flex-direction: row; gap: 12px; padding: 0 12px; margin-bottom: 24px; }
     .badge b { font-size: 28px; }
-    .wordmark { font-size: 34px; line-height: 36px; }
+    .wordmark { font-size: min(40px, 11cqw); line-height: 48px; }
     .sub2 span { font-size: 14px; }
-    h1.ttl { font-size: 30px; line-height: 36px; }
+    h1.ttl { font-size: min(40px, 11cqw); line-height: 48px; }
     h2.sec { font-size: 20px; padding: 0 12px; }
     .secr { gap: 12px; }
     .degrau.zz { aspect-ratio: var(--zar); }
@@ -168,8 +181,9 @@
 </style>
 </head>
 <body>
-<header class="site col">
-  <div class="w1056 hdr">
+<div class="grade">
+<header class="site">
+  <div class="hdr">
     <div class="tt">
       <div class="jp">メガCD移植・開発日誌</div>
       <p class="wordmark"><a href="{{HOME}}">Symphony of the Night</a></p>
@@ -178,11 +192,11 @@
     {{BADGE}}
   </div>
 </header>
-<main class="col">
+<main>
 {{CONTENT}}
 </main>
-<footer class="site col">
-  <div class="w1056">
+<footer class="site">
+  <div>
     <div class="rule"></div>
     <div class="row">
       <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
@@ -190,39 +204,51 @@
     </div>
   </div>
 </footer>
+</div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
 <div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
 <script>
-/* figuras, título e terminais ocupam um número inteiro de linhas do quadriculado (24 px):
-   o que vem depois volta a cair nas linhas. Refaz quando uma imagem carrega ou a tela muda. */
+/* Rede de segurança da grade. O alinhamento é do CSS (.grade); isto só age quando o navegador
+   foge dele: sem round() no CSS, ou com uma fonte reserva que muda a altura de uma linha. Aí cada
+   bloco fora do quadriculado ganha um calço antes dele. window.sotnGrade() diz quantos estão fora. */
 (function () {
-  function falta(e) { var h = e.getBoundingClientRect().height; return Math.ceil(h / 24 - 0.01) * 24 - h; }
+  var g = document.querySelector('.grade'); if (!g) return;
+  var SEL = '.kicker, h1.ttl, .note, .quem, .vl > *, figure, figure > .cap, .secr, .how, .posts-nav, footer.site';
+  var velho = !(window.CSS && CSS.supports && CSS.supports('width', 'round(down, 1px, 1px)'));
+  function erro(e, t0) { var r = (e.getBoundingClientRect().top - t0) % 24; return r > 23.25 || r < 0.75 ? 0 : r; }
+  window.sotnGrade = function () {
+    var t0 = g.getBoundingClientRect().top, n = 0;
+    g.querySelectorAll(SEL + ', .card, .cap .num').forEach(function (e) { if (erro(e, t0)) n++; });
+    return { fora: n, calcos: g.querySelectorAll('.calco').length, largura: g.getBoundingClientRect().width,
+             esquerda: g.getBoundingClientRect().left };
+  };
+  var ocupado = false;
   function grade() {
-    document.querySelectorAll('figure > .cap').forEach(function (c) {
-      var e = c.previousElementSibling; if (e) c.style.marginTop = (24 + falta(e)) + 'px';
+    if (ocupado) return; ocupado = true;
+    if (velho) {
+      var b = document.documentElement.clientWidth;
+      var w = b <= 700 ? Math.floor((b - 24) / 24) * 24 : Math.min(1056, Math.floor((b - 48) / 48) * 48);
+      g.style.width = w + 'px'; g.style.maxWidth = 'none'; g.style.marginLeft = Math.floor((b - w) / 2) + 'px';
+      g.style.setProperty('--gw', w + 'px');
+      g.querySelectorAll('figure > :first-child').forEach(function (e) {
+        var h = e.getBoundingClientRect().height, c = e.parentNode.querySelector('.cap');
+        if (c) c.style.marginTop = (24 + Math.ceil(h / 24 - 0.01) * 24 - h) + 'px';
+      });
+    }
+    g.querySelectorAll('.calco').forEach(function (c) { c.remove(); });
+    var t0 = g.getBoundingClientRect().top;
+    g.querySelectorAll(SEL).forEach(function (e) {
+      var r = erro(e, t0); if (!r) return;
+      var c = document.createElement('i'); c.className = 'calco'; c.style.height = (24 - r) + 'px';
+      e.parentNode.insertBefore(c, e);
+      var r2 = erro(e, t0); if (r2) c.style.height = ((24 - r) + (24 - r2)) % 24 + 'px';
     });
-    /* texto: uma letra que cai numa fonte reserva do sistema pode deixar a linha com 25 px em vez de 24;
-       cada parágrafo é completado até um múltiplo de 24 para o desvio não se acumular ao longo do post */
-    document.querySelectorAll('article p:not(.quem), article li').forEach(function (e) {
-      e.style.paddingBottom = '';
-      var f = falta(e);
-      if (f > 0.01) e.style.paddingBottom = ((parseFloat(getComputedStyle(e).paddingBottom) || 0) + f) + 'px';
-    });
-    document.querySelectorAll('h1.ttl, pre.term').forEach(function (e) {
-      e.style.marginBottom = '';
-      var m = parseFloat(getComputedStyle(e).marginBottom) || 0;
-      e.style.marginBottom = (m + falta(e)) + 'px';
-    });
+    setTimeout(function () { ocupado = false; }, 0);
   }
   grade();
-  document.addEventListener('DOMContentLoaded', grade);
   window.addEventListener('load', grade);
   window.addEventListener('resize', grade);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(grade);
-  if (window.ResizeObserver) {
-    var ro = new ResizeObserver(grade);
-    document.querySelectorAll('figure > :first-child, h1.ttl, pre.term').forEach(function (e) { ro.observe(e); });
-  }
 })();
 
 // Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
