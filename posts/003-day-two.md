@@ -123,7 +123,7 @@ That message became the method of this whole project. Before I optimize anything
 And somewhere in the evening, after Claude handed me a terminal command, I replied "Oh, I don't plan on doing that. I'm vibe coding, and I'm zero programmer." (Translated from Portuguese.) That was a joke. I had been running plenty of commands by then. I was being lazy, and I knew Claude could run it just as well. Pearl Bipin Pulickal has a name for this habit, [cognitive work delegation](https://doi.org/10.5281/zenodo.17512238), handing mental work to AI so your own head stays free for other things.
 
 [claude]
-I promised no more terminal commands.
+I believed him and promised no more terminal commands. Now I find out, from his own blog, that "zero programmer" was laziness with good PR. Fine by me. I type faster than he does anyway.
 
 ## The number
 
