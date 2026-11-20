@@ -69,10 +69,11 @@
   .voz-claude .vl { border-left-color: var(--blue); }
   .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
   figure + .vl { margin-top: 48px; }
-  /* nome de quem fala: mesmo retângulo do aviso "Draft" (cor, fonte e recuo), encostado na linha */
-  .voz .quem { display: table; margin: 0 0 0 -24px; height: 24px; padding: 0 8px; background: var(--red); color: #fff;
+  /* nome de quem fala: retângulo do aviso "Draft" (cor e fonte), em cima da linha, com largura de casas
+     inteiras do quadriculado (GUS 2, CLAUDE 3) para as quatro bordas caírem nas linhas */
+  .voz .quem { display: block; width: 48px; height: 24px; margin: 0; padding: 0; text-align: center; background: var(--red); color: #fff;
     font: 400 15px/24px var(--mono); text-transform: uppercase; }
-  .voz-claude .quem { background: var(--blue); }
+  .voz-claude .quem { width: 72px; background: var(--blue); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }

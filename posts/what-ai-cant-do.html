@@ -69,10 +69,11 @@
   .voz-claude .vl { border-left-color: var(--blue); }
   .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
   figure + .vl { margin-top: 48px; }
-  /* nome de quem fala: mesmo retângulo do aviso "Draft" (cor, fonte e recuo), encostado na linha */
-  .voz .quem { display: table; margin: 0 0 0 -24px; height: 24px; padding: 0 8px; background: var(--red); color: #fff;
+  /* nome de quem fala: retângulo do aviso "Draft" (cor e fonte), em cima da linha, com largura de casas
+     inteiras do quadriculado (GUS 2, CLAUDE 3) para as quatro bordas caírem nas linhas */
+  .voz .quem { display: block; width: 48px; height: 24px; margin: 0; padding: 0; text-align: center; background: var(--red); color: #fff;
     font: 400 15px/24px var(--mono); text-transform: uppercase; }
-  .voz-claude .quem { background: var(--blue); }
+  .voz-claude .quem { width: 72px; background: var(--blue); }
   h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
   article, .list, figure { isolation: isolate; }
   article p { margin: 0 0 24px; }
@@ -193,14 +194,14 @@
 <div class="kicker">Interlude</div>
 <h1 class="ttl">What AI can&#x27;t do in this port</h1>
 
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>In the last post I showed Pigsy's Symphony of the Night for the Mega Drive. There's one thing about his work I left for today.</p>
 <p>Pigsy is a programmer. He writes his game himself. I don't.</p>
 <p>Some would argue that some skills are gonna lose their value because of AI. I think it's the opposite. As developers lean more and more on AI to write code, and as the money for writing it by hand dries up, the reasons left to keep programming are entirely personal, like taste, curiosity, stubbornness and the pleasure of it. The people who keep going for those reasons alone are getting rare, and that makes them more valuable, not less. If one day the companies that own these platforms decide to switch the AI engines off, people like Pigsy will still be able to build things.</p>
 <p>What I bring is the other half. I'm not a professional sprite artist, but I do my best while using my art direction skills. What I do is take the original game's art and rework it for the Mega Drive, piece by piece, mostly in LibreSprite. That's where my years as an art director in audiovisual production get put to the test. Nothing slips by. Two examples.</p>
 </div></div>
 <div class="secr"><h2 class="sec">The title screen</h2><i></i></div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 </div>
 <figure class="grupo"><div class="degrau" style="--ar:100/51.094;--zar:100/75.094"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-a.png" class="px" width="512" height="480" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:37.079%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/15-titulo-ps1-x-megacd-b.png" class="px" width="512" height="448" alt="First the PlayStation title screen, then the one this port has now." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">1</span><p>First the PlayStation title screen, then the one this port has now.</p></figcaption></figure>
 <div class="vl">
@@ -212,11 +213,11 @@
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/17-logo.png" width="960" height="480" alt="The logo up close, with the repainted Bloodlines banner and the hand-fixed lettering." loading="lazy"></span></span><figcaption class="cap"><span class="num">3</span><p>The logo up close, with the repainted Bloodlines banner and the hand-fixed lettering.</p></figcaption></figure>
 </div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>My part of this screen was small. He handed me finished art, and I put the wall on a layer the hardware draws at half brightness, which gives his few grays a darker copy without spending another palette.</p>
 </div></div>
 <div class="secr"><h2 class="sec">The menu frames</h2><i></i></div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>In the last two posts I wrote about the plain pause menu that shipped because the team ran out of time. The ornate frames it never got were already in the game. The PlayStation's file select screen has these green ones.</p>
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/18-moldura-verde-ps1.png" class="px" width="864" height="360" alt="The green frame from the PlayStation&#x27;s file select screen." loading="lazy"></span></span><figcaption class="cap"><span class="num">4</span><p>The green frame from the PlayStation's file select screen.</p></figcaption></figure>
@@ -234,7 +235,7 @@
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/218-muro-vinhas.jpg" width="1090" height="960" alt="The menu background after the cleanup. What&#x27;s left of the title-screen wall, the AI&#x27;s vines, and not a single round hole left." loading="lazy"></span></span><figcaption class="cap"><span class="num">7</span><p>The menu background after the cleanup. What's left of the title-screen wall, the AI's vines, and not a single round hole left.</p></figcaption></figure>
 </div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>On October 24, at 2:26 a.m., I asked Claude to put that menu on Start, with that design but keeping the original game's fonts. Along with the reference menu, the windows on their own and the clean background, I sent icons for the buttons. The spells and the two attack lines on the main screen are tied to buttons, and on the PlayStation those are a square and a circle.</p>
 </div>
 <figure><span class="crt"><span class="tubo"><img src="../img/222-folha-botoes.jpg" width="1323" height="800" alt="The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons." loading="lazy"></span></span><figcaption class="cap"><span class="num">8</span><p>The button sheet I sent. D-pad directions, Start, Mode, and the six face buttons.</p></figcaption></figure>
@@ -243,12 +244,12 @@
 </div>
 <figure class="grupo"><div class="degrau" style="--ar:100/45.417;--zar:100/57.504"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/220-botoes-abc-jp.png" class="px" width="630" height="525" alt="First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: Evan-Amos and Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:43.040%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/221-botoes-xyz-6b.jpg" width="610" height="370" alt="First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: Evan-Amos and Evan-Amos, public domain, via Wikimedia Commons." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">9</span><p>First A, B and C on the Japanese pad, in red; then X, Y and Z on the six-button pad. Photos: <a href="https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg">Evan-Amos</a> and <a href="https://commons.wikimedia.org/wiki/File:Sega-Genesis-6But-Cont.jpg">Evan-Amos</a>, public domain, via Wikimedia Commons.</p></figcaption></figure>
 </div>
-<div class="voz voz-claude"><div class="vl"><p class="quem mono">CLAUDE</p>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
 <p>So I had four pieces, Plubby_'s layout, the green frames, the wall and the button sheet. I cut the frames apart into 8 by 8 pixel tiles, which is how the Mega Drive builds a screen, reassembled them around every window, and arranged the windows the way the reference laid them out. The square and the circle became A and C, the two buttons Alucard attacks with on a Mega Drive, drawn as small red badges. The special moves list writes each command with the d-pad glyphs and the same A or C at the end. That was the placeholder.</p>
 </div>
 <figure class="grupo"><div class="degrau zz" style="--ar:100/30.316;--zar:100/87.134"><span class="crt" style="--l:0.000%;--t:0%;--w:39.333%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:3"><span class="tubo"><img src="../img/223-menu-claude-status.png" class="px" width="867" height="665" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span><span class="crt" style="--l:30.333%;--t:0%;--w:39.333%;--zl:46.000%;--zt:26.144%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/224-menu-claude-equip.png" class="px" width="874" height="669" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span><span class="crt" style="--l:60.667%;--t:0%;--w:39.333%;--zl:0.000%;--zt:52.235%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/225-menu-claude-golpes.png" class="px" width="868" height="669" alt="The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">10</span><p>The placeholder as it came out of that prompt. First the status screen, then the equipment, then the special moves list, with A and C in red. What Gus redrew from it is a story for its own post.</p></figcaption></figure>
 </div>
-<div class="voz voz-gus"><div class="vl"><p class="quem mono">GUS</p>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
 <p>Even this kind of adaptation is still not something AI is good at. Pixel art runs on abstract symbolism, and on a kind of synesthetic cognition that ties our phylogenetic makeup (every biological sensor we have, tuned to an environment) to arbitrarily applicable relational responding. That last one is complicated; I actually have a bachelor's degree in Psychology and a postgraduate degree in Behavior Analysis. Machines are still very far from simulating any of that in a way that works.</p>
 <p>The same goes for arranging music in a tracker, the kind of program game music is written in. Most of Michiru Yamane's soundtrack exists only as recorded audio, with no sequenced version of it to convert. Between the waveform on the original recording and the notes in a tracker there is a thick layer of interpretation, and for the same reasons as pixel art (symbolism, phylogeny, relational responding), it can't be automated. I imagine Pigsy is running into the same wall with FM music. There are very few resources for it, and the work is colossal.</p>
 <p>So go follow Pigsy on <a href="https://www.youtube.com/@PigsysRetroGameDevTutorials">YouTube</a> and <a href="https://x.com/PigsyRetro">X</a>. People like him are the ones keeping the craft alive.</p>
