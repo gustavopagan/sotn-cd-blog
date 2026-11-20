@@ -88,7 +88,9 @@ def render(body):
                                  if os.path.exists(os.path.join(ROOT, "public", "img", cel)) else "")
                     return (f'<span class="painel"{est}><picture>{fonte_cel}<img src="../img/{nome}" width="{_w}"'
                             f' height="{_h}" alt="{html.escape(alt)}" loading="lazy"></picture></span>')
-                cls = ' class="px"' if _w < 900 else ""
+                # pixel art amplia sem suavizar; foto (jpg ou "-foto.png") amplia suave
+                foto = nome.endswith((".jpg", ".jpeg", "-foto.png"))
+                cls = ' class="px"' if _w < 900 and not foto else ""
                 return (f'<span class="crt"{est}><span class="tubo"><img src="../img/{nome}"{cls}'
                         f' width="{_w}" height="{_h}" alt="{html.escape(alt)}" loading="lazy"></span></span>')
             numero[0] += 1

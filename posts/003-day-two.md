@@ -64,6 +64,11 @@ It wasn't the first time I played Symphony of the Night with a Mega Drive pad. I
 ![](../imagens/227-adaptador-paralela.jpg)
 *The kind of wiring diagram that adapter follows, with two Mega Drive pads on one parallel port.*
 
+That's where the button layout came from. The Genesis pad was inspired by the arcade cabinets of its time, and this grip was very common. It's the one I used. With no shoulder buttons on the pad, their absence was never an issue.
+
+![](../imagens/229-pegada-foto.png)
+*How I hold the pad, recorded on November 20, 2026, for this post.*
+
 ## The music math
 
 [claude]
