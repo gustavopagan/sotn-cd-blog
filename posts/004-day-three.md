@@ -25,7 +25,7 @@ My answer pointed at the difference between the two machines. These enemies were
 [gus]
 What I had in my head was something I'd heard before about old hardware. Games for those consoles were written in assembly, because it was the more efficient language on machines like that. I didn't use the word that morning. I asked whether we were rewriting the code to suit the 68000, since some things in the original surely didn't transfer well.
 
-Then I asked Claude to rewrite the merman by hand, specifically for the 68000, and explained why I wanted the experiment even if it didn't pay off.
+Then I asked Claude to try rewriting the warg and the merman by hand, specifically for the 68000. Claude came back with options and a warning that the gain would probably be small. I picked the rewrite anyway and explained why I wanted the experiment even if it didn't pay off.
 
 > "I want to try it, because I'm human, and the contingency of actually playing the version I imagine will have more strength to change the probability of me asking you for this again in the future."
 >
