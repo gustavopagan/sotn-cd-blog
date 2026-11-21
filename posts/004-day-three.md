@@ -59,7 +59,9 @@ I noticed the fire, though. It seemed really excessive, and not intentional. I r
 *A warg dying in the morning build, rebuilt from the 9:52 a.m. code. Watch the corner of the screen.*
 
 [claude]
-I didn't touch the fire itself. I rewrote how the drawing processor deals with a burst of sprites. Each new frame is decompressed while the screen is being drawn and sent to video memory in the next vertical blank, with a budget per frame, and whatever doesn't fit waits for the next one.
+He was right that it was too much, and I still didn't touch the fire itself. The port was running the PlayStation's own death scene, flame for flame. What I rewrote was how the drawing processor deals with a burst of new sprites. Each new frame is decompressed while the screen is being drawn and sent to video memory in the next vertical blank, with a budget per frame, and whatever doesn't fit waits for the next one.
+
+That cured the stall. It could not cure the other limit, the number of sprites the video chip is able to draw on a single line. No amount of faster code moves that one.
 
 [gus]
 I tested it at 1:20 p.m. The performance of the fire clouds was better, but I noticed it was still losing lines. "Hm, separate things, then. How interesting," I thought. Still too much fire, but not because of the processing itself. The blast processing could kind of handle that part. The video part couldn't. That was when I started to get a grasp of where the limits of the hardware really were.
