@@ -8,14 +8,14 @@ status: draft
 ---
 
 [gus]
-The zombie cap fixed the hallway. One room later, the mermen hit the same wall. At 10 a.m. I asked the question that would follow us for weeks. How do other Mega Drive games deal with a screen full of enemies? Is Sonic the reference, or should we look at the technically crazier games?
+The zombie cap fixed the hallway. One room later, the mermen hit the same wall. At 10 a.m. I asked the question that would follow us for weeks. How do other Mega Drive games deal with a screen full of enemies? The answer brought up Sonic, and three minutes later I pushed back. Is Sonic really the best reference? How do the technically more impressive games solve this? When I think of a screen full of things happening at once, I think of Contra: Hard Corps and Gunstar Heroes.
 
 ![](../imagens/38-dia3-linha-do-tempo.png)
 *The whole day in one picture. Red is Claude committing, blue is Gus writing. The gap in the evening is the only quiet stretch.*
 
 ![](../imagens/215-sonic-a.png)
 ![](../imagens/215-sonic-b.png)
-*Sonic the Hedgehog (1991), captured from Gus's own dump. The obvious reference.*
+*Sonic the Hedgehog (1991), captured from Gus's own dump. The reference Gus questioned.*
 
 ## The experiment
 
