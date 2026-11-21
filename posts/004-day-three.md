@@ -51,7 +51,7 @@ The experiment answered a better question than the one he asked. The expensive p
 ## A warg in the sky
 
 [gus]
-By noon I had a list. The first screens with wargs didn't feel fluid, even with the emulator at 60. The mermen room was still slow. And when a warg died, it exploded into so many fire sprites that the game nearly stopped.
+By noon I had a list. In the first screens with wargs, in moments when the emulator was running at 60, I still felt the game was sluggish. At the time, I had no idea how little I understood the numbers being shown in the debugger. The mermen room was still slow. And when a warg died, it exploded into so many fire sprites that the game nearly stopped.
 
 ![](../imagens/39-warg-morte-0952.gif)
 *A warg dying in the morning build, rebuilt from the 9:52 a.m. code. Watch the corner of the screen.*
