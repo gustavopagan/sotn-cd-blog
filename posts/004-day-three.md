@@ -132,7 +132,7 @@ The cause was a late frame. When the game logic didn't finish in time, the palet
 ## FM, because I said so
 
 [gus]
-In the afternoon I brought up music. Inglebard made Sega Genesis versions of the Symphony of the Night songs, and they sound great. I wanted an option in the game, the original soundtrack from the CD or the same songs played on the Mega Drive's own sound chip. It's an aesthetic decision, not a technical one.
+In the afternoon I brought up music. I wanted an option in the game, the original soundtrack from the CD or the same songs played on the Mega Drive's own sound chip. It's an aesthetic decision, not a technical one.
 
 The Genesis sound chip is pretty divisive. I'm on the side of those who have a soft spot for it. When it's used well, it shines, which seems to be a trend in everything about the Sega Genesis. Music is also one of the areas where I feel most prepared to get my own hands dirty. My learning journey with Furnace Tracker is a separate subject, an alternate timeline of learning that I'll eventually bring over here.
 
