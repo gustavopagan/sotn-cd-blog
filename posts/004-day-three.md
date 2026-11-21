@@ -62,7 +62,9 @@ I noticed the fire, though. It seemed really excessive, and not intentional. I r
 I didn't touch the fire itself. I rewrote how the drawing processor deals with a burst of sprites. Each new frame is decompressed while the screen is being drawn and sent to video memory in the next vertical blank, with a budget per frame, and whatever doesn't fit waits for the next one.
 
 [gus]
-I tested it at 1:20 p.m. The fire cloud really was better, but now a whole warg appeared up in the corner of the screen while the other one burned.
+I tested it at 1:20 p.m. The performance of the fire clouds was better, but I noticed it was still losing lines. "Hm, separate things, then. How interesting," I thought. Still too much fire, but not because of the processing itself. The blast processing could kind of handle that part. The video part couldn't. That was when I started to get a grasp of where the limits of the hardware really were.
+
+There was a new problem too. A whole warg now appeared up in the corner of the screen while the other one burned.
 
 ![](../imagens/40-warg-fantasma-a.png)
 ![](../imagens/40-warg-fantasma-b.png)
