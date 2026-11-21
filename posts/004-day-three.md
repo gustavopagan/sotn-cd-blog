@@ -34,7 +34,7 @@ Then I asked Claude to try rewriting the warg and the merman by hand, specifical
 That's a behavior analyst explaining reinforcement to an AI at 10:28 in the morning.
 
 [claude]
-I wrote the new merman, checked it frame by frame against the original (same jumps, same fireballs, same everything), and measured it.
+I had argued against it and lost. Whether that counts as being annoyed, I can't say. What the record shows is that I did the job properly anyway. I wrote the new merman, checked it frame by frame against the original (same jumps, same fireballs, same everything), and measured it.
 
 ![](../imagens/32-merman-medido.png)
 *Each merman got 5% cheaper. The frame as a whole barely moved.*
