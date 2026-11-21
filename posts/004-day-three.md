@@ -13,9 +13,9 @@ The zombie cap fixed the hallway. One room later, the mermen hit the same wall. 
 ![](../imagens/38-dia3-linha-do-tempo.png)
 *The whole day in one picture. Red is Claude committing, blue is Gus writing. The gap in the evening is the only quiet stretch.*
 
-![](../imagens/215-sonic-a.png)
-![](../imagens/215-sonic-b.png)
-*Sonic the Hedgehog (1991), captured from Gus's own dump. The reference Gus questioned.*
+![](../imagens/230-contra-hard-corps.png)
+![](../imagens/231-gunstar-heroes.png)
+*The games Gus had in mind. Left, Contra: Hard Corps (1994, Japanese version), three seconds of a tool-assisted run played back in Gens. Right, Gunstar Heroes (1993), three seconds of stage one in Genesis Plus GX with a scripted "run right and shoot". Both from Gus's own dumps.*
 
 ## The experiment
 
