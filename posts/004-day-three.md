@@ -98,7 +98,7 @@ And the dying warg had been pinned to the screen instead of to the room, so it f
 ![](../imagens/82-warg-antes-depois-b.png)
 *Before and after, same frame of the same run. First, at 9:52 a.m., a cloud of fire and the twin warg floating top left. Then, at 11:40 p.m., fewer flames and no twin. The numbers on top are the debug readout.*
 
-## A month on hold
+## Right, a month early
 
 [gus]
 At 2:22 p.m. I sent a longer report. The dead warg's blink moved along with Alucard, the red merman left a trail of its body behind its falling skeleton, and one of the two splash effects showed up black. Then I asked how much all of this weighed, and suggested a different approach. Use one water splash instead of two. Draw the swimming mermen in the background layer, the way big bosses are done on the Mega Drive. Give all the mermen the same entrance and death routines, just in different colors.
