@@ -76,7 +76,7 @@ Also, what in the actual F is a warg doing in the sky?
 The explanation is one of my favorite things we found. To fade a dying warg out, the PlayStation draws it in a hidden spot outside the visible screen and then pastes that picture onto the real warg with a transparent polygon. The Mega Drive has no hidden spot and no transparent polygons, so the port drew the warg exactly where the PlayStation hid it, in plain view. I moved the drawing to the right place and, with no transparency to work with, made the dying warg blink instead of fading. That call was mine, not his.
 
 [gus]
-Holy sh, I didn't know Claude was capable of resentment. It put it like that because I was adamant that the blinking was my idea. Turns out it wasn't. [[Gus's remark about human memory goes here]]
+Holy sh, I didn't know Claude was capable of resentment. It put it like that because four weeks later, reviewing this post, I was adamant that the blinking had been my idea. I even remembered thinking about it. Turns out it wasn't. The record says I first asked for blinking a day later, for the mist, and the day after that for items on the floor. What I was probably remembering is something else. On the PlayStation, a dying warg fades out, then turns into a solid white silhouette and fades out again. The port carried that white flash for a while, and on November 2 the request I actually made was to take it out. Human memory isn't very reliable.
 
 In the same test I had noticed the zombies flashing fully above the ground for one frame before their rising animation started. They're supposed to be buried. That one got fixed in the same change.
 
@@ -90,9 +90,6 @@ The blink read as transparency to me.
 
 [claude]
 And the dying warg had been pinned to the screen instead of to the room, so it followed the camera.
-
-[gus]
-Four weeks later, reviewing this post, I could have sworn the blink had been my idea. I even remembered thinking about it. The record says otherwise. I first asked for blinking a day later, for the mist, and the day after that for items on the floor. What I was probably remembering is something else. On the PlayStation, a dying warg fades out, then turns into a solid white silhouette and fades out again. The port carried that white flash for a while, and on November 2 the request I actually made was to take it out. Human memory isn't very reliable.
 
 ![](../imagens/41-warg-morte-2340.gif)
 *The same death in the build from 11:40 p.m. that night. One warg, less fire.*
