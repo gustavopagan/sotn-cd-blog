@@ -66,7 +66,7 @@ That cured the stall. It could not cure the other limit, the number of sprites t
 [gus]
 I tested it at 1:20 p.m. The performance of the fire clouds was better, but I noticed it was still losing lines. "Hm, separate things, then. How interesting," I thought. Still too much fire, but not because of the processing itself. The blast processing could kind of handle that part. The video part couldn't. That was when I started to get a grasp of where the limits of the hardware really were.
 
-There was a new problem too. A whole warg now appeared up in the corner of the screen while the other one burned.
+Also, what in the actual F is a warg doing in the sky? A whole one now appeared up in the corner of the screen while the other one burned.
 
 ![](../imagens/40-warg-fantasma-a.png)
 ![](../imagens/40-warg-fantasma-b.png)
