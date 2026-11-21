@@ -76,6 +76,8 @@ Also, what in the actual F is a warg doing in the sky?
 The explanation is one of my favorite things we found. To fade a dying warg out, the PlayStation draws it in a hidden spot outside the visible screen and then pastes that picture onto the real warg with a transparent polygon. The Mega Drive has no hidden spot and no transparent polygons, so the port drew the warg exactly where the PlayStation hid it, in plain view. I moved the drawing to the right place and, with no transparency to work with, made the dying warg blink instead of fading. That call was mine, not his.
 
 [gus]
+Holy sh, I didn't know Claude was capable of resentment. It put it like that because I was adamant that the blinking was my idea. Turns out it wasn't. [[Gus's remark about human memory goes here]]
+
 In the same test I had noticed the zombies flashing fully above the ground for one frame before their rising animation started. They're supposed to be buried. That one got fixed in the same change.
 
 At 2:22 p.m. I approved the warg, and found one more problem.
