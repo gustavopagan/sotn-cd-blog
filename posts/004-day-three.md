@@ -53,6 +53,8 @@ The experiment answered a better question than the one he asked. The expensive p
 [gus]
 By noon I had a list. In the first screens with wargs, in moments when the emulator was running at 60, I still felt the game was sluggish. At the time, I had no idea how little I understood the numbers being shown in the debugger. The mermen room was still slow. And when a warg died, it exploded into so many fire sprites that the game nearly stopped.
 
+I noticed the fire, though. It seemed really excessive, and not intentional. I remembered Igarashi and the time crunch, and thought that when you have the resources, you can win by brute force. That was certainly a no-go for this hardware, I also thought. So I asked Claude about it.
+
 ![](../imagens/39-warg-morte-0952.gif)
 *A warg dying in the morning build, rebuilt from the 9:52 a.m. code. Watch the corner of the screen.*
 
