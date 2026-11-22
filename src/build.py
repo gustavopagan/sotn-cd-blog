@@ -285,8 +285,9 @@ for meta, _ in reversed(posts):
     rot, num = dia(meta)
     data = meta["kicker"].split("·", 1)[1].strip() if "·" in meta["kicker"] else meta["kicker"]
     cards.append(f'<a class="card" href="posts/{meta["slug"]}.html">'
-                 f'<span class="bar"><b>{rot.upper()} {html.escape(num)}</b><span>{html.escape(data)}</span></span>'
-                 f'<span class="t">{html.escape(sem_dia(meta["title"]))}</span>'
+                 + (f'<span class="bar"><b>{rot.upper()} {html.escape(num)}</b><span>{html.escape(data)}</span></span>'
+                    if rot == "Day" else f'<span class="bar"><b>{html.escape(meta["kicker"].upper())}</b></span>')
+                 + f'<span class="t">{html.escape(sem_dia(meta["title"]))}</span>'
                  f'<span class="ex">{html.escape(meta.get("excerpt", ""))}</span></a>')
 idx = '<section class="list w720">\n' + "\n".join(cards) + "\n</section>"
 open(os.path.join(ROOT, "public", "index.html"), "w", encoding="utf-8").write(page(SITE, idx, 0))
