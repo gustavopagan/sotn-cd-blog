@@ -4,7 +4,7 @@ kicker: "Day 2 · October 19, 2026"
 badge: "3"
 slug: "day-2"
 excerpt: "Zombies without end, transformations on a six-button pad, 114 minutes of music for 75 minutes of disc, and the day I turned out to be right."
-status: draft
+status: published
 ---
 
 [gus]
