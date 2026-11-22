@@ -271,15 +271,22 @@
       ' round=' + !velho + '\n' + navigator.userAgent;
     document.body.appendChild(d);
   };
-  var fundo = null, fh = -1, fw = -1;
+  /* Cada linha tem um número inteiro de pixels do aparelho de espessura e começa num pixel inteiro
+     do aparelho. Com zoom de 110%, por exemplo, 1 px de CSS vale 1,1 pixel da tela e uma linha a
+     cada cinco saía mais grossa. */
+  var fundo = null, chave = '';
   function risca() {
     var r = g.getBoundingClientRect(), nh = Math.ceil(r.height / 24), vw = document.documentElement.clientWidth;
-    var e = Math.ceil(r.left / 24) + 2, d = Math.ceil((vw - r.left) / 24) + 2;
-    if (fundo && nh === fh && e * 1000 + d === fw) return;
-    fh = nh; fw = e * 1000 + d;
+    var dpr = window.devicePixelRatio || 1, esp = Math.max(1, Math.round(dpr)) / dpr;
+    var x0 = r.left + window.pageXOffset, y0 = r.top + window.pageYOffset;
+    var e = Math.ceil(x0 / 24) + 2, d = Math.ceil((vw - x0) / 24) + 2;
+    var k = [nh, e, d, dpr, x0, y0].join(',');
+    if (fundo && k === chave) return;
+    chave = k;
+    function enc(base, v) { return Math.round((base + v) * dpr) / dpr - base; }
     var h = '', i;
-    for (i = 0; i < nh; i++) h += '<i class="h" style="top:' + (i * 24) + 'px"></i>';
-    for (i = -e; i < d; i++) h += '<i class="v" style="left:' + (4800 + i * 24) + 'px"></i>';
+    for (i = 0; i < nh; i++) h += '<i class="h" style="top:' + enc(y0, i * 24) + 'px;height:' + esp + 'px"></i>';
+    for (i = -e; i < d; i++) h += '<i class="v" style="left:' + (4800 + enc(x0, i * 24)) + 'px;width:' + esp + 'px"></i>';
     if (!fundo) { fundo = document.createElement('div'); fundo.className = 'fundo'; fundo.setAttribute('aria-hidden', 'true'); g.insertBefore(fundo, g.firstChild); g.classList.add('riscada'); }
     fundo.innerHTML = h;
   }
