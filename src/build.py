@@ -32,8 +32,8 @@ def inline(t):
 
 
 def img_name(f):
-    base = re.sub(r"\.(png|jpg|gif)$", "", f)
-    for ext in (".jpg", ".png", ".gif"):
+    base = re.sub(r"\.(png|jpg|gif|mp4)$", "", f)
+    for ext in (".jpg", ".png", ".gif", ".mp4"):
         if os.path.exists(os.path.join(ROOT, "public", "img", base + ext)):
             return base + ext
     raise SystemExit("imagem faltando em public/img: " + f)
@@ -90,6 +90,18 @@ def render(body):
             itens = []
             for f in re.findall(r"\(\.\./imagens/([^)]+)\)", m.group(1)):
                 nome = img_name(f)
+                if nome.endswith(".mp4"):  # vídeo: medida pelo ffprobe, 16:9 se não houver
+                    try:
+                        import subprocess as _sp
+                        _o = _sp.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                                      "stream=width,height", "-of", "csv=p=0",
+                                      os.path.join(ROOT, "public", "img", nome)],
+                                     capture_output=True, text=True, check=True).stdout.strip()
+                        _w, _h = (int(x) for x in _o.split(","))
+                    except Exception:
+                        _w, _h = 16, 9
+                    itens.append((nome, _w, _h))
+                    continue
                 try:
                     from PIL import Image as _I
                     with _I.open(os.path.join(ROOT, "public", "img", nome)) as _im:
@@ -112,6 +124,14 @@ def render(body):
                     medida[0] = f"--r:{_h / _w:.6f}{rm};--k:0px"
                     return (f'<span class="painel"{est}><picture>{fonte_cel}<img src="../img/{nome}" width="{_w}"'
                             f' height="{_h}" alt="{html.escape(alt)}" loading="lazy"></picture></span>')
+                if nome.endswith(".mp4"):  # vídeo no tubo, com controles; capa em NOME-capa.jpg se houver
+                    medida[0] = f"--r:{_h / _w:.6f};--k:8px"
+                    capa = nome[:-4] + "-capa.jpg"
+                    pst = (f' poster="../img/{capa}"'
+                           if os.path.exists(os.path.join(ROOT, "public", "img", capa)) else "")
+                    return (f'<span class="crt video"{est}><span class="tubo"><video src="../img/{nome}"{pst}'
+                            f' width="{_w}" height="{_h}" controls playsinline preload="metadata"'
+                            f' aria-label="{html.escape(alt)}"></video></span></span>')
                 # pixel art amplia sem suavizar; foto (jpg ou "-foto.png") amplia suave
                 foto = nome.endswith((".jpg", ".jpeg", "-foto.png"))
                 medida[0] = f"--r:{_h / _w:.6f};--k:8px"
