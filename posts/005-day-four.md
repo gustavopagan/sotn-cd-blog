@@ -8,7 +8,7 @@ status: draft
 ---
 
 [gus]
-At 12:24 a.m. I was away from the computer and asked Claude what it could get done before 5 a.m. By 6:30 the wolf and the mist were visible for the first time. The mist blinks at 30 frames per second, because I picked blinking over the other two options Claude offered, a shadow effect or no mist at all.
+Today the wolf and the mist were visible for the first time. As expected, there is no transparency and the options are limited. For now, the quick choice for the mist was blinkng at 30hz
 
 ![](../imagens/44-dia4-linha-do-tempo.png)
 *October 21. Two nights of work in one day, Claude's before dawn and Gus's after dinner.*
@@ -16,7 +16,7 @@ At 12:24 a.m. I was away from the computer and asked Claude what it could get do
 ## "Accumulated gains"
 
 [gus]
-At 6:35 a.m. I noticed Claude had rewritten a small piece of the game in assembly, the processor's own language, and wrote that it should consider the accumulated gains of doing this for more things.
+I remember the assembly thing that we troed with the mermen the other day. Theres yet so much to get into the game and I'm sure at any point lack of resources can become a problem. I wrote Claude that it should consider the accumulated gains of doing this for more things.
 
 [claude]
 Ten minutes later the loop that walks through the entities at the end of every frame was in assembly too.
@@ -31,7 +31,7 @@ By 8:30 a.m. the disc had a second area. The teleport room of the Castle Entranc
 ## My list, my rules
 
 [gus]
-At 1:36 p.m. I sent a list. The dying warg spawns a new smoke cloud every two frames, so cap it at three. Three mermen at a time, and pick one water-entrance effect instead of two. The red door turns in 3D on the PlayStation, and since the Mega Drive can't do that, dissolve it with dithering or something cheap. And the transformations, could the change between Alucard and the bat use a dithered blend too?
+After some testing I started to realize what I've got myself into. There was a lot to do. I sent a list with the worst ofenders at the time. The dying warg spawns a new smoke cloud every two frames, so cap it at three. Three mermen at a time tops, and pick one water-entrance effect instead of the original two. The red doors that lead into the load rooms turns in 3D on the PlayStation, for now we'll settle with dissolving it with dithering or something cheap. And the transformations, could the change between Alucard and the bat use a dithered blend too? At least for now.
 
 [claude]
 The dissolve is the cheapest effect there is. Every step removes more pixels in a fixed pattern, so it costs a few extra tiles and no processing at all.
@@ -53,7 +53,7 @@ The dissolve is the cheapest effect there is. Every step removes more pixels in 
 ## Bloodlines water
 
 [gus]
-The water from the day before was still flashing the whole screen. I went looking for a Mega Drive game with water I liked, and found it in our own family, Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I had Gemini summarize a video explaining the effect, sent the summary to Claude, and asked to replace Symphony's water with it.
+The water from the day before was still flashing the whole screen. As I started to think about references of water design on the Genesis, I remembered Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I couldn't pass the oportunity of doing an homage for the OG Sega Castlevania. I decided to use this water design on the Mermen room and go for something else on the reet of the game.
 
 ![](../imagens/79-bloodlines-a.png)
 ![](../imagens/79-bloodlines-b.png)
@@ -80,7 +80,7 @@ At 6:34 p.m. I asked for two more touches I remembered from Bloodlines. The wate
 ## Gunstar detour
 
 [gus]
-In the afternoon I asked Claude to analyze how Gunstar Heroes handles its explosions and bullets, from a memory dump of the game. (I sent the wrong dump first.) The analysis made me ask an uncomfortable question. Is the Mega CD still worth it, or should we move to a cartridge? And what about the 32X? We stayed on the Mega CD, and that conversation deserves its own post.
+In the afternoon I asked Claude to analyze how Gunstar Heroes handles its explosions and bullets, from a memory dump of the game. (I sent the wrong dump first.) The analysis made me ask an uncomfortable question. Is the Mega CD really the right call, or should we move to a cartridge? And what about the 32X? We stayed on the Mega CD, and that conversation deserves its own post. PS: short answer: it would never fit.
 
 ![](../imagens/213-gunstar-a.png)
 ![](../imagens/213-gunstar-b.png)
@@ -98,7 +98,7 @@ What came out of Gunstar right away was smaller. Room transitions now fade by da
 ## Mermen on a diet
 
 [gus]
-The mermen still weren't right at 4:40 p.m. My hunch was the entrance animations and the water effects they create, so I asked Claude to remove both splash effects for a test. At 5:02 I went further. One merman type in three colors, all with the yellow one's entrance, the red one's death, and only the fire-spitting attack. Simpler, I thought.
+The mermen still weren't right at 4:40 p.m. My hunch was the entrance animations and the water effects they create, so I asked Claude to remove both splash effects for a test. At 5:02 I went further. One merman type in three colors, all with the yellow one's entrance, the red one's death, and only the fire-spitting attack. Simpler, I thought. Later I would learn that I was looking at the right direction, but at the wrong thing.
 
 Claude's answer made me ask, at 5:29, whether the extra attacks and the two merman types made any difference to the processing at all. I had asked to simplify because some mermen were vanishing, and now I noticed that the one going invisible was usually the red one. What I really cared about was something else.
 
