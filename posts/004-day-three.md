@@ -4,7 +4,7 @@ kicker: "Day 3 · October 20, 2026"
 badge: "4"
 slug: "day-3"
 excerpt: "The merman gets rewritten and it barely matters, a dead warg floats in the corner of the screen, water arrives as a palette trick, and at midnight I ask Claude if it's fixing the right things."
-status: draft
+status: published
 ---
 
 [gus]

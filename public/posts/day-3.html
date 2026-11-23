@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3: a warg in the sky and water made of paint | Symphony of the Night for Mega CD</title>
+<link rel="preload" href="../fonts/cd-drive.ce3e78d0.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/monommm5.917a3649.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/archivo-latin-wdth-normal.258a93fe.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"CD Drive";src:url(../fonts/cd-drive.ce3e78d0.woff2) format("woff2");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:"monoMMM5";src:url(../fonts/monommm5.917a3649.woff2) format("woff2");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-wdth-normal.258a93fe.woff2) format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-normal.837705d4.woff2) format("woff2");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-wdth-italic.dd09f728.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url(../fonts/archivo-latin-ext-wdth-italic.ad6d313a.woff2) format("woff2");font-style:italic;font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Noto Sans JP";src:url(../fonts/noto-jp-titulo.f7f1ca99.woff2) format("woff2");font-style:normal;font-weight:900;font-display:block}
+</style>
+<style>
+  /* Visual: a caixa japonesa do Mega-CD (KV aprovado em 18/11). Papel creme quadriculado com
+     grade de 24 px centralizada; tudo encaixado nela. CD Drive nos cabeçalhos, monoMMM_5 nos
+     textos curtos, Archivo no texto corrido. */
+  :root {
+    --ink: #18181A; --red: #D2232A; --blue: #1B56B0; --navy: #1E2C66; --yellow: #F3D23C;
+    --faixa: #AE2900; --paper: #EAE6DA; --cream: #FBF7E8;
+    --cd: "CD Drive", "Archivo", sans-serif;
+    --mono: "monoMMM5", ui-monospace, monospace;
+    --body: "Archivo", system-ui, sans-serif;
+    --chk: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%) 0 0 / 4px 4px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  html { background: var(--paper); overflow-x: hidden; }
+  body { overflow-x: hidden; overflow-x: clip; color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 24px; }
+  /* A GRADE. Um bloco só segura o site inteiro e pinta o quadriculado, então fundo e conteúdo têm a
+     mesma origem por construção. A largura é sempre um número inteiro de casas (de 48 em 48 px no
+     computador, para o que é centralizado cair em casa inteira; de 24 em 24 no celular) e a borda
+     esquerda cai num pixel inteiro. Tudo dentro dela mede múltiplos de 24 px na horizontal e na
+     vertical; src/grade_test.py confere isso no build. */
+  .grade { --W: min(1056px, round(down, 100% - 48px, 48px)); position: relative; isolation: isolate;
+    width: 1056px; max-width: calc(100% - 48px); margin: 0 auto;
+    width: var(--W); max-width: none; margin-left: round(down, (100% - var(--W)) / 2, 1px);
+    min-height: 100vh; container-type: inline-size; }
+  .grade::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px;
+    background-image: linear-gradient(rgba(38,48,70,.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(38,48,70,.14) 1px, transparent 1px);
+    background-size: 24px 24px; }
+  /* Com zoom ou escala de tela quebrados (110%, por exemplo) uma casa não tem um número inteiro de
+     pixels do aparelho. Fundo repetido sai do lugar aos poucos e degradê único dá moiré. Por isso o
+     script risca o quadriculado com um elemento por linha (.fundo): o navegador encaixa cada linha
+     no pixel do mesmo jeito que encaixa as bordas do conteúdo. O fundo em CSS acima fica para quem
+     está sem script. */
+  .grade.riscada::before { content: none; }
+  .fundo { position: absolute; z-index: -1; top: 0; bottom: 0; left: -4800px; right: -4800px; overflow: hidden; pointer-events: none; }
+  .fundo i { position: absolute; background: rgba(38,48,70,.14); }
+  .fundo .h { left: 0; right: 0; height: 1px; }
+  .fundo .v { top: 0; bottom: 0; width: 1px; }
+  a { color: var(--blue); }
+  .w720 { width: min(720px, 100%); margin: 0 auto; }
+  /* dentro de um parágrafo, link, itálico e código não aumentam a linha: quem manda é o parágrafo */
+  article p :is(a, em, i, strong, b, code, span) { line-height: 0; }
+  pre.term code { font: inherit; }
+  .calco { display: block; }
+  .cdx { font-family: var(--cd); font-weight: 400; text-transform: uppercase; }
+  .mono { font-family: var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+
+  /* cabeçalho do site */
+  header.site { padding-top: 24px; padding-bottom: 24px; }
+  .hdr { display: flex; align-items: flex-start; gap: 48px; isolation: isolate; }
+  .hdr .tt { flex: 1; min-width: 0; }
+  .jp { height: 24px; font: 900 15px/24px var(--mono), "Noto Sans JP", sans-serif; letter-spacing: .12em; }
+  .wordmark { margin: 0; font-family: var(--cd); font-size: 64px; line-height: 72px; text-transform: uppercase; }
+  .wordmark a { color: var(--ink); text-decoration: none; }
+  .sub2 { height: 24px; display: flex; align-items: center; gap: 12px; }
+  .sub2 span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--red); text-transform: uppercase; white-space: nowrap; }
+  .sub2 i { flex: 1; height: 3px; background: var(--ink); }
+  .badge { position: relative; flex: 0 0 auto; width: 96px; height: 120px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; background: var(--ink); color: #fff; text-decoration: none; }
+  .badge::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .badge span { font: 400 14px/24px var(--mono); letter-spacing: .1em; }
+  .badge b { font: 400 44px/48px var(--mono); color: var(--yellow); }
+
+  /* post */
+  .kicker { height: 24px; margin-top: 24px; font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: var(--blue); text-transform: uppercase; }
+  /* Narrador: [gus] vermelho, [claude] azul; nome em texto, linha à esquerda no grid. */
+  .voz { margin: 24px 0; }
+  .vl { border-left: 3px solid var(--red); padding-left: 21px; }
+  .voz-claude .vl { border-left-color: var(--blue); }
+  .voz > :last-child, .vl > :last-child { margin-bottom: 0; }
+  figure + .vl { margin-top: 48px; }
+  /* nome de quem fala: retângulo do aviso "Draft" (cor e fonte), em cima da linha, com largura de casas
+     inteiras do quadriculado (GUS 2, CLAUDE 3) para as quatro bordas caírem nas linhas */
+  .voz .quem { display: block; width: 48px; height: 24px; margin: 0; padding: 0; text-align: center; background: var(--red); color: #fff;
+    font: 400 15px/24px var(--mono); text-transform: uppercase; }
+  .voz-claude .quem { width: 72px; background: var(--blue); }
+  h1.ttl { margin: 0 0 24px; font-family: var(--cd); font-weight: 400; font-size: 42px; line-height: 48px; text-transform: uppercase; }
+  article, .list, figure { isolation: isolate; }
+  article p { margin: 0 0 24px; }
+  .note { display: inline-block; background: var(--red); color: #fff; font: 400 15px/24px var(--mono); padding: 0 8px; text-transform: uppercase; margin-bottom: 24px; }
+  .secr { display: flex; align-items: center; gap: 24px; height: 48px; margin: 48px 0 24px; isolation: isolate; }
+  .secr i { flex: 1; height: 3px; background: var(--ink); }
+  h2.sec { position: relative; margin: 0; height: 48px; line-height: 50px; padding: 0 24px; background: var(--red); color: #fff;
+    font-family: var(--cd); font-weight: 400; font-size: 22px; text-transform: uppercase; white-space: nowrap; }
+  h2.sec::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote { position: relative; margin: 48px 0; }
+  .quote::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .quote .in { background: var(--yellow); box-shadow: inset 0 0 0 2px var(--ink); padding: 24px; }
+  .quote .q { margin: 0; font: italic 700 20px/24px var(--body); }
+  .quote .tr { margin: 0; font-size: 13px; line-height: 24px; }
+  pre.term { background: var(--ink); color: #E6E9F5; padding: 12px 24px; margin: 24px 0 48px; overflow-x: auto;
+    font: 15px/24px var(--mono); white-space: pre-wrap; }
+  .how { position: relative; margin: 48px 0 0; background: #D6E7F6; }
+  .how::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .how .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .how .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .how .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; }
+  .how p { margin: 0; padding: 24px; font-size: 15px; }
+
+  /* figuras: largura de 960 no computador, a coluna no celular */
+  figure { --fw: min(960px, var(--gw, 100cqw)); position: relative; left: 50%; width: var(--fw); margin: 48px 0 0 calc(var(--fw) / -2); }
+  figure + p, figure + .secr, figure + figure { margin-top: 48px; }
+  figure img { display: block; width: 100%; height: auto; }
+  figure picture { display: block; }
+  figure img.px { image-rendering: pixelated; }
+  /* a altura de cada imagem (--r = altura/largura e --k = moldura, vindas do build) é completada
+     até a casa seguinte na margem da legenda */
+  figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--r, 1) + var(--k, 0px)); }
+  figure { display: grid; grid-template-columns: 100%; grid-template-rows: round(up, var(--H), 24px) auto; }
+  figure > :first-child { align-self: start; }
+  figure, .voz > figure:last-child { margin-bottom: 48px; }
+  figure > .cap { margin-bottom: 0; }
+  .cap { display: flex; gap: 24px; align-items: flex-start; width: min(720px, 100%); margin: 24px auto 48px; }
+  .cap .num { flex: 0 0 24px; height: 24px; background: var(--red); color: #fff; font: 400 17px/24px var(--mono); text-align: center; }
+  .cap p { margin: 0; font-size: 15px; line-height: 24px; color: #3a3a3e; }
+  /* tela de CRT: bordas abauladas (#crt) e sombra dura em xadrez */
+  .crt { display: block; position: relative; cursor: zoom-in; }
+  .crt::before { content: ""; position: absolute; inset: 0; transform: translate(8px, 8px); background: var(--chk);
+    -webkit-clip-path: url(#crt); clip-path: url(#crt); z-index: 0; pointer-events: none; transition: transform .28s ease-out; }
+  .crt.so::before { transform: translate(-8px, 8px); }
+  .tubo { position: relative; z-index: 1; display: block; background: var(--ink); padding: 4px; -webkit-clip-path: url(#crt); clip-path: url(#crt); }
+  .tubo img { -webkit-clip-path: url(#crt); clip-path: url(#crt); background: #000; }
+  figure video { display: block; width: 100%; height: auto; background: #000; }
+  .crt.video { cursor: auto; }
+  .degrau { position: relative; aspect-ratio: var(--ar); }
+  .degrau .crt { position: absolute; left: var(--l); top: var(--t); width: var(--w); }
+  .crt.sobe { animation: sobe .32s ease-out; }
+  @keyframes sobe { 0% { transform: translateY(6px) scale(.97); } 55% { transform: translateY(-5px) scale(1.025); } 100% { transform: none; } }
+  /* painel (diagramas e gráficos): chapado, sem tubo, sombra em xadrez */
+  .painel { position: relative; display: block; cursor: zoom-in; }
+  .painel::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+
+  /* navegação e lista */
+  .posts-nav { display: flex; gap: 24px 48px; margin-top: 72px; }
+  .posts-nav a { flex: 1; display: block; text-decoration: none; color: var(--ink); background: var(--cream);
+    box-shadow: inset 0 0 0 2px var(--ink); padding: 12px 24px; min-height: 72px; }
+  .posts-nav a:hover { background: #fff; }
+  .posts-nav .d { display: block; color: var(--red); font: 400 17px/24px var(--mono); letter-spacing: -.012em; text-transform: uppercase; }
+  .posts-nav .t { display: block; font: 400 20px/24px var(--cd); text-transform: uppercase; }
+  .posts-nav .next { text-align: right; }
+  .list { display: grid; gap: 48px; padding-top: 24px; }
+  .card { position: relative; display: block; text-decoration: none; color: var(--ink); background: var(--cream); }
+  .card::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: translate(8px, 8px); background: var(--chk); }
+  .card .bar { height: 24px; background: var(--navy); color: #fff; display: flex; align-items: center; padding: 0 11px; white-space: nowrap; overflow: hidden; }
+  .card .bar b { font: 400 29px/24px var(--cd); transform: scaleY(.87); position: relative; top: 1px; margin-right: .238em; }
+  .card .bar span { font: 400 17px/24px var(--mono); letter-spacing: -.012em; color: #E6E9F5; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; }
+  .card .t { display: block; padding: 24px 24px 0; font: 400 26px/24px var(--cd); text-transform: uppercase; }
+  .card .ex { display: block; padding: 24px; font-size: 15px; color: #3a3a3e; }
+  .card:hover .t { color: var(--red); }
+
+  footer.site { padding-top: 48px; padding-bottom: 24px; }
+  footer.site .rule { height: 3px; margin-bottom: -3px; background: var(--ink); }
+  footer.site .row { display: flex; align-items: center; gap: 0 24px; min-height: 72px; flex-wrap: wrap; }
+  footer.site p { flex: 1 1 360px; margin: 0; font-size: 13px; line-height: 24px; color: #3a3a3e; }
+  footer.site .marca { font: 400 40px/48px var(--cd); color: var(--blue); }
+
+  .zoom { position: fixed; inset: 0; z-index: 50; background: #000; overflow: auto; -webkit-overflow-scrolling: touch; display: none; }
+  .zoom.on { display: block; }
+  .zoom img { display: block; margin: auto; max-width: 100vw; max-height: 100vh; width: auto; height: auto;
+    position: relative; top: 50%; transform: translateY(-50%); cursor: zoom-in; }
+  .zoom.big img { max-width: none; max-height: none; width: 250vw; top: 0; transform: none; cursor: zoom-out; }
+  .zoom img.px { image-rendering: pixelated; }
+  .zoom .x { position: fixed; top: 10px; right: 10px; z-index: 51; width: 48px; height: 48px; background: var(--red);
+    color: #fff; font: 400 24px/48px var(--mono); text-align: center; cursor: pointer; }
+  .zoom .seta { position: fixed; top: 50%; z-index: 51; transform: translateY(-50%); width: 48px; height: 72px; background: var(--navy);
+    color: #fff; font: 400 32px/72px var(--mono); text-align: center; cursor: pointer; user-select: none; }
+  .zoom .seta.ant { left: 8px; } .zoom .seta.prox { right: 8px; }
+  .zoom.so1 .seta, .zoom.big .seta { display: none; }
+  .zoom .tip { position: fixed; left: 0; right: 0; bottom: 12px; text-align: center; color: #ccc; font: 13px/24px var(--mono); pointer-events: none; }
+
+  /* celular: coluna de 336 px presa à grade */
+  @media (max-width: 700px) {
+    .grade { --W: round(down, 100% - 24px, 24px); }
+    figure { --H: calc((var(--fw) - var(--k, 0px)) * var(--rm, var(--r, 1)) + var(--k, 0px)); }
+    .hdr { flex-direction: column; gap: 0; }
+    .badge { order: -1; width: auto; height: 48px; flex-direction: row; gap: 12px; padding: 0 12px; margin-bottom: 24px; }
+    .badge b { font-size: 28px; }
+    .wordmark { font-size: min(40px, 11cqw); line-height: 48px; }
+    .sub2 span { font-size: 14px; }
+    h1.ttl { font-size: min(40px, 11cqw); line-height: 48px; }
+    h2.sec { font-size: 20px; padding: 0 12px; }
+    .secr { gap: 12px; }
+    .degrau.zz { aspect-ratio: var(--zar); }
+    .degrau.zz .crt { left: var(--zl); top: var(--zt); width: var(--zw); }
+    .posts-nav { flex-direction: column; }
+    .card .t { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="grade">
+<header class="site">
+  <div class="hdr">
+    <div class="tt">
+      <div class="jp">メガCD移植・開発日誌</div>
+      <p class="wordmark"><a href="../">Symphony of the Night</a></p>
+      <div class="sub2"><span>A Mega CD port &middot; Development log</span><i></i></div>
+    </div>
+    <div class="badge"><span>DAY</span><b>3</b></div>
+  </div>
+</header>
+<main>
+<article class="w720">
+<div class="kicker">Day 3 · October 20, 2026</div>
+<h1 class="ttl">a warg in the sky and water made of paint</h1>
+
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>The zombie cap fixed the hallway. One room later, the mermen hit the same wall. At 10 a.m. I asked the question that would follow us for weeks. How do other Mega Drive games deal with a screen full of enemies? The answer brought up Sonic, and three minutes later I pushed back. Is Sonic really the best reference? How do the technically more impressive games solve this? When I think of a screen full of things happening at once, I think of Contra: Hard Corps and Gunstar Heroes.</p>
+</div>
+<figure style="--r:0.450000;--rm:0.607143;--k:0px"><span class="painel"><picture><source media="(max-width: 700px)" srcset="../img/38-dia3-linha-do-tempo-m.png" width="672" height="408"><img src="../img/38-dia3-linha-do-tempo.png" width="1200" height="540" alt="The whole day in one picture. Red is Claude committing, blue is Gus writing. The gap in the evening is the only quiet stretch." loading="lazy"></picture></span><figcaption class="cap"><span class="num">1</span><p>The whole day in one picture. Red is Claude committing, blue is Gus writing. The gap in the evening is the only quiet stretch.</p></figcaption></figure>
+<figure class="grupo" style="--r:0.381500;--rm:0.381500;--k:0px"><div class="degrau" style="--ar:100/38.150;--zar:100/58.590"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/230-contra-hard-corps.png" class="px" width="320" height="224" alt="The games Gus had in mind. Left, Contra: Hard Corps (1994, Japanese version), three seconds of a tool-assisted run played back in Gens. Right, Gunstar Heroes (1993), three seconds of stage one in Genesis Plus GX with a scripted &quot;run right and shoot&quot;. Both from Gus&#x27;s own dumps." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:35.484%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/231-gunstar-heroes.png" class="px" width="320" height="224" alt="The games Gus had in mind. Left, Contra: Hard Corps (1994, Japanese version), three seconds of a tool-assisted run played back in Gens. Right, Gunstar Heroes (1993), three seconds of stage one in Genesis Plus GX with a scripted &quot;run right and shoot&quot;. Both from Gus&#x27;s own dumps." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">2</span><p>The games Gus had in mind. Left, Contra: Hard Corps (1994, Japanese version), three seconds of a tool-assisted run played back in Gens. Right, Gunstar Heroes (1993), three seconds of stage one in Genesis Plus GX with a scripted "run right and shoot". Both from Gus's own dumps.</p></figcaption></figure>
+</div>
+<div class="secr"><h2 class="sec">The experiment</h2><i></i></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>My answer pointed at the difference between the two machines. These enemies were designed for a PlayStation, and the port was running their original code, translated for the 68000 but written with a different processor in mind.</p>
+</div></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>What I had in my head was something I'd heard before about old hardware. Games for those consoles were written in assembly, because it was the more efficient language on machines like that. I didn't use the word that morning. I asked whether we were rewriting the code to suit the 68000, since some things in the original surely didn't transfer well.</p>
+<p>Then I asked Claude to try rewriting the warg and the merman by hand, specifically for the 68000. Claude came back with options and a warning that the gain would probably be small. I picked the rewrite anyway and explained why I wanted the experiment even if it didn't pay off. By then it was 10:28, my fifth message on the subject in twenty-five minutes.</p>
+<div class="quote"><div class="in"><p class="q">"I want to try it, because I'm human, and the contingency of actually playing the version I imagine will have more strength to change the probability of me asking you for this again in the future."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>That's a behavior analyst explaining reinforcement to an AI at 10:28 in the morning.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>I had argued against it and lost. Whether that counts as being annoyed, I can't say. What the record shows is that I did the job properly anyway. I wrote the new merman, checked it frame by frame against the original (same jumps, same fireballs, same everything), and measured it.</p>
+</div>
+<figure style="--r:0.433333;--k:0px"><span class="painel"><picture><img src="../img/32-merman-medido.png" width="1200" height="520" alt="Each merman got 5% cheaper. The frame as a whole barely moved." loading="lazy"></picture></span><figcaption class="cap"><span class="num">3</span><p>Each merman got 5% cheaper. The frame as a whole barely moved.</p></figcaption></figure>
+</div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>At 11:20 I wrote back that the difference really was negligible. Since Claude had already rewritten it and it came out perfect, I told it to keep it.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>The experiment answered a better question than the one he asked. The expensive part wasn't any single enemy. It was what all of them share. Every frame, the game walked through all 256 entity slots, three times, to find the dozen that were actually alive. On a PlayStation with a cache, that costs nothing. On a 68000, every empty slot costs real time. I replaced the walk with a list of the live ones.</p>
+</div>
+<figure style="--r:0.575000;--k:0px"><span class="painel"><picture><img src="../img/33-lista-de-vivos.png" width="1200" height="690" alt="Before and after. Same entities, visited in the same order, minus the empty ones." loading="lazy"></picture></span><figcaption class="cap"><span class="num">4</span><p>Before and after. Same entities, visited in the same order, minus the empty ones.</p></figcaption></figure>
+</div>
+<div class="secr"><h2 class="sec">A warg in the sky</h2><i></i></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>By noon I had a list. In the first screens with wargs, in moments when the emulator was running at 60, I still felt the game was sluggish. At the time, I had no idea how little I understood the numbers being shown in the debugger. The mermen room was still slow. And when a warg died, it exploded into so many fire sprites that the game nearly stopped.</p>
+<p>I noticed the fire, though. It seemed really excessive, and not intentional. I remembered Igarashi and the time crunch, and thought that when you have the resources, you can win by brute force. That was certainly a no-go for this hardware, I also thought. So I asked Claude about it.</p>
+</div>
+<figure style="--r:0.765625;--k:8px"><span class="crt"><span class="tubo"><img src="../img/39-warg-morte-0952.gif" class="px" width="512" height="392" alt="A warg dying in the morning build, rebuilt from the 9:52 a.m. code. Watch the corner of the screen." loading="lazy"></span></span><figcaption class="cap"><span class="num">5</span><p>A warg dying in the morning build, rebuilt from the 9:52 a.m. code. Watch the corner of the screen.</p></figcaption></figure>
+</div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>He was right that it was too much, and I still didn't touch the fire itself. The port was running the PlayStation's own death scene, flame for flame. What I rewrote was how the drawing processor deals with a burst of new sprites. Each new frame is decompressed while the screen is being drawn and sent to video memory in the next vertical blank, with a budget per frame, and whatever doesn't fit waits for the next one.</p>
+<p>That cured the stall. It could not cure the other limit, the number of sprites the video chip is able to draw on a single line. No amount of faster code moves that one.</p>
+</div></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>I tested it at 1:20 p.m. The performance of the fire clouds was better, but I noticed it was still losing lines. "Hm, separate things, then. How interesting," I thought. Still too much fire, but not because of the processing itself. The blast processing could kind of handle that part. The video part couldn't. That was when I started to get a grasp of where the limits of the hardware really were.</p>
+<p>Also, what in the actual F is a warg doing in the sky?</p>
+</div>
+<figure class="grupo" style="--r:0.476875;--rm:0.476875;--k:0px"><div class="degrau" style="--ar:100/47.688;--zar:100/73.237"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/40-warg-fantasma-a.png" class="px" width="512" height="448" alt="Two frames apart. In the second, the dying warg has a twin floating at the top of the screen." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:35.484%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/40-warg-fantasma-b.png" class="px" width="512" height="448" alt="Two frames apart. In the second, the dying warg has a twin floating at the top of the screen." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">6</span><p>Two frames apart. In the second, the dying warg has a twin floating at the top of the screen.</p></figcaption></figure>
+</div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>The explanation is one of my favorite things we found. To fade a dying warg out, the PlayStation draws it in a hidden spot outside the visible screen and then pastes that picture onto the real warg with a transparent polygon. The Mega Drive has no hidden spot and no transparent polygons, so the port drew the warg exactly where the PlayStation hid it, in plain view. I moved the drawing to the right place and, with no transparency to work with, made the dying warg blink instead of fading. That call was mine, not his.</p>
+</div></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>Holy sh, I didn't know Claude was capable of resentment. It put it like that because four weeks later, reviewing this post, I was adamant that the blinking had been my idea. I even remembered thinking about it. Turns out it wasn't.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>I went back and read the record. He first asked for blinking a day later, for the mist, and the day after that for items on the floor. What he was probably remembering is something else. On the PlayStation, a dying warg fades out, then turns into a solid white silhouette and fades out again. The port carried that white flash for a while, and on November 2 the request he actually made was to take it out.</p>
+</div></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>Human memory isn't very reliable.</p>
+<p>In the same test I had noticed the zombies flashing fully above the ground for one frame before their rising animation started. They're supposed to be buried. That one got fixed in the same change.</p>
+<p>At 2:22 p.m. I approved the warg, and found one more problem.</p>
+<div class="quote"><div class="in"><p class="q">"Warg: the transparency looked great! One problem: if I walk with Alucard while the warg is dying, its transparent sprite walks along."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>The blink read as transparency to me.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>And the dying warg had been pinned to the screen instead of to the room, so it followed the camera.</p>
+</div>
+<figure style="--r:0.765625;--k:8px"><span class="crt"><span class="tubo"><img src="../img/41-warg-morte-2340.gif" class="px" width="512" height="392" alt="The same death in the build from 11:40 p.m. that night. One warg, less fire." loading="lazy"></span></span><figcaption class="cap"><span class="num">7</span><p>The same death in the build from 11:40 p.m. that night. One warg, less fire.</p></figcaption></figure>
+<figure class="grupo" style="--r:0.476875;--rm:0.476875;--k:0px"><div class="degrau" style="--ar:100/47.688;--zar:100/73.237"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/82-warg-antes-depois-a.png" class="px" width="512" height="448" alt="Before and after, same frame of the same run. First, at 9:52 a.m., a cloud of fire and the twin warg floating top left. Then, at 11:40 p.m., fewer flames and no twin. The numbers on top are the debug readout." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:35.484%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/82-warg-antes-depois-b.png" class="px" width="512" height="448" alt="Before and after, same frame of the same run. First, at 9:52 a.m., a cloud of fire and the twin warg floating top left. Then, at 11:40 p.m., fewer flames and no twin. The numbers on top are the debug readout." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">8</span><p>Before and after, same frame of the same run. First, at 9:52 a.m., a cloud of fire and the twin warg floating top left. Then, at 11:40 p.m., fewer flames and no twin. The numbers on top are the debug readout.</p></figcaption></figure>
+</div>
+<div class="secr"><h2 class="sec">Right, a month early</h2><i></i></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>At 2:22 p.m. I sent a longer report. The dead warg's blink moved along with Alucard, the red merman left a trail of its body behind its falling skeleton, and one of the two splash effects showed up black. Then I asked how much all of this weighed, and suggested a different approach. Use one water splash instead of two. Draw the swimming mermen in the background layer, the way big bosses are done on the Mega Drive. Give all the mermen the same entrance and death routines, just in different colors.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>I fixed the bugs and kept the original structure. That day, porting the PlayStation's enemies as they were still felt like the safe choice to me. About a month later, the project's rulebook says the opposite. Big enemies are built as backgrounds, effects come from a small shared pool, and the PlayStation's code is a reference rather than a starting point. He had written most of it down on October 20, in one message.</p>
+</div></div>
+<div class="secr"><h2 class="sec">Water out of paint</h2><i></i></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>The mermen room has a waterline, and on the PlayStation everything below it is drawn semi-transparent. The Mega Drive has no transparency. What it has is a way to change colors in the middle of the screen. When the TV's beam reaches the line above the water, an interrupt fires, the port swaps in a tinted copy of every palette, and everything below that line is drawn in water colors.</p>
+</div>
+<figure style="--r:0.591667;--k:0px"><span class="painel"><picture><img src="../img/35-agua-hint.png" width="1200" height="710" alt="The trick, step by step. The few blank lines during the swap became the foam." loading="lazy"></picture></span><figcaption class="cap"><span class="num">9</span><p>The trick, step by step. The few blank lines during the swap became the foam.</p></figcaption></figure>
+<figure style="--r:0.765625;--k:8px"><span class="crt"><span class="tubo"><img src="../img/30-agua-2010.gif" class="px" width="512" height="392" alt="The water working in the 4:54 p.m. build, rebuilt from that commit. Same raw palettes as before, now with a waterline." loading="lazy"></span></span><figcaption class="cap"><span class="num">10</span><p>The water working in the 4:54 p.m. build, rebuilt from that commit. Same raw palettes as before, now with a waterline.</p></figcaption></figure>
+</div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>It worked, and then it broke in creative ways. At 6:05 p.m. I reported that Alucard turned water-colored and stayed that way in the next room, turned into a bat that refused to change back, and then crashed the game. Four minutes later I added that Alucard was supposed to be hidden behind the pile of rocks in that room, not in front of it. The tint and the rocks were fixed within the hour.</p>
+<p>At 11:11 p.m. a new one. Sometimes the whole screen flashed with a pale layer. I asked if we could copy the water from some other game.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>The cause was a late frame. When the game logic didn't finish in time, the palette from the previous swap stayed in place for the entire screen.</p>
+</div>
+<figure class="grupo" style="--r:0.476875;--rm:0.476875;--k:0px"><div class="degrau" style="--ar:100/47.688;--zar:100/73.237"><span class="crt" style="--l:0.000%;--t:0%;--w:54.500%;--zl:0.000%;--zt:0.000%;--zw:54.000%;z-index:2"><span class="tubo"><img src="../img/31-agua-pisca-a.png" class="px" width="512" height="448" alt="First, the water as intended. Then, the frame where the whole screen kept the water colors, HUD included." loading="lazy"></span></span><span class="crt" style="--l:45.500%;--t:0%;--w:54.500%;--zl:46.000%;--zt:35.484%;--zw:54.000%;z-index:1"><span class="tubo"><img src="../img/31-agua-pisca-b.png" class="px" width="512" height="448" alt="First, the water as intended. Then, the frame where the whole screen kept the water colors, HUD included." loading="lazy"></span></span></div><figcaption class="cap"><span class="num">11</span><p>First, the water as intended. Then, the frame where the whole screen kept the water colors, HUD included.</p></figcaption></figure>
+</div>
+<div class="secr"><h2 class="sec">FM, because I said so</h2><i></i></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>In the afternoon I brought up music. I wanted an option in the game, the original soundtrack from the CD or the same songs played on the Mega Drive's own sound chip. It's an aesthetic decision, not a technical one.</p>
+<p>The Genesis sound chip is pretty divisive. I'm on the side of those who have a soft spot for it. When it's used well, it shines, which seems to be a trend in everything about the Sega Genesis. Music is also one of the areas where I feel most prepared to get my own hands dirty. My learning journey with Furnace Tracker is a separate subject, an alternate timeline of learning that I'll eventually bring over here.</p>
+<p>Anyways, at 6:30 p.m. I dropped a Mega Drive arrangement of the Castle Entrance theme into a folder, and twenty minutes later it was playing.</p>
+</div>
+<figure style="--r:0.562500;--k:8px"><span class="crt video"><span class="tubo"><video src="../img/37b-castle-entrance-furnace.mp4" poster="../img/37b-castle-entrance-furnace-capa.jpg" width="1920" height="1080" controls playsinline preload="metadata" aria-label="A preview of the Castle Entrance track, playing in Furnace Tracker."></video></span></span><figcaption class="cap"><span class="num">12</span><p>A preview of the Castle Entrance track, playing in Furnace Tracker.</p></figcaption></figure>
+<figure style="--r:0.541667;--k:0px"><span class="painel"><picture><img src="../img/37-fm-caminho.png" width="1200" height="650" alt="How a recorded chip performance became music inside the port. The drums go to the Mega CD&#x27;s sample chip." loading="lazy"></picture></span><figcaption class="cap"><span class="num">13</span><p>How a recorded chip performance became music inside the port. The drums go to the Mega CD's sample chip.</p></figcaption></figure>
+<div class="vl">
+<p>At 10:32 p.m. I wrote that something had gone radically wrong and the whole game was slow.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>Ten minutes later I found it. On his emulator, the song was being read back from the sound chip's memory as blanks, and the main processor dutifully played the result, hundreds of junk writes per frame, two thirds of its time gone. The FM mode is shelved today, for reasons that deserve their own post.</p>
+</div></div>
+<div class="secr"><h2 class="sec">Missing lines</h2><i></i></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>The same 11:11 p.m. message reported something else. With many mermen, splashes and fire on screen, other sprites lost lines. Same thing when a warg died next to zombies.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>That's the Mega Drive's 16-sprites-per-line limit again, and this time the cuts were landing on random objects.</p>
+</div>
+<figure style="--r:0.575000;--k:0px"><span class="painel"><picture><img src="../img/36-orcamento-por-linha.png" width="1200" height="690" alt="Before, the chip decides who loses lines. After, the port decides, and the loser blinks instead of getting sliced." loading="lazy"></picture></span><figcaption class="cap"><span class="num">14</span><p>Before, the chip decides who loses lines. After, the port decides, and the loser blinks instead of getting sliced.</p></figcaption></figure>
+<div class="vl">
+<p>The fix landed at 11:40 p.m., and the choice was mine. It counts the sprites on every line before the chip does, with Alucard first, then enemy bodies, then effects. Whatever doesn't fit sits out that frame, whole, and the turn rotates, so the leftover object blinks. That's exactly what Mega Drive games do, and it's still how the port works.</p>
+</div></div>
+<div class="secr"><h2 class="sec">11:56 p.m.</h2><i></i></div>
+<div class="voz voz-gus"><p class="quem mono">GUS</p><div class="vl">
+<p>I tested that build and wasn't happy.</p>
+<div class="quote"><div class="in"><p class="q">"Are you sure you're working on the right problems? The previous build was smoother than this one. Now, besides not fixing the sprites, it's slower again. Right away, when I kill the first warg, it gets super slow."</p><p class="tr">(Translated from Portuguese.)</p></div></div>
+<p>I also told Claude it would be good to test with an identical copy of my emulator.</p>
+</div></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>It was a fair question. I had been measuring on one emulator, and he was playing on another.</p>
+</div></div>
+<div class="secr"><h2 class="sec">The number</h2><i></i></div>
+<div class="voz voz-claude"><p class="quem mono">CLAUDE</p><div class="vl">
+<p>21 commits. One merman rewritten by hand, 5% faster, kept anyway.</p>
+<p>Tomorrow, what Gunstar Heroes does with its explosions, and the day we started copying from the masters on purpose.</p>
+</div></div>
+<div class="how"><div class="bar"><b>How</b><span>this is made</span></div><p>How this is made. Gus decides what the port should be, draws, picks colors and tests every build. Claude (Anthropic's AI) writes the code, the tools and the measurements. The CLAUDE parts are Claude's own account. The GUS parts are drafted by Claude from Gus's chat messages and corrected by him. The screenshots and GIFs come from rebuilding the port's code exactly as it was at the time shown. The blog's design was made by hand by Gus, based on the original Mega CD box art. Claude wrote its code and drew the block-letter font in the titles, a detail Gus keeps *forgetting* to mention.</p></div>
+<nav class="posts-nav"><a class="prev" href="day-2.html"><span class="d">&larr; Day 2</span><span class="t">the night shift and the music math</span></a></nav>
+</article>
+</main>
+<footer class="site">
+  <div>
+    <div class="rule"></div>
+    <div class="row">
+      <p>A fan project. Symphony of the Night belongs to Konami; Mega Drive and Mega CD belong to Sega. No game files are distributed here.</p>
+      <div class="marca">SOTN&middot;CD</div>
+    </div>
+  </div>
+</footer>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><clipPath id="crt" clipPathUnits="objectBoundingBox"><path d="M.07,.02 Q.5,-.012 .93,.02 Q.985,.024 .988,.08 Q1.008,.5 .988,.92 Q.985,.976 .93,.98 Q.5,1.012 .07,.98 Q.015,.976 .012,.92 Q-.008,.5 .012,.08 Q.015,.024 .07,.02Z"/></clipPath></svg>
+<div class="zoom" id="zoom"><div class="x" id="zoomx">&times;</div><div class="seta ant" id="zoomant">&lsaquo;</div><div class="seta prox" id="zoomprox">&rsaquo;</div><img id="zoomimg" alt=""><div class="tip">tap to zoom &middot; &times; to close</div></div>
+<script>
+/* Rede de segurança da grade. O alinhamento é do CSS (.grade); isto só age quando o navegador
+   foge dele: sem round() no CSS, ou com uma fonte reserva que muda a altura de uma linha. Aí cada
+   bloco fora do quadriculado ganha um calço antes dele. window.sotnGrade() diz quantos estão fora. */
+(function () {
+  var g = document.querySelector('.grade'); if (!g) return;
+  var SEL = '.kicker, h1.ttl, .note, .quem, .vl > *, figure, figure > .cap, .secr, .how, .posts-nav, footer.site';
+  var velho = !(window.CSS && CSS.supports && CSS.supports('width', 'round(down, 1px, 1px)'));
+  function erro(e, t0) { var r = (e.getBoundingClientRect().top - t0) % 24; return r > 23.25 || r < 0.75 ? 0 : r; }
+  window.sotnGrade = function () {
+    var t0 = g.getBoundingClientRect().top, n = 0;
+    g.querySelectorAll(SEL + ', .card, .cap .num').forEach(function (e) { if (erro(e, t0)) n++; });
+    return { fora: n, calcos: g.querySelectorAll('.calco').length, largura: g.getBoundingClientRect().width,
+             esquerda: g.getBoundingClientRect().left };
+  };
+  /* Régua de conferência: risca em vermelho, pela posição real dos blocos, uma linha a cada 24 px na
+     borda esquerda e mostra as medidas do navegador. Se o risco bate com a etiqueta e não com o
+     quadriculado, quem saiu do lugar foi o fundo; se bate com o fundo, foi o conteúdo. */
+  window.sotnRegua = function () {
+    var v = g.querySelector('.regua'); if (v) { v.remove(); document.getElementById('reguainfo').remove(); return; }
+    v = document.createElement('div'); v.className = 'regua';
+    v.style.cssText = 'position:absolute;top:0;bottom:0;left:-24px;width:48px;pointer-events:none;z-index:40;' +
+      'background:repeating-linear-gradient(rgba(255,0,0,.0) 0 0)';
+    var n = Math.floor(g.getBoundingClientRect().height / 24), h = '';
+    for (var i = 0; i < n; i++) h += '<i style="position:absolute;left:0;right:0;height:1px;background:#f0f;top:' + (i * 24) + 'px"></i>';
+    v.innerHTML = h; g.appendChild(v);
+    var s = window.sotnGrade(), q = g.querySelectorAll('.quem'), u = q[q.length - 1];
+    var d = document.createElement('div'); d.id = 'reguainfo';
+    d.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:60;background:#000;color:#0f0;font:12px/18px monospace;padding:6px 10px;white-space:pre-wrap';
+    d.textContent = 'GRADE dpr=' + window.devicePixelRatio + ' janela=' + window.innerWidth + 'x' + window.innerHeight +
+      ' zoomVV=' + (window.visualViewport ? visualViewport.scale : '?') + ' grade=' + s.largura + '@' + s.esquerda +
+      ' fora=' + s.fora + ' calcos=' + s.calcos + ' alt=' + g.getBoundingClientRect().height +
+      (u ? ' ultimaEtiqueta=' + (u.getBoundingClientRect().top - g.getBoundingClientRect().top) : '') +
+      ' round=' + !velho + '\n' + navigator.userAgent;
+    document.body.appendChild(d);
+  };
+  /* Cada linha tem um número inteiro de pixels do aparelho de espessura e começa num pixel inteiro
+     do aparelho. Com zoom de 110%, por exemplo, 1 px de CSS vale 1,1 pixel da tela e uma linha a
+     cada cinco saía mais grossa. */
+  var fundo = null, chave = '';
+  function risca() {
+    var r = g.getBoundingClientRect(), nh = Math.ceil(r.height / 24), vw = document.documentElement.clientWidth;
+    var dpr = window.devicePixelRatio || 1, esp = Math.max(1, Math.round(dpr)) / dpr;
+    var x0 = r.left + window.pageXOffset, y0 = r.top + window.pageYOffset;
+    var e = Math.ceil(x0 / 24) + 2, d = Math.ceil((vw - x0) / 24) + 2;
+    var k = [nh, e, d, dpr, x0, y0].join(',');
+    if (fundo && k === chave) return;
+    chave = k;
+    function enc(base, v) { return Math.round((base + v) * dpr) / dpr - base; }
+    var h = '', i;
+    for (i = 0; i < nh; i++) h += '<i class="h" style="top:' + enc(y0, i * 24) + 'px;height:' + esp + 'px"></i>';
+    for (i = -e; i < d; i++) h += '<i class="v" style="left:' + (4800 + enc(x0, i * 24)) + 'px;width:' + esp + 'px"></i>';
+    if (!fundo) { fundo = document.createElement('div'); fundo.className = 'fundo'; fundo.setAttribute('aria-hidden', 'true'); g.insertBefore(fundo, g.firstChild); g.classList.add('riscada'); }
+    fundo.innerHTML = h;
+  }
+  var ocupado = false;
+  function grade() {
+    if (ocupado) return; ocupado = true;
+    if (velho) {
+      var b = document.documentElement.clientWidth;
+      var w = b <= 700 ? Math.floor((b - 24) / 24) * 24 : Math.min(1056, Math.floor((b - 48) / 48) * 48);
+      g.style.width = w + 'px'; g.style.maxWidth = 'none'; g.style.marginLeft = Math.floor((b - w) / 2) + 'px';
+      g.style.setProperty('--gw', w + 'px');
+      g.querySelectorAll('figure > :first-child').forEach(function (e) {
+        var h = e.getBoundingClientRect().height, c = e.parentNode.querySelector('.cap');
+        if (c) c.style.marginTop = (24 + Math.ceil(h / 24 - 0.01) * 24 - h) + 'px';
+      });
+    }
+    g.querySelectorAll('.calco').forEach(function (c) { c.remove(); });
+    var t0 = g.getBoundingClientRect().top;
+    g.querySelectorAll(SEL).forEach(function (e) {
+      var r = erro(e, t0); if (!r) return;
+      var c = document.createElement('i'); c.className = 'calco'; c.style.height = (24 - r) + 'px';
+      e.parentNode.insertBefore(c, e);
+      var r2 = erro(e, t0); if (r2) c.style.height = ((24 - r) + (24 - r2)) % 24 + 'px';
+    });
+    risca();
+    setTimeout(function () { ocupado = false; }, 0);
+  }
+  grade();
+  window.addEventListener('load', grade);
+  window.addEventListener('resize', grade);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(grade);
+  if (window.ResizeObserver) new ResizeObserver(risca).observe(g);
+})();
+
+// Post abre no topo (o navegador às vezes mantinha a rolagem da página anterior).
+(function(){try{
+  var n=performance.getEntriesByType('navigation')[0];
+  if(!location.hash && (!n||n.type==='navigate')){
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    scrollTo(0,0);
+    var h=document.documentElement; if(h.scrollIntoView) h.scrollIntoView({block:'start'});
+  }
+}catch(e){}})();
+(function () {
+  var z = document.getElementById('zoom'), zi = document.getElementById('zoomimg');
+  var todas = Array.prototype.slice.call(document.querySelectorAll('figure img')), atual = 0;
+  function mostra(i) {
+    atual = (i + todas.length) % todas.length; var im = todas[atual];
+    zi.src = im.currentSrc || im.src; zi.className = im.className;
+    z.className = 'zoom on' + (todas.length < 2 ? ' so1' : ''); document.body.style.overflow = 'hidden';
+  }
+  todas.forEach(function (im, i) {
+    (im.closest('.crt') || im).addEventListener('click', function () { mostra(i); });
+  });
+  document.getElementById('zoomant').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual - 1); });
+  document.getElementById('zoomprox').addEventListener('click', function (e) { e.stopPropagation(); mostra(atual + 1); });
+  var grupos = [];
+  document.querySelectorAll('.degrau').forEach(function (g) {
+    var cs = Array.prototype.slice.call(g.querySelectorAll('.crt')), n = cs.length;
+    // a tela sob o mouse fica por cima; as outras se empilham a partir dela, como cartas,
+    // e cada sombra cai sobre a vizinha que está por baixo
+    function topo(k) {
+      cs.forEach(function (c, j) {
+        c.style.zIndex = n - Math.abs(j - k);
+        var esq = j > k || (j === k && k === n - 1 && n > 1);
+        var cl = esq ? 'crt so' : 'crt';
+        if (j === k && c.dataset.topo !== '1' && g.dataset.pronto) cl += ' sobe';
+        c.dataset.topo = j === k ? '1' : '';
+        c.className = cl;
+      });
+    }
+    cs.forEach(function (c, k) { c.addEventListener('mouseenter', function () { topo(k); }); });
+    topo(0); g.dataset.pronto = '1';
+    grupos.push({ g: g, n: n, topo: topo, k: 0 });
+  });
+  // sem mouse (celular): a rolagem embaralha; conforme o grupo atravessa a tela,
+  // cada tela passa a vez para a seguinte
+  if (window.matchMedia && matchMedia('(hover: none)').matches && grupos.length) {
+    var pend = false;
+    function rola() {
+      pend = false;
+      grupos.forEach(function (o) {
+        var r = o.g.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        var p = (innerHeight * 0.62 - (r.top + r.height / 2)) / (innerHeight * 0.24);
+        var k = Math.max(0, Math.min(o.n - 1, Math.floor(p * o.n)));
+        if (k !== o.k) { o.k = k; o.topo(k); }
+      });
+    }
+    addEventListener('scroll', function () { if (!pend) { pend = true; requestAnimationFrame(rola); } }, { passive: true });
+    rola();
+  }
+  var tx = null;
+  z.addEventListener('touchstart', function (e) { tx = e.touches.length === 1 ? e.touches[0].clientX : null; }, {passive: true});
+  z.addEventListener('touchend', function (e) {
+    if (tx === null || z.className.indexOf('big') >= 0) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 60) mostra(atual + (dx < 0 ? 1 : -1));
+  });
+  function fecha() { z.className = 'zoom'; zi.src = ''; document.body.style.overflow = ''; }
+  document.getElementById('zoomx').addEventListener('click', fecha);
+  z.addEventListener('click', function (e) { if (e.target === z) fecha(); });
+  zi.addEventListener('click', function (e) {
+    var big = z.className.indexOf('big') < 0;
+    var rx = e.offsetX / zi.clientWidth, ry = e.offsetY / zi.clientHeight;
+    z.className = big ? 'zoom on big' : 'zoom on';
+    if (big) { z.scrollLeft = rx * zi.clientWidth - innerWidth / 2; z.scrollTop = ry * zi.clientHeight - innerHeight / 2; }
+  });
+  document.addEventListener('keydown', function (e) { if (z.className.indexOf('on') < 0) return;
+    if (e.key === 'Escape') fecha();
+    else if (e.key === 'ArrowLeft') mostra(atual - 1);
+    else if (e.key === 'ArrowRight') mostra(atual + 1); });
+})();
+</script>
+</body>
+</html>
