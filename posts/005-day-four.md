@@ -55,9 +55,9 @@ The dissolve is the cheapest effect there is. Every step removes more pixels in 
 [gus]
 The water from the day before was still flashing the whole screen. As I started to think about references of water design on the Genesis, I remembered Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I couldn't pass the opportunity of doing an homage for the OG Sega Castlevania. I decided to use this water design on the Mermen room and go for something else on the rest of the game.
 
-![](../imagens/79-bloodlines-a.png)
-![](../imagens/79-bloodlines-b.png)
-*Castlevania Bloodlines (1994), captured from the cartridge in an emulator. The reflecting water comes later, in the second stage.*
+![](../imagens/79-bloodlines-agua-a.png)
+![](../imagens/79-bloodlines-agua-b.png)
+*Castlevania Bloodlines (1994), captured from the cartridge in an emulator. Stage 2, the Atlantis Shrine. The water under the bridge mirrors everything above it, John Morris, a minotaur, even the STAGE 2 START banner.*
 
 Then I added the most important rule of the day. Alucard is half vampire, so he has no reflection.
 
@@ -71,11 +71,11 @@ The trade was also technical. Transparent water meant drawing the swimming merme
 At 6:34 p.m. I asked for two more touches I remembered from Bloodlines. The water level rising and falling by a few pixels, and a very subtle ripple in the reflection. Both arrived at 7:11 p.m.
 
 ![](../imagens/55-agua-antes-depois-a.png)
-![](../imagens/55-agua-antes-depois-b.png)
-*The same spot, a day apart. First, the palette-swap water from October 20. Then, the Bloodlines-style water from the 7:11 p.m. build, darker and mirrored, and a red merman that got his colors back.*
+![](../imagens/55-agua-2119-reflexo.png)
+*The same room, a day apart. First, the palette-swap water from October 20. Then, the Bloodlines-style water from the 7:11 p.m. build. A merman leaping out of the water shows up upside down below the line, and so does the one crawling on the bridge. Alucard, on the left, has no reflection. The red merman up on the ledge got his colors back.*
 
-![](../imagens/54-agua-bloodlines.gif)
-*The mermen room in that build. Never more than three of them.*
+![](../imagens/54-agua-mermen-2119.png)
+*The mermen room in that build, every frame, at 60 per second. The water level rises and falls a little, the reflection ripples, and there are never more than three mermen.*
 
 ## Gunstar detour
 
