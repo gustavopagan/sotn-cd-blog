@@ -4,11 +4,11 @@ kicker: "Day 4 · October 21, 2026"
 badge: "5"
 slug: "day-4"
 excerpt: "Water borrowed from Castlevania Bloodlines, a vampire who doesn't show up in it, mermen on a strict diet, and a drawbridge that can't rotate but can shake."
-status: draft
+status: published
 ---
 
 [gus]
-Today the wolf and the mist were visible for the first time. As expected, there is no transparency and the options are limited. For now, the quick choice for the mist was blinkng at 30hz
+Today the wolf and the mist were visible for the first time. As expected, there is no transparency and the options are limited. For now, the quick choice for the mist was blinking at 30 Hz.
 
 ![](../imagens/44-dia4-linha-do-tempo.png)
 *October 21. Two nights of work in one day, Claude's before dawn and Gus's after dinner.*
@@ -16,7 +16,7 @@ Today the wolf and the mist were visible for the first time. As expected, there 
 ## "Accumulated gains"
 
 [gus]
-I remember the assembly thing that we troed with the mermen the other day. Theres yet so much to get into the game and I'm sure at any point lack of resources can become a problem. I wrote Claude that it should consider the accumulated gains of doing this for more things.
+I remembered the assembly thing we tried with the mermen the other day. There's still so much to get into the game and I'm sure at any point lack of resources can become a problem. I wrote Claude that it should consider the accumulated gains of doing this for more things.
 
 [claude]
 Ten minutes later the loop that walks through the entities at the end of every frame was in assembly too.
@@ -31,7 +31,7 @@ By 8:30 a.m. the disc had a second area. The teleport room of the Castle Entranc
 ## My list, my rules
 
 [gus]
-After some testing I started to realize what I've got myself into. There was a lot to do. I sent a list with the worst ofenders at the time. The dying warg spawns a new smoke cloud every two frames, so cap it at three. Three mermen at a time tops, and pick one water-entrance effect instead of the original two. The red doors that lead into the load rooms turns in 3D on the PlayStation, for now we'll settle with dissolving it with dithering or something cheap. And the transformations, could the change between Alucard and the bat use a dithered blend too? At least for now.
+After some testing I started to realize what I've got myself into. There was a lot to do. I sent a list with the worst offenders at the time. The dying warg spawns a new smoke cloud every two frames, so cap it at three. Three mermen at a time tops, and pick one water-entrance effect instead of the original two. The red doors that lead into the load rooms turn in 3D on the PlayStation. For now we'll settle with dissolving it with dithering or something cheap. And the transformations, could the change between Alucard and the bat use a dithered blend too? At least for now.
 
 [claude]
 The dissolve is the cheapest effect there is. Every step removes more pixels in a fixed pattern, so it costs a few extra tiles and no processing at all.
@@ -53,7 +53,7 @@ The dissolve is the cheapest effect there is. Every step removes more pixels in 
 ## Bloodlines water
 
 [gus]
-The water from the day before was still flashing the whole screen. As I started to think about references of water design on the Genesis, I remembered Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I couldn't pass the oportunity of doing an homage for the OG Sega Castlevania. I decided to use this water design on the Mermen room and go for something else on the reet of the game.
+The water from the day before was still flashing the whole screen. As I started to think about references of water design on the Genesis, I remembered Castlevania Bloodlines. Bloodlines doesn't do transparent water. It reflects the room in it. I couldn't pass the opportunity of doing an homage for the OG Sega Castlevania. I decided to use this water design on the Mermen room and go for something else on the rest of the game.
 
 ![](../imagens/79-bloodlines-a.png)
 ![](../imagens/79-bloodlines-b.png)
@@ -80,7 +80,7 @@ At 6:34 p.m. I asked for two more touches I remembered from Bloodlines. The wate
 ## Gunstar detour
 
 [gus]
-In the afternoon I asked Claude to analyze how Gunstar Heroes handles its explosions and bullets, from a memory dump of the game. (I sent the wrong dump first.) The analysis made me ask an uncomfortable question. Is the Mega CD really the right call, or should we move to a cartridge? And what about the 32X? We stayed on the Mega CD, and that conversation deserves its own post. PS: short answer: it would never fit.
+In the afternoon I asked Claude to analyze how Gunstar Heroes handles its explosions and bullets, from a memory dump of the game. (I sent the wrong dump first.) The analysis made me ask an uncomfortable question. Is the Mega CD really the right call, or should we move to a cartridge? And what about the 32X? We stayed on the Mega CD, and that conversation deserves its own post. PS: short answer, it would never fit.
 
 ![](../imagens/213-gunstar-a.png)
 ![](../imagens/213-gunstar-b.png)
