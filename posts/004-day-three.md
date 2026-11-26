@@ -144,7 +144,7 @@ The Genesis sound chip is pretty divisive. I'm on the side of those who have a s
 
 Anyways, at 6:30 p.m. I dropped a Mega Drive arrangement of the Castle Entrance theme into a folder, and twenty minutes later it was playing.
 
-![](../imagens/37b-castle-entrance-furnace.mp4)
+![](../imagens/youtube:iCn7FXNtDNA)
 *A preview of the Castle Entrance track, playing in Furnace Tracker.*
 
 ![](../imagens/37-fm-caminho.png)

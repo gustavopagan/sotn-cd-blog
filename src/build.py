@@ -32,6 +32,8 @@ def inline(t):
 
 
 def img_name(f):
+    if f.startswith("youtube:"):  # vídeo do YouTube, embutido no tubo
+        return f
     base = re.sub(r"\.(png|jpg|gif|mp4)$", "", f)
     for ext in (".jpg", ".png", ".gif", ".mp4"):
         if os.path.exists(os.path.join(ROOT, "public", "img", base + ext)):
@@ -90,6 +92,9 @@ def render(body):
             itens = []
             for f in re.findall(r"\(\.\./imagens/([^)]+)\)", m.group(1)):
                 nome = img_name(f)
+                if nome.startswith("youtube:"):
+                    itens.append((nome, 16, 9))
+                    continue
                 if nome.endswith(".mp4"):  # vídeo: medida pelo ffprobe, 16:9 se não houver
                     try:
                         import subprocess as _sp
@@ -124,6 +129,13 @@ def render(body):
                     medida[0] = f"--r:{_h / _w:.6f}{rm};--k:0px"
                     return (f'<span class="painel"{est}><picture>{fonte_cel}<img src="../img/{nome}" width="{_w}"'
                             f' height="{_h}" alt="{html.escape(alt)}" loading="lazy"></picture></span>')
+                if nome.startswith("youtube:"):  # YouTube no tubo, 16:9, sem cookies
+                    medida[0] = f"--r:{_h / _w:.6f};--k:8px"
+                    vid = nome.split(":", 1)[1]
+                    return (f'<span class="crt video"{est}><span class="tubo"><iframe'
+                            f' src="https://www.youtube-nocookie.com/embed/{vid}" width="{_w}" height="{_h}"'
+                            f' title="{html.escape(alt)}" loading="lazy" allowfullscreen'
+                            f' allow="encrypted-media; picture-in-picture; fullscreen"></iframe></span></span>')
                 if nome.endswith(".mp4"):  # vídeo no tubo, com controles; capa em NOME-capa.jpg se houver
                     medida[0] = f"--r:{_h / _w:.6f};--k:8px"
                     capa = nome[:-4] + "-capa.jpg"
