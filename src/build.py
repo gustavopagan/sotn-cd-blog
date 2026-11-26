@@ -236,9 +236,13 @@ if(post){
   var t=0; addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){
     S.setItem('sotnUlt2',JSON.stringify({u:location.pathname.split('/').pop(),y:scrollY}))},200)});
   S.setItem('sotnUlt2',JSON.stringify({u:location.pathname.split('/').pop(),y:v!==null?+v:0}));
+  // clique num link do próprio blog: a lista abre e fica (o visualizador não manda o referrer)
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');
+    if(a&&!/^[a-z]+:/i.test(a.getAttribute('href'))){S.removeItem('sotnUlt2');S.setItem('sotnDentro','1')}},true);
 }else{
   var r=document.referrer, dentro=false;
   try{dentro=r&&new URL(r).origin===location.origin}catch(e){}
+  if(S.getItem('sotnDentro')){dentro=true;S.removeItem('sotnDentro')}
   S.removeItem('sotnUlt');
   var u=S.getItem('sotnUlt2');
   if(dentro) S.removeItem('sotnUlt2');
